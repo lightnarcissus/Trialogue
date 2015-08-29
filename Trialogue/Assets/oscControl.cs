@@ -37,7 +37,14 @@ public class oscControl : MonoBehaviour {
 		OSCHandler.Instance.Init(); //init OSC
 		servers = new Dictionary<string, ServerLog>();
 		clients = new Dictionary<string,ClientLog> ();
-		cube = GameObject.Find ("Cube");
+		//cube = GameObject.Find ("Cube");
+        servers = OSCHandler.Instance.Servers;
+        clients = OSCHandler.Instance.Clients;
+        OSCHandler.Instance.SendMessageToClient ("TouchOSC Bridge", "/Shield/fader2", 0.5f);
+        OSCHandler.Instance.SendMessageToClient("TouchOSC Bridge", "/Shield/fader3", 0.5f);
+        OSCHandler.Instance.SendMessageToClient("TouchOSC Bridge", "/Shield/fader4", 0.5f);
+		OSCHandler.Instance.UpdateLogs();
+        
 	}
 
 	// NOTE: The received messages at each server are updated here
@@ -47,17 +54,12 @@ public class oscControl : MonoBehaviour {
 		
 		OSCHandler.Instance.UpdateLogs();
 
-		msg="0.1544944";
-		byte[] val = new byte[]{176,8,0};
-
-		servers = OSCHandler.Instance.Servers;
-		clients = OSCHandler.Instance.Clients;
+		
+	//	servers = OSCHandler.Instance.Servers;
+	//	clients = OSCHandler.Instance.Clients;
 		if (UnityEngine.Random.value < 0.01f) {
 			randVal = UnityEngine.Random.Range (0f, 0.7f);
-			OSCHandler.Instance.SendMessageToClient ("TouchOSC Bridge", "/1/fader1", randVal);
-			OSCHandler.Instance.SendMessageToClient ("TouchOSC Bridge", "/1/fader2", randVal);
-			OSCHandler.Instance.SendMessageToClient ("TouchOSC Bridge", "/1/fader3", randVal);
-			OSCHandler.Instance.SendMessageToClient ("TouchOSC Bridge", "/1/fader4", randVal);
+			OSCHandler.Instance.SendMessageToClient ("TouchOSC Bridge", "/Shield/fader3", randVal);
 		}
 		OSCHandler.Instance.UpdateLogs();
 
