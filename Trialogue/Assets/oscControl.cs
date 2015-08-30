@@ -30,19 +30,22 @@ public class oscControl : MonoBehaviour {
 	private Dictionary<string, ServerLog> servers;
 	private Dictionary<string, ClientLog> clients;
 	private float randVal=0f;
-	public GameObject cube;
+    public GameObject directionalLight;
 	private String msg="";
 	// Script initialization
 	void Start() {	
 		OSCHandler.Instance.Init(); //init OSC
 		servers = new Dictionary<string, ServerLog>();
 		clients = new Dictionary<string,ClientLog> ();
-		//cube = GameObject.Find ("Cube");
         servers = OSCHandler.Instance.Servers;
         clients = OSCHandler.Instance.Clients;
-        OSCHandler.Instance.SendMessageToClient ("TouchOSC Bridge", "/Shield/fader2", 0.5f);
-        OSCHandler.Instance.SendMessageToClient("TouchOSC Bridge", "/Shield/fader3", 0.5f);
-        OSCHandler.Instance.SendMessageToClient("TouchOSC Bridge", "/Shield/fader4", 0.5f);
+        OSCHandler.Instance.SendMessageToClient ("iPhone5S Client", "/Shield/fader2", 0.5f);
+        OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Shield/fader3", 0.5f);
+        OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Shield/fader4", 0.5f);
+        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/rotary2", 1f);
+        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/rotary3", 1f);
+        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/rotary4", 1f);
+        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader2", directionalLight.GetComponent<Light>().intensity);
 		OSCHandler.Instance.UpdateLogs();
         
 	}
@@ -59,7 +62,7 @@ public class oscControl : MonoBehaviour {
 	//	clients = OSCHandler.Instance.Clients;
 		if (UnityEngine.Random.value < 0.01f) {
 			randVal = UnityEngine.Random.Range (0f, 0.7f);
-			OSCHandler.Instance.SendMessageToClient ("TouchOSC Bridge", "/Shield/fader3", randVal);
+			//OSCHandler.Instance.SendMessageToClient ("TouchOSC Bridge", "/Shield/fader3", randVal);
 		}
 		OSCHandler.Instance.UpdateLogs();
 
@@ -76,7 +79,7 @@ public class oscControl : MonoBehaviour {
 					
 				//converts the values into MIDI to scale the cube
 				float tempVal = float.Parse (item.Value.packets [lastPacketIndex].Data [0].ToString ());
-				cube.transform.localScale = new Vector3 (tempVal, tempVal, tempVal);
+				//cube.transform.localScale = new Vector3 (tempVal, tempVal, tempVal);
 			}
 		}
 			
