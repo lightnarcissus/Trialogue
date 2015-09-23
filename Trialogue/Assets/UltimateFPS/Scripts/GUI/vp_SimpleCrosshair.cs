@@ -69,7 +69,7 @@ public class vp_SimpleCrosshair : MonoBehaviour
 			GUI.color = new Color(1, 1, 1, 0.8f);
 
 			GUI.DrawTexture(new Rect((Screen.width * (offsetX)) - (m_ImageCrosshair.width * 0.5f),
-				(Screen.height * (offsetY)) - (m_ImageCrosshair.height * 0.5f), m_ImageCrosshair.width,
+				(Screen.height * (1f-offsetY)) - (m_ImageCrosshair.height * 0.5f), m_ImageCrosshair.width,
 				m_ImageCrosshair.height), m_ImageCrosshair);
 			GUI.color = Color.white;
 		}

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerShoot : MonoBehaviour {
 
@@ -10,6 +10,7 @@ public class PlayerShoot : MonoBehaviour {
 	private Vector3 p;
 	public GameObject camera;
 	public LayerMask mask=9;
+	public List<AudioClip> weaponClips;
 
 	// Use this for initialization
 	void Start () {
@@ -26,9 +27,9 @@ public class PlayerShoot : MonoBehaviour {
 			ray=camera.GetComponent<Camera>().ViewportPointToRay(new Vector3(GetComponent<vp_SimpleCrosshair>().offsetX,GetComponent<vp_SimpleCrosshair>().offsetY,0f));
 			//ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
 			pistol.GetComponent<Animator>().Play("PistolShoot");
-
+			pistol.GetComponent<AudioSource>().PlayOneShot(weaponClips[0]);
 			//Debug.DrawRay (ray.origin,ray.direction,Color.red);
-			if(Physics.Raycast(ray,out hit,mask.value))
+			if(Physics.SphereCast(ray,0.8f, out hit,100f,mask.value))// Raycast(ray,out hit,mask.value))
 			{
 				if(hit.collider.gameObject.tag=="Cube")
 				{
