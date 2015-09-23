@@ -236,8 +236,10 @@ public class vp_FPInput : MonoBehaviour
 		if (!Screen.lockCursor)
 			return;
 
-		if (Input.GetButton("Fire1"))
-			Player.Attack.TryStart();
+		if (Input.GetButton ("Fire1")) {
+			Debug.Log ("trying to shoot");
+			Player.Attack.TryStart ();
+		}
 		else
 			Player.Attack.TryStop();
 

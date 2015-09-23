@@ -10,7 +10,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[System.Serializable]	// retain instance upon build and save
+//[System.Serializable]	// retain instance upon build and save
 
 
 public class vp_State
@@ -60,10 +60,10 @@ public class vp_State
 			if (StateManager == null)
 				return;
 
-			if (m_Enabled)
-				StateManager.ImposeBlockingList(this);
-			else
-				StateManager.RelaxBlockingList(this);
+//			if (m_Enabled)
+//				StateManager.ImposeBlockingList(this);
+//			else
+//				StateManager.RelaxBlockingList(this);
 		}
 	}
 

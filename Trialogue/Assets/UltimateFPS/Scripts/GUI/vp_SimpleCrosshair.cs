@@ -17,6 +17,9 @@ public class vp_SimpleCrosshair : MonoBehaviour
 
 	// crosshair texture
 	public Texture m_ImageCrosshair = null;
+
+	public float offsetX=0.5f;
+	public float offsetY=0.5f;
 	
 	protected vp_FPPlayerEventHandler m_Player = null;
 	
@@ -64,8 +67,9 @@ public class vp_SimpleCrosshair : MonoBehaviour
 		if (m_ImageCrosshair != null)
 		{
 			GUI.color = new Color(1, 1, 1, 0.8f);
-			GUI.DrawTexture(new Rect((Screen.width * 0.5f) - (m_ImageCrosshair.width * 0.5f),
-				(Screen.height * 0.5f) - (m_ImageCrosshair.height * 0.5f), m_ImageCrosshair.width,
+
+			GUI.DrawTexture(new Rect((Screen.width * (offsetX)) - (m_ImageCrosshair.width * 0.5f),
+				(Screen.height * (offsetY)) - (m_ImageCrosshair.height * 0.5f), m_ImageCrosshair.width,
 				m_ImageCrosshair.height), m_ImageCrosshair);
 			GUI.color = Color.white;
 		}
