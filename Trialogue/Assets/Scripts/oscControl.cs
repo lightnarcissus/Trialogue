@@ -39,6 +39,7 @@ public class oscControl : MonoBehaviour {
 
     //Trees page
     public bool greenTrees = false;
+	public bool enemySpawn=true;
     public float treeSize = 1f;
     public float spawnRate=0.2f;
     public float spawnDistance=8f;
