@@ -11,7 +11,8 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject camera;
 	public LayerMask mask=9;
 	public List<AudioClip> weaponClips;
-
+	public GameObject explosion;
+	public GameObject pistolMuzzle;
 	// Use this for initialization
 	void Start () {
 
@@ -27,6 +28,7 @@ public class PlayerShoot : MonoBehaviour {
 			ray=camera.GetComponent<Camera>().ViewportPointToRay(new Vector3(GetComponent<vp_SimpleCrosshair>().offsetX,GetComponent<vp_SimpleCrosshair>().offsetY,0f));
 			//ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
 			pistol.GetComponent<Animator>().Play("PistolShoot");
+			//Instantiate(pistolMuzzle,pistol.transform.position,Quaternion.identity);
 			pistol.GetComponent<AudioSource>().PlayOneShot(weaponClips[0]);
 			//Debug.DrawRay (ray.origin,ray.direction,Color.red);
 			if(Physics.SphereCast(ray,0.8f, out hit,100f,mask.value))// Raycast(ray,out hit,mask.value))
@@ -34,6 +36,7 @@ public class PlayerShoot : MonoBehaviour {
 				if(hit.collider.gameObject.tag=="Cube")
 				{
 					Destroy (hit.collider.gameObject);
+					Instantiate (explosion,hit.collider.gameObject.transform.position,Quaternion.identity);
 					OffsetReticle();
 				}
 			}
