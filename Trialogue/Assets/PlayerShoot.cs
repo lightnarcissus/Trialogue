@@ -52,15 +52,17 @@ public class PlayerShoot : MonoBehaviour {
 
 	public void OffsetReticle()
 	{
-		if(Random.value<0.5f)
-			GetComponent<vp_SimpleCrosshair> ().offsetX+=0.1f;
-		else
-			GetComponent<vp_SimpleCrosshair> ().offsetX-=0.1f;
-
-		if(Random.value<0.5f)
-			GetComponent<vp_SimpleCrosshair> ().offsetY+=0.1f;	
-		else
-			GetComponent<vp_SimpleCrosshair> ().offsetY-=0.1f;	
-
+		if (GetComponent<vp_SimpleCrosshair> ().offsetX <= 1.0f) {
+			if (Random.value < 0.5f)
+				GetComponent<vp_SimpleCrosshair> ().offsetX += 0.1f;
+			else
+				GetComponent<vp_SimpleCrosshair> ().offsetX -= 0.1f;
+		}
+		if (GetComponent<vp_SimpleCrosshair> ().offsetY <=1.0f) {
+			if (Random.value < 0.5f)
+				GetComponent<vp_SimpleCrosshair> ().offsetY += 0.1f;
+			else
+				GetComponent<vp_SimpleCrosshair> ().offsetY -= 0.1f;	
+		}
 	}
 }

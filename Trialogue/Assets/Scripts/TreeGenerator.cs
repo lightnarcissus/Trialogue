@@ -4,13 +4,18 @@ using System.Collections;
 public class TreeGenerator : MonoBehaviour {
 
     public GameObject[] trees;
-    public float spawnDistance=0f;
-    public float spawnRate=0.1f;
+	public GameObject[] platforms;
 	public GameObject[] enemies;
-    private int randTree = 0;
+
+	public float spawnDistance=0f;
+    public float spawnRate=0.1f;
+
     public GameObject oscManager;
     public GameObject player;
-    private float randDist = 0f;
+    
+	private int randTree = 0;
+	private int randPlatform = 0;
+	private float randDist = 0f;
     private float tempDist = 0f;
     private float randZDist = 0f;
 
@@ -23,10 +28,6 @@ public class TreeGenerator : MonoBehaviour {
 	void Update () {
         if (Random.value < (spawnRate * oscManager.GetComponent<oscControl>().spawnRate))
         {
-			if(oscManager.GetComponent<oscControl>().enemySpawn)
-			{
-				Instantiate(enemies[0],player.transform.position+new Vector3(randDist*tempDist,1.58f,randDist*tempDist),Quaternion.identity);
-			}
             if (oscManager.GetComponent<oscControl>().greenTrees)
                 randTree = Random.Range(4, 7);
             else
@@ -37,6 +38,22 @@ public class TreeGenerator : MonoBehaviour {
 			if(trees[randTree]!=null)
             	Instantiate(trees[randTree],player.transform.position+new Vector3(randDist*tempDist,-1.58f,randDist*tempDist),Quaternion.identity);
         }
+		if(oscManager.GetComponent<oscControl>().enemySpawn)
+		{
+			if(Random.value< (spawnRate * oscManager.GetComponent<oscControl>().enemySpawnRate))
+			{
+				Instantiate(enemies[0],player.transform.position+new Vector3(randDist*tempDist,player.transform.position.y,randDist*tempDist),Quaternion.identity);
+			}
+		}
+
+		if(oscManager.GetComponent<oscControl>().platformSpawn)
+		{
+			if(Random.value< (spawnRate * oscManager.GetComponent<oscControl>().platformSpawnRate))
+			{
+				randPlatform=Random.Range (0,4);
+				Instantiate(platforms[randPlatform],player.transform.position+new Vector3(randDist*tempDist,player.transform.position.y,randDist*tempDist),Quaternion.identity);
+			}
+		}
 	
 	}
 }

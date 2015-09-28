@@ -1104,6 +1104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ImageCrosshair: {fileID: 2800000, guid: 5e0ebfc51683e684f9c20e69eb644f62, type: 3}
+  offsetX: .5
+  offsetY: .5
 --- !u!114 &784736406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2359,6 +2361,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ImageCrosshair: {fileID: 2800000, guid: 8df5608ac279440f2959815a6c2f03da, type: 3}
+  offsetX: .5
+  offsetY: .5
 --- !u!82 &1661101154
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2568,6 +2572,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pistol: {fileID: 515157047}
+  cube: {fileID: 0}
+  camera: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 9
+  weaponClips: []
 --- !u!1 &1680225460 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 150148, guid: 56c87fa42004a462096850d8e0ab1173, type: 2}
