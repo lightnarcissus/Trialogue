@@ -623,7 +623,7 @@ Prefab:
       objectReference: {fileID: 1680225460}
     - target: {fileID: 11473808, guid: 9eafa68ba39f44f889ed1afb730a85e2, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9eafa68ba39f44f889ed1afb730a85e2, type: 2}
@@ -1190,15 +1190,15 @@ Prefab:
       objectReference: {fileID: 100000, guid: 67e5b9f09995840449c988b145cc1d7b, type: 2}
     - target: {fileID: 11435696, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: m_WalkSpeed
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11435696, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: m_RunSpeed
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 11435696, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: m_RunstepLenghten
-      value: .749000013
+      value: .699999988
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}

@@ -24,6 +24,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityOSC;
+using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.Utility;
 
 public class oscControl : MonoBehaviour {
 	
@@ -50,7 +52,7 @@ public class oscControl : MonoBehaviour {
 
 	//platforms
 	public float platformSpawnRate=0.1f;
-	public bool platformSpawn=true;
+	public bool platformSpawn=false;
 
     //Movement page
     public float gameSpeed = 1f;
@@ -75,6 +77,9 @@ public class oscControl : MonoBehaviour {
     public bool pixelated=false;
     public bool charcoal=false;
     private bool reset =true;
+	public bool regenHealth=false;
+	public bool healthAmmo = false;
+
 	private String msg="";
 	// Script initialization
 	void Start() {	
@@ -193,6 +198,25 @@ public class oscControl : MonoBehaviour {
                     playerCamera.transform.position = new Vector3(tempVal, tempVal, tempVal);
 
                 }
+
+				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle4") //regenerating health?
+				{
+					if(!regenHealth)
+						regenHealth=true;
+					else
+						regenHealth=false;
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle5") //health == ammo?
+				{
+					if(!healthAmmo)
+						healthAmmo=true;
+					else
+						healthAmmo=false;
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Health/fader8") //regen rate
+				{
+				}
+
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/rotary4") //red
                 {
                     red = tempVal;
@@ -331,6 +355,18 @@ public class oscControl : MonoBehaviour {
                         charcoal = true;
                     }
                 }
+				else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary5") //camera out of sync on x
+				{
+					playerCamera.transform.localEulerAngles=new Vector3(tempVal,playerCamera.transform.localEulerAngles.y,playerCamera.transform.localEulerAngles.z);
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary6") //camera out of sync on y
+				{
+					playerCamera.transform.localEulerAngles=new Vector3(playerCamera.transform.localEulerAngles.x,tempVal,playerCamera.transform.localEulerAngles.z);
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary9") //camera out of sync on z
+				{
+					playerCamera.transform.localEulerAngles=new Vector3(playerCamera.transform.localEulerAngles.x,playerCamera.transform.localEulerAngles.y,tempVal);
+				}
 				//cube.transform.localScale = new Vector3 (tempVal, tempVal, tempVal);
 			}
             
