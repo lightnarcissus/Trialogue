@@ -5,6 +5,9 @@ public class Aggressive : MonoBehaviour {
 
     private GameObject player;
     public static float speed = 0.5f;
+	public static float colX=0f;
+	public static float colY=0f;
+	public static float colZ=0f;
 	// Use this for initialization
 	void Start () {
 
@@ -27,6 +30,11 @@ public class Aggressive : MonoBehaviour {
 				player.GetComponent<PlayerShoot>().healthSlider.value-=15;
 			Destroy (this.gameObject);
 		}
+	}
+
+	void LateUpdate()
+	{
+		gameObject.GetComponent<BoxCollider> ().center = new Vector3 (colX, colY, colZ);
 	}
 
 

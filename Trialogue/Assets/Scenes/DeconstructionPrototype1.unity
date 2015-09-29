@@ -1145,6 +1145,7 @@ MonoBehaviour:
   explosion: {fileID: 100000, guid: 13266a9cf8da28e41bfa61b378dfabc5, type: 2}
   pistolMuzzle: {fileID: 0}
   healthSlider: {fileID: 0}
+  oscManager: {fileID: 0}
   regenRate: 1
 --- !u!114 &869962661
 MonoBehaviour:

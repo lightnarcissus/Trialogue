@@ -15,6 +15,7 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject pistolMuzzle;
 	public Slider healthSlider;
+	public GameObject oscManager;
 	private float regenTimer=0f;
 	public float regenRate=1f;
 	// Use this for initialization
@@ -34,7 +35,7 @@ public class PlayerShoot : MonoBehaviour {
 			pistol.GetComponent<Animator>().Play("PistolShoot");
 			//Instantiate(pistolMuzzle,pistol.transform.position,Quaternion.identity);
 			pistol.GetComponent<AudioSource>().PlayOneShot(weaponClips[0]);
-			if(healthSlider.value>0)
+			if(healthSlider.value>0 && oscManager.GetComponent<oscControl>().healthAmmo)
 				healthSlider.value-=2f;
 			//Debug.DrawRay (ray.origin,ray.direction,Color.red);
 			if(Physics.SphereCast(ray,0.8f, out hit,100f,mask.value))// Raycast(ray,out hit,mask.value))
@@ -51,7 +52,7 @@ public class PlayerShoot : MonoBehaviour {
 		}
 
 		regenTimer += Time.deltaTime;
-		if (regenTimer * regenRate > 5f) {
+		if (regenTimer * regenRate > 5f && oscManager.GetComponent<oscControl>().regenHealth) {
 			healthSlider.value++;
 			regenTimer=0f;
 		}

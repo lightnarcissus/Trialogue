@@ -79,6 +79,7 @@ public class oscControl : MonoBehaviour {
     private bool reset =true;
 	public bool regenHealth=false;
 	public bool healthAmmo = false;
+	public bool noGuns=false;
 
 	private String msg="";
 	// Script initialization
@@ -125,18 +126,21 @@ public class oscControl : MonoBehaviour {
 			// show the last received from the log in the Debug console
 			if (item.Value.log.Count > 0) {
 				int lastPacketIndex = item.Value.packets.Count - 1;
+				int beforeLastPacketIndex= item.Value.packets.Count-2;
 					
 			/*	UnityEngine.Debug.Log (String.Format ("SERVER: {0} ADDRESS: {1} VALUE : {2}", 
 					                                    item.Key, // Server name
 					                                    item.Value.packets [lastPacketIndex].Address, // OSC address
 					                                    item.Value.packets [lastPacketIndex].Data [0].ToString ())); //First data value
 				*/	
-
+//				Debug.Log ("last one: "+item.Value.packets[lastPacketIndex].Address);
+//				Debug.Log ("one before that: "+item.Value.packets[beforeLastPacketIndex].Address);
+				//{
 				float tempVal = float.Parse (item.Value.packets [lastPacketIndex].Data [0].ToString ());
                 if(item.Value.packets [lastPacketIndex].Address=="/Trees/toggle1") //green trees?
                 {
-                    if (greenTrees)
-                        greenTrees = false;
+					if (tempVal==0)
+						greenTrees = false;
                     else
                         greenTrees = true;
 
@@ -160,9 +164,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Movement/toggle2") //jump enabled?
                 {
-                    if (jumpEnabled)
-                    {
-                        Physics.gravity = new Vector3(0f, -98000f, 0f);
+					if (tempVal==0)
+					{
+						Physics.gravity = new Vector3(0f, -98000f, 0f);
                         jumpEnabled=false;
                     }
                     else
@@ -174,9 +178,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Movement/toggle3") //upside down?
                 {
-                    if (upsideDown)
-                    {
-                        upsideDown = false;
+					if (tempVal==0)
+					{
+						upsideDown = false;
                         playerCamera.transform.eulerAngles = new Vector3(0f, 0f, 0f);
                     }
                     else
@@ -195,20 +199,20 @@ public class oscControl : MonoBehaviour {
                 else if (item.Value.packets[lastPacketIndex].Address == "/Movement/fader7") //head separation distance
                 {
                     headSeparation = tempVal;
-                    playerCamera.transform.position = new Vector3(tempVal, tempVal, tempVal);
+                    playerCamera.transform.localPosition = new Vector3(tempVal, tempVal, tempVal);
 
                 }
 
 				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle4") //regenerating health?
 				{
-					if(!regenHealth)
+					if(tempVal==1)
 						regenHealth=true;
 					else
 						regenHealth=false;
 				}
 				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle5") //health == ammo?
 				{
-					if(!healthAmmo)
+					if(tempVal==1)
 						healthAmmo=true;
 					else
 						healthAmmo=false;
@@ -216,6 +220,35 @@ public class oscControl : MonoBehaviour {
 				else if (item.Value.packets[lastPacketIndex].Address == "/Health/fader8") //regen rate
 				{
 					playerBody.GetComponent<PlayerShoot>().regenRate=tempVal;
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle6") //no guns?
+				{
+					if(tempVal==1)
+					{
+						noGuns=true;
+						playerCamera.transform.FindChild ("Pistol").gameObject.SetActive (false);
+						playerBody.GetComponent<PlayerShoot>().enabled=false;
+						playerBody.GetComponent<vp_SimpleCrosshair>().enabled=false;
+					}
+					else
+					{
+						noGuns=false;
+						playerCamera.transform.FindChild ("Pistol").gameObject.SetActive (true);
+						playerBody.GetComponent<PlayerShoot>().enabled=true;
+						playerBody.GetComponent<vp_SimpleCrosshair>().enabled=true;
+					}
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5") //enemy collision out of sync x
+				{
+					Aggressive.colX=tempVal;
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5") //enemy collision out of sync x
+				{
+					Aggressive.colY=tempVal;
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5") //enemy collision out of sync x
+				{
+					Aggressive.colZ=tempVal;
 				}
 
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/rotary4") //red
@@ -251,9 +284,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle1") //2D Camera?
                 {
-                    if (twoDimCam)
-                    {
-                        playerCamera.GetComponent<Camera>().orthographic = false;
+					if (tempVal==0)
+					{
+						playerCamera.GetComponent<Camera>().orthographic = false;
                         twoDimCam = false;
                     }
                     else
@@ -264,9 +297,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle2") //Depth Only?
                 {
-                    if(depthOnly)
-                    {
-                        playerCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
+					if(tempVal==0)
+					{
+						playerCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
                         depthOnly = false;
                     }
                     else
@@ -277,9 +310,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle3") //Negative?
                 {
-                    if (negative)
-                    {
-                        playerCamera.GetComponent<PP_Negative>().enabled = false;
+					if (tempVal==0)
+					{
+						playerCamera.GetComponent<PP_Negative>().enabled = false;
                         negative = false;
                     }
                     else
@@ -292,9 +325,9 @@ public class oscControl : MonoBehaviour {
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle4") //Scanlines?
                 {
 
-                    if (scanlines)
-                    {
-                        playerCamera.GetComponent<PP_SecurityCamera>().enabled = false;
+					if (tempVal==0)
+					{
+						playerCamera.GetComponent<PP_SecurityCamera>().enabled = false;
                         scanlines = false;
                     }
                     else
@@ -305,9 +338,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle5") //Postered?
                 {
-                    if (postered)
-                    {
-                        playerCamera.GetComponent<PP_4Bit>().enabled = false;
+					if (tempVal==0)
+					{
+						playerCamera.GetComponent<PP_4Bit>().enabled = false;
                         postered = false;
                     }
                     else
@@ -318,9 +351,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle9") //Pixelated?
                 {
-                    if (pixelated)
-                    {
-                        playerCamera.GetComponent<PP_Pixelated>().enabled = false;
+					if (tempVal==0)
+					{
+						playerCamera.GetComponent<PP_Pixelated>().enabled = false;
                         pixelated = false;
                     }
                     else
@@ -331,9 +364,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle7") //Scratches?
                 {
-                    if (scratches)
-                    {
-                        playerCamera.GetComponent<PP_Scratch>().enabled = false;
+					if (tempVal==0)
+					{
+						playerCamera.GetComponent<PP_Scratch>().enabled = false;
                         scratches = false;
                     }
                     else
@@ -345,9 +378,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle8") //Charcoal?
                 {
-                    if (charcoal)
-                    {
-                        playerCamera.GetComponent<PP_Charcoal>().enabled = false;
+					if (tempVal==0)
+					{
+						playerCamera.GetComponent<PP_Charcoal>().enabled = false;
                         charcoal = false;
                     }
                     else
@@ -368,6 +401,7 @@ public class oscControl : MonoBehaviour {
 				{
 					playerCamera.transform.localEulerAngles=new Vector3(playerCamera.transform.localEulerAngles.x,playerCamera.transform.localEulerAngles.y,tempVal);
 				}
+			//	}
 				//cube.transform.localScale = new Vector3 (tempVal, tempVal, tempVal);
 			}
             
