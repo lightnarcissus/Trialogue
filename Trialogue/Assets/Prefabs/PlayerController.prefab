@@ -1290,8 +1290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 5
-  m_RunSpeed: 10
+  m_WalkSpeed: 6
+  m_RunSpeed: 12
   m_RunstepLenghten: .699999988
   m_JumpSpeed: 10
   m_StickToGroundForce: 10
@@ -1461,6 +1461,11 @@ MonoBehaviour:
     m_Bits: 512
   weaponClips:
   - {fileID: 8300000, guid: c32822916b4505846bea6008e361bc5d, type: 3}
+  explosion: {fileID: 100000, guid: 13266a9cf8da28e41bfa61b378dfabc5, type: 2}
+  pistolMuzzle: {fileID: 100000, guid: 67e5b9f09995840449c988b145cc1d7b, type: 2}
+  healthSlider: {fileID: 0}
+  oscManager: {fileID: 0}
+  regenRate: 1
 --- !u!114 &11467896
 MonoBehaviour:
   m_ObjectHideFlags: 1
