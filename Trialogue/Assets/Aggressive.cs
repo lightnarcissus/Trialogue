@@ -32,6 +32,10 @@ public class Aggressive : MonoBehaviour {
 		}
 	}
 
+	void OnDrawGizmosSelected() {
+		Gizmos.DrawWireMesh (gameObject.GetComponent<MeshFilter> ().mesh);
+	}
+
 	void LateUpdate()
 	{
 		gameObject.GetComponent<BoxCollider> ().center = new Vector3 (colX, colY, colZ);
