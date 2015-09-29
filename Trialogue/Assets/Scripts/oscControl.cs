@@ -215,6 +215,7 @@ public class oscControl : MonoBehaviour {
 				}
 				else if (item.Value.packets[lastPacketIndex].Address == "/Health/fader8") //regen rate
 				{
+					playerBody.GetComponent<PlayerShoot>().regenRate=tempVal;
 				}
 
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/rotary4") //red

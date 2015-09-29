@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class Aggressive : MonoBehaviour {
 
     private GameObject player;
@@ -23,8 +23,12 @@ public class Aggressive : MonoBehaviour {
 	{
 		if (col.gameObject.name == "Collider") {
 			Aggressive.speed+=0.1f;
+			if(player.GetComponent<PlayerShoot>().healthSlider.value > 15)
+				player.GetComponent<PlayerShoot>().healthSlider.value-=15;
 			Destroy (this.gameObject);
 		}
 	}
+
+
 
 }
