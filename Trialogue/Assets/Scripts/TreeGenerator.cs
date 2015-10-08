@@ -26,17 +26,20 @@ public class TreeGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Random.value < (spawnRate * oscManager.GetComponent<oscControl>().spawnRate))
+        if (oscManager.GetComponent<oscControl>().treeSpawn)
         {
-            if (oscManager.GetComponent<oscControl>().greenTrees)
-                randTree = Random.Range(4, 7);
-            else
-                randTree = Random.Range(0, 4);
-            tempDist=oscManager.GetComponent<oscControl>().spawnDistance;
-            randDist = Random.Range(-8f, 8f);
-            randZDist = Random.Range(-8f, 8f);
-			if(trees[randTree]!=null)
-            	Instantiate(trees[randTree],player.transform.position+new Vector3(randDist*tempDist,-1.58f,randDist*tempDist),Quaternion.identity);
+            if (Random.value < (spawnRate * oscManager.GetComponent<oscControl>().spawnRate))
+            {
+                if (oscManager.GetComponent<oscControl>().greenTrees)
+                    randTree = Random.Range(4, 7);
+                else
+                    randTree = Random.Range(0, 4);
+                tempDist = oscManager.GetComponent<oscControl>().spawnDistance;
+                randDist = Random.Range(-8f, 8f);
+                randZDist = Random.Range(-8f, 8f);
+                if (trees[randTree] != null)
+                    Instantiate(trees[randTree], player.transform.position + new Vector3(randDist * tempDist, -1.58f, randDist * tempDist), Quaternion.identity);
+            }
         }
 		if(oscManager.GetComponent<oscControl>().enemySpawn)
 		{
