@@ -825,6 +825,10 @@ Prefab:
       propertyPath: oscManager
       value: 
       objectReference: {fileID: 641720429}
+    - target: {fileID: 402394, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -.529999971
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
   m_IsPrefabParent: 0

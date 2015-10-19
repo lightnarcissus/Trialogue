@@ -51,8 +51,8 @@ public class oscControl : MonoBehaviour {
 	public bool enemySpawn=true;
 
 	//platforms
-	public float platformSpawnRate=0.1f;
-	public bool platformSpawn=false;
+	//public float platformSpawnRate=0.1f;
+	//public bool platformSpawn=false;
 
     //Movement page
     public float gameSpeed = 1f;
@@ -69,7 +69,7 @@ public class oscControl : MonoBehaviour {
     public float cameraFOV = 60f;
     public float cameraFarClip = 500f;
     public bool twoDimCam=false;
-    public bool depthOnly=false;
+    //public bool depthOnly=false;
     public bool negative=false;
     public bool scanlines=false;
     public bool postered=false;
@@ -80,6 +80,14 @@ public class oscControl : MonoBehaviour {
 	public bool regenHealth=false;
 	public bool healthAmmo = false;
 	public bool noGuns=false;
+
+    //head separation distance
+    //camera out of sync
+    //enemy collider out of sync
+
+    /// <summary>
+ 
+    /// </summary>
 
 	private String msg="";
 	// Script initialization
@@ -295,7 +303,7 @@ public class oscControl : MonoBehaviour {
                         twoDimCam = true;
                     }
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle2") //Depth Only?
+             /*   else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle2") //Depth Only?
                 {
 					if(tempVal==0)
 					{
@@ -308,6 +316,7 @@ public class oscControl : MonoBehaviour {
                         depthOnly = true;
                     }
                 }
+              */
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle3") //Negative?
                 {
 					if (tempVal==0)

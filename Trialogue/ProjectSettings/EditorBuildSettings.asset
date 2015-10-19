@@ -5,7 +5,5 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/ThesisJam.unity
   - enabled: 1
-    path: Assets/Scenes/DeconstructionPrototype1.unity
+    path: Assets/Scenes/DeconstructionPrototype.unity

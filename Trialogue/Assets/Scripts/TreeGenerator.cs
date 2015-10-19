@@ -49,6 +49,7 @@ public class TreeGenerator : MonoBehaviour {
 			}
 		}
 
+        /*
 		if(oscManager.GetComponent<oscControl>().platformSpawn)
 		{
 			if(Random.value< (spawnRate * oscManager.GetComponent<oscControl>().platformSpawnRate))
@@ -57,6 +58,7 @@ public class TreeGenerator : MonoBehaviour {
 				Instantiate(platforms[randPlatform],player.transform.position+new Vector3(randDist*tempDist,player.transform.position.y,randDist*tempDist),Quaternion.identity);
 			}
 		}
+        */
 	
 	}
 }
