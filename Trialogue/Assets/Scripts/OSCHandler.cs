@@ -96,9 +96,11 @@ public class OSCHandler : MonoBehaviour
 		ipAddress = Network.player.ipAddress; //sets the ipAddress of the current machine running the Unity application
 		Debug.Log (ipAddress);
         //Initialize OSC clients (transmitters)
-        //Example:		
+        
+        //CHANGE THESE EVERY TIME
 		CreateClient("iPhone5S Client", IPAddress.Parse("172.16.18.231"), 9000);
-        CreateClient("iPad Client", IPAddress.Parse("172.16.8.77"), 9000);
+        CreateClient("iPad Client", IPAddress.Parse("172.16.9.72"), 9000);
+        
         //Initialize OSC servers (listeners)
         //Example:
 		CreateServer ("TouchOSC Server", 8000);
