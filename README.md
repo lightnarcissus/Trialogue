@@ -5,10 +5,10 @@ Trialogue is currently being made as my MFA Thesis at NYU Game Center and is sch
 
 Features:
 
-    Interactive installation exploring the processes embodied by the three roles involved within ;the “textual” boundaries of a game
-    Observing the effects of an experience of a game when modified in real-life
-    Physical separation of the performed roles in the installation space allows only for indirect, non-verbal communication
-    Explores how design of tools and game engine frame the creation processes
-    A “fake economy” which rewards the Developer with more power if they satisfy Good Game Design Principles and get positive evaluation from the audience members
-    Critique of game industry and culture’s influence on defining the processes
-    Explores the agency and embodiment of human body interrogating with virtual reality
+*    Interactive installation exploring the processes embodied by the three roles involved within ;the “textual” boundaries of a game
+*    Observing the effects of an experience of a game when modified in real-life
+*    Physical separation of the performed roles in the installation space allows only for indirect, non-verbal communication
+*    Explores how design of tools and game engine frame the creation processes
+*    A “fake economy” which rewards the Developer with more power if they satisfy Good Game Design Principles and get positive evaluation from the audience members
+*    Critique of game industry and culture’s influence on defining the processes
+*    Explores the agency and embodiment of human body interrogating with virtual reality
