@@ -81,6 +81,13 @@ public class oscControl : MonoBehaviour {
 	public bool healthAmmo = false;
 	public bool noGuns=false;
 
+    //critic
+    public float gameplay = 0f;
+    public float graphics = 0f;
+    public float audio = 0f;
+    public float value = 0f;
+    public float overall = 0f;
+
     //head separation distance
     //camera out of sync
     //enemy collider out of sync
@@ -114,7 +121,7 @@ public class oscControl : MonoBehaviour {
         OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader5", playerCamera.GetComponent<Camera>().farClipPlane); //far clip
 
 		OSCHandler.Instance.UpdateLogs();
-        
+
 	}
 
 	// NOTE: The received messages at each server are updated here
@@ -123,9 +130,9 @@ public class oscControl : MonoBehaviour {
 	void Update() {
 		
 		OSCHandler.Instance.UpdateLogs();
-		if (UnityEngine.Random.value < 0.01f) {
+		if (UnityEngine.Random.value < 0.3f) {
 			randVal = UnityEngine.Random.Range (0f, 0.7f);
-			//OSCHandler.Instance.SendMessageToClient ("TouchOSC Bridge", "/Shield/fader3", randVal);
+			OSCHandler.Instance.SendMessageToClient ("iPad Client", "/Visuals/fader2", 8f);
 		}
 		OSCHandler.Instance.UpdateLogs();
 
@@ -156,6 +163,23 @@ public class oscControl : MonoBehaviour {
                 else if(item.Value.packets [lastPacketIndex].Address=="/Trees/fader2") //tree size
                 {
                     treeSize = tempVal;
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/critic/fader1") //tree size
+                {
+                    if (tempVal > 5)
+                    {
+                        lightIntensity = 1.5f;
+                        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader2", lightIntensity);
+                        directionalLight.GetComponent<Light>().intensity = lightIntensity;
+                        //OSCHandler.Instance.UpdateLogs();
+                    }
+                    else
+                    {
+                        lightIntensity = 7.5f;
+                        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader2", lightIntensity);
+                        directionalLight.GetComponent<Light>().intensity = lightIntensity;
+                       // OSCHandler.Instance.UpdateLogs();
+                    }
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Trees/fader3") //trees spawn distance
                 {
