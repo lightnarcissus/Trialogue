@@ -35,6 +35,10 @@ public class PlayerShoot : MonoBehaviour {
 			pistol.GetComponent<Animator>().Play("PistolShoot");
 			//Instantiate(pistolMuzzle,pistol.transform.position,Quaternion.identity);
 			pistol.GetComponent<AudioSource>().PlayOneShot(weaponClips[0]);
+			if(gameObject.GetComponent<vp_SimpleCrosshair>().overruleOffset)
+			{
+				gameObject.GetComponent<vp_SimpleCrosshair>().IncreaseCopies();
+			}
 			if(healthSlider.value>0 && oscManager.GetComponent<oscControl>().healthAmmo)
 				healthSlider.value-=2f;
 			//Debug.DrawRay (ray.origin,ray.direction,Color.red);

@@ -130,11 +130,11 @@ public class oscControl : MonoBehaviour {
 	void Update() {
 		
 		OSCHandler.Instance.UpdateLogs();
-		if (UnityEngine.Random.value < 0.3f) {
-			randVal = UnityEngine.Random.Range (0f, 0.7f);
-			OSCHandler.Instance.SendMessageToClient ("iPad Client", "/Visuals/fader2", 8f);
-		}
-		OSCHandler.Instance.UpdateLogs();
+//		if (UnityEngine.Random.value < 0.3f) {
+//			randVal = UnityEngine.Random.Range (0f, 0.7f);
+//			//OSCHandler.Instance.SendMessageToClient ("iPad Client", "/Visuals/fader2", 8f);
+//		}
+		//OSCHandler.Instance.UpdateLogs();
 
 		foreach (KeyValuePair<string, ServerLog> item in servers) {
 			// If we have received at least one packet,
@@ -164,9 +164,11 @@ public class oscControl : MonoBehaviour {
                 {
                     treeSize = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/critic/fader1") //tree size
+
+				//critic section begins*
+                else if (item.Value.packets[lastPacketIndex].Address == "/critic/fader1") //graphics
                 {
-                    if (tempVal > 5)
+                    if (tempVal > 8)
                     {
                         lightIntensity = 1.5f;
                         OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader2", lightIntensity);
