@@ -23,65 +23,64 @@ public class PlayerShoot : MonoBehaviour {
     public static bool gameOver = false;
 	// Use this for initialization
 	void Start () {
-
+		UnityEngine.Cursor.visible = false;
 		Debug.Log ("Width: " + Screen.width / 2 + " and Height: " + Screen.height / 2);
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
+		if (!gameOver) {
+			if (Input.GetMouseButtonDown (0)) {
 
-			//Debug.Log ("shooting");
-			ray=camera.GetComponent<Camera>().ViewportPointToRay(new Vector3(GetComponent<vp_SimpleCrosshair>().offsetX,GetComponent<vp_SimpleCrosshair>().offsetY,0f));
-			//ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
-			pistol.GetComponent<Animator>().Play("PistolShoot");
-			//Instantiate(pistolMuzzle,pistol.transform.position,Quaternion.identity);
-			pistol.GetComponent<AudioSource>().PlayOneShot(weaponClips[0]);
-			if(gameObject.GetComponent<vp_SimpleCrosshair>().overruleOffset)
-			{
-				gameObject.GetComponent<vp_SimpleCrosshair>().IncreaseCopies();
-			}
-			if(healthSlider.value>0 && oscManager.GetComponent<oscControl>().healthAmmo)
-				healthSlider.value-=2f;
-			//Debug.DrawRay (ray.origin,ray.direction,Color.red);
-			if(Physics.SphereCast(ray,0.8f, out hit,100f,mask.value))// Raycast(ray,out hit,mask.value))
-			{
-				if(hit.collider.gameObject.tag=="Cube")
-				{
-					Destroy (hit.collider.gameObject);
-					Instantiate (explosion,hit.collider.gameObject.transform.position,Quaternion.identity);
-					OffsetReticle();
+				//Debug.Log ("shooting");
+				ray = camera.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
+				//ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
+				pistol.GetComponent<Animator> ().Play ("PistolShoot");
+				//Instantiate(pistolMuzzle,pistol.transform.position,Quaternion.identity);
+				pistol.GetComponent<AudioSource> ().PlayOneShot (weaponClips [0]);
+				if (gameObject.GetComponent<vp_SimpleCrosshair> ().overruleOffset) {
+					gameObject.GetComponent<vp_SimpleCrosshair> ().IncreaseCopies ();
 				}
+				if (healthSlider.value >= 0 && oscManager.GetComponent<oscControl> ().healthAmmo)
+					healthSlider.value -= 2f;
+				//Debug.DrawRay (ray.origin,ray.direction,Color.red);
+				if (Physics.SphereCast (ray, 0.8f, out hit, 100f, mask.value)) {// Raycast(ray,out hit,mask.value))
+					if (hit.collider.gameObject.tag == "Cube") {
+						Destroy (hit.collider.gameObject);
+						Instantiate (explosion, hit.collider.gameObject.transform.position, Quaternion.identity);
+						OffsetReticle ();
+					}
+				}
+
+
 			}
+        
 
-
+			if (healthSlider.value < 2) {
+				healthSlider.value = 0;
+				GameOver ();
+			}
+			regenTimer += Time.deltaTime;
+			if (regenTimer * regenRate > 5f && oscManager.GetComponent<oscControl> ().regenHealth) {
+				healthSlider.value++;
+				regenTimer = 0f;
+			}
 		}
-        if(gameOver)
-        {
-            if(Input.GetKeyDown(KeyCode.R))
-            {
-                gameOver = false;
-                RestartGame();
-            }
-        }
-
-        if(healthSlider.value<2)
-        {
-            healthSlider.value = 0;
-            GameOver();
-        }
-		regenTimer += Time.deltaTime;
-		if (regenTimer * regenRate > 5f && oscManager.GetComponent<oscControl>().regenHealth) {
-			healthSlider.value++;
-			regenTimer=0f;
+		else
+		{
+			if(Input.GetKeyDown(KeyCode.Tab))
+			{
+				gameOver = false;
+				RestartGame();
+			}
 		}
 	
 	}
     public void GameOver()
     {
         gameOver = true;
-        gameOverText.text = "Game Over \n Press R to Restart";
+		gameOverText.text = "Game Over \n Press Tab to Play Again";
     }
 
     public void RestartGame()
