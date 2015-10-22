@@ -110,6 +110,7 @@ public class oscControl : MonoBehaviour {
 	private String msg="";
 	// Script initialization
 	void Start() {	
+		Cursor.visible = false;
 		OSCHandler.Instance.Init(); //init OSC
 		servers = new Dictionary<string, ServerLog>();
 		clients = new Dictionary<string,ClientLog> ();
