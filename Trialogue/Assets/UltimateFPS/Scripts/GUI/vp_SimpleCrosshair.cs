@@ -26,6 +26,7 @@ public class vp_SimpleCrosshair : MonoBehaviour
 	public List<float> copyPos_Y;
 	public bool overruleOffset=false;
 	
+
 	protected vp_FPPlayerEventHandler m_Player = null;
 	
 	
@@ -68,12 +69,20 @@ public class vp_SimpleCrosshair : MonoBehaviour
 	/// </summary>
 	void OnGUI()
 	{
+        if(oscControl.allowMultipleReticle)
+        {
+            overruleOffset = true;
+        }
+        else
+        {
+            overruleOffset = false;
+        }
 
 		if (m_ImageCrosshair != null)
 		{
 			GUI.color = new Color(1, 1, 1, 0.8f);
 
-				if(!overruleOffset)
+				if(!overruleOffset )
 				{
 			GUI.DrawTexture(new Rect((Screen.width * (offsetX)) - (m_ImageCrosshair.width * 0.5f),
 				(Screen.height * (1f-offsetY)) - (m_ImageCrosshair.height * 0.5f), m_ImageCrosshair.width,
