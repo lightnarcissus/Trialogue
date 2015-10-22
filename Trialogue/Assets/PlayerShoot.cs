@@ -18,6 +18,9 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject oscManager;
 	private float regenTimer=0f;
 	public float regenRate=1f;
+
+    public Text gameOverText;
+    public static bool gameOver = false;
 	// Use this for initialization
 	void Start () {
 
@@ -54,7 +57,20 @@ public class PlayerShoot : MonoBehaviour {
 
 
 		}
+        if(gameOver)
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                gameOver = false;
+                RestartGame();
+            }
+        }
 
+        if(healthSlider.value<2)
+        {
+            healthSlider.value = 0;
+            GameOver();
+        }
 		regenTimer += Time.deltaTime;
 		if (regenTimer * regenRate > 5f && oscManager.GetComponent<oscControl>().regenHealth) {
 			healthSlider.value++;
@@ -62,6 +78,17 @@ public class PlayerShoot : MonoBehaviour {
 		}
 	
 	}
+    public void GameOver()
+    {
+        gameOver = true;
+        gameOverText.text = "Game Over \n Press R to Restart";
+    }
+
+    public void RestartGame()
+    {
+        gameOverText.text = "";
+        healthSlider.value = 100;
+    }
 
 	void OnDrawGizmosSelected() {
 		p = camera.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(0f,0f, camera.GetComponent<Camera>().nearClipPlane));
