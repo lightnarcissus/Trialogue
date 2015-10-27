@@ -303,35 +303,42 @@ public class oscControl : MonoBehaviour {
 				{
 					playerBody.GetComponent<PlayerShoot>().regenRate=tempVal;
 				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle6" && !disableDifficultThings) //no guns?
-				{
-					if(tempVal==1)
-					{
-						noGuns=true;
-						playerCamera.transform.FindChild ("Pistol").gameObject.SetActive (false);
-						playerBody.GetComponent<PlayerShoot>().enabled=false;
-						playerBody.GetComponent<vp_SimpleCrosshair>().enabled=false;
-					}
-					else
-					{
-						noGuns=false;
-						playerCamera.transform.FindChild ("Pistol").gameObject.SetActive (true);
-						playerBody.GetComponent<PlayerShoot>().enabled=true;
-						playerBody.GetComponent<vp_SimpleCrosshair>().enabled=true;
-					}
-				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5" && !disableComplexGameplay) //enemy collision out of sync x
-				{
-					Aggressive.colX=tempVal;
-				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary6" && !disableComplexGameplay) //enemy collision out of sync y
-				{
-					Aggressive.colY=tempVal;
-				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary7" && !disableComplexGameplay) //enemy collision out of sync z
-				{
-					Aggressive.colZ=tempVal;
-				}
+                else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle12" && !disableComplexGameplay) //
+                {
+                    if (tempVal == 1)
+                        allowMultipleReticle = true;
+                    else
+                        allowMultipleReticle = false;
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle6" && !disableDifficultThings) //no guns?
+                {
+                    if (tempVal == 1)
+                    {
+                        noGuns = true;
+                        playerCamera.transform.FindChild("Pistol").gameObject.SetActive(false);
+                        playerBody.GetComponent<PlayerShoot>().enabled = false;
+                        playerBody.GetComponent<vp_SimpleCrosshair>().enabled = false;
+                    }
+                    else
+                    {
+                        noGuns = false;
+                        playerCamera.transform.FindChild("Pistol").gameObject.SetActive(true);
+                        playerBody.GetComponent<PlayerShoot>().enabled = true;
+                        playerBody.GetComponent<vp_SimpleCrosshair>().enabled = true;
+                    }
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5" && !disableComplexGameplay) //enemy collision out of sync x
+                {
+                    Aggressive.colX = tempVal;
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary6" && !disableComplexGameplay) //enemy collision out of sync y
+                {
+                    Aggressive.colY = tempVal;
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary7" && !disableComplexGameplay) //enemy collision out of sync z
+                {
+                    Aggressive.colZ = tempVal;
+                }
 
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/rotary4") //red
                 {
@@ -345,7 +352,7 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/rotary3") //blue
                 {
-                    blue= tempVal;
+                    blue = tempVal;
                     directionalLight.GetComponent<Light>().color = new Color(red, green, blue, 1f);
 
                 }
@@ -366,9 +373,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle1" && !disableFancyGraphics) //2D Camera?
                 {
-					if (tempVal==0)
-					{
-						playerCamera.GetComponent<Camera>().orthographic = false;
+                    if (tempVal == 0)
+                    {
+                        playerCamera.GetComponent<Camera>().orthographic = false;
                         twoDimCam = false;
                     }
                     else
@@ -377,30 +384,30 @@ public class oscControl : MonoBehaviour {
                         twoDimCam = true;
                     }
                 }
-             /*   else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle2") //Depth Only?
-                {
-					if(tempVal==0)
-					{
-						playerCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
-                        depthOnly = false;
-                    }
-                    else
-                    {
-                        playerCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Depth;
-                        depthOnly = true;
-                    }
-                }
-              */
+                /*   else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle2") //Depth Only?
+                   {
+                       if(tempVal==0)
+                       {
+                           playerCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
+                           depthOnly = false;
+                       }
+                       else
+                       {
+                           playerCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Depth;
+                           depthOnly = true;
+                       }
+                   }
+                 */
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle3" && !disableFancyGraphics) //Negative?
                 {
-					if (tempVal==0)
-					{
-						playerCamera.GetComponent<PP_Negative>().enabled = false;
+                    if (tempVal == 0)
+                    {
+                        playerCamera.GetComponent<PP_Negative>().enabled = false;
                         negative = false;
                     }
                     else
                     {
-                        playerCamera.GetComponent<PP_Negative>().enabled =true;
+                        playerCamera.GetComponent<PP_Negative>().enabled = true;
                         negative = true;
 
                     }
@@ -408,9 +415,9 @@ public class oscControl : MonoBehaviour {
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle4" && !disableFancyGraphics) //Scanlines?
                 {
 
-					if (tempVal==0)
-					{
-						playerCamera.GetComponent<PP_SecurityCamera>().enabled = false;
+                    if (tempVal == 0)
+                    {
+                        playerCamera.GetComponent<PP_SecurityCamera>().enabled = false;
                         scanlines = false;
                     }
                     else
@@ -421,9 +428,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle5" && !disableFancyGraphics) //Postered?
                 {
-					if (tempVal==0)
-					{
-						playerCamera.GetComponent<PP_4Bit>().enabled = false;
+                    if (tempVal == 0)
+                    {
+                        playerCamera.GetComponent<PP_4Bit>().enabled = false;
                         postered = false;
                     }
                     else
@@ -434,9 +441,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle9" && !disableFancyGraphics) //Pixelated?
                 {
-					if (tempVal==0)
-					{
-						playerCamera.GetComponent<PP_Pixelated>().enabled = false;
+                    if (tempVal == 0)
+                    {
+                        playerCamera.GetComponent<PP_Pixelated>().enabled = false;
                         pixelated = false;
                     }
                     else
@@ -447,9 +454,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle7" && !disableFancyGraphics) //Scratches?
                 {
-					if (tempVal==0)
-					{
-						playerCamera.GetComponent<PP_Scratch>().enabled = false;
+                    if (tempVal == 0)
+                    {
+                        playerCamera.GetComponent<PP_Scratch>().enabled = false;
                         scratches = false;
                     }
                     else
@@ -461,9 +468,9 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle8" && !disableFancyGraphics) //Charcoal?
                 {
-					if (tempVal==0)
-					{
-						playerCamera.GetComponent<PP_Charcoal>().enabled = false;
+                    if (tempVal == 0)
+                    {
+                        playerCamera.GetComponent<PP_Charcoal>().enabled = false;
                         charcoal = false;
                     }
                     else
@@ -472,18 +479,18 @@ public class oscControl : MonoBehaviour {
                         charcoal = true;
                     }
                 }
-				else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary5" && !disableComplexGameplay) //camera out of sync on x
-				{
-					playerCamera.transform.localEulerAngles=new Vector3(tempVal,playerCamera.transform.localEulerAngles.y,playerCamera.transform.localEulerAngles.z);
-				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary6" && !disableComplexGameplay) //camera out of sync on y
-				{
-					playerCamera.transform.localEulerAngles=new Vector3(playerCamera.transform.localEulerAngles.x,tempVal,playerCamera.transform.localEulerAngles.z);
-				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary9" && !disableComplexGameplay) //camera out of sync on z
-				{
-					playerCamera.transform.localEulerAngles=new Vector3(playerCamera.transform.localEulerAngles.x,playerCamera.transform.localEulerAngles.y,tempVal);
-				}
+                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary5" && !disableComplexGameplay) //camera out of sync on x
+                {
+                    playerCamera.transform.localEulerAngles = new Vector3(tempVal, playerCamera.transform.localEulerAngles.y, playerCamera.transform.localEulerAngles.z);
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary6" && !disableComplexGameplay) //camera out of sync on y
+                {
+                    playerCamera.transform.localEulerAngles = new Vector3(playerCamera.transform.localEulerAngles.x, tempVal, playerCamera.transform.localEulerAngles.z);
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary9" && !disableComplexGameplay) //camera out of sync on z
+                {
+                    playerCamera.transform.localEulerAngles = new Vector3(playerCamera.transform.localEulerAngles.x, playerCamera.transform.localEulerAngles.y, tempVal);
+                }
 			//	}
 				//cube.transform.localScale = new Vector3 (tempVal, tempVal, tempVal);
 			}
