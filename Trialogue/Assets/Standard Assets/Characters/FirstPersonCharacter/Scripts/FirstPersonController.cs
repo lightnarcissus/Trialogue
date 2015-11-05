@@ -42,6 +42,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+		public GameObject pistol;
+
         // Use this for initialization
         private void Start()
         {
@@ -230,6 +232,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 StopAllCoroutines();
                 StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
             }
+
+			if (!m_IsWalking) {
+
+				pistol.GetComponent<Animator> ().SetBool ("Running", true);
+
+			} else {
+				pistol.GetComponent<Animator> ().SetBool ("Running", false);
+			}
         }
 
 

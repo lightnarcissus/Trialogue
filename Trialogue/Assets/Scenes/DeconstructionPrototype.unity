@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -277,7 +275,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!1001 &308891120
 Prefab:
   m_ObjectHideFlags: 0
@@ -416,6 +414,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 56c87fa42004a462096850d8e0ab1173, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &329768928 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 141968, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
+  m_PrefabInternal: {fileID: 929548099}
 --- !u!1001 &334174664
 Prefab:
   m_ObjectHideFlags: 0
@@ -507,7 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllowActivationOnStandalone: 0
+  m_ForceModuleActive: 0
 --- !u!114 &531284589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,7 +527,7 @@ MonoBehaviour:
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: .5
-  m_AllowActivationOnMobileDevice: 0
+  m_ForceModuleActive: 0
 --- !u!114 &531284590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,7 +553,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
 --- !u!1 &641720429 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 185008, guid: 960dbc52060656c42896685c05f1b717, type: 2}
@@ -647,6 +649,10 @@ Prefab:
       propertyPath: gameOverText
       value: 
       objectReference: {fileID: 1333435320}
+    - target: {fileID: 11435696, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
+      propertyPath: pistol
+      value: 
+      objectReference: {fileID: 329768928}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
   m_IsPrefabParent: 0
@@ -697,6 +703,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 488e9a6e8ac2241e4ae34d55b44ba38b, type: 3}
     m_FontSize: 28

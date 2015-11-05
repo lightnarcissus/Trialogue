@@ -506,11 +506,11 @@ public class oscControl : MonoBehaviour {
 			{
 				int lastMessageIndex = item.Value.messages.Count- 1;
 				
-				UnityEngine.Debug.Log(String.Format("CLIENT: {0} ADDRESS: {1} VALUE 0: {2}", 
-				                                    item.Key, // Server name
-				                                    item.Value.messages[lastMessageIndex].Address, // OSC address
-				                                    item.Value.messages[lastMessageIndex].Data[0].ToString())); //First data value
-				                                    
+//				UnityEngine.Debug.Log(String.Format("CLIENT: {0} ADDRESS: {1} VALUE 0: {2}", 
+//				                                    item.Key, // Server name
+//				                                    item.Value.messages[lastMessageIndex].Address, // OSC address
+//				                                    item.Value.messages[lastMessageIndex].Data[0].ToString())); //First data value
+//				                                    
 			}
 
 		}
