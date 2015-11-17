@@ -69,36 +69,30 @@ public class vp_SimpleCrosshair : MonoBehaviour
 	/// </summary>
 	void OnGUI()
 	{
-        if(oscControl.allowMultipleReticle)
-        {
-            overruleOffset = true;
-        }
-        else
-        {
-            overruleOffset = false;
-        }
+		if (!PlayerShoot.gameOver) {
+			if (oscControl.allowMultipleReticle) {
+				overruleOffset = true;
+			} else {
+				overruleOffset = false;
+			}
 
-		if (m_ImageCrosshair != null)
-		{
-			GUI.color = new Color(1, 1, 1, 0.8f);
+			if (m_ImageCrosshair != null) {
+				GUI.color = new Color (1, 1, 1, 0.8f);
 
-				if(!overruleOffset )
-				{
-			GUI.DrawTexture(new Rect((Screen.width * (offsetX)) - (m_ImageCrosshair.width * 0.5f),
-				(Screen.height * (1f-offsetY)) - (m_ImageCrosshair.height * 0.5f), m_ImageCrosshair.width,
+				if (!overruleOffset) {
+					GUI.DrawTexture (new Rect ((Screen.width * (offsetX)) - (m_ImageCrosshair.width * 0.5f),
+				(Screen.height * (1f - offsetY)) - (m_ImageCrosshair.height * 0.5f), m_ImageCrosshair.width,
 				m_ImageCrosshair.height), m_ImageCrosshair);
-			GUI.color = Color.white;
-				}
-				else
-				{
-				for(int i=0;i<copies-1;i++)
-				{
-					GUI.DrawTexture(new Rect((Screen.width * (copyPos_X[i])) - (m_ImageCrosshair.width * 0.5f),
-					                         (Screen.height * (1f-copyPos_Y[i])) - (m_ImageCrosshair.height * 0.5f), m_ImageCrosshair.width,
-					                        m_ImageCrosshair.height), m_ImageCrosshair);
 					GUI.color = Color.white;
+				} else {
+					for (int i=0; i<copies-1; i++) {
+						GUI.DrawTexture (new Rect ((Screen.width * (copyPos_X [i])) - (m_ImageCrosshair.width * 0.5f),
+					                         (Screen.height * (1f - copyPos_Y [i])) - (m_ImageCrosshair.height * 0.5f), m_ImageCrosshair.width,
+					                        m_ImageCrosshair.height), m_ImageCrosshair);
+						GUI.color = Color.white;
+					}
 				}
-				}
+			}
 		}
 	
 	}

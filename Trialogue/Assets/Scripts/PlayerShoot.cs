@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Specialized; 
 using UnityEngine.UI;
 
 public class PlayerShoot : MonoBehaviour {
@@ -9,7 +11,11 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject cube;
 	private Ray ray;
 	private Vector3 p;
+
+	//cameras
+	public GameObject whiteCam;
 	public GameObject camera;
+
 	public LayerMask mask=9;
 	public List<AudioClip> weaponClips;
 	public GameObject explosion;
@@ -22,6 +28,10 @@ public class PlayerShoot : MonoBehaviour {
     public Text gameOverText;
     public static bool gameOver = false;
 	private GameObject tempMuzzle;
+
+	public RawImage flashTexture;
+
+	private float flashTimer=0f;
 	// Use this for initialization
 	void Start () {
 		UnityEngine.Cursor.visible = false;
@@ -73,6 +83,7 @@ public class PlayerShoot : MonoBehaviour {
 		}
 		else
 		{
+			//flashTimer+=Time.deltaTime;
 			if(Input.GetKeyDown(KeyCode.Tab))
 			{
 				gameOver = false;
@@ -84,7 +95,8 @@ public class PlayerShoot : MonoBehaviour {
     public void GameOver()
     {
         gameOver = true;
-		gameOverText.text = "Game Over \n Press Tab to Play Again";
+		StartCoroutine ("WhiteScreen");
+		//gameOverText.text = "Game Over \n Press Tab to Play Again";
     }
 
     public void RestartGame()
@@ -114,5 +126,26 @@ public class PlayerShoot : MonoBehaviour {
 			else
 				GetComponent<vp_SimpleCrosshair> ().offsetY -= 0.1f;	
 		}
+	}
+
+	IEnumerator WhiteScreen()
+	{
+		for (float f=0f; f<10f; f+=0.01f) {
+			flashTexture.color=Color.Lerp (Color.clear,Color.white,f/9f);
+			//Debug.Log(f);
+		}
+		yield return new WaitForSeconds (2f);
+		for (float m=0f; m<10f; m+=0.01f) {
+			flashTexture.color= Color.Lerp (Color.white,Color.clear,m/9f);
+			//Debug.Log(m);
+		}
+		yield return new WaitForSeconds (2f);
+
+		gameOver = false;
+		healthSlider.value = 100f;
+		//flashTimer = 0f;
+		whiteCam.SetActive (false);
+		camera.SetActive (true);
+		yield return null;
 	}
 }

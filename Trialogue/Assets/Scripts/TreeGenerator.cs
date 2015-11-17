@@ -19,6 +19,7 @@ public class TreeGenerator : MonoBehaviour {
     private float tempDist = 0f;
     private float randZDist = 0f;
 
+	private int randEnemy=0;
 	// Use this for initialization
 	void Start () {
 	
@@ -45,7 +46,8 @@ public class TreeGenerator : MonoBehaviour {
 		{
 			if(Random.value< (spawnRate * oscManager.GetComponent<oscControl>().enemySpawnRate))
 			{
-				Instantiate(enemies[0],player.transform.position+new Vector3(spawnDistance,player.transform.position.y,spawnDistance),Quaternion.identity);
+				randEnemy=Random.Range (0,2);
+				Instantiate(enemies[randEnemy],player.transform.position+new Vector3(spawnDistance,player.transform.position.y,spawnDistance),Quaternion.identity);
 			}
 		}
 
