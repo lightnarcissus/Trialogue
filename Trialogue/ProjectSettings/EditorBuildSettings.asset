@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/DeconstructionPrototype.unity
   - enabled: 0
     path: Assets/Scenes/ReticleDemo.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ReticleDemo_Updated.unity

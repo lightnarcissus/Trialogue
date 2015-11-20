@@ -47,7 +47,7 @@ public class TreeGenerator : MonoBehaviour {
 			if(Random.value< (spawnRate * oscManager.GetComponent<oscControl>().enemySpawnRate))
 			{
 				randEnemy=Random.Range (0,2);
-				Instantiate(enemies[randEnemy],player.transform.position+new Vector3(spawnDistance,player.transform.position.y,spawnDistance),Quaternion.identity);
+				Instantiate(enemies[randEnemy],player.transform.position+new Vector3(spawnDistance,0f,spawnDistance),Quaternion.identity);
 			}
 		}
 
