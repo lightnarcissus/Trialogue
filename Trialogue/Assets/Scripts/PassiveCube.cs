@@ -15,15 +15,12 @@ public class PassiveCube : MonoBehaviour {
 
 		player = GameObject.Find("Player");
 		body = GetComponent<Rigidbody> ();
+		InvokeRepeating("CheckPlayerDistance", 0.5f, 1f);
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-		if (Vector3.Distance (transform.position, player.transform.position) < 15f) {
-			transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * speed);
-		}
 	
 	}
 
@@ -36,10 +33,13 @@ public class PassiveCube : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 	}
-	
-	void OnDrawGizmosSelected() {
-		Gizmos.DrawWireMesh (gameObject.GetComponent<MeshFilter> ().mesh);
-	}
+
+	void CheckPlayerDistance()
+		{
+			if (Vector3.Distance (transform.position, player.transform.position) < 15f) {
+				transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * speed);
+			}
+		}
 	
 	void LateUpdate()
 	{
