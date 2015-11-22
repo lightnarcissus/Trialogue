@@ -37,6 +37,7 @@ public class PassiveCube : MonoBehaviour {
 	void CheckPlayerDistance()
 		{
 			if (Vector3.Distance (transform.position, player.transform.position) < 15f) {
+			for(float i=0f;i<=1f || Vector3.Distance (transform.position,player.transform.position) >15f;i+=0.01f)
 				transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * speed);
 			}
 		}
