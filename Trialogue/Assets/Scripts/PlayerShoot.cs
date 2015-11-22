@@ -34,6 +34,8 @@ public class PlayerShoot : MonoBehaviour {
 	private float flashTimer=0f;
 	// Use this for initialization
 	void Start () {
+		camera.GetComponent<Camera> ().enabled = false;
+		camera.GetComponent<Camera> ().enabled = true;
 		UnityEngine.Cursor.visible = false;
 		Debug.Log ("Width: " + Screen.width / 2 + " and Height: " + Screen.height / 2);
 	

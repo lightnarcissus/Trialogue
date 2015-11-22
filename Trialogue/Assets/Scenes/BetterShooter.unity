@@ -931,11 +931,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11466292, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11452946, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11466394, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: gameOverText
@@ -1095,7 +1095,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1586233966}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f07ff824ed8114e85bb38b9617211a08, type: 3}
   m_Name: 
