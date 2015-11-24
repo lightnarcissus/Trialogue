@@ -9,9 +9,11 @@ public class Aggressive : MonoBehaviour {
 	public static float colY=0f;
 	public static float colZ=0f;
 	private Rigidbody body;
-	// Use this for initialization
-	void Start () {
+    private GameObject okay;
+    private GameObject whatsup;
 
+	// Use this for initialization
+	void Start () { 
         player = GameObject.Find("Player");
 		body = GetComponent<Rigidbody> ();
 	
