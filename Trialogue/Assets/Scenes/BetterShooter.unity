@@ -653,7 +653,7 @@ MonoBehaviour:
   hillsIcon: {fileID: 2800000, guid: 5e5a7853f82e54ab6912e5c20342dd73, type: 3}
   plateausIcon: {fileID: 2800000, guid: d56a2918dbaab45ae899828d981d8dff, type: 3}
   defaultTexture: {fileID: 2800000, guid: 07ec441dca83743ee8e1b259837acbd2, type: 3}
-  toolModeInt: 1
+  toolModeInt: 0
   erosionTypeInt: 1
   generatorTypeInt: 2
   isBrushOn: 0
@@ -698,7 +698,7 @@ MonoBehaviour:
   windEntropy: .100000001
   windSmoothing: .25
   tempTexture: {fileID: 0}
-  slopeBlendMinAngle: 60
+  slopeBlendMinAngle: 35.3061218
   slopeBlendMaxAngle: 75
   heightBlendPoints: []
   gradientStyles: []
@@ -710,9 +710,9 @@ MonoBehaviour:
   voronoiBlend: 1
   diamondSquareDelta: .5
   diamondSquareBlend: 1
-  perlinFrequency: 1
-  perlinAmplitude: .273999989
-  perlinOctaves: 2
+  perlinFrequency: 5
+  perlinAmplitude: .75
+  perlinOctaves: 3
   perlinBlend: 1
   smoothBlend: 1
   smoothIterations: 1
@@ -845,7 +845,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &641720429 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 185008, guid: 960dbc52060656c42896685c05f1b717, type: 2}
@@ -859,15 +859,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 408662, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1000
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 128.419998
+      value: 142.809998
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1000
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 408662, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -935,7 +935,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11452946, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11466394, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: gameOverText
@@ -953,6 +953,14 @@ Prefab:
       propertyPath: flashTexture
       value: 
       objectReference: {fileID: 331162892}
+    - target: {fileID: 11452946, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
+      propertyPath: renderMe
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11452946, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
+      propertyPath: cameraInstance
+      value: 
+      objectReference: {fileID: 1682340036}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
   m_IsPrefabParent: 0
@@ -1088,7 +1096,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &1586233969
 MonoBehaviour:
   m_ObjectHideFlags: 0

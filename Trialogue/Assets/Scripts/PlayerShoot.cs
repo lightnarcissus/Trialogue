@@ -98,6 +98,7 @@ public class PlayerShoot : MonoBehaviour {
     {
         gameOver = true;
 		StartCoroutine ("WhiteScreen");
+		transform.position = new Vector3 (Random.Range (100f, 1600f), 190f, Random.Range (100f, 1600f));
 		//gameOverText.text = "Game Over \n Press Tab to Play Again";
     }
 
