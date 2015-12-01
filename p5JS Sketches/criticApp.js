@@ -3,8 +3,8 @@ var gameplaySlider;
 var audioSlider;
 var valueSlider;
 var overallSlider;
-var totalScore;
-var overallScore;
+var totalScore=0;
+overallScore;
 function setup() {
   // create canvas
   createCanvas(710, 400);
@@ -35,6 +35,7 @@ function setup() {
 
 function comment()
 {
+  console.log(overallScore);
   var reviewComment=input.value();
   console.log("nice");
   totalScore+=overallScore;
@@ -56,6 +57,7 @@ function draw() {
   text("Audio", 165, 195);
   text("Value", 165, 225);
   text("Overall", 165, 255);
+
  // text("Total Score"+totalScore,165,316)
 
 }

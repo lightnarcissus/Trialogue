@@ -117,6 +117,9 @@ public class oscControl : MonoBehaviour {
         servers = OSCHandler.Instance.Servers;
         clients = OSCHandler.Instance.Clients;
 
+		//initiator message
+		OSCHandler.Instance.SendMessageToClient("localhost", "blah",2f);
+
         //updating Designer device
         OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Trees/fader3",spawnDistance); // tree spawn distance
         OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Trees/fader4", spawnRate); // tree spawn rate

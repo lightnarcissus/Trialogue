@@ -100,6 +100,7 @@ public class OSCHandler : MonoBehaviour
         //CHANGE THESE EVERY TIME
 		CreateClient("iPhone5S Client", IPAddress.Parse("172.16.19.77"), 9000);
         CreateClient("iPad Client", IPAddress.Parse("172.16.15.218"), 9000);
+		CreateClient ("localhost", IPAddress.Parse ("127.0.0.1"), 9000);
         
         //Initialize OSC servers (listeners)
         //Example:

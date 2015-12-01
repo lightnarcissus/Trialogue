@@ -935,7 +935,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11452946, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11466394, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: gameOverText
@@ -960,8 +960,9 @@ Prefab:
     - target: {fileID: 11452946, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: cameraInstance
       value: 
-      objectReference: {fileID: 1682340036}
-    m_RemovedComponents: []
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11452946, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1333435318
@@ -1127,3 +1128,14 @@ Camera:
   m_PrefabParentObject: {fileID: 2082908, guid: bf4a8340075ac4426ad4201e84be61f3,
     type: 2}
   m_PrefabInternal: {fileID: 929548099}
+--- !u!114 &1682340038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1682340034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07df6674c17984b8fb3f457115b682f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
