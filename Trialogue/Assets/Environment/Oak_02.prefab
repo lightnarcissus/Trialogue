@@ -24020,6 +24020,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9707339f85fd5ef4e855bfc4d5089e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!193 &19300000
 Tree:
   m_ObjectHideFlags: 1
@@ -24037,7 +24040,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: mask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}

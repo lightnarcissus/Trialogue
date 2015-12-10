@@ -1,14 +1,16 @@
 fileFormatVersion: 2
 guid: 5884e70d8a0cbf74bb4dd0065d00bff6
+timeCreated: 1449776009
+licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
   materialInstances:
   - serializedVersion: 16
     name: Shutter_01
     prototypeName: Shutter_01
-    shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+    shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
     shaderKeywords: 
-    renderQueue: -1
+    renderQueue: 3000
     lightmapFlags: 5
     inputs:
     - name: $normalformat
@@ -147,62 +149,6 @@ SubstanceImporter:
             texture: {instanceID: 0}
             scale: {x: 1, y: 1}
             offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _BumpMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _DetailNormalMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _ParallaxMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _OcclusionMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _EmissionMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _DetailMask
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _DetailAlbedoMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-        data:
-          first:
-            name: _MetallicGlossMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
       floats:
         data:
           first:
@@ -287,14 +233,6 @@ SubstanceImporter:
         name: _MainTex
       material: {instanceID: 0}
       baseUID: 3709355173
-    - shaderProp:
-        name: _BumpMap
-      material: {instanceID: 0}
-      baseUID: 3709355280
-    - shaderProp:
-        name: _ParallaxMap
-      material: {instanceID: 0}
-      baseUID: 3709355279
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 

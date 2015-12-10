@@ -6,10 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/DeconstructionPrototype.unity
-  - enabled: 0
-    path: Assets/Scenes/ReticleDemo.unity
-  - enabled: 0
-    path: Assets/Scenes/ReticleDemo_Updated.unity
-  - enabled: 1
     path: Assets/Scenes/BetterShooter.unity
+  - enabled: 1
+    path: Assets/NYCArcade_Dec.unity

@@ -286,6 +286,7 @@ public class oscControl : MonoBehaviour {
                     headSeparation = tempVal;
                     playerCamera.transform.localPosition = new Vector3(tempVal, tempVal, tempVal);
 
+
                 }
 
 				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle4" ) //regenerating health?

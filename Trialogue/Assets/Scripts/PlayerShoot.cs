@@ -12,6 +12,8 @@ public class PlayerShoot : MonoBehaviour {
 	private Ray ray;
 	private Vector3 p;
 
+	public GameObject deathField;
+
 	//cameras
 	public GameObject whiteCam;
 	public GameObject camera;
@@ -44,6 +46,10 @@ public class PlayerShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!gameOver) {
+
+			if (transform.position.y < 90f)
+					GameOver ();
+			
 			if (Input.GetMouseButtonDown (0)) {
 
 				//Debug.Log ("shooting");
@@ -98,6 +104,7 @@ public class PlayerShoot : MonoBehaviour {
     {
         gameOver = true;
 		StartCoroutine ("WhiteScreen");
+		Instantiate (deathField, transform.position, Quaternion.identity);
 		transform.position = new Vector3 (Random.Range (100f, 1600f), 240f, Random.Range (100f, 1600f));
 		//gameOverText.text = "Game Over \n Press Tab to Play Again";
     }

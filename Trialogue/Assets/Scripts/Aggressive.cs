@@ -23,7 +23,7 @@ public class Aggressive : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		body.AddForce ((player.transform.position - transform.position).normalized * nice);
+		body.AddForce ((player.transform.position - transform.position).normalized * Vector3.Distance(player.transform.position,transform.position));
        // transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * speed);
         transform.localScale += new Vector3(0.000001f,0.000001f,0.000001f);
 
@@ -40,10 +40,10 @@ public class Aggressive : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 	}
-
-	void OnDrawGizmosSelected() {
-		Gizmos.DrawWireMesh (gameObject.GetComponent<MeshFilter> ().mesh);
-	}
+//
+//	void OnDrawGizmosSelected() {
+//		Gizmos.DrawWireMesh (gameObject.GetComponent<MeshFilter> ().mesh);
+//	}
 
 	void LateUpdate()
 	{

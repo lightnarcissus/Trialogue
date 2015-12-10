@@ -174,8 +174,8 @@ GameObject:
   - 114: {fileID: 11442234}
   - 114: {fileID: 11483856}
   - 114: {fileID: 11447132}
-  - 114: {fileID: 11452946}
   - 114: {fileID: 11466292}
+  - 114: {fileID: 11473584}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -530,7 +530,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 264, y: 2.56999993, z: 261.399994}
+  m_LocalPosition: {x: 2500, y: 142.809998, z: 2500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 402394}
@@ -837,10 +837,11 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967263
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -993,6 +994,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -1062,6 +1064,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -1131,6 +1134,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -1370,6 +1374,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  pistol: {fileID: 141968}
 --- !u!114 &11442234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1399,22 +1404,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 11831221700a4f54794d046edbe8f89e, type: 3}
   lineColor: {r: 0, g: 0, b: 0, a: 1}
---- !u!114 &11452946
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 134812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c2cc71f03c945898675a1a1b63e885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customRenderTexture: {fileID: 0}
-  renderWidth: 1920
-  renderHeight: 1080
-  renderMe: 1
-  cameraInstance: {fileID: 0}
 --- !u!114 &11456688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1455,6 +1444,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pistol: {fileID: 141968}
   cube: {fileID: 0}
+  deathField: {fileID: 0}
+  whiteCam: {fileID: 0}
   camera: {fileID: 134812}
   mask:
     serializedVersion: 2
@@ -1466,6 +1457,8 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   oscManager: {fileID: 0}
   regenRate: 1
+  gameOverText: {fileID: 0}
+  flashTexture: {fileID: 0}
 --- !u!114 &11467896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1480,6 +1473,17 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: ccb1b857614238f4d9dc479b3528c3d8, type: 3}
   pixWidth: 16
   pixHeight: 16
+--- !u!114 &11473584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07df6674c17984b8fb3f457115b682f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11475132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1494,6 +1498,10 @@ MonoBehaviour:
   m_ImageCrosshair: {fileID: 2800000, guid: 8df5608ac279440f2959815a6c2f03da, type: 3}
   offsetX: .5
   offsetY: .5
+  copies: 1
+  copyPos_X: []
+  copyPos_Y: []
+  overruleOffset: 0
 --- !u!114 &11483856
 MonoBehaviour:
   m_ObjectHideFlags: 1
