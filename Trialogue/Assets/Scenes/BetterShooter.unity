@@ -166,23 +166,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22459970, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22459970, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22485842, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22485842, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22485842, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22471674, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -963,6 +963,10 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 11466394, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
+      propertyPath: deathField
+      value: 
+      objectReference: {fileID: 197664, guid: 10b57d51f4c372548a3c2f477f0e3d84, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
   m_IsPrefabParent: 0
