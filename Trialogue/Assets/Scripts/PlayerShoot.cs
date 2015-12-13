@@ -109,7 +109,7 @@ public class PlayerShoot : MonoBehaviour {
 		flashTexture.enabled = true;
 		StartCoroutine ("WhiteScreen");
 		Instantiate (deathField, transform.position, Quaternion.identity);
-		transform.position = new Vector3 (Random.Range (100f, 1600f), 240f, Random.Range (100f, 1600f));
+		transform.position = new Vector3 (Random.Range (100f, 1600f), 440f, Random.Range (100f, 1600f));
 		//gameOverText.text = "Game Over \n Press Tab to Play Again";
     }
 
