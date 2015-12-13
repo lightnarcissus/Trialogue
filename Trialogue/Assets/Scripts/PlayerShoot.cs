@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Collections.Specialized; 
 using UnityEngine.UI;
+using UnityStandardAssets.ImageEffects;
 
 public class PlayerShoot : MonoBehaviour {
 
@@ -38,6 +39,7 @@ public class PlayerShoot : MonoBehaviour {
 	void Start () {
 		camera.GetComponent<Camera> ().enabled = false;
 		camera.GetComponent<Camera> ().enabled = true;
+		flashTexture.enabled = false;
 		UnityEngine.Cursor.visible = false;
 		Debug.Log ("Width: " + Screen.width / 2 + " and Height: " + Screen.height / 2);
 	
@@ -102,7 +104,9 @@ public class PlayerShoot : MonoBehaviour {
 	}
     public void GameOver()
     {
+
         gameOver = true;
+		flashTexture.enabled = true;
 		StartCoroutine ("WhiteScreen");
 		Instantiate (deathField, transform.position, Quaternion.identity);
 		transform.position = new Vector3 (Random.Range (100f, 1600f), 240f, Random.Range (100f, 1600f));
@@ -136,6 +140,21 @@ public class PlayerShoot : MonoBehaviour {
 			else
 				GetComponent<vp_SimpleCrosshair> ().offsetY -= 0.1f;	
 		}
+	}
+
+	public void DamageEffect()
+	{
+		StartCoroutine ("DamageShow");
+	}
+
+	IEnumerator DamageShow()
+	{
+		camera.GetComponent<PP_Negative> ().enabled = true;
+		camera.GetComponent<VignetteAndChromaticAberration> ().enabled = true;
+		yield return new WaitForSeconds (0.25f);
+		camera.GetComponent<PP_Negative> ().enabled = false;
+		camera.GetComponent<VignetteAndChromaticAberration> ().enabled = false;
+		yield return null;
 	}
 
 	IEnumerator WhiteScreen()

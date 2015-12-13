@@ -31,12 +31,17 @@ public class Aggressive : MonoBehaviour {
 			Destroy (gameObject);
 	}
 
-	void OnTriggerEnter(Collider col)
+	void OnCollisionEnter(Collision col)
 	{
-		if (col.gameObject.name == "Collider") {
+		//Debug.Log ("HI: "+col.gameObject.name);
+		if (col.gameObject.name == "Collider" || col.gameObject.name=="Player") {
 			Aggressive.speed+=0.1f;
 			if(player.GetComponent<PlayerShoot>().healthSlider.value >=0)
+			{
 				player.GetComponent<PlayerShoot>().healthSlider.value-=15;
+				player.GetComponent<PlayerShoot>().DamageEffect();
+			}
+			//Debug.Log ("DESTROYING");
 			Destroy (this.gameObject);
 		}
 	}
