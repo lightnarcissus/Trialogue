@@ -1,5 +1,5 @@
 {
-  "name": "trialogue-critic",
+  "name": "trialogue",
   "description": "Critic app for Trialogue",
   "main": "server.js",
   "scripts": {
@@ -8,5 +8,17 @@
   "dependencies": {
     "ejs": "~1.0.0",
     "express": "~4.9.8"
-  }
+  },
+  "engines": {
+    "node": "0.12.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lightnarcissus/trialogue/"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
 }
