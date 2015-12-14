@@ -10,6 +10,7 @@ public class PassiveCube : MonoBehaviour {
 	public static float colZ=0f;
 	private Rigidbody body;
 
+
 	// Use this for initialization
 	void Start () {
 

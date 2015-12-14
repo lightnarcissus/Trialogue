@@ -12,8 +12,13 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject cube;
 	private Ray ray;
 	private Vector3 p;
+	public GameObject playerSound;
+	public AudioClip bulletHit;
 
 	public GameObject deathField;
+	public GameObject terrainObj;
+
+	public Texture2D tempTexture1;
 
 	//cameras
 	public GameObject whiteCam;
@@ -21,6 +26,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	public LayerMask mask=9;
 	public List<AudioClip> weaponClips;
+	public GameObject explosionSound;
 	public GameObject explosion;
 	public GameObject pistolMuzzle;
 	public Slider healthSlider;
@@ -42,6 +48,7 @@ public class PlayerShoot : MonoBehaviour {
 		flashTexture.enabled = false;
 		UnityEngine.Cursor.visible = false;
 		Debug.Log ("Width: " + Screen.width / 2 + " and Height: " + Screen.height / 2);
+		terrainObj.GetComponent<TerrainToolkit> ().tempTexture = tempTexture1;
 	
 	}
 	
@@ -72,6 +79,7 @@ public class PlayerShoot : MonoBehaviour {
 				if (Physics.SphereCast (ray, 0.8f, out hit, 100f, mask.value)) {// Raycast(ray,out hit,mask.value))
 					if (hit.collider.gameObject.tag == "Cube") {
 						Destroy (hit.collider.gameObject);
+						Instantiate (explosionSound,transform.position,Quaternion.identity);
 						Instantiate (explosion, hit.collider.gameObject.transform.position, Quaternion.identity);
 						OffsetReticle ();
 					}
@@ -109,12 +117,13 @@ public class PlayerShoot : MonoBehaviour {
 		flashTexture.enabled = true;
 		StartCoroutine ("WhiteScreen");
 		Instantiate (deathField, transform.position, Quaternion.identity);
-		transform.position = new Vector3 (Random.Range (100f, 1600f), 440f, Random.Range (100f, 1600f));
+		transform.position = new Vector3 (Random.Range (100f, 1600f), 340f, Random.Range (100f, 1600f));
 		//gameOverText.text = "Game Over \n Press Tab to Play Again";
     }
 
     public void RestartGame()
     {
+		terrainObj.GetComponent<TerrainToolkit> ().defaultTexture = tempTexture1;
         gameOverText.text = "";
         healthSlider.value = 100;
     }
@@ -145,6 +154,7 @@ public class PlayerShoot : MonoBehaviour {
 	public void DamageEffect()
 	{
 		StartCoroutine ("DamageShow");
+		playerSound.GetComponent<AudioSource> ().PlayOneShot (bulletHit);
 	}
 
 	IEnumerator DamageShow()

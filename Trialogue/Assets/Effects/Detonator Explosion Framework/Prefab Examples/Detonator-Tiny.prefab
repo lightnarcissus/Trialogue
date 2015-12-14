@@ -53,7 +53,7 @@ MonoBehaviour:
   duration: .167459995
   detail: 1.4199996
   upwardsBias: 0
-  destroyTime: .220033005
+  destroyTime: .120033003
   useWorldSpace: 1
   direction: {x: 0, y: 0, z: 0}
   fireballAMaterial: {fileID: 0}
@@ -162,11 +162,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: duration
-      value: .167459995
+      value: .0500000007
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: destroyTime
-      value: .220033005
+      value: .120033003
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled

@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nice: 10
+  explosionSound: {fileID: 155216, guid: 1f9c7a584578c4817bfb3a81d11227b7, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
