@@ -501,7 +501,7 @@ public class TerrainToolkit : MonoBehaviour {
 	
 	public void Update() {
 
-		Debug.Log (tempTexture);
+		//Debug.Log (tempTexture);
 		if (isBrushOn) {
 			if (toolModeInt != 1 || erosionTypeInt > 2 || (erosionTypeInt == 1 && hydraulicTypeInt > 0)) {
 				isBrushOn = false;

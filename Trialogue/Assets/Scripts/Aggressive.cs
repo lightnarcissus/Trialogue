@@ -22,15 +22,18 @@ public class Aggressive : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		body.AddForce ((player.transform.position - transform.position).normalized * Vector3.Distance(player.transform.position,transform.position));
-       // transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * speed);
-        transform.localScale += new Vector3(0.000001f,0.000001f,0.000001f);
-
 		if (PlayerShoot.gameOver)
 			Destroy (gameObject);
 	}
 
+	void FixedUpdate()
+	{
+		body.AddForce ((player.transform.position - transform.position).normalized * 0.1f * Vector3.Distance(player.transform.position,transform.position),ForceMode.VelocityChange);
+		//	body.AddForce (Vector3.MoveTowards (transform.position, player.transform.position, 1f) * Vector3.Distance (player.transform.position, transform.position), ForceMode.Acceleration);
+		// transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * speed);
+		// transform.localScale += new Vector3(0.000001f,0.000001f,0.000001f);
+
+	}
 	void OnCollisionEnter(Collision col)
 	{
 		//Debug.Log ("HI: "+col.gameObject.name);
@@ -57,7 +60,7 @@ public class Aggressive : MonoBehaviour {
 
 	void OnApplicationQuit()
 	{
-		Debug.Log ("ice");
+		//Debug.Log ("ice");
 	}
 
 
