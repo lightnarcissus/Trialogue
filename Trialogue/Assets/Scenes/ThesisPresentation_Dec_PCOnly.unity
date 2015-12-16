@@ -997,7 +997,9 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11473584, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
+    - {fileID: 11466292, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &979826718
@@ -1179,7 +1181,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1586233968}
   - 108: {fileID: 1586233967}
-  - 114: {fileID: 1586233969}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1231,19 +1232,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2008069013}
   m_RootOrder: 2
---- !u!114 &1586233969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1586233966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f07ff824ed8114e85bb38b9617211a08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clientAppName: Test Server
-  clientName: 
 --- !u!1 &1661101151 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 115238, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
