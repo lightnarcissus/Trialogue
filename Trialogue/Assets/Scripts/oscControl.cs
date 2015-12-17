@@ -88,7 +88,7 @@ public class oscControl : MonoBehaviour {
     public float graphics = 0f;
     private bool disableFancyGraphics = false;
 
-    public float audio = 0f;
+    public float audioGame = 0f;
     private bool disableJazzyAudio = false;
 
     public float value = 0f;
