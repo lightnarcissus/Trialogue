@@ -39,8 +39,9 @@ public class oscControl : MonoBehaviour {
     public GameObject playerCamera;
     public GameObject treeSpawner;
 
-    //Trees page
+    //Environment page
     public bool greenTrees = false;
+	public bool groundWater=false;
     public bool treeSpawn = false;
     public float treeSize = 1f;
     public float spawnRate=0.2f;
@@ -69,6 +70,7 @@ public class oscControl : MonoBehaviour {
     public float cameraFOV = 60f;
     public float cameraFarClip = 500f;
     public bool twoDimCam=false;
+	public bool doNotClear=false;
     //public bool depthOnly=false;
     public bool negative=false;
     public bool scanlines=false;
@@ -121,11 +123,10 @@ public class oscControl : MonoBehaviour {
 		OSCHandler.Instance.SendMessageToClient("localhost", "blah",2f);
 
         //updating Designer device
-        OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Trees/fader3",spawnDistance); // tree spawn distance
-        OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Trees/fader4", spawnRate); // tree spawn rate
-        OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Trees/fader2", treeSize); // tree size
-        OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Movement/rotary1", gameSpeed); //game speed
-        OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Movement/fader6", gravityMult); //gravity multiplier
+        OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Environment/fader3",spawnDistance); // tree spawn distance
+        OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Environment/fader4", spawnRate); // tree spawn rate
+        OSCHandler.Instance.SendMessageToClient("iPhone5S Client", "/Environment/fader2", treeSize); // tree size
+        
 
         //updating Artist device
         OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/rotary2", 1f); //green
@@ -134,6 +135,9 @@ public class oscControl : MonoBehaviour {
         OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader2", directionalLight.GetComponent<Light>().intensity); //intensity
         OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader3", playerCamera.GetComponent<Camera>().fieldOfView); //fov
         OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader5", playerCamera.GetComponent<Camera>().farClipPlane); //far clip
+		OSCHandler.Instance.SendMessageToClient("iPad Client", "/Enemies/toggle15", 1f); //set aggressive to true
+		OSCHandler.Instance.SendMessageToClient("iPad Client", "/Movement/rotary1", 1f); //game speed
+		OSCHandler.Instance.SendMessageToClient("iPad Client", "/Movement/fader6", gravityMult); //gravity multiplier
 
 		OSCHandler.Instance.UpdateLogs();
 
@@ -221,7 +225,7 @@ public class oscControl : MonoBehaviour {
                 {
                     //for future use
                 }
-                else if(item.Value.packets [lastPacketIndex].Address=="/Trees/toggle1") //green trees?
+                else if(item.Value.packets [lastPacketIndex].Address=="/Environment/toggle17") //green trees?
                 {
 					if (tempVal==0)
 						greenTrees = false;
@@ -229,16 +233,24 @@ public class oscControl : MonoBehaviour {
                         greenTrees = true;
 
                 }
-                else if(item.Value.packets [lastPacketIndex].Address=="/Trees/fader2") //tree size
+				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/toggle18") //ground is water?
+				{
+					if (tempVal==0)
+						groundWater=false;
+					else
+						groundWater = true;
+					
+				}
+				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/fader10") //tree size
                 {
                     treeSize = tempVal;
                 }
 
-                else if (item.Value.packets[lastPacketIndex].Address == "/Trees/fader3") //trees spawn distance
+				else if (item.Value.packets[lastPacketIndex].Address == "/Environment/fader11") //trees spawn distance
                 {
                     spawnDistance = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Trees/fader4") //trees spawn rate
+				else if (item.Value.packets[lastPacketIndex].Address == "/Environment/fader12") //trees spawn rate
                 {
                     spawnRate = tempVal;
                 }
@@ -388,6 +400,19 @@ public class oscControl : MonoBehaviour {
                         twoDimCam = true;
                     }
                 }
+				else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle16") //don't clear?
+				{
+					if (tempVal == 0)
+					{
+						playerCamera.GetComponent<Camera>().clearFlags=CameraClearFlags.Skybox;
+						doNotClear = false;
+					}
+					else
+					{
+						doNotClear = true;
+						playerCamera.GetComponent<Camera>().clearFlags=CameraClearFlags.Nothing;
+					}
+				}
                 /*   else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle2") //Depth Only?
                    {
                        if(tempVal==0)
@@ -496,15 +521,15 @@ public class oscControl : MonoBehaviour {
                     playerCamera.transform.localEulerAngles = new Vector3(playerCamera.transform.localEulerAngles.x, playerCamera.transform.localEulerAngles.y, tempVal);
                 }
 
-                else if(item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary10") //enemy size X
+                else if(item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary14") //enemy size X
                  {
                     CubeManager.globalSizeX = tempVal;
                  }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary11") //enemy size Y
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary15") //enemy size Y
                 {
                     CubeManager.globalSizeY = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary12") //enemy size Z
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary16") //enemy size Z
                 {
                     CubeManager.globalSizeZ = tempVal;
                 }
@@ -512,21 +537,21 @@ public class oscControl : MonoBehaviour {
                 {
                     CubeManager.globalSpeed = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address =="/Enemy/toggle14") //allow passive
+                else if (item.Value.packets[lastPacketIndex].Address =="/Enemy/toggle13") //allow passive
                 {
                     if (tempVal == 0)
                         CubeManager.passiveActive = false;
                     else
                         CubeManager.passiveActive = true;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/toggle15") //allow aggressive
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/toggle14") //allow aggressive
                 {
                     if (tempVal == 0)
                         CubeManager.aggressiveActive = false;
                     else
                         CubeManager.aggressiveActive = true;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/toggle16") //disable all enemies
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/toggle15") //disable all enemies
                 {
                     if (tempVal == 1)
                         treeSpawner.GetComponent<TreeGenerator>().DisableEnemies();

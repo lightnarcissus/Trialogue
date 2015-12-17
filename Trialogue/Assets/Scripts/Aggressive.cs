@@ -37,15 +37,23 @@ public class Aggressive : MonoBehaviour {
 	void OnCollisionEnter(Collision col)
 	{
 		//Debug.Log ("HI: "+col.gameObject.name);
-		if (col.gameObject.name == "Collider" || col.gameObject.name=="Player") {
-			Aggressive.speed+=0.1f;
-			if(player.GetComponent<PlayerShoot>().healthSlider.value >=0)
-			{
-				player.GetComponent<PlayerShoot>().healthSlider.value-=15;
-				player.GetComponent<PlayerShoot>().DamageEffect();
+		if (col.gameObject.name == "Player") {
+			Aggressive.speed += 0.1f;
+			if (col.gameObject.GetComponent<PlayerShoot> ().healthSlider.value >= 0) {
+				player.GetComponent<PlayerShoot> ().healthSlider.value -= 15;
+				player.GetComponent<PlayerShoot> ().DamageEffect ();
 			}
 			//Debug.Log ("DESTROYING");
 			Destroy (this.gameObject);
+		} else if (col.gameObject.name == "Collider") {
+			Aggressive.speed += 0.1f;
+			if (col.transform.parent.gameObject.GetComponent<PlayerShoot> ().healthSlider.value >= 0) {
+				player.GetComponent<PlayerShoot> ().healthSlider.value -= 15;
+				player.GetComponent<PlayerShoot> ().DamageEffect ();
+			}
+			//Debug.Log ("DESTROYING");
+			Destroy (this.gameObject);
+		
 		}
 	}
 //
