@@ -365,7 +365,7 @@ public class oscControl : MonoBehaviour {
                     lightIntensity = tempVal;
                     directionalLight.GetComponent<Light>().intensity = lightIntensity;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/fader3" && !disableFancyGraphics) //fov
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/fader3") //fov
                 {
                     cameraFOV = tempVal;
                     playerCamera.GetComponent<Camera>().fieldOfView = tempVal;
@@ -375,7 +375,7 @@ public class oscControl : MonoBehaviour {
                     cameraFarClip = tempVal;
                     playerCamera.GetComponent<Camera>().farClipPlane = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle1" && !disableFancyGraphics) //2D Camera?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle1") //2D Camera?
                 {
                     if (tempVal == 0)
                     {
@@ -402,7 +402,7 @@ public class oscControl : MonoBehaviour {
                        }
                    }
                  */
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle3" && !disableFancyGraphics) //Negative?
+             /*   else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle3" && !disableFancyGraphics) //Negative?
                 {
                     if (tempVal == 0)
                     {
@@ -415,7 +415,7 @@ public class oscControl : MonoBehaviour {
                         negative = true;
 
                     }
-                }
+                }*/
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle4" && !disableFancyGraphics) //Scanlines?
                 {
 
@@ -430,7 +430,7 @@ public class oscControl : MonoBehaviour {
                         scanlines = true;
                     }
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle5" && !disableFancyGraphics) //Postered?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle5") //Postered?
                 {
                     if (tempVal == 0)
                     {
@@ -443,7 +443,7 @@ public class oscControl : MonoBehaviour {
                         postered = true;
                     }
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle9" && !disableFancyGraphics) //Pixelated?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle9") //Pixelated?
                 {
                     if (tempVal == 0)
                     {
@@ -456,7 +456,7 @@ public class oscControl : MonoBehaviour {
                         pixelated = true;
                     }
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle7" && !disableFancyGraphics) //Scratches?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle7") //Scratches?
                 {
                     if (tempVal == 0)
                     {
@@ -470,7 +470,7 @@ public class oscControl : MonoBehaviour {
 
                     }
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle8" && !disableFancyGraphics) //Charcoal?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle8") //Charcoal?
                 {
                     if (tempVal == 0)
                     {
@@ -483,21 +483,60 @@ public class oscControl : MonoBehaviour {
                         charcoal = true;
                     }
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary5" && !disableComplexGameplay) //camera out of sync on x
+                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary5") //camera out of sync on x
                 {
                     playerCamera.transform.localEulerAngles = new Vector3(tempVal, playerCamera.transform.localEulerAngles.y, playerCamera.transform.localEulerAngles.z);
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary6" && !disableComplexGameplay) //camera out of sync on y
+                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary6") //camera out of sync on y
                 {
                     playerCamera.transform.localEulerAngles = new Vector3(playerCamera.transform.localEulerAngles.x, tempVal, playerCamera.transform.localEulerAngles.z);
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary9" && !disableComplexGameplay) //camera out of sync on z
+                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary9") //camera out of sync on z
                 {
                     playerCamera.transform.localEulerAngles = new Vector3(playerCamera.transform.localEulerAngles.x, playerCamera.transform.localEulerAngles.y, tempVal);
                 }
-			//	}
-				//cube.transform.localScale = new Vector3 (tempVal, tempVal, tempVal);
-			}
+
+                else if(item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary10") //enemy size X
+                 {
+                    CubeManager.globalSizeX = tempVal;
+                 }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary11") //enemy size Y
+                {
+                    CubeManager.globalSizeY = tempVal;
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary12") //enemy size Z
+                {
+                    CubeManager.globalSizeZ = tempVal;
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/fader8") //enemy speed
+                {
+                    CubeManager.globalSpeed = tempVal;
+                }
+                else if (item.Value.packets[lastPacketIndex].Address =="/Enemy/toggle14") //allow passive
+                {
+                    if (tempVal == 0)
+                        CubeManager.passiveActive = false;
+                    else
+                        CubeManager.passiveActive = true;
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/toggle15") //allow aggressive
+                {
+                    if (tempVal == 0)
+                        CubeManager.aggressiveActive = false;
+                    else
+                        CubeManager.aggressiveActive = true;
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/toggle16") //disable all enemies
+                {
+                    if (tempVal == 1)
+                        treeSpawner.GetComponent<TreeGenerator>().DisableEnemies();
+                    else
+                        treeSpawner.GetComponent<TreeGenerator>().EnableEnemies();
+
+                }
+                //	}
+                //cube.transform.localScale = new Vector3 (tempVal, tempVal, tempVal);
+            }
             
 		}
 			

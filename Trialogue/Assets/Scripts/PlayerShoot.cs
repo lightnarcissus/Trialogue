@@ -22,7 +22,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	//cameras
 	public GameObject whiteCam;
-	public GameObject camera;
+	public GameObject cameraPlay;
 
 	public LayerMask mask=9;
 	public List<AudioClip> weaponClips;
@@ -43,8 +43,8 @@ public class PlayerShoot : MonoBehaviour {
 	private float flashTimer=0f;
 	// Use this for initialization
 	void Start () {
-		camera.GetComponent<Camera> ().enabled = false;
-		camera.GetComponent<Camera> ().enabled = true;
+		cameraPlay.GetComponent<Camera> ().enabled = false;
+        cameraPlay.GetComponent<Camera> ().enabled = true;
 		flashTexture.enabled = false;
 		UnityEngine.Cursor.visible = false;
 		Debug.Log ("Width: " + Screen.width / 2 + " and Height: " + Screen.height / 2);
@@ -62,7 +62,7 @@ public class PlayerShoot : MonoBehaviour {
 			if (Input.GetMouseButtonDown (0)) {
 
 				//Debug.Log ("shooting");
-				ray = camera.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
+				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
 				//ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
 				pistol.GetComponent<Animator> ().Play ("PistolShoot");
 				//Instantiate(pistolMuzzle,pistol.transform.position,Quaternion.identity);
@@ -129,7 +129,7 @@ public class PlayerShoot : MonoBehaviour {
     }
 
 	void OnDrawGizmosSelected() {
-		p = camera.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(0f,0f, camera.GetComponent<Camera>().nearClipPlane));
+		p = cameraPlay.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(0f,0f, cameraPlay.GetComponent<Camera>().nearClipPlane));
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawSphere(p, 0.1F);
 		Gizmos.DrawLine(ray.origin,ray.direction*5f);
@@ -159,11 +159,11 @@ public class PlayerShoot : MonoBehaviour {
 
 	IEnumerator DamageShow()
 	{
-		camera.GetComponent<PP_Negative> ().enabled = true;
-		camera.GetComponent<VignetteAndChromaticAberration> ().enabled = true;
+        cameraPlay.GetComponent<PP_Negative> ().enabled = true;
+        cameraPlay.GetComponent<VignetteAndChromaticAberration> ().enabled = true;
 		yield return new WaitForSeconds (0.25f);
-		camera.GetComponent<PP_Negative> ().enabled = false;
-		camera.GetComponent<VignetteAndChromaticAberration> ().enabled = false;
+        cameraPlay.GetComponent<PP_Negative> ().enabled = false;
+        cameraPlay.GetComponent<VignetteAndChromaticAberration> ().enabled = false;
 		yield return null;
 	}
 
@@ -184,7 +184,7 @@ public class PlayerShoot : MonoBehaviour {
 		healthSlider.value = 100f;
 		//flashTimer = 0f;
 		whiteCam.SetActive (false);
-		camera.SetActive (true);
+        cameraPlay.SetActive (true);
 		yield return null;
 	}
 }

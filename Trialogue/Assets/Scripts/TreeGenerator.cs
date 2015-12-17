@@ -63,4 +63,21 @@ public class TreeGenerator : MonoBehaviour {
         */
 	
 	}
+
+    public void DisableEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemies");
+        for(int i=0;i<enemies.Length;i++)
+        {
+            enemies[i].gameObject.SetActive(false);
+        }
+    }
+    public void EnableEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemies");
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].gameObject.SetActive(true);
+        }
+    }
 }
