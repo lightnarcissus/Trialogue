@@ -242,7 +242,7 @@ public class oscControl : MonoBehaviour {
                 {
                     spawnRate = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/rotary1"  && !disableDifficultThings) //game speed
+                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/rotary1") //game speed
                 {
                     gameSpeed = tempVal;
                     Time.timeScale = tempVal;
@@ -261,7 +261,7 @@ public class oscControl : MonoBehaviour {
                     }
                         
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/toggle3" && !disableDifficultThings) //upside down?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/toggle3") //upside down?
                 {
 					if (tempVal==0)
 					{
@@ -281,7 +281,7 @@ public class oscControl : MonoBehaviour {
                     Physics.gravity *= tempVal;
 
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/fader7" && !disableDifficultThings) //head separation distance
+                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/fader7") //head separation distance
                 {
                     headSeparation = tempVal;
                     playerCamera.transform.localPosition = new Vector3(tempVal, tempVal, tempVal);
@@ -289,14 +289,14 @@ public class oscControl : MonoBehaviour {
 
                 }
 
-				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle4" ) //regenerating health?
+				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle10" ) //regenerating health?
 				{
 					if(tempVal==1)
 						regenHealth=true;
 					else
 						regenHealth=false;
 				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle5") //health == ammo?
+				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle11") //health == ammo?
 				{
 					if(tempVal==1)
 						healthAmmo=true;
@@ -307,14 +307,14 @@ public class oscControl : MonoBehaviour {
 				{
 					playerBody.GetComponent<PlayerShoot>().regenRate=tempVal;
 				}
-                else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle12" && !disableComplexGameplay) //
+                else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle12") //
                 {
                     if (tempVal == 1)
                         allowMultipleReticle = true;
                     else
                         allowMultipleReticle = false;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle6" && !disableDifficultThings) //no guns?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle6") //no guns?
                 {
                     if (tempVal == 1)
                     {
@@ -331,15 +331,15 @@ public class oscControl : MonoBehaviour {
                         playerBody.GetComponent<vp_SimpleCrosshair>().enabled = true;
                     }
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5" && !disableComplexGameplay) //enemy collision out of sync x
+                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5") //enemy collision out of sync x
                 {
                     Aggressive.colX = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary6" && !disableComplexGameplay) //enemy collision out of sync y
+                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary6") //enemy collision out of sync y
                 {
                     Aggressive.colY = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary7" && !disableComplexGameplay) //enemy collision out of sync z
+                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary7") //enemy collision out of sync z
                 {
                     Aggressive.colZ = tempVal;
                 }
