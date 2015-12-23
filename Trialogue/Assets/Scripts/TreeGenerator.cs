@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TreeGenerator : MonoBehaviour {
 
@@ -12,6 +13,8 @@ public class TreeGenerator : MonoBehaviour {
 
     public GameObject oscManager;
     public GameObject player;
+	private GameObject tempCube;
+	public static List<GameObject> cubes=new List<GameObject>();
     
 	private int randTree = 0;
 	private int randPlatform = 0;
@@ -19,6 +22,7 @@ public class TreeGenerator : MonoBehaviour {
     private float tempDist = 0f;
     private float randZDist = 0f;
 
+	private bool disableSpawn=false;
 	private int randEnemy=0;
 	// Use this for initialization
 	void Start () {
@@ -27,6 +31,8 @@ public class TreeGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//Debug.Log (cubes.Count);
         if (oscManager.GetComponent<oscControl>().treeSpawn)
         {
             if (Random.value < (spawnRate * oscManager.GetComponent<oscControl>().spawnRate))
@@ -42,12 +48,13 @@ public class TreeGenerator : MonoBehaviour {
                     Instantiate(trees[randTree], player.transform.position + new Vector3(randDist * tempDist, -1.58f, randDist * tempDist), Quaternion.identity);
             }
         }
-		if(oscManager.GetComponent<oscControl>().enemySpawn)
+		if(oscManager.GetComponent<oscControl>().enemySpawn && !disableSpawn)
 		{
 			if(Random.value< (spawnRate * oscManager.GetComponent<oscControl>().enemySpawnRate))
 			{
 				randEnemy=Random.Range (0,2);
-				Instantiate(enemies[randEnemy],player.transform.position+new Vector3(spawnDistance,0f,spawnDistance),Quaternion.identity);
+				tempCube=Instantiate(enemies[randEnemy],player.transform.position+new Vector3(spawnDistance,0f,spawnDistance),Quaternion.identity) as GameObject;
+				cubes.Add (tempCube);
 			}
 		}
 
@@ -66,18 +73,26 @@ public class TreeGenerator : MonoBehaviour {
 
     public void DisableEnemies()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemies");
-        for(int i=0;i<enemies.Length;i++)
+		disableSpawn = true;
+       // GameObject[] enemies = GameObject.FindGameObjectsWithTag("Cube");
+        for(int i=0;i<cubes.Count;i++)
         {
-            enemies[i].gameObject.SetActive(false);
+			if(cubes[i]!=null)
+				cubes[i].gameObject.SetActive(false);
+			else
+				cubes.RemoveAt(i);
         }
     }
     public void EnableEnemies()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemies");
-        for (int i = 0; i < enemies.Length; i++)
+		disableSpawn = false;
+      //  GameObject[] enemies = GameObject.FindGameObjectsWithTag("Cube");
+        for (int i = 0; i <cubes.Count; i++)
         {
-            enemies[i].gameObject.SetActive(true);
+			if(cubes[i]!=null)
+				cubes[i].gameObject.SetActive(true);
+			else
+				cubes.RemoveAt(i);
         }
     }
 }

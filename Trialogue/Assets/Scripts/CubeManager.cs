@@ -14,7 +14,7 @@ public class CubeManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        InvokeRepeating("UpdateParams", 1f, 1f);
+        InvokeRepeating("UpdateParams", 1f, 0.5f);
         randInt = Random.Range(0, 2);
         if (randInt == 0)
         {
@@ -41,6 +41,7 @@ public class CubeManager : MonoBehaviour {
     {
 
         transform.localScale = new Vector3(globalSizeX, globalSizeY, globalSizeZ);
+		GetComponent<BoxCollider>().size=new Vector3(globalSizeX, globalSizeY, globalSizeZ);
         PassiveCube.speed = globalSpeed;
         Aggressive.speed = globalSpeed;
 

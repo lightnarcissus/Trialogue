@@ -34,6 +34,8 @@ public class oscControl : MonoBehaviour {
 	private float randVal=0f;
     public GameObject directionalLight;
 
+	public GameObject terrain;
+	public Material waterMat;
     //objects
     public GameObject playerBody;
     public GameObject playerCamera;
@@ -235,10 +237,20 @@ public class oscControl : MonoBehaviour {
                 }
 				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/toggle18") //ground is water?
 				{
+					//Debug.Log("innit");
 					if (tempVal==0)
+					{
 						groundWater=false;
+						terrain.GetComponent<Terrain>().materialType=Terrain.MaterialType.BuiltInStandard;
+					
+					}
 					else
+					{
+						//Debug.Log("YAY innit");
 						groundWater = true;
+						terrain.GetComponent<Terrain>().materialType=Terrain.MaterialType.Custom;
+						terrain.GetComponent<Terrain>().materialTemplate=waterMat;
+					}
 					
 				}
 				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/fader10") //tree size

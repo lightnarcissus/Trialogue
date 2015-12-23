@@ -40,18 +40,19 @@ public class Aggressive : MonoBehaviour {
 		if (col.gameObject.name == "Player") {
 			Aggressive.speed += 0.1f;
 			if (col.gameObject.GetComponent<PlayerShoot> ().healthSlider.value >= 0) {
-				player.GetComponent<PlayerShoot> ().healthSlider.value -= 15;
-				player.GetComponent<PlayerShoot> ().DamageEffect ();
+				col.gameObject.GetComponent<PlayerShoot> ().healthSlider.value -= 15;
+				col.gameObject.GetComponent<PlayerShoot> ().DamageEffect ();
 			}
 			//Debug.Log ("DESTROYING");
 			Destroy (this.gameObject);
 		} else if (col.gameObject.name == "Collider") {
 			Aggressive.speed += 0.1f;
 			if (col.transform.parent.gameObject.GetComponent<PlayerShoot> ().healthSlider.value >= 0) {
-				player.GetComponent<PlayerShoot> ().healthSlider.value -= 15;
-				player.GetComponent<PlayerShoot> ().DamageEffect ();
+				col.transform.parent.GetComponent<PlayerShoot> ().healthSlider.value -= 15;
+				col.transform.parent.GetComponent<PlayerShoot> ().DamageEffect ();
 			}
 			//Debug.Log ("DESTROYING");
+			TreeGenerator.cubes.Remove (gameObject);
 			Destroy (this.gameObject);
 		
 		}

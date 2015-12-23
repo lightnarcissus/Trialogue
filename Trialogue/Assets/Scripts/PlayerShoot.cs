@@ -78,6 +78,7 @@ public class PlayerShoot : MonoBehaviour {
 				//Debug.DrawRay (ray.origin,ray.direction,Color.red);
 				if (Physics.SphereCast (ray, 0.8f, out hit, 100f, mask.value)) {// Raycast(ray,out hit,mask.value))
 					if (hit.collider.gameObject.tag == "Cube") {
+						TreeGenerator.cubes.Remove (hit.collider.gameObject);
 						Destroy (hit.collider.gameObject);
 						Instantiate (explosionSound,transform.position,Quaternion.identity);
 						Instantiate (explosion, hit.collider.gameObject.transform.position, Quaternion.identity);
@@ -117,7 +118,7 @@ public class PlayerShoot : MonoBehaviour {
 		flashTexture.enabled = true;
 		StartCoroutine ("WhiteScreen");
 		Instantiate (deathField, transform.position, Quaternion.identity);
-		transform.position = new Vector3 (Random.Range (100f, 1600f), 340f, Random.Range (100f, 1600f));
+		transform.position = new Vector3 (Random.Range (100f, 1600f), 390f, Random.Range (100f, 1600f));
 		//gameOverText.text = "Game Over \n Press Tab to Play Again";
     }
 
