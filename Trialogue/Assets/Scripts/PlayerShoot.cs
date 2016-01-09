@@ -59,7 +59,7 @@ public class PlayerShoot : MonoBehaviour {
 			if (transform.position.y < 90f)
 					GameOver ();
 			
-			if (Input.GetMouseButtonDown (0)) {
+			if (Input.GetMouseButtonDown (0) || Input.GetButton("Shoot")) {
 
 				//Debug.Log ("shooting");
 				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
