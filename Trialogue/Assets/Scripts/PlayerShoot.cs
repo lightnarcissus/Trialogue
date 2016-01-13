@@ -38,8 +38,10 @@ public class PlayerShoot : MonoBehaviour {
     public static bool gameOver = false;
 	private GameObject tempMuzzle;
 
-	public RawImage flashTexture;
+    private float shootTrigger = 0f;
 
+	public RawImage flashTexture;
+    private bool shootUp = false;
 	private float flashTimer=0f;
 	// Use this for initialization
 	void Start () {
@@ -58,10 +60,21 @@ public class PlayerShoot : MonoBehaviour {
 
 			if (transform.position.y < 90f)
 					GameOver ();
-			
-			if (Input.GetMouseButtonDown (0) || Input.GetButton("Shoot")) {
+            shootTrigger = Input.GetAxis("Shoot");
+			Debug.Log(Mathf.Abs(shootTrigger));
+            if(Mathf.Abs(shootTrigger)<0.1f)
+            {
+                shootUp = true;
 
-				//Debug.Log ("shooting");
+            }
+            else
+            {
+                shootUp = false;
+            }
+
+            if (Input.GetMouseButtonDown (0) ||(!shootUp && (shootTrigger==1f))) {
+
+			    Debug.Log ("shooting");
 				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
 				//ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
 				pistol.GetComponent<Animator> ().Play ("PistolShoot");
