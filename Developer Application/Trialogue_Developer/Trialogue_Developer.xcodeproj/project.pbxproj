@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A994F601C432F830083F6C6 /* MutLockArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F4B1C432F830083F6C6 /* MutLockArray.m */; };
+		6A994F611C432F830083F6C6 /* MutLockDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F4C1C432F830083F6C6 /* MutLockDict.m */; };
+		6A994F621C432F830083F6C6 /* MutNRLockArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F4D1C432F830083F6C6 /* MutNRLockArray.m */; };
+		6A994F631C432F830083F6C6 /* MutNRLockDict.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F4E1C432F830083F6C6 /* MutNRLockDict.m */; };
+		6A994F641C432F830083F6C6 /* NamedMutLockArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F4F1C432F830083F6C6 /* NamedMutLockArray.m */; };
+		6A994F651C432F830083F6C6 /* ObjectHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F501C432F830083F6C6 /* ObjectHolder.m */; };
+		6A994F661C432F830083F6C6 /* OSCAddressSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F511C432F830083F6C6 /* OSCAddressSpace.m */; };
+		6A994F671C432F830083F6C6 /* OSCBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F521C432F830083F6C6 /* OSCBundle.m */; };
+		6A994F681C432F830083F6C6 /* OSCInPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F531C432F830083F6C6 /* OSCInPort.m */; };
+		6A994F691C432F830083F6C6 /* OSCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F541C432F830083F6C6 /* OSCManager.m */; };
+		6A994F6A1C432F830083F6C6 /* OSCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F551C432F830083F6C6 /* OSCMessage.m */; };
+		6A994F6B1C432F830083F6C6 /* OSCNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F561C432F830083F6C6 /* OSCNode.m */; };
+		6A994F6C1C432F830083F6C6 /* OSCOutPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F571C432F830083F6C6 /* OSCOutPort.m */; };
+		6A994F6D1C432F830083F6C6 /* OSCPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F581C432F830083F6C6 /* OSCPacket.m */; };
+		6A994F6E1C432F830083F6C6 /* OSCStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F591C432F830083F6C6 /* OSCStringAdditions.m */; };
+		6A994F6F1C432F830083F6C6 /* OSCValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F5A1C432F830083F6C6 /* OSCValue.m */; };
+		6A994F701C432F830083F6C6 /* OSCZeroConfDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F5B1C432F830083F6C6 /* OSCZeroConfDomain.m */; };
+		6A994F711C432F830083F6C6 /* OSCZeroConfManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F5C1C432F830083F6C6 /* OSCZeroConfManager.m */; };
+		6A994F721C432F830083F6C6 /* VVAssertionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F5D1C432F830083F6C6 /* VVAssertionHandler.m */; };
+		6A994F731C432F830083F6C6 /* VVStopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F5E1C432F830083F6C6 /* VVStopwatch.m */; };
+		6A994F741C432F830083F6C6 /* VVThreadLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A994F5F1C432F830083F6C6 /* VVThreadLoop.m */; };
 		6AB13F641C3B2FC100BFFB4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB13F631C3B2FC100BFFB4D /* main.m */; };
 		6AB13F671C3B2FC100BFFB4D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB13F661C3B2FC100BFFB4D /* AppDelegate.m */; };
 		6AB13F6A1C3B2FC100BFFB4D /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB13F691C3B2FC100BFFB4D /* FirstViewController.m */; };
@@ -36,6 +57,52 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A994F4B1C432F830083F6C6 /* MutLockArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MutLockArray.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/MutLockArray.m"; sourceTree = "<group>"; };
+		6A994F4C1C432F830083F6C6 /* MutLockDict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MutLockDict.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/MutLockDict.m"; sourceTree = "<group>"; };
+		6A994F4D1C432F830083F6C6 /* MutNRLockArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MutNRLockArray.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/MutNRLockArray.m"; sourceTree = "<group>"; };
+		6A994F4E1C432F830083F6C6 /* MutNRLockDict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MutNRLockDict.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/MutNRLockDict.m"; sourceTree = "<group>"; };
+		6A994F4F1C432F830083F6C6 /* NamedMutLockArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NamedMutLockArray.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/NamedMutLockArray.m"; sourceTree = "<group>"; };
+		6A994F501C432F830083F6C6 /* ObjectHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectHolder.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/ObjectHolder.m"; sourceTree = "<group>"; };
+		6A994F511C432F830083F6C6 /* OSCAddressSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCAddressSpace.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCAddressSpace.m"; sourceTree = "<group>"; };
+		6A994F521C432F830083F6C6 /* OSCBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCBundle.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCBundle.m"; sourceTree = "<group>"; };
+		6A994F531C432F830083F6C6 /* OSCInPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCInPort.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCInPort.m"; sourceTree = "<group>"; };
+		6A994F541C432F830083F6C6 /* OSCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCManager.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCManager.m"; sourceTree = "<group>"; };
+		6A994F551C432F830083F6C6 /* OSCMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCMessage.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCMessage.m"; sourceTree = "<group>"; };
+		6A994F561C432F830083F6C6 /* OSCNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCNode.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCNode.m"; sourceTree = "<group>"; };
+		6A994F571C432F830083F6C6 /* OSCOutPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCOutPort.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCOutPort.m"; sourceTree = "<group>"; };
+		6A994F581C432F830083F6C6 /* OSCPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCPacket.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCPacket.m"; sourceTree = "<group>"; };
+		6A994F591C432F830083F6C6 /* OSCStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCStringAdditions.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCStringAdditions.m"; sourceTree = "<group>"; };
+		6A994F5A1C432F830083F6C6 /* OSCValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCValue.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCValue.m"; sourceTree = "<group>"; };
+		6A994F5B1C432F830083F6C6 /* OSCZeroConfDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCZeroConfDomain.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCZeroConfDomain.m"; sourceTree = "<group>"; };
+		6A994F5C1C432F830083F6C6 /* OSCZeroConfManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSCZeroConfManager.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/OSCZeroConfManager.m"; sourceTree = "<group>"; };
+		6A994F5D1C432F830083F6C6 /* VVAssertionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVAssertionHandler.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/VVAssertionHandler.m"; sourceTree = "<group>"; };
+		6A994F5E1C432F830083F6C6 /* VVStopwatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVStopwatch.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/VVStopwatch.m"; sourceTree = "<group>"; };
+		6A994F5F1C432F830083F6C6 /* VVThreadLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVThreadLoop.m; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/src/VVThreadLoop.m"; sourceTree = "<group>"; };
+		6A994F751C432F900083F6C6 /* MutLockArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MutLockArray.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/MutLockArray.h"; sourceTree = "<group>"; };
+		6A994F761C432F900083F6C6 /* MutLockDict.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MutLockDict.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/MutLockDict.h"; sourceTree = "<group>"; };
+		6A994F771C432F900083F6C6 /* MutNRLockArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MutNRLockArray.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/MutNRLockArray.h"; sourceTree = "<group>"; };
+		6A994F781C432F900083F6C6 /* MutNRLockDict.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MutNRLockDict.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/MutNRLockDict.h"; sourceTree = "<group>"; };
+		6A994F791C432F900083F6C6 /* NamedMutLockArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NamedMutLockArray.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/NamedMutLockArray.h"; sourceTree = "<group>"; };
+		6A994F7A1C432F900083F6C6 /* ObjectHolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObjectHolder.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/ObjectHolder.h"; sourceTree = "<group>"; };
+		6A994F7B1C432F900083F6C6 /* OSCAddressSpace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCAddressSpace.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCAddressSpace.h"; sourceTree = "<group>"; };
+		6A994F7C1C432F900083F6C6 /* OSCBundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCBundle.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCBundle.h"; sourceTree = "<group>"; };
+		6A994F7D1C432F900083F6C6 /* OSCConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCConstants.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCConstants.h"; sourceTree = "<group>"; };
+		6A994F7E1C432F900083F6C6 /* OSCInPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCInPort.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCInPort.h"; sourceTree = "<group>"; };
+		6A994F7F1C432F900083F6C6 /* OSCManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCManager.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCManager.h"; sourceTree = "<group>"; };
+		6A994F801C432F900083F6C6 /* OSCMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCMessage.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCMessage.h"; sourceTree = "<group>"; };
+		6A994F811C432F900083F6C6 /* OSCNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCNode.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCNode.h"; sourceTree = "<group>"; };
+		6A994F821C432F900083F6C6 /* OSCOutPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCOutPort.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCOutPort.h"; sourceTree = "<group>"; };
+		6A994F831C432F900083F6C6 /* OSCPacket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCPacket.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCPacket.h"; sourceTree = "<group>"; };
+		6A994F841C432F900083F6C6 /* OSCStringAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCStringAdditions.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCStringAdditions.h"; sourceTree = "<group>"; };
+		6A994F851C432F900083F6C6 /* OSCValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCValue.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCValue.h"; sourceTree = "<group>"; };
+		6A994F861C432F900083F6C6 /* OSCZeroConfDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCZeroConfDomain.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCZeroConfDomain.h"; sourceTree = "<group>"; };
+		6A994F871C432F900083F6C6 /* OSCZeroConfManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSCZeroConfManager.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/OSCZeroConfManager.h"; sourceTree = "<group>"; };
+		6A994F881C432F900083F6C6 /* VVAssertionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VVAssertionHandler.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/VVAssertionHandler.h"; sourceTree = "<group>"; };
+		6A994F891C432F900083F6C6 /* VVBasicMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VVBasicMacros.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/VVBasicMacros.h"; sourceTree = "<group>"; };
+		6A994F8A1C432F900083F6C6 /* VVBasics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VVBasics.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/VVBasics.h"; sourceTree = "<group>"; };
+		6A994F8B1C432F900083F6C6 /* VVOSC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VVOSC.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/VVOSC.h"; sourceTree = "<group>"; };
+		6A994F8C1C432F900083F6C6 /* VVStopwatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VVStopwatch.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/VVStopwatch.h"; sourceTree = "<group>"; };
+		6A994F8D1C432F900083F6C6 /* VVThreadLoop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VVThreadLoop.h; path = "../../../../../Downloads/vvosc-ios-master/VVOSC/include/VVThreadLoop.h"; sourceTree = "<group>"; };
 		6AB13F5F1C3B2FC100BFFB4D /* Trialogue_Developer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trialogue_Developer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB13F631C3B2FC100BFFB4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6AB13F651C3B2FC100BFFB4D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -107,11 +174,57 @@
 				6AB13F651C3B2FC100BFFB4D /* AppDelegate.h */,
 				6AB13F661C3B2FC100BFFB4D /* AppDelegate.m */,
 				6AB13F681C3B2FC100BFFB4D /* FirstViewController.h */,
+				6A994F751C432F900083F6C6 /* MutLockArray.h */,
+				6A994F761C432F900083F6C6 /* MutLockDict.h */,
+				6A994F771C432F900083F6C6 /* MutNRLockArray.h */,
+				6A994F781C432F900083F6C6 /* MutNRLockDict.h */,
+				6A994F791C432F900083F6C6 /* NamedMutLockArray.h */,
+				6A994F7A1C432F900083F6C6 /* ObjectHolder.h */,
+				6A994F7B1C432F900083F6C6 /* OSCAddressSpace.h */,
+				6A994F7C1C432F900083F6C6 /* OSCBundle.h */,
+				6A994F7D1C432F900083F6C6 /* OSCConstants.h */,
+				6A994F7E1C432F900083F6C6 /* OSCInPort.h */,
+				6A994F7F1C432F900083F6C6 /* OSCManager.h */,
+				6A994F801C432F900083F6C6 /* OSCMessage.h */,
+				6A994F811C432F900083F6C6 /* OSCNode.h */,
+				6A994F821C432F900083F6C6 /* OSCOutPort.h */,
+				6A994F831C432F900083F6C6 /* OSCPacket.h */,
+				6A994F841C432F900083F6C6 /* OSCStringAdditions.h */,
+				6A994F851C432F900083F6C6 /* OSCValue.h */,
+				6A994F861C432F900083F6C6 /* OSCZeroConfDomain.h */,
+				6A994F871C432F900083F6C6 /* OSCZeroConfManager.h */,
+				6A994F881C432F900083F6C6 /* VVAssertionHandler.h */,
+				6A994F891C432F900083F6C6 /* VVBasicMacros.h */,
+				6A994F8A1C432F900083F6C6 /* VVBasics.h */,
+				6A994F8B1C432F900083F6C6 /* VVOSC.h */,
+				6A994F8C1C432F900083F6C6 /* VVStopwatch.h */,
+				6A994F8D1C432F900083F6C6 /* VVThreadLoop.h */,
 				6AB13F691C3B2FC100BFFB4D /* FirstViewController.m */,
 				6AB13F6B1C3B2FC100BFFB4D /* SecondViewController.h */,
 				6AB13F6C1C3B2FC100BFFB4D /* SecondViewController.m */,
 				6AB13F6E1C3B2FC100BFFB4D /* Main.storyboard */,
 				6AB13F711C3B2FC100BFFB4D /* Assets.xcassets */,
+				6A994F4B1C432F830083F6C6 /* MutLockArray.m */,
+				6A994F4C1C432F830083F6C6 /* MutLockDict.m */,
+				6A994F4D1C432F830083F6C6 /* MutNRLockArray.m */,
+				6A994F4E1C432F830083F6C6 /* MutNRLockDict.m */,
+				6A994F4F1C432F830083F6C6 /* NamedMutLockArray.m */,
+				6A994F501C432F830083F6C6 /* ObjectHolder.m */,
+				6A994F511C432F830083F6C6 /* OSCAddressSpace.m */,
+				6A994F521C432F830083F6C6 /* OSCBundle.m */,
+				6A994F531C432F830083F6C6 /* OSCInPort.m */,
+				6A994F541C432F830083F6C6 /* OSCManager.m */,
+				6A994F551C432F830083F6C6 /* OSCMessage.m */,
+				6A994F561C432F830083F6C6 /* OSCNode.m */,
+				6A994F571C432F830083F6C6 /* OSCOutPort.m */,
+				6A994F581C432F830083F6C6 /* OSCPacket.m */,
+				6A994F591C432F830083F6C6 /* OSCStringAdditions.m */,
+				6A994F5A1C432F830083F6C6 /* OSCValue.m */,
+				6A994F5B1C432F830083F6C6 /* OSCZeroConfDomain.m */,
+				6A994F5C1C432F830083F6C6 /* OSCZeroConfManager.m */,
+				6A994F5D1C432F830083F6C6 /* VVAssertionHandler.m */,
+				6A994F5E1C432F830083F6C6 /* VVStopwatch.m */,
+				6A994F5F1C432F830083F6C6 /* VVThreadLoop.m */,
 				6AB13F731C3B2FC100BFFB4D /* LaunchScreen.storyboard */,
 				6AB13F761C3B2FC100BFFB4D /* Info.plist */,
 				6AB13F621C3B2FC100BFFB4D /* Supporting Files */,
@@ -275,10 +388,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A994F621C432F830083F6C6 /* MutNRLockArray.m in Sources */,
+				6A994F6E1C432F830083F6C6 /* OSCStringAdditions.m in Sources */,
+				6A994F6A1C432F830083F6C6 /* OSCMessage.m in Sources */,
+				6A994F641C432F830083F6C6 /* NamedMutLockArray.m in Sources */,
 				6AB13F6D1C3B2FC100BFFB4D /* SecondViewController.m in Sources */,
+				6A994F721C432F830083F6C6 /* VVAssertionHandler.m in Sources */,
 				6AB13F671C3B2FC100BFFB4D /* AppDelegate.m in Sources */,
 				6AB13F6A1C3B2FC100BFFB4D /* FirstViewController.m in Sources */,
+				6A994F691C432F830083F6C6 /* OSCManager.m in Sources */,
+				6A994F731C432F830083F6C6 /* VVStopwatch.m in Sources */,
+				6A994F6D1C432F830083F6C6 /* OSCPacket.m in Sources */,
+				6A994F671C432F830083F6C6 /* OSCBundle.m in Sources */,
+				6A994F611C432F830083F6C6 /* MutLockDict.m in Sources */,
+				6A994F741C432F830083F6C6 /* VVThreadLoop.m in Sources */,
+				6A994F711C432F830083F6C6 /* OSCZeroConfManager.m in Sources */,
+				6A994F6F1C432F830083F6C6 /* OSCValue.m in Sources */,
+				6A994F631C432F830083F6C6 /* MutNRLockDict.m in Sources */,
+				6A994F601C432F830083F6C6 /* MutLockArray.m in Sources */,
+				6A994F651C432F830083F6C6 /* ObjectHolder.m in Sources */,
+				6A994F701C432F830083F6C6 /* OSCZeroConfDomain.m in Sources */,
+				6A994F661C432F830083F6C6 /* OSCAddressSpace.m in Sources */,
+				6A994F681C432F830083F6C6 /* OSCInPort.m in Sources */,
 				6AB13F641C3B2FC100BFFB4D /* main.m in Sources */,
+				6A994F6C1C432F830083F6C6 /* OSCOutPort.m in Sources */,
+				6A994F6B1C432F830083F6C6 /* OSCNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +553,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = Trialogue_Developer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lightnarcissus.Trialogue-Developer";
@@ -430,6 +565,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = Trialogue_Developer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lightnarcissus.Trialogue-Developer";
@@ -504,6 +640,7 @@
 				6AB13F911C3B2FC100BFFB4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6AB13F921C3B2FC100BFFB4D /* Build configuration list for PBXNativeTarget "Trialogue_DeveloperTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +649,7 @@
 				6AB13F941C3B2FC100BFFB4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6AB13F951C3B2FC100BFFB4D /* Build configuration list for PBXNativeTarget "Trialogue_DeveloperUITests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +658,7 @@
 				6AB13F971C3B2FC100BFFB4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
