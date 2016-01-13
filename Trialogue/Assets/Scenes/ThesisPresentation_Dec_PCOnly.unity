@@ -997,6 +997,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11466394, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
+      propertyPath: cameraPlay
+      value: 
+      objectReference: {fileID: 1682340034}
     m_RemovedComponents:
     - {fileID: 11473584, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
     - {fileID: 11466292, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}

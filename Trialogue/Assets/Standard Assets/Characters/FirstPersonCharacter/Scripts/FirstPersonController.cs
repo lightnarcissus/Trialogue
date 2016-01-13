@@ -234,7 +234,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
 			if (!m_IsWalking) {
-
+                Debug.Log("running");
 				pistol.GetComponent<Animator> ().SetBool ("Running", true);
 
 			} else {
