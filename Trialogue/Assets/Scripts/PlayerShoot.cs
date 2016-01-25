@@ -61,7 +61,7 @@ public class PlayerShoot : MonoBehaviour {
 			if (transform.position.y < 90f)
 					GameOver ();
             shootTrigger = Input.GetAxis("Shoot");
-			Debug.Log(Mathf.Abs(shootTrigger));
+			//Debug.Log(Mathf.Abs(shootTrigger));
             if(Mathf.Abs(shootTrigger)<0.1f)
             {
                 shootUp = true;
@@ -74,7 +74,7 @@ public class PlayerShoot : MonoBehaviour {
 
             if (Input.GetMouseButtonDown (0) ||(!shootUp && (shootTrigger==1f))) {
 
-			    Debug.Log ("shooting");
+			   // Debug.Log ("shooting");
 				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
 				//ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
 				pistol.GetComponent<Animator> ().Play ("PistolShoot");
