@@ -438,7 +438,7 @@ Prefab:
     - target: {fileID: 11460954, guid: 56c87fa42004a462096850d8e0ab1173, type: 2}
       propertyPath: enemies.Array.data[0]
       value: 
-      objectReference: {fileID: 194778, guid: 58199b0a19ea74a43b34af9c04630de5, type: 2}
+      objectReference: {fileID: 107796, guid: 4dda58863e4324e9196790cc4841c1a4, type: 2}
     - target: {fileID: 11460954, guid: 56c87fa42004a462096850d8e0ab1173, type: 2}
       propertyPath: trees.Array.data[0]
       value: 
@@ -1537,6 +1537,10 @@ Prefab:
     - target: {fileID: 5495576, guid: 58199b0a19ea74a43b34af9c04630de5, type: 2}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 194778, guid: 58199b0a19ea74a43b34af9c04630de5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58199b0a19ea74a43b34af9c04630de5, type: 2}
