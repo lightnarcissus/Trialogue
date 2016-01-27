@@ -17,6 +17,7 @@ public class Aggressive : MonoBehaviour {
 	void Start () { 
         player = GameObject.Find("Player");
 		body = GetComponent<Rigidbody> ();
+
 	
 	}
 	
@@ -42,7 +43,8 @@ public class Aggressive : MonoBehaviour {
 			if (col.gameObject.GetComponent<PlayerShoot> ().healthSlider.value >= 0) {
 				col.gameObject.GetComponent<PlayerShoot> ().healthSlider.value -= 15;
 				col.gameObject.GetComponent<PlayerShoot> ().DamageEffect ();
-				Vector3 pos=col.gameObject.GetComponent<PlayerShoot> ().cameraPlay.GetComponent<Camera>().WorldToScreenPoint(transform.position);
+				Vector3 temp=new Vector3(transform.position.x,transform.position.y); // 1.7 for x 1.5 for y
+				Vector3 pos=col.gameObject.GetComponent<PlayerShoot> ().cameraPlay.GetComponent<Camera>().WorldToScreenPoint(temp);
 				Vector3 ok=col.gameObject.GetComponent<PlayerShoot> ().cameraPlay.GetComponent<Camera>().ViewportToScreenPoint(pos);
 				Debug.Log (pos);
 				col.gameObject.GetComponent<PlayerShoot>().RemovePaintAt(ok);

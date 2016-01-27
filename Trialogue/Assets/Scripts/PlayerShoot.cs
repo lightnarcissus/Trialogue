@@ -56,7 +56,8 @@ public class PlayerShoot : MonoBehaviour {
 		UnityEngine.Cursor.visible = false;
 		Debug.Log ("Width: " + Screen.width / 2 + " and Height: " + Screen.height / 2);
 		terrainObj.GetComponent<TerrainToolkit> ().tempTexture = tempTexture1;
-	
+		Debug.Log ("pixelwidth: "+cameraPlay.GetComponent<Camera>().pixelWidth.ToString ());
+		Debug.Log ("pixelHeight: "+cameraPlay.GetComponent<Camera>().pixelHeight.ToString ());
 	}
 	
 	// Update is called once per frame
