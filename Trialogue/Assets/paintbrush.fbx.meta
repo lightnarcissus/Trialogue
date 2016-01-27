@@ -1,0 +1,106 @@
+fileFormatVersion: 2
+guid: f5b7ec654c4ca4146aa18602937168a1
+timeCreated: 1453919631
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: brush
+    100002: curveGrassWindWide
+    100004: grassWindWide1Main
+    100006: grassWindWide1MeshGroup
+    100008: nurbsCylinder1
+    100010: nurbsCylinder2
+    100012: nurbsCylinder3
+    100014: nurbsPlane3
+    100016: //RootNode
+    100018: place3dTexture1
+    100020: spotLight1
+    100022: spotLight2
+    100024: spotLight3
+    100026: spotLight4
+    100028: strokeGrassWindWide1
+    400000: brush
+    400002: curveGrassWindWide
+    400004: grassWindWide1Main
+    400006: grassWindWide1MeshGroup
+    400008: nurbsCylinder1
+    400010: nurbsCylinder2
+    400012: nurbsCylinder3
+    400014: nurbsPlane3
+    400016: //RootNode
+    400018: place3dTexture1
+    400020: spotLight1
+    400022: spotLight2
+    400024: spotLight3
+    400026: spotLight4
+    400028: strokeGrassWindWide1
+    2300000: grassWindWide1Main
+    3300000: grassWindWide1Main
+    4300000: grassWindWide1Main
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

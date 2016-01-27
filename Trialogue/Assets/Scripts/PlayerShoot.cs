@@ -38,11 +38,16 @@ public class PlayerShoot : MonoBehaviour {
     public static bool gameOver = false;
 	private GameObject tempMuzzle;
 
+	public GameObject canvas;
     private float shootTrigger = 0f;
 
 	public RawImage flashTexture;
     private bool shootUp = false;
 	private float flashTimer=0f;
+
+	public bool paintAllow=true; //change to false afterwards
+	public GameObject paintManager;
+	public GameObject paintSplash;
 	// Use this for initialization
 	void Start () {
 		cameraPlay.GetComponent<Camera> ().enabled = false;
@@ -71,8 +76,15 @@ public class PlayerShoot : MonoBehaviour {
             {
                 shootUp = false;
             }
-
-            if (Input.GetMouseButtonDown (0) ||(!shootUp && (shootTrigger==1f))) {
+			if(paintAllow)
+			{
+			GameObject obj=Instantiate (paintSplash,transform.position,Quaternion.identity)as GameObject;
+			obj.transform.parent=paintManager.transform;
+			Vector3 splashPos=Input.mousePosition;
+			obj.transform.position=splashPos;
+			paintManager.GetComponent<PaintManager>().AddPaint(obj);
+			}
+            else if (Input.GetMouseButtonDown (0) ||(!shootUp && (shootTrigger==1f))) {
 
 			   // Debug.Log ("shooting");
 				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
@@ -90,6 +102,11 @@ public class PlayerShoot : MonoBehaviour {
 					healthSlider.value -= 2f;
 				//Debug.DrawRay (ray.origin,ray.direction,Color.red);
 				if (Physics.SphereCast (ray, 0.8f, out hit, 100f, mask.value)) {// Raycast(ray,out hit,mask.value))
+
+//					GameObject obj=Instantiate (paintSplash,transform.position,Quaternion.identity)as GameObject;
+//					obj.transform.parent=canvas.transform;
+//					Vector3 splashPos=cameraPlay.GetComponent<Camera>().ViewportToScreenPoint(new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
+//					obj.transform.position=splashPos;
 					if (hit.collider.gameObject.tag == "Cube") {
 						TreeGenerator.cubes.Remove (hit.collider.gameObject);
 						Destroy (hit.collider.gameObject);
@@ -123,6 +140,11 @@ public class PlayerShoot : MonoBehaviour {
 			}
 		}
 	
+	}
+
+	public void RemovePaintAt(Vector3 pos)
+	{
+		paintManager.GetComponent<PaintManager> ().CheckPaintAtPosition (pos);
 	}
     public void GameOver()
     {

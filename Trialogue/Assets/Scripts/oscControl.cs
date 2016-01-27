@@ -84,6 +84,7 @@ public class oscControl : MonoBehaviour {
 	public bool regenHealth=false;
 	public bool healthAmmo = false;
 	public bool noGuns=false;
+	public bool paintAllow = false;
 
     //critic
     public float gameplay = 0f;
@@ -355,6 +356,21 @@ public class oscControl : MonoBehaviour {
                         playerBody.GetComponent<vp_SimpleCrosshair>().enabled = true;
                     }
                 }
+				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle7") //paint brush
+				{
+					if (tempVal == 1)
+					{
+						paintAllow = true;
+						playerBody.GetComponent<PlayerShoot>().paintAllow= true;
+						//playerBody.GetComponent<vp_SimpleCrosshair>().enabled = false;
+					}
+					else
+					{
+						paintAllow = false;
+						playerBody.GetComponent<PlayerShoot>().paintAllow= false;
+						//playerBody.GetComponent<vp_SimpleCrosshair>().enabled = true;
+					}
+				}
                 else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5") //enemy collision out of sync x
                 {
                     Aggressive.colX = tempVal;

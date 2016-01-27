@@ -33,6 +33,10 @@ public class PassiveCube : MonoBehaviour {
 			if (col.gameObject.GetComponent<PlayerShoot> ().healthSlider.value >= 0) {
 				col.gameObject.GetComponent<PlayerShoot> ().healthSlider.value -= 15;
 				col.gameObject.GetComponent<PlayerShoot> ().DamageEffect ();
+				Vector3 pos=col.gameObject.GetComponent<PlayerShoot> ().cameraPlay.GetComponent<Camera>().WorldToScreenPoint(transform.localPosition);
+				Vector3 ok=col.gameObject.GetComponent<PlayerShoot> ().cameraPlay.GetComponent<Camera>().ViewportToScreenPoint(pos);
+				Debug.Log (ok);
+				col.gameObject.GetComponent<PlayerShoot>().RemovePaintAt(ok);
 			}
 			//Debug.Log ("DESTROYING");
 			Destroy (this.gameObject);
