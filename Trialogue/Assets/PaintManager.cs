@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PaintManager : MonoBehaviour {
 
 	public List<GameObject> paintList;
+	public GameObject paint;
 	// Use this for initialization
 	void Start () {
 	
@@ -20,9 +21,19 @@ public class PaintManager : MonoBehaviour {
 		for(int i=0;i < paintList.Count;i++)
 		{
 			GameObject obj=paintList[i];
-			if(Vector3.Distance(pos,obj.transform.position) < 10f)
+			if(obj!=null)
 			{
-				Debug.Log ("hi!!!");
+			Vector2 temp=new Vector2(obj.transform.position.x-960f,obj.transform.position.y-540f);
+			//Debug.Log ("paint at: "+temp);
+			if(Vector2.Distance(pos,temp) < 100f)
+			{
+					GameObject pt=Instantiate(paint,pos,Quaternion.identity) as GameObject;
+					pt.transform.parent=transform.parent;
+				//Debug.Log ("hi!!!");
+				RemovePaint(paintList[i]);
+				Destroy(paintList[i]);
+			}
+
 			}
 		}
 	}

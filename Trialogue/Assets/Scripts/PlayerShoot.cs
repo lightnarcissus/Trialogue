@@ -56,8 +56,8 @@ public class PlayerShoot : MonoBehaviour {
 		UnityEngine.Cursor.visible = false;
 		Debug.Log ("Width: " + Screen.width / 2 + " and Height: " + Screen.height / 2);
 		terrainObj.GetComponent<TerrainToolkit> ().tempTexture = tempTexture1;
-		Debug.Log ("pixelwidth: "+cameraPlay.GetComponent<Camera>().pixelWidth.ToString ());
-		Debug.Log ("pixelHeight: "+cameraPlay.GetComponent<Camera>().pixelHeight.ToString ());
+		//Debug.Log ("pixelwidth: "+cameraPlay.GetComponent<Camera>().pixelWidth.ToString ());
+		//Debug.Log ("pixelHeight: "+cameraPlay.GetComponent<Camera>().pixelHeight.ToString ());
 	}
 	
 	// Update is called once per frame
@@ -143,7 +143,15 @@ public class PlayerShoot : MonoBehaviour {
 	
 	}
 
-	public void RemovePaintAt(Vector3 pos)
+	public void FindCubePos(Vector3 pos)
+	{
+		Vector3 temp=cameraPlay.GetComponent<Camera> ().WorldToScreenPoint (pos);
+		temp= new Vector3(temp.x/1.7f,temp.y/1.5f,temp.z);
+		//Debug.Log (temp);
+		RemovePaintAt (temp);
+	}
+
+	void RemovePaintAt(Vector3 pos)
 	{
 		paintManager.GetComponent<PaintManager> ().CheckPaintAtPosition (pos);
 	}

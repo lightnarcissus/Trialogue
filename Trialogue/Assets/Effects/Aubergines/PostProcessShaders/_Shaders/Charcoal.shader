@@ -1,6 +1,6 @@
 Shader "Hidden/Aubergine/Charcoal" {
 	Properties {
-		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_MainTex ("Base (RGB)", 2D) = "black" {}
 		_LineColor ("Line Color", Color) = (0, 0, 0, 1)
 	}
 	SubShader {
@@ -37,7 +37,7 @@ Shader "Hidden/Aubergine/Charcoal" {
 					f-= 0.2;
 					f=saturate(f);
 					
-					c1.xyz = (1-f) + _LineColor.rgb * f;
+					c1.xyz = (f) + _LineColor.rgb * f;
 					return c1;
 				}
 			ENDCG

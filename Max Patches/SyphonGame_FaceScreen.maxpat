@@ -3,13 +3,13 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 7,
-			"minor" : 0,
-			"revision" : 6,
+			"minor" : 1,
+			"revision" : 0,
 			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 317.0, 79.0, 813.0, 678.0 ],
+		"rect" : [ 779.0, 140.0, 813.0, 678.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -115,8 +115,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 0,
-							"revision" : 6,
+							"minor" : 1,
+							"revision" : 0,
 							"architecture" : "x86",
 							"modernui" : 1
 						}
@@ -242,7 +242,7 @@
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 609.0, 562.65564, 197.0, 62.0 ],
 					"style" : "",
-					"text" : "jit.gl.videoplane clientcontext @blend_enable 1 @color 1 1 1 1 @transform_reset 2 @position 0.6 0. 0. @scale 0.6 1. 0.5"
+					"text" : "jit.gl.videoplane clientcontext @blend_enable 1 @color 1 1 1 1 @transform_reset 2 @position 0.7 0.7 0. @scale 0.3 0.3. 0.3"
 				}
 
 			}
@@ -638,7 +638,7 @@
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 145.0, 516.023987, 656.0, 22.0 ],
 					"style" : "",
-					"text" : "jit.gl.videoplane clientcontext @blend_enable 1 @color 1 1 1 1 @transform_reset 2 @position -0.6 0. 0. @scale 0.6 1. 0.5"
+					"text" : "jit.gl.videoplane clientcontext @blend_enable 1 @color 1 1 1 1 @transform_reset 2 @position -0.6 0. 0. @scale 1.7 1. 0.5"
 				}
 
 			}
@@ -1190,7 +1190,7 @@
 				"type" : "iLaX"
 			}
  ],
-		"embedsnapshot" : 0
+		"autosave" : 0
 	}
 
 }
