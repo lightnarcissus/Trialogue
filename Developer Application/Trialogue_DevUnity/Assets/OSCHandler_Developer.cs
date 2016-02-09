@@ -52,24 +52,24 @@ public struct ClientLog
 /// Handles all the OSC servers and clients of the current Unity game/application.
 /// Tracks incoming and outgoing messages.
 /// </summary>
-public class OSCHandler : MonoBehaviour
+public class OSCHandler_Developer : MonoBehaviour
 {
 	#region Singleton Constructors
-	static OSCHandler()
+	static OSCHandler_Developer()
 	{
 	}
 
-	OSCHandler()
+	OSCHandler_Developer()
 	{
 	}
 	
-	public static OSCHandler Instance 
+	public static OSCHandler_Developer Instance 
 	{
 	    get 
 		{
 	        if (_instance == null) 
 			{
-				_instance = new GameObject ("OSCHandler").AddComponent<OSCHandler>();
+				_instance = new GameObject ("OSCHandler_Developer").AddComponent<OSCHandler_Developer>();
 	        }
 	       
 	        return _instance;
@@ -78,12 +78,10 @@ public class OSCHandler : MonoBehaviour
 	#endregion
 	
 	#region Member Variables
-	private static OSCHandler _instance = null;
+	private static OSCHandler_Developer _instance = null;
 	private Dictionary<string, ClientLog> _clients = new Dictionary<string, ClientLog>();
 	private Dictionary<string, ServerLog> _servers = new Dictionary<string, ServerLog>();
-
-	private string ipAddress = "";
-
+	
 	private const int _loglength = 25;
 	#endregion
 	
@@ -93,20 +91,15 @@ public class OSCHandler : MonoBehaviour
 	/// </summary>
 	public void Init()
 	{
-		ipAddress = Network.player.ipAddress; //sets the ipAddress of the current machine running the Unity application
-		Debug.Log (ipAddress);
+
         //Initialize OSC clients (transmitters)
-        
-        //CHANGE THESE EVERY TIME
-		CreateClient("iPhone5S Client", IPAddress.Parse("172.16.19.77"), 9000);
-        CreateClient("iPad Client", IPAddress.Parse("172.16.15.218"), 9000);
-		CreateClient ("localhost", IPAddress.Parse ("127.0.0.1"), 9000);
-		CreateClient ("Max", IPAddress.Parse(ipAddress), 9000);
+        //Example:		
+		CreateClient("Max", IPAddress.Parse("172.16.12.109"), 8000);
+
         //Initialize OSC servers (listeners)
         //Example:
-		//CreateServer ("TouchOSC Server", 8000);
-		CreateServer ("iPhone", 8000);
-        //CreateServer("AndroidPhone", 6666);
+
+		CreateServer("iPhone", 9000);
 	}
 	
 	#region Properties
@@ -170,7 +163,7 @@ public class OSCHandler : MonoBehaviour
 		_clients.Add(clientId, clientitem);
 		
 		// Send test message
-	/*	string testaddress = "/test/alive/";
+		string testaddress = "/test/alive/";
 		OSCMessage message = new OSCMessage(testaddress, destination.ToString());
 		message.Append(port); message.Append("OK");
 		
@@ -180,7 +173,6 @@ public class OSCHandler : MonoBehaviour
 		_clients[clientId].messages.Add(message);
 		
 		_clients[clientId].client.Send(message);
-	*/
 	}
 	
 	/// <summary>
@@ -207,8 +199,6 @@ public class OSCHandler : MonoBehaviour
 
     void OnPacketReceived(OSCServer server, OSCPacket packet)
     {
-		Debug.Log ("packet received");
-		//Debug.Log (packet.Data[0].ToString());
     }
 	
 	/// <summary>
@@ -228,7 +218,7 @@ public class OSCHandler : MonoBehaviour
 	{
 		List<object> temp = new List<object>();
 		temp.Add(value);
-		//Debug.Log("Value"+value.ToString ());
+		
 		SendMessageToClient(clientId, address, temp);
 	}
 	
@@ -307,7 +297,7 @@ public class OSCHandler : MonoBehaviour
 				   != _servers[pair.Key].packets[_servers[pair.Key].packets.Count - 1].TimeStamp)
 				{	
 					if(_servers[pair.Key].log.Count > _loglength - 1)
-						{
+					{
 						_servers[pair.Key].log.RemoveAt(0);
 						_servers[pair.Key].packets.RemoveAt(0);
 					}
