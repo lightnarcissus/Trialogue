@@ -6,6 +6,7 @@ var overallSlider;
 var totalScore=0;
 var scoresSubmitted=0;
 var overallScore=0;
+var myFont;
 var metaScore=0;
 //var socket;
 function setup() {
@@ -13,6 +14,7 @@ function setup() {
   createCanvas(1920, 1080);
   textSize(15)
   noStroke();
+  myFont=loadFont('assets/Quicksand_Bold.otf', drawText);
 
   //input
  // socket=io.connect('http://trialogue-critic.herokuapp.com');
@@ -20,32 +22,33 @@ function setup() {
   
 
   input=createInput();
-  input.position(100, 285);
+  input.position(width/2+100, height/2+285);
 
   button = createButton('Submit');
-  button.position(250, 285);
+  button.position(width/2+250, height/2+285);
    button.mousePressed(comment);
 
   // create sliders
   graphicsSlider = createSlider(0, 10, 7);
-  graphicsSlider.position(120, 120);
+  graphicsSlider.position(width/2+120, height/2+120);
   gameplaySlider = createSlider(0, 10, 7);
-  gameplaySlider.position(120, 150);
+  gameplaySlider.position(width/2+120, height/2+150);
   audioSlider = createSlider(0, 10, 7);
-  audioSlider.position(120, 180);
+  audioSlider.position(width/2+120, height/2+180);
   valueSlider = createSlider(0, 10, 7);
-  valueSlider.position(120, 210);
+  valueSlider.position(width/2+120, height/2+210);
   overallSlider = createSlider(0, 10, 7);
-  overallSlider.position(120, 240);
+  overallSlider.position(width/2+120, height/2+240);
 }
 
 function comment()
 {
   clear();
-  
+  drawText();
   scoresSubmitted++;
   console.log(overallScore);
   var reviewComment=input.value();
+   textFont(myFont,20);
   console.log("nice");
   totalScore+=overallScore;
   metaScore=(totalScore/scoresSubmitted)*10;
@@ -55,6 +58,16 @@ function comment()
   sendScore(overallScore);
 //  input.value=null;
 
+}
+
+function drawText()
+{
+   textFont(myFont,20);
+  text("Graphics", width/2+125, height/2+145);
+  text("Gameplay",width/2+ 125, height/2+175);
+  text("Audio", width/2+125, height/2+205);
+  text("Value",width/2+ 125, height/2+235);
+  text("Overall",width/2+ 125,height/2+ 265);
 }
  
 function draw() {
@@ -66,11 +79,7 @@ function draw() {
 
 //  totalScore+=overallScore;
  // background(256,256,128);
-  text("Graphics", 165, 135);
-  text("Gameplay", 165, 165);
-  text("Audio", 165, 195);
-  text("Value", 165, 225);
-  text("Overall", 165, 255);
+
 
 //  text("Total Score"+totalScore,165,316)
 

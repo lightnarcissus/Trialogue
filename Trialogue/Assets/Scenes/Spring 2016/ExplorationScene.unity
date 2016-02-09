@@ -314,6 +314,10 @@ RectTransform:
 GameObject:
   m_PrefabParentObject: {fileID: 189868, guid: 5996648d9711b8147ac605072268f288, type: 2}
   m_PrefabInternal: {fileID: 158147960}
+--- !u!1 &257469932 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100016, guid: f5b7ec654c4ca4146aa18602937168a1, type: 3}
+  m_PrefabInternal: {fileID: 406986977}
 --- !u!1 &259905114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,7 +1233,7 @@ Prefab:
       objectReference: {fileID: 158147963}
     - target: {fileID: 11466394, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: paintAllow
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11466394, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
       propertyPath: paintManager
@@ -1251,6 +1255,10 @@ Prefab:
       propertyPath: lineColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11466394, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
+      propertyPath: paintBrush
+      value: 
+      objectReference: {fileID: 257469932}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
   m_IsPrefabParent: 0

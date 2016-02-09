@@ -254,6 +254,22 @@ public class oscControl : MonoBehaviour {
 					}
 					
 				}
+				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/toggle20") //paint it black?
+				{
+					//Debug.Log("innit");
+					if (tempVal==0)
+					{
+						//groundWater=false;
+						playerBody.GetComponent<PlayerShoot>().paintAllow=false;
+						
+					}
+					else
+					{
+						//Debug.Log("YAY innit");
+						playerBody.GetComponent<PlayerShoot>().paintAllow=true;
+					
+					}
+				}
 				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/fader10") //tree size
                 {
                     treeSize = tempVal;

@@ -8,6 +8,7 @@ using UnityStandardAssets.ImageEffects;
 public class PlayerShoot : MonoBehaviour {
 
 	public GameObject pistol;
+	public GameObject paintBrush;
 	private RaycastHit hit;
 	public GameObject cube;
 	private Ray ray;
@@ -79,14 +80,17 @@ public class PlayerShoot : MonoBehaviour {
             }
 			if(paintAllow)
 			{
+				paintBrush.SetActive (true);
+				pistol.SetActive (false);
 			GameObject obj=Instantiate (paintSplash,transform.position,Quaternion.identity)as GameObject;
 			obj.transform.parent=paintManager.transform;
+			cameraPlay.GetComponent<PP_Charcoal>().enabled=true;
 			Vector3 splashPos=Input.mousePosition;
 			obj.transform.position=splashPos;
 			paintManager.GetComponent<PaintManager>().AddPaint(obj);
 			}
             else if (Input.GetMouseButtonDown (0) ||(!shootUp && (shootTrigger==1f))) {
-
+				cameraPlay.GetComponent<PP_Charcoal>().enabled=false;
 			   // Debug.Log ("shooting");
 				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
 				//ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
@@ -118,6 +122,12 @@ public class PlayerShoot : MonoBehaviour {
 				}
 
 
+			}
+			else
+			{
+				cameraPlay.GetComponent<PP_Charcoal>().enabled=false;
+				paintBrush.SetActive (false);
+				pistol.SetActive (true);
 			}
         
 
