@@ -242,7 +242,7 @@
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 609.0, 562.65564, 197.0, 62.0 ],
 					"style" : "",
-					"text" : "jit.gl.videoplane clientcontext @blend_enable 1 @color 1 1 1 1 @transform_reset 2 @position 0.7 0.7 0. @scale 0.3 0.3. 0.3"
+					"text" : "jit.gl.videoplane clientcontext @blend_enable 1 @color 1 1 1 1 @transform_reset 2 @position 0.7 0.7 0.1 @scale 0.3 0.3. 0.3"
 				}
 
 			}
@@ -484,7 +484,7 @@
 				"box" : 				{
 					"allowdrag" : 0,
 					"id" : "obj-16",
-					"items" : "<empty>",
+					"items" : "PaintBlack",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -514,7 +514,7 @@
 				"box" : 				{
 					"allowdrag" : 0,
 					"id" : "obj-11",
-					"items" : "<empty>",
+					"items" : "FirstPersonCharacter",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -711,7 +711,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 363.090942, 589.65564, 275.0, 22.0 ],
+					"patching_rect" : [ 292.5, 613.65564, 275.0, 22.0 ],
 					"style" : "",
 					"text" : "jit.window clientcontext 1920 1080 @fsmenubar 0"
 				}
