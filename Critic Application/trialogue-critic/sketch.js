@@ -52,9 +52,9 @@ function comment()
   console.log("nice");
   totalScore+=overallScore;
   metaScore=(totalScore/scoresSubmitted)*10;
-  text("from "+scoresSubmitted+ " ratings",165,316);
-  text("Metascore: "+int(metaScore),165,347);
-  text("Your Review: \n"+reviewComment, 165, 377);
+  text("from "+scoresSubmitted+ " ratings",width/2+165,height/2+316);
+  text("Metascore: "+int(metaScore),width/2+165,height/2+347);
+  text("Your Review: \n"+reviewComment, width/2+165,height/2+ 377);
   sendScore(overallScore);
 //  input.value=null;
 
