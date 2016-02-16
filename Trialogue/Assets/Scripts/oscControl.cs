@@ -132,11 +132,11 @@ public class oscControl : MonoBehaviour {
         
 
         //updating Artist device
-        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/rotary2", 1f); //green
-        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/rotary3", 1f);//blue
-        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/rotary4", 1f);//red
-        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader2", directionalLight.GetComponent<Light>().intensity); //intensity
-        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader3", playerCamera.GetComponent<Camera>().fieldOfView); //fov
+        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/GreenDir", 1f); //green
+        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/BlueDir", 1f);//blue
+        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/RedDir", 1f);//red
+        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/DirLightIntensity", directionalLight.GetComponent<Light>().intensity); //intensity
+        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/CamFoV", playerCamera.GetComponent<Camera>().fieldOfView); //fov
         OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader5", playerCamera.GetComponent<Camera>().farClipPlane); //far clip
 		OSCHandler.Instance.SendMessageToClient("iPad Client", "/Enemies/toggle15", 1f); //set aggressive to true
 		OSCHandler.Instance.SendMessageToClient("iPad Client", "/Movement/rotary1", 1f); //game speed
@@ -400,23 +400,23 @@ public class oscControl : MonoBehaviour {
                     Aggressive.colZ = tempVal;
                 }
 
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/rotary4") //red
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/RedDir") //red
                 {
                     red = tempVal;
                     directionalLight.GetComponent<Light>().color = new Color(red, green, blue, 1f);
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/rotary2") //green
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/GreenDir") //green
                 {
                     green = tempVal;
                     directionalLight.GetComponent<Light>().color = new Color(red, green, blue, 1f);
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/rotary3") //blue
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/BlueDir") //blue
                 {
                     blue = tempVal;
                     directionalLight.GetComponent<Light>().color = new Color(red, green, blue, 1f);
 
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/fader2") //intensity
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/DirLightIntensity") //intensity
                 {
                     lightIntensity = tempVal;
                     directionalLight.GetComponent<Light>().intensity = lightIntensity;
