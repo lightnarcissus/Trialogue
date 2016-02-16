@@ -236,7 +236,7 @@ public class oscControl : MonoBehaviour {
                         greenTrees = true;
 
                 }
-				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/toggle18") //ground is water?
+				else if(item.Value.packets [lastPacketIndex].Address=="/Visuals/GroundWater") //ground is water?
 				{
 					//Debug.Log("innit");
 					if (tempVal==0)
@@ -302,7 +302,7 @@ public class oscControl : MonoBehaviour {
                     }
                         
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/toggle3") //upside down?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/UpsideDown") //upside down?
                 {
 					if (tempVal==0)
 					{
@@ -421,7 +421,7 @@ public class oscControl : MonoBehaviour {
                     lightIntensity = tempVal;
                     directionalLight.GetComponent<Light>().intensity = lightIntensity;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/fader3") //fov
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/CamFoV") //fov
                 {
                     cameraFOV = tempVal;
                     playerCamera.GetComponent<Camera>().fieldOfView = tempVal;
@@ -431,7 +431,7 @@ public class oscControl : MonoBehaviour {
                     cameraFarClip = tempVal;
                     playerCamera.GetComponent<Camera>().farClipPlane = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle1") //2D Camera?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/2DCam") //2D Camera?
                 {
                     if (tempVal == 0)
                     {
@@ -444,7 +444,7 @@ public class oscControl : MonoBehaviour {
                         twoDimCam = true;
                     }
                 }
-				else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle16") //don't clear?
+				else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/DontClear") //don't clear?
 				{
 					if (tempVal == 0)
 					{
@@ -485,7 +485,7 @@ public class oscControl : MonoBehaviour {
 
                     }
                 }*/
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle4" && !disableFancyGraphics) //Scanlines?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/Scanlines" && !disableFancyGraphics) //Scanlines?
                 {
 
                     if (tempVal == 0)
@@ -499,7 +499,7 @@ public class oscControl : MonoBehaviour {
                         scanlines = true;
                     }
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle5") //Postered?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/Postered") //Postered?
                 {
                     if (tempVal == 0)
                     {
@@ -512,7 +512,7 @@ public class oscControl : MonoBehaviour {
                         postered = true;
                     }
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle9") //Pixelated?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/Pixelated") //Pixelated?
                 {
                     if (tempVal == 0)
                     {

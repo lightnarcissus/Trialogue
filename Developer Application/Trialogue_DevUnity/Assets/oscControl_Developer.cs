@@ -34,6 +34,7 @@ public class oscControl_Developer : MonoBehaviour {
 	public GameObject[] visualSet;
 	public GameObject[] environmentSet;
 	public GameObject[] enemySet;
+	private float boolVal=0f;
 	// Script initialization
 	void Start() {	
 		OSCHandler_Developer.Instance.Init(); //init OSC
@@ -92,31 +93,63 @@ public class oscControl_Developer : MonoBehaviour {
 			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/GreenDir", visualSet[3].GetComponent<Slider>().value); 
 			break;
 		case "DontClear":
-			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/DontClear", visualSet[4].GetComponent<bl_ToggleSwitcher>().isOn); 
+			if(visualSet[4].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/DontClear", boolVal); 
 			break;
 		case "2DCam":
-			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/2DCam", visualSet[5].GetComponent<bl_ToggleSwitcher>().isOn); 
+			if(visualSet[5].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/2DCam", boolVal); 
 			break;
 		case "CamFoV":
 			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/CamFoV", visualSet[6].GetComponent<Slider>().value); 
 			break;
 		case "Pixelated":
-			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/Pixelated", visualSet[7].GetComponent<bl_ToggleSwitcher>().isOn); 
+			if(visualSet[7].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/Pixelated", boolVal); 
 			break;
 		case "Postered":
-			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/Postered", visualSet[8].GetComponent<bl_ToggleSwitcher>().isOn); 
+			if(visualSet[8].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/Postered", boolVal); 
 			break;
 		case "Nightvision":
-			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/Nightvision", visualSet[9].GetComponent<bl_ToggleSwitcher>().isOn); 
+			if(visualSet[9].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/Nightvision", boolVal); 
 			break;
 		case "Scanlines":
-			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/Scanlines", visualSet[10].GetComponent<bl_ToggleSwitcher>().isOn); 
+			if(visualSet[10].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/Scanlines", boolVal); 
 			break;
 		case "GroundWater":
-			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/Groundwater", visualSet[11].GetComponent<bl_ToggleSwitcher>().isOn); 
+			if(visualSet[11].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/GroundWater", boolVal);  
 			break;
 		case "UpsideDown":
-			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/UpsideDown", visualSet[12].GetComponent<bl_ToggleSwitcher>().isOn); 
+			if(visualSet[12].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/UpsideDown", boolVal); 
 			break;
 			
 		}
