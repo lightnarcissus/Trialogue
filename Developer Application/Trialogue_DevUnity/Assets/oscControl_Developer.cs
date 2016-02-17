@@ -32,7 +32,7 @@ public class oscControl_Developer : MonoBehaviour {
 	public GameObject cube;
 	public GameObject[] gameplaySet;
 	public GameObject[] visualSet;
-	public GameObject[] environmentSet;
+	public GameObject[] envSet;
 	public GameObject[] enemySet;
 	private float boolVal=0f;
 	// Script initialization
@@ -79,7 +79,72 @@ public class oscControl_Developer : MonoBehaviour {
 	public void ChangeValue(String name)
 	{
 		switch (name) {
+
+
+			//gameplay set
+
+
+
+		case "GameSpeed":
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Gameplay/GameSpeed", gameplaySet[0].GetComponent<Slider>().value); 
+			break;
+		case "PaintItBlack":
+			if(gameplaySet[1].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Gameplay/PaintItBlack", boolVal); 
+			break;
+		case "NoGuns":
+			if(gameplaySet[2].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Gameplay/NoGuns", boolVal); 
+			break;
+		case "HealthAmmo":
+			if(gameplaySet[3].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Gameplay/HealthAmmo", boolVal); 
+			break;
+		case "RegenHealth":
+			if(gameplaySet[4].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Gameplay/RegenHealth", boolVal); 
+			break;
+		case "MultipleReticles":
+			if(gameplaySet[5].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Gameplay/MultipleReticles", boolVal); 
+			break;
+		case "NoReticles":
+			if(gameplaySet[6].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Gameplay/NoReticles", boolVal); 
+			break;
+		case "JumpEnabled":
+			if(gameplaySet[7].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Gameplay/JumpEnabled", boolVal); 
+			break;
+		case "HeadSeparation":
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Gameplay/HeadSeparation", gameplaySet[8].GetComponent<Slider>().value); 
+			break;
 			
+
+			//visuals set
+
+
 		case "DirLightIntensity":
 			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/DirLightIntensity",visualSet[0].GetComponent<Slider>().value); 
 			break;
@@ -151,6 +216,83 @@ public class oscControl_Developer : MonoBehaviour {
 				boolVal=0f;
 			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Visuals/UpsideDown", boolVal); 
 			break;
+
+
+			//environment set
+
+
+		case "GreenTrees":
+			if(envSet[0].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/GreenTrees", boolVal); 
+			break;
+		case "TreeSize":
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/TreeSize", envSet[1].GetComponent<Slider>().value); 
+			break;
+		case "ConquerSpace":
+			if(envSet[2].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/ConquerSpace", boolVal); 
+			break;
+
+
+			//enemy set
+		case "EnemySize":
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/EnemySize", enemySet[0].GetComponent<Slider>().value); 
+			break;
+		case "Aggressive":
+			if(enemySet[1].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/Aggressive", boolVal); 
+			break;
+		case "Peaceful":
+			if(enemySet[2].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/Peaceful", boolVal); 
+			break;
+		case "KillEnemy":
+			if(enemySet[3].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/KillEnemy", boolVal); 
+			break;
+		case "ConvertEnemy":
+			if(enemySet[4].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/ConvertEnemy", boolVal); 
+			break;
+		case "ChangesSize":
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/ChangesSize", enemySet[5].GetComponent<Slider>().value); 
+			break;
+		case "DeadBodyRemains":
+			if(enemySet[6].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/DeadBodyRemains", boolVal); 
+			break;
+		case "InvincibleEnemy":
+			if(enemySet[7].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/InvincibleEnemy", boolVal); 
+			break;
+	
+		
+		
+
 			
 		}
 		

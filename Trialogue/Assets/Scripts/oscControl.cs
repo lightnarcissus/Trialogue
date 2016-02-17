@@ -228,7 +228,7 @@ public class oscControl : MonoBehaviour {
                 {
                     //for future use
                 }
-                else if(item.Value.packets [lastPacketIndex].Address=="/Environment/toggle17") //green trees?
+                else if(item.Value.packets [lastPacketIndex].Address=="/Environment/GreenTrees") //green trees?
                 {
 					if (tempVal==0)
 						greenTrees = false;
@@ -270,7 +270,7 @@ public class oscControl : MonoBehaviour {
 					
 					}
 				}
-				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/fader10") //tree size
+				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/TreeSize") //tree size
                 {
                     treeSize = tempVal;
                 }
@@ -283,12 +283,12 @@ public class oscControl : MonoBehaviour {
                 {
                     spawnRate = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/rotary1") //game speed
+                else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/GameSpeed") //game speed
                 {
                     gameSpeed = tempVal;
                     Time.timeScale = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/toggle2") //jump enabled?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/JumpEnabled") //jump enabled?
                 {
 					if (tempVal==0)
 					{
@@ -322,7 +322,7 @@ public class oscControl : MonoBehaviour {
                     Physics.gravity *= tempVal;
 
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/fader7") //head separation distance
+                else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/HeadSeparation") //head separation distance
                 {
                     headSeparation = tempVal;
                     playerCamera.transform.localPosition = new Vector3(tempVal, tempVal, tempVal);
@@ -330,14 +330,14 @@ public class oscControl : MonoBehaviour {
 
                 }
 
-				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle10" ) //regenerating health?
+				else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/RegenHealth" ) //regenerating health?
 				{
 					if(tempVal==1)
 						regenHealth=true;
 					else
 						regenHealth=false;
 				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle11") //health == ammo?
+				else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/HealthAmmo") //health == ammo?
 				{
 					if(tempVal==1)
 						healthAmmo=true;
@@ -348,14 +348,14 @@ public class oscControl : MonoBehaviour {
 				{
 					playerBody.GetComponent<PlayerShoot>().regenRate=tempVal;
 				}
-                else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle12") //
+                else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/MultipleReticles") //allow multiple reticles
                 {
                     if (tempVal == 1)
                         allowMultipleReticle = true;
                     else
                         allowMultipleReticle = false;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle6") //no guns?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/NoGuns") //no guns?
                 {
                     if (tempVal == 1)
                     {
@@ -581,21 +581,21 @@ public class oscControl : MonoBehaviour {
                 {
                     CubeManager.globalSpeed = tempVal;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address =="/Enemy/toggle13") //allow passive
+                else if (item.Value.packets[lastPacketIndex].Address =="/Enemies/Passive") //allow passive
                 {
                     if (tempVal == 0)
                         CubeManager.passiveActive = false;
                     else
                         CubeManager.passiveActive = true;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/toggle14") //allow aggressive
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/Aggressive") //allow aggressive
                 {
                     if (tempVal == 0)
                         CubeManager.aggressiveActive = false;
                     else
                         CubeManager.aggressiveActive = true;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/toggle15") //disable all enemies
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/DisableEnemies") //disable all enemies
                 {
                     if (tempVal == 1)
                         treeSpawner.GetComponent<TreeGenerator>().DisableEnemies();
