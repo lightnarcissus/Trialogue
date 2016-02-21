@@ -94,7 +94,7 @@ public class OSCHandler_Developer : MonoBehaviour
 
         //Initialize OSC clients (transmitters)
         //Example:		
-		CreateClient("Max", IPAddress.Parse("172.16.10.70"), 8000);
+		CreateClient("Max", IPAddress.Parse("172.30.20.219"), 8000);
 
         //Initialize OSC servers (listeners)
         //Example:
