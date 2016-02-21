@@ -1903,6 +1903,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48c4e1b74409b34fbe571c08ea0acf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platform: 
+  playerChar: {fileID: 1682340034}
+  clientTexture: {fileID: 1586233966}
 --- !u!4 &1921404532
 Transform:
   m_ObjectHideFlags: 0
