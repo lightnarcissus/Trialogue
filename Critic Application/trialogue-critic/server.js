@@ -8,9 +8,9 @@ var path = require('path');
 var fs = require('fs');
 
 var server = http.createServer(handleRequest);
-server.listen(8080);
+server.listen(9000);
 
-console.log('Server started on port 8080');
+console.log('Server started on port 9000');
 
 function handleRequest(req, res) {
   // What did we request?
@@ -18,7 +18,7 @@ function handleRequest(req, res) {
   
   // If blank let's ask for index.html
   if (pathname == '/') {
-    pathname = '/index.html';
+    pathname = '/public/index.html';
   }
   
   // Ok what's our file extension
