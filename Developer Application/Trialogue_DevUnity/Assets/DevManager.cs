@@ -35,10 +35,12 @@ public class DevManager : MonoBehaviour {
 	public void UpdateMenu()
 	{
 		for (int i=0; i<menuSelected.Length; i++) {
-			selectLights[currentlySelected].SetActive (true);
+			//selectLights[currentlySelected].SetActive (true);
 			selectLights[i].SetActive (false);
 			optionSets[i].SetActive (false);
 		}
+		selectLights[currentlySelected].SetActive (true);
+		Debug.Log (currentlySelected);
 		
 		optionSets[currentlySelected].SetActive (true);
 	}
