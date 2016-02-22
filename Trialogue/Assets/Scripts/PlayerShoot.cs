@@ -120,7 +120,9 @@ public class PlayerShoot : MonoBehaviour {
 						}
 						if(CubeManager.convertCube)
 						{
-
+							Debug.Log ("cube converted");
+							hit.collider.gameObject.GetComponent<Aggressive>().friendly=true;
+							hit.collider.gameObject.GetComponent<PassiveCube>().friendly=true;
 						}
 						if(CubeManager.killCube)
 						{

@@ -41,7 +41,12 @@ public class Aggressive : MonoBehaviour {
 				body.AddForce((target.transform.position - transform.position).normalized * 0.1f * Vector3.Distance (target.transform.position, transform.position), ForceMode.VelocityChange);
 			else
 			{
-				target=treeGen.GetComponent<TreeGenerator>().TargetEnemies(this.gameObject);
+				if(treeGen!=null)
+				{
+					treeGen = GameObject.Find ("TreeGenerator");
+				}
+				else
+					target=treeGen.GetComponent<TreeGenerator>().TargetEnemies(this.gameObject);
 			}
 
 		}
