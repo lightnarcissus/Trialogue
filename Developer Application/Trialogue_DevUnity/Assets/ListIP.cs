@@ -4,7 +4,9 @@ using UnityEngine.UI;
 public class ListIP : MonoBehaviour {
 
 	public static string ipAddress="";
+	public static string otherIPAddress="";
 	public InputField ipField;
+	public InputField otherField;
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad (gameObject);
@@ -19,6 +21,7 @@ public class ListIP : MonoBehaviour {
 	public void OnEnterApp()
 	{
 		ipAddress = ipField.text.ToString ();
+		otherIPAddress = otherField.text.ToString ();
 		Application.LoadLevel ("Main");
 	}
 }

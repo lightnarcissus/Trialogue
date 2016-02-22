@@ -96,7 +96,7 @@ public class OSCHandler_Developer : MonoBehaviour
         //Example:
 		Debug.Log ("TIED TO: " + ListIP.ipAddress);
 			CreateClient("Max", IPAddress.Parse(ListIP.ipAddress), 8000);
-
+		CreateClient ("Critic", IPAddress.Parse (ListIP.otherIPAddress), 8000);
         //Initialize OSC servers (listeners)
         //Example:
 
