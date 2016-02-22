@@ -80,12 +80,19 @@ public class oscControl : MonoBehaviour {
     public bool postered=false;
     public bool scratches=false;
     public bool pixelated=false;
+	public bool nightVision=false;
     public bool charcoal=false;
     private bool reset =true;
 	public bool regenHealth=false;
 	public bool healthAmmo = false;
 	public bool noGuns=false;
 	public bool paintAllow = false;
+
+	//Enemy page
+	public bool killEnemy = false;
+	public bool convertEnemy=false;
+	public bool spawnsMore=false;
+	public bool deadBodyRemains=false;
 
     //critic
     public float gameplay = 0f;
@@ -133,13 +140,13 @@ public class oscControl : MonoBehaviour {
         
 
         //updating Artist device
-        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/GreenDir", 1f); //green
-        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/BlueDir", 1f);//blue
-        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/RedDir", 1f);//red
-        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/DirLightIntensity", directionalLight.GetComponent<Light>().intensity); //intensity
-        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/CamFoV", playerCamera.GetComponent<Camera>().fieldOfView); //fov
-        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader5", playerCamera.GetComponent<Camera>().farClipPlane); //far clip
-		OSCHandler.Instance.SendMessageToClient("iPad Client", "/Enemies/Aggressive", 1f); //set aggressive to true
+//        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/GreenDir", 1f); //green
+//        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/BlueDir", 1f);//blue
+//        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/RedDir", 1f);//red
+//        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/DirLightIntensity", directionalLight.GetComponent<Light>().intensity); //intensity
+//        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/CamFoV", playerCamera.GetComponent<Camera>().fieldOfView); //fov
+//        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader5", playerCamera.GetComponent<Camera>().farClipPlane); //far clip
+//		OSCHandler.Instance.SendMessageToClient("iPad Client", "/Enemies/Aggressive", 1f); //set aggressive to true
 //		OSCHandler.Instance.SendMessageToClient("iPad Client", "/Movement/rotary1", 1f); //game speed
 //		OSCHandler.Instance.SendMessageToClient("iPad Client", "/Movement/fader6", gravityMult); //gravity multiplier
 
@@ -310,22 +317,22 @@ public class oscControl : MonoBehaviour {
 //                    Physics.gravity *= tempVal;
 //
 //                }
-				else if(item.Value.packets [lastPacketIndex].Address=="/Visuals/PaintItBlack") //paint it black?
-				{
-					//Debug.Log("innit");
-					if (tempVal==0)
-					{
-						//groundWater=false;
-						playerBody.GetComponent<PlayerShoot>().paintAllow=false;
-						
-					}
-					else
-					{
-						//Debug.Log("YAY innit");
-						playerBody.GetComponent<PlayerShoot>().paintAllow=true;
-					
-					}
-				}
+//				else if(item.Value.packets [lastPacketIndex].Address=="/Visuals/PaintItBlack") //paint it black?
+//				{
+//					//Debug.Log("innit");
+//					if (tempVal==0)
+//					{
+//						//groundWater=false;
+//						playerBody.GetComponent<PlayerShoot>().paintAllow=false;
+//						
+//					}
+//					else
+//					{
+//						//Debug.Log("YAY innit");
+//						playerBody.GetComponent<PlayerShoot>().paintAllow=true;
+//					
+//					}
+//				}
                 else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/HeadSeparation") //head separation distance
                 {
                     headSeparation = tempVal;
@@ -382,9 +389,9 @@ public class oscControl : MonoBehaviour {
                         playerBody.GetComponent<PlayerShoot>().enabled = true;
                         playerBody.GetComponent<vp_SimpleCrosshair>().enabled = true;
                     }
-					Debug.Log(noGuns);
+				//	Debug.Log(noGuns);
                 }
-				else if (item.Value.packets[lastPacketIndex].Address == "/Health/toggle7") //paint brush
+				else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/PaintItBlack") //paint brush
 				{
 					if (tempVal == 1)
 					{
@@ -398,6 +405,7 @@ public class oscControl : MonoBehaviour {
 						playerBody.GetComponent<PlayerShoot>().paintAllow= false;
 						//playerBody.GetComponent<vp_SimpleCrosshair>().enabled = true;
 					}
+					Debug.Log(paintAllow);
 				}
 //                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5") //enemy collision out of sync x
 //                {
@@ -430,6 +438,7 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/DirLightIntensity") //intensity
                 {
+					Debug.Log(tempVal);
                     lightIntensity = tempVal;
                     directionalLight.GetComponent<Light>().intensity = lightIntensity;
                 }
@@ -537,6 +546,19 @@ public class oscControl : MonoBehaviour {
                         pixelated = true;
                     }
                 }
+				else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/Nightvision") //night vision?
+				{
+					if (tempVal == 0)
+					{
+						playerCamera.GetComponent<PP_NightVisionV2>().enabled = false;
+						nightVision = false;
+					}
+					else
+					{
+						playerCamera.GetComponent<PP_NightVisionV2>().enabled = true;
+						nightVision = true;
+					}
+				}
 //                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle7") //Scratches?
 //                {
 //                    if (tempVal == 0)
@@ -600,13 +622,56 @@ public class oscControl : MonoBehaviour {
                     else
                         CubeManager.passiveActive = true;
                 }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/Aggressive") //allow aggressive
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/KillEnemy") //allow aggressive
                 {
                     if (tempVal == 0)
-                        CubeManager.aggressiveActive = false;
+						{
+                        CubeManager.killCube = false;
+						killEnemy=false;
+						}
                     else
-                        CubeManager.aggressiveActive = true;
+					{
+                        CubeManager.killCube = true;
+						killEnemy=true;
+					}
                 }
+				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/ConvertEnemy") //allow aggressive
+				{
+					if (tempVal == 0)
+					{
+						convertEnemy=false;
+						CubeManager.convertCube = false;
+					}
+					else
+					{
+						convertEnemy=true;
+						CubeManager.convertCube = true;
+					}
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/SpawnsMore") //allow aggressive
+				{
+					if (tempVal == 0)
+					{
+						spawnsMore=true;
+						CubeManager.spawnsMore = false;
+					}
+					else
+					{
+						CubeManager.spawnsMore =true;
+						spawnsMore=true;
+					}
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/Aggressive") //allow aggressive
+				{
+					if (tempVal == 0)
+						CubeManager.aggressiveActive = false;
+					else
+						CubeManager.aggressiveActive = true;
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/EnemySize") //allow aggressive
+				{
+					CubeManager.globalSize=tempVal;
+				}
                 else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/DisableEnemies") //disable all enemies
                 {
                     if (tempVal == 1)

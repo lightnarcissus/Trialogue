@@ -12,10 +12,14 @@ public class Aggressive : MonoBehaviour {
 	private Rigidbody body;
     private GameObject okay;
     private GameObject whatsup;
-
+	private GameObject targetCube;
+	public bool friendly=false;
+	private GameObject treeGen;
+	private GameObject target;
 	// Use this for initialization
 	void Start () { 
         player = GameObject.Find("Player");
+		treeGen = GameObject.Find ("TreeGenerator");
 		body = GetComponent<Rigidbody> ();
 
 	
@@ -29,10 +33,26 @@ public class Aggressive : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		body.AddForce ((player.transform.position - transform.position).normalized * 0.1f * Vector3.Distance(player.transform.position,transform.position),ForceMode.VelocityChange);
+		if (!friendly)
+			body.AddForce ((player.transform.position - transform.position).normalized * 0.1f * Vector3.Distance (player.transform.position, transform.position), ForceMode.VelocityChange);
+		else {
+			GetComponent<Renderer>().material.color=Color.green;
+			if(target!=null)
+				body.AddForce((target.transform.position - transform.position).normalized * 0.1f * Vector3.Distance (target.transform.position, transform.position), ForceMode.VelocityChange);
+			else
+			{
+				target=treeGen.GetComponent<TreeGenerator>().TargetEnemies(this.gameObject);
+			}
+
+		}
 		//	body.AddForce (Vector3.MoveTowards (transform.position, player.transform.position, 1f) * Vector3.Distance (player.transform.position, transform.position), ForceMode.Acceleration);
 		// transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * speed);
 		// transform.localScale += new Vector3(0.000001f,0.000001f,0.000001f);
+
+	}
+
+	void TargetEnemy()
+	{
 
 	}
 	void OnCollisionEnter(Collision col)

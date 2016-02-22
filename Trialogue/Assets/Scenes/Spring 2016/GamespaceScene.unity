@@ -1271,7 +1271,9 @@ Prefab:
       propertyPath: crosshairTex
       value: 
       objectReference: {fileID: 2800000, guid: 8df5608ac279440f2959815a6c2f03da, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11422222, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
+    - {fileID: 11456688, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bf4a8340075ac4426ad4201e84be61f3, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &929548100 stripped
@@ -1755,6 +1757,37 @@ Camera:
   m_PrefabParentObject: {fileID: 2082908, guid: bf4a8340075ac4426ad4201e84be61f3,
     type: 2}
   m_PrefabInternal: {fileID: 929548099}
+--- !u!114 &1682340042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1682340034}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020eaf64f60d30645b51a87e9fca6f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 1625466cabe2ded4ebd0842be1362270, type: 3}
+  noiseTex: {fileID: 2800000, guid: 9844786d1b19ff74990daa08db68a5be, type: 3}
+  noiseAmount: .899999976
+  lumThreshold: .200000003
+  brightenFactor: 2
+  visionColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &1682340044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1682340034}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3353dc3f9fe06e469be4f5e6146c6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: e861d54d8095bf349920be233a68c4e4, type: 3}
+  bitDepth: 1
+  contrast: 1
 --- !u!114 &1682340046
 MonoBehaviour:
   m_ObjectHideFlags: 0

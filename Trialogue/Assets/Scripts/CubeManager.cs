@@ -7,9 +7,14 @@ public class CubeManager : MonoBehaviour {
     public static float globalSizeY = 1f;
     public static float globalSizeZ = 1f;
     public static float globalSpeed = 0f;
+	public static float globalSize = 1f;
 
     public static bool passiveActive = false;
     public static bool aggressiveActive = false;
+	public static bool killCube=true;
+	public static bool convertCube=false;
+	public static bool spawnsMore=false;
+//	public static bool
     private int randInt = 0;
     // Use this for initialization
     void Start () {
@@ -37,10 +42,12 @@ public class CubeManager : MonoBehaviour {
 	
 	}
 
+
+
     public void UpdateParams()
     {
 
-        transform.localScale = new Vector3(globalSizeX, globalSizeY, globalSizeZ);
+        transform.localScale = new Vector3(globalSize,globalSize,globalSize);
 		GetComponent<BoxCollider>().size=new Vector3(globalSizeX, globalSizeY, globalSizeZ);
         PassiveCube.speed = globalSpeed;
         Aggressive.speed = globalSpeed;

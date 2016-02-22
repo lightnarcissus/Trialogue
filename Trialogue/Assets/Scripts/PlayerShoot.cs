@@ -114,9 +114,22 @@ public class PlayerShoot : MonoBehaviour {
 //					obj.transform.position=splashPos;
 					if (hit.collider.gameObject.tag == "Cube") {
 						TreeGenerator.cubes.Remove (hit.collider.gameObject);
+						if(CubeManager.spawnsMore)
+						{
+							Instantiate (cube,transform.position,Quaternion.identity);
+						}
+						if(CubeManager.convertCube)
+						{
+
+						}
+						if(CubeManager.killCube)
+						{
+							Debug.Log ("cube destroyed");
 						Destroy (hit.collider.gameObject);
 						Instantiate (explosionSound,transform.position,Quaternion.identity);
 						Instantiate (explosion, hit.collider.gameObject.transform.position, Quaternion.identity);
+						}
+
 						OffsetReticle ();
 					}
 				}

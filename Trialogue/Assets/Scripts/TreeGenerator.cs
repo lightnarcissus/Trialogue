@@ -71,6 +71,26 @@ public class TreeGenerator : MonoBehaviour {
 	
 	}
 
+	public GameObject TargetEnemies(GameObject targeter)
+	{
+		for (int i=0; i<cubes.Count; i++) {
+			if(cubes[i].GetComponent<Aggressive>().enabled)
+			{
+				if(cubes[i].GetComponent<Aggressive>().friendly)
+				{
+					return cubes[i];
+				//	break;
+				}
+				if(cubes[i].GetComponent<PassiveCube>().friendly)
+				{
+					return cubes[i];
+					//	break;
+				}
+			}
+		}
+		return null;
+	}
+
     public void DisableEnemies()
     {
 		disableSpawn = true;

@@ -9,12 +9,13 @@ public class PassiveCube : MonoBehaviour {
 	public static float colY=0f;
 	public static float colZ=0f;
 	private Rigidbody body;
-
-
+	public bool friendly=false;
+	private GameObject treeGen;
 	// Use this for initialization
 	void Start () {
 
 		player = GameObject.Find("Player");
+		treeGen = GameObject.Find ("TreeGenerator");
 		body = GetComponent<Rigidbody> ();
 		InvokeRepeating("CheckPlayerDistance", 0.5f, 1f);
 	
