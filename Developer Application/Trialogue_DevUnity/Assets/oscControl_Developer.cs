@@ -279,12 +279,19 @@ public class oscControl_Developer : MonoBehaviour {
 				boolVal=0f;
 			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/DeadBodyRemains", boolVal); 
 			break;
-		case "InvincibleEnemy":
+		case "SpawnsMore":
 			if(enemySet[7].GetComponent<bl_ToggleSwitcher>().isOn)
 				boolVal=1f;
 			else
 				boolVal=0f;
-			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/InvincibleEnemy", boolVal); 
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/SpawnsMore", boolVal); 
+			break;
+		case "DisableEnemies":
+			if(enemySet[8].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/DisableEnemies", boolVal); 
 			break;
 	
 		//you set
