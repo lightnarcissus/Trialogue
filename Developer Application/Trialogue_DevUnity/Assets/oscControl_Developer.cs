@@ -34,6 +34,8 @@ public class oscControl_Developer : MonoBehaviour {
 	public GameObject[] visualSet;
 	public GameObject[] envSet;
 	public GameObject[] enemySet;
+	public GameObject[] youSet;
+	public GameObject metascoreLine;
 	private float boolVal=0f;
 	// Script initialization
 	void Start() {	
@@ -63,15 +65,10 @@ public class oscControl_Developer : MonoBehaviour {
 //				                                    item.Value.packets[lastPacketIndex].Data[0].ToString())); //First data value
 
 				float tempVal = float.Parse (item.Value.packets [lastPacketIndex].Data [0].ToString ());
-				if (item.Value.packets[lastPacketIndex].Address == "/critic/fader1") //gameplay
+
+				if (item.Value.packets[lastPacketIndex].Address == "/Dev/Metascore") //gameplay
 				{
-					if(tempVal > 4)
-					{
-						cube.GetComponent<Renderer>().material.color=Color.green;
-					}
-					else{
-						cube.GetComponent<Renderer>().material.color=Color.red;
-					}
+					metascoreLine.GetComponent<Slider>().value=tempVal;
 				}
 			}
 	    }
@@ -290,7 +287,29 @@ public class oscControl_Developer : MonoBehaviour {
 			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/InvincibleEnemy", boolVal); 
 			break;
 	
-		
+		//you set
+
+		case "NoDeath":
+			if(youSet[0].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/You/NoDeath", boolVal); 
+			break;
+		case "ShootToMove":
+			if(youSet[1].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/You/ShootToMove", boolVal); 
+			break;
+		case "YourHand":
+			if(youSet[2].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/You/YourHand", boolVal); 
+			break;
 		
 
 			
