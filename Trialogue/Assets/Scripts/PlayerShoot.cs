@@ -135,10 +135,14 @@ public class PlayerShoot : MonoBehaviour {
 				healthSlider.value = 0;
 				GameOver ();
 			}
+			if(oscManager.GetComponent<oscControl> ().regenHealth)
+			{
 			regenTimer += Time.deltaTime;
-			if (regenTimer * regenRate > 5f && oscManager.GetComponent<oscControl> ().regenHealth) {
-				healthSlider.value++;
+			if (regenTimer * 2f > 5f) {
+				if(healthSlider.value <=98)
+					healthSlider.value+=2;
 				regenTimer = 0f;
+			}
 			}
 		}
 		else

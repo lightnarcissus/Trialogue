@@ -18,7 +18,7 @@ public class vp_SimpleCrosshair : MonoBehaviour
 
 	// crosshair texture
 	public Texture m_ImageCrosshair = null;
-
+	public Texture crosshairTex;
 	public float offsetX=0.5f;
 	public float offsetY=0.5f;
 	public int copies=1;
@@ -70,6 +70,14 @@ public class vp_SimpleCrosshair : MonoBehaviour
 	void OnGUI()
 	{
 		if (!PlayerShoot.gameOver) {
+			if(oscControl.noReticle)
+			{
+				m_ImageCrosshair=null;
+			}
+			else
+			{
+				m_ImageCrosshair=crosshairTex;
+			}
 			if (oscControl.allowMultipleReticle) {
 				overruleOffset = true;
 			} else {
