@@ -41,6 +41,7 @@ public class oscControl_Developer : MonoBehaviour {
 	void Start() {	
 		OSCHandler_Developer.Instance.Init(); //init OSC
 		servers = new Dictionary<string, ServerLog>();
+		MetascoreChanged (metascoreLine.GetComponent<Slider>());
 	}
 
 	// NOTE: The received messages at each server are updated here
@@ -333,13 +334,42 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "ConquerSpace":
+			if (metascoreLine.GetComponent<Slider> ().value > 90f) {
 			if(envSet[2].GetComponent<bl_ToggleSwitcher>().isOn)
 				boolVal=1f;
 			else
 				boolVal=0f;
 			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/ConquerSpace", boolVal); 
+			}
 			break;
-
+		case "BarrenLand":
+			if (metascoreLine.GetComponent<Slider> ().value > 0f) {
+				if(envSet[3].GetComponent<bl_ToggleSwitcher>().isOn)
+					boolVal=1f;
+				else
+					boolVal=0f;
+				OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/BarrenLand", boolVal); 
+			}
+			break;
+		case "BattleArena":
+			if (metascoreLine.GetComponent<Slider> ().value >= 40f) {
+				if(envSet[4].GetComponent<bl_ToggleSwitcher>().isOn)
+					boolVal=1f;
+				else
+					boolVal=0f;
+				OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/BattleArena", boolVal); 
+			}
+			break;
+		case "Battlefield":
+			Debug.Log ("hi");	
+			if (metascoreLine.GetComponent<Slider> ().value >= 60f) {
+				if(envSet[5].GetComponent<bl_ToggleSwitcher>().isOn)
+					boolVal=1f;
+				else
+					boolVal=0f;
+				OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/Battlefield", boolVal); 
+			}
+			break;
 
 			//enemy set
 		case "EnemySize":
@@ -375,7 +405,7 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "ConvertEnemy":
-			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 70f) {
 				if (enemySet [4].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
@@ -398,7 +428,7 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "SpawnsMore":
-			if (metascoreLine.GetComponent<Slider> ().value > 70f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
 				if (enemySet [7].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
@@ -407,7 +437,7 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "DisableEnemies":
-			if (metascoreLine.GetComponent<Slider> ().value > 50f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 80f) {
 				if (enemySet [8].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
@@ -416,7 +446,7 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "HumanEnemies":
-			if (metascoreLine.GetComponent<Slider> ().value > 80f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 50f) {
 				if (enemySet [9].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else

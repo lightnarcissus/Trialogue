@@ -14,6 +14,8 @@ public class CubeManager : MonoBehaviour {
 	public static bool killCube=true;
 	public static bool convertCube=false;
 	public static bool spawnsMore=false;
+	public static bool bodyRemains=false;
+	public static bool humanEnemies=false;
 //	public static bool
     private int randInt = 0;
     // Use this for initialization

@@ -11,6 +11,7 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject paintBrush;
 	private RaycastHit hit;
 	public GameObject cube;
+	public GameObject zombie;
 	private Ray ray;
 	private Vector3 p;
 	public GameObject playerSound;
@@ -27,6 +28,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	public LayerMask mask=9;
 	public List<AudioClip> weaponClips;
+	public GameObject dyingSound;
 	public GameObject explosionSound;
 	public GameObject explosion;
 	public GameObject pistolMuzzle;
@@ -90,7 +92,7 @@ public class PlayerShoot : MonoBehaviour {
 			paintManager.GetComponent<PaintManager>().AddPaint(obj);
 			}
             else if (Input.GetMouseButtonDown (0) ||(!shootUp && (shootTrigger==1f))) {
-				cameraPlay.GetComponent<PP_Charcoal>().enabled=false;
+			//	cameraPlay.GetComponent<PP_Charcoal>().enabled=false;
 			   // Debug.Log ("shooting");
 				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
 				//ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
@@ -127,20 +129,54 @@ public class PlayerShoot : MonoBehaviour {
 						if(CubeManager.killCube)
 						{
 							Debug.Log ("cube destroyed");
-						Destroy (hit.collider.gameObject);
+							if(!CubeManager.bodyRemains)
+							{
+								hit.collider.gameObject.GetComponent<Renderer>().material.color=Color.red;
+								Destroy (hit.collider.gameObject);
+							}
 						Instantiate (explosionSound,transform.position,Quaternion.identity);
 						Instantiate (explosion, hit.collider.gameObject.transform.position, Quaternion.identity);
 						}
 
 						OffsetReticle ();
 					}
+					if(hit.collider.gameObject.tag=="Human")
+					{
+
+						hit.collider.gameObject.GetComponent<NavMeshAgent>().enabled=false;
+						hit.collider.gameObject.GetComponent<Animator>().SetBool("Death",true);
+						if(CubeManager.spawnsMore)
+						{
+							Instantiate (zombie,transform.position,Quaternion.identity);
+						}
+						if(CubeManager.convertCube)
+						{
+							//Debug.Log ("cube converted");
+							//hit.collider.gameObject.GetComponent<Aggressive>().friendly=true;
+							//hit.collider.gameObject.GetComponent<PassiveCube>().friendly=true;
+						}
+						if(CubeManager.killCube)
+						{
+							//Debug.Log ("cube destroyed");
+							if(!CubeManager.bodyRemains)
+							{
+								//hit.collider.gameObject.GetComponent<Renderer>().material.color=Color.red;
+								//Destroy (hit.collider.gameObject);
+							}
+							Instantiate (dyingSound,hit.collider.gameObject.transform.position,Quaternion.identity);
+							//Instantiate (explosionSound,transform.position,Quaternion.identity);
+							//Instantiate (explosion, hit.collider.gameObject.transform.position, Quaternion.identity);
+						}
+
+					}
+
 				}
 
 
 			}
 			else
 			{
-				cameraPlay.GetComponent<PP_Charcoal>().enabled=false;
+				//cameraPlay.GetComponent<PP_Charcoal>().enabled=false;
 				paintBrush.SetActive (false);
 				pistol.SetActive (true);
 			}

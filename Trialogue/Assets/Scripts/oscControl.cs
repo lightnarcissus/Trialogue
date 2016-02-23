@@ -49,10 +49,14 @@ public class oscControl : MonoBehaviour {
     public float treeSize = 1f;
     public float spawnRate=0.2f;
     public float spawnDistance=8f;
+	public bool barrenLand=false;
+	public bool battleArena=false;
+	public bool battlefield=false;
 
 	//Enemies page
 	public float enemySpawnRate=0.1f;
 	public bool enemySpawn=true;
+	public bool humanEnemies=false;
 
 	//platforms
 	//public float platformSpawnRate=0.1f;
@@ -244,6 +248,51 @@ public class oscControl : MonoBehaviour {
                         greenTrees = true;
 
                 }
+				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/BarrenLand") //green trees?
+				{
+					if (tempVal==0)
+					{
+						barrenLand=false;
+						SettleOnTerrain.terrainStatus=0;
+					}
+					else
+					{
+						barrenLand=true;
+						SettleOnTerrain.terrainStatus=1;
+					}
+					
+				}
+				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/BattleArena") //green trees?
+				{
+					//playerBody.GetComponent<AudioSource>().clip=
+					if (tempVal==0)
+					{
+						battleArena=false;
+						SettleOnTerrain.terrainStatus=0;
+					}
+					else
+					{
+						battleArena=true;
+						SettleOnTerrain.terrainStatus=2;
+					}
+					
+				}
+				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/Battlefield") //green trees?
+				{
+					Debug.Log(tempVal);
+					if (tempVal==0)
+					{
+						battlefield=false;
+						SettleOnTerrain.terrainStatus=0;
+					}
+					else
+					{
+						Debug.Log("battlefield activated");
+						battlefield=true;
+						SettleOnTerrain.terrainStatus=3;
+					}
+					
+				}
 				else if(item.Value.packets [lastPacketIndex].Address=="/Visuals/GroundWater") //ground is water?
 				{
 					//Debug.Log("innit");
@@ -680,6 +729,38 @@ public class oscControl : MonoBehaviour {
                         treeSpawner.GetComponent<TreeGenerator>().EnableEnemies();
 
                 }
+				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/DeadBodyRemains") //disable all enemies
+				{
+					if (tempVal == 1)
+					{
+						CubeManager.bodyRemains=true;
+						deadBodyRemains=true;
+
+					}
+					else
+					{
+						CubeManager.bodyRemains=false;
+						deadBodyRemains=false;
+					}
+						
+					
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/HumanEnemies") //disable all enemies
+				{
+					if (tempVal == 1)
+					{
+						CubeManager.humanEnemies=true;
+						humanEnemies=true;
+						
+					}
+					else
+					{
+						CubeManager.humanEnemies=false;
+						humanEnemies=false;
+					}
+					
+					
+				}
                 //	}
                 //cube.transform.localScale = new Vector3 (tempVal, tempVal, tempVal);
             }
