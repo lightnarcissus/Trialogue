@@ -34,11 +34,11 @@ public class Aggressive : MonoBehaviour {
 	void FixedUpdate()
 	{
 		if (!friendly)
-			body.AddForce ((player.transform.position - transform.position).normalized * 0.1f * Vector3.Distance (player.transform.position, transform.position), ForceMode.VelocityChange);
+			body.AddForce ((player.transform.position - transform.position).normalized * 0.01f * Vector3.Distance (player.transform.position, transform.position), ForceMode.VelocityChange);
 		else {
 			GetComponent<Renderer>().material.color=Color.green;
 			if(target!=null)
-				body.AddForce((target.transform.position - transform.position).normalized * 0.1f * Vector3.Distance (target.transform.position, transform.position), ForceMode.VelocityChange);
+				body.AddForce((target.transform.position - transform.position).normalized * 0.01f * Vector3.Distance (target.transform.position, transform.position), ForceMode.VelocityChange);
 			else
 			{
 				if(treeGen!=null)

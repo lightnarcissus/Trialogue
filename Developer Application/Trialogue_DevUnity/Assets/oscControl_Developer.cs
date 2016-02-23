@@ -293,6 +293,13 @@ public class oscControl_Developer : MonoBehaviour {
 				boolVal=0f;
 			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/DisableEnemies", boolVal); 
 			break;
+		case "HumanEnemies":
+			if(enemySet[9].GetComponent<bl_ToggleSwitcher>().isOn)
+				boolVal=1f;
+			else
+				boolVal=0f;
+			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Enemies/HumanEnemies", boolVal); 
+			break;
 	
 		//you set
 
