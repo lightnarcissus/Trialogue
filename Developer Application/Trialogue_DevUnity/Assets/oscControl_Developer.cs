@@ -68,6 +68,7 @@ public class oscControl_Developer : MonoBehaviour {
 				if (item.Value.packets[lastPacketIndex].Address == "/Dev/Metascore") //gameplay
 				{
 					metascoreLine.GetComponent<Slider>().value=tempVal;
+					MetascoreChanged(metascoreLine.GetComponent<Slider>());
 				}
 			}
 		}
@@ -80,14 +81,14 @@ public class oscControl_Developer : MonoBehaviour {
 		for (int i = 0; i < valueSet.Length; i++) {
 			
 			//turn off
-			if (valueSet[i].gameObject.GetComponent<MetaManager>().metaLimit<temp) {
+			if (valueSet[i].gameObject.GetComponent<MetaManager>().metaLimit>=temp) {
 				if (valueSet [i].gameObject.GetComponent<Slider> () != null)
 					valueSet [i].gameObject.GetComponent<Slider> ().interactable = false;
 				else if (valueSet [i].gameObject.GetComponent<bl_ToggleSwitcher> () != null)
 					valueSet [i].gameObject.GetComponent<bl_ToggleSwitcher> ().interactable = false;
 
 				valueSet [i].transform.parent.FindChild ("Text").gameObject.GetComponent<Text> ().color = Color.red;
-			} else if (valueSet[i].gameObject.GetComponent<MetaManager>().metaLimit>=temp) {
+			} else if (valueSet[i].gameObject.GetComponent<MetaManager>().metaLimit<temp) {
 				if (valueSet [i].gameObject.GetComponent<Slider> () != null)
 					valueSet [i].gameObject.GetComponent<Slider> ().interactable = true;
 				else if (valueSet [i].gameObject.GetComponent<bl_ToggleSwitcher> () != null)
@@ -113,6 +114,7 @@ public class oscControl_Developer : MonoBehaviour {
 	}
 	public void ChangeValue(String name)
 	{
+		Debug.Log ("hi");
 		switch (name) {
 
 

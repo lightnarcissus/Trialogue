@@ -95,6 +95,11 @@ public class OSCHandler_Developer : MonoBehaviour
         //Initialize OSC clients (transmitters)
         //Example:
 		Debug.Log ("TIED TO: " + ListIP.ipAddress);
+		if (ListIP.ipAddress == null) {
+
+			ListIP.ipAddress = "172.16.11.89";
+			ListIP.otherIPAddress = "182.16.12.69";
+		}
 			CreateClient("Max", IPAddress.Parse(ListIP.ipAddress), 8000);
 		CreateClient ("Critic", IPAddress.Parse (ListIP.otherIPAddress), 8000);
         //Initialize OSC servers (listeners)

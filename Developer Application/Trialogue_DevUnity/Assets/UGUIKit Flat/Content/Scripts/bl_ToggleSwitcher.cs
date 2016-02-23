@@ -94,6 +94,7 @@
                     StopAllCoroutines();
                     StopCoroutine("Switch");
                     Vector2 p = (this.m_IsOn) ? IsOnPosition : IsOffPosition;
+
                     StartCoroutine(Switch(p));
                 }
             }
