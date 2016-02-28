@@ -9,6 +9,7 @@ public class ListIP : MonoBehaviour {
 	public InputField otherField;
 	// Use this for initialization
 	void Start () {
+		DontDestroyOnLoad(GameObject.Find("PlatformManager_Dev"));
 		DontDestroyOnLoad (gameObject);
 	
 	}
@@ -22,6 +23,9 @@ public class ListIP : MonoBehaviour {
 	{
 		ipAddress = ipField.text.ToString ();
 		otherIPAddress = otherField.text.ToString ();
-		Application.LoadLevel ("Main");
+		if (PlatformManager_Dev.platformVersion == 2)
+			Application.LoadLevel ("Main");
+		else
+			Application.LoadLevel ("MainDesktop");
 	}
 }
