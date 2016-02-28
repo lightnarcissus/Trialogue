@@ -8,8 +8,9 @@ public class MetaManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		GetComponent<bl_ToggleSwitcher> ().isOn = false;
-	
+		if(gameObject.GetComponent<bl_ToggleSwitcher>() != null)
+			GetComponent<bl_ToggleSwitcher> ().isOn = false;
+		
 	}
 
 	// Update is called once per frame

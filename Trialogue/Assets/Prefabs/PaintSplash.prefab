@@ -30,6 +30,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26eb84f9d16c443309d4ad0daa99a2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  varyAlpha: 0
 --- !u!114 &11448834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,8 +87,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 1134.90002, y: 704.029907}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 1, y: 1}
@@ -108,19 +109,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AnchorMin.x
-      value: .5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AnchorMin.y
-      value: .5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AnchorMax.x
-      value: .5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AnchorMax.y
-      value: .5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AnchoredPosition.x

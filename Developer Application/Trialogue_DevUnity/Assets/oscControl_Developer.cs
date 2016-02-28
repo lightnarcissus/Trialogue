@@ -115,9 +115,9 @@ public class oscControl_Developer : MonoBehaviour {
 	}
 	public void ChangeValue(String name)
 	{
-		Debug.Log ("hi");
+		//Debug.Log ("hi");
+		Debug.Log (name);
 		switch (name) {
-
 
 			//gameplay set
 
