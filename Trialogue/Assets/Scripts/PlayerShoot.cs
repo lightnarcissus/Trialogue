@@ -86,12 +86,16 @@ public class PlayerShoot : MonoBehaviour {
 				pistol.SetActive (false);
 			GameObject obj=Instantiate (paintSplash,transform.position,Quaternion.identity)as GameObject;
 			obj.transform.parent=paintManager.transform;
-				Debug.Log ("After parenting "+obj.transform.position);
+				obj.transform.eulerAngles=Vector3.zero;
+			//	Debug.Log ("After parenting "+obj.transform.position);
+				obj.transform.localScale=Vector3.one;
 			//cameraPlay.GetComponent<PP_Charcoal>().enabled=true;
-
-			Vector3 splashPos=Input.mousePosition;
-			obj.transform.position=splashPos;
-				Debug.Log ("after mousepos "+obj.transform.position);
+			//	Vector3 splashPos=Input.mousePosition;
+			Vector3 splashPos=Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				splashPos=new Vector3(splashPos.x-2000f,splashPos.y,0f);
+				obj.transform.position=splashPos;
+				obj.transform.localPosition=splashPos;
+				//Debug.Log ("after mousepos "+obj.transform.position + " and " + obj.GetComponent<RectTransform>().position);
 			paintManager.GetComponent<PaintManager>().AddPaint(obj);
 			}
             else if (Input.GetMouseButtonDown (0) ||(!shootUp && (shootTrigger==1f))) {
