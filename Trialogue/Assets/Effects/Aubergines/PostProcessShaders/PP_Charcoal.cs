@@ -4,6 +4,7 @@ using UnityEngine;
 [AddComponentMenu("Image Effects/Aubergine/Charcoal")]
 public class PP_Charcoal : PostProcessBase {
 	public Color lineColor = Color.red;
+	public bool switchSource=false;
 	//public Color matColor=Color.red;
 	void OnEnable () {
 		base.shader = Shader.Find("Hidden/Aubergine/Charcoal");
@@ -13,6 +14,9 @@ public class PP_Charcoal : PostProcessBase {
 	void OnRenderImage (RenderTexture source, RenderTexture destination) {
 		base.material.SetVector("_LineColor", lineColor);
 		material.color = Color.black;
+		if(!switchSource)
 		Graphics.Blit (source,destination, material);
+		else
+		Graphics.Blit (destination,source, material);
 	}
 }
