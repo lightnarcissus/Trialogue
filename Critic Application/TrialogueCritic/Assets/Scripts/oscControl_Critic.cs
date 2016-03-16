@@ -26,20 +26,18 @@ using System.Text;
 using UnityOSC;
 using UnityEngine.UI;
 
-public class oscControl_Developer : MonoBehaviour {
+public class oscControl_Critic : MonoBehaviour {
 	
 	private Dictionary<string, ServerLog> servers;
-	public GameObject cube;
-	public GameObject[] gameplaySet;
-	public GameObject[] visualSet;
-	public GameObject[] envSet;
-	public GameObject[] enemySet;
-	public GameObject[] youSet;
-	public GameObject metascoreLine;
 	private float boolVal=0f;
+    public Slider overall;
+    private float overallScore = 0f;
+
+    public InputField headline;
+    public string headlineText = "";
 	// Script initialization
 	void Start() {	
-		OSCHandler_Developer.Instance.Init(); //init OSC
+		OSCHandler_Critic.Instance.Init(); //init OSC
 		servers = new Dictionary<string, ServerLog>();
 //		MetascoreChanged (metascoreLine.GetComponent<Slider>());
 	}
@@ -48,8 +46,8 @@ public class oscControl_Developer : MonoBehaviour {
     // Hence, this update depends on your application architecture
     // How many frames per second or Update() calls per frame?
 	void Update() {
-		OSCHandler_Developer.Instance.UpdateLogs();
-		servers = OSCHandler_Developer.Instance.Servers;
+		OSCHandler_Critic.Instance.UpdateLogs();
+		servers = OSCHandler_Critic.Instance.Servers;
 		
 	    foreach( KeyValuePair<string, ServerLog> item in servers )
 		{
@@ -73,5 +71,17 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 		}
 	}
-		
+	public void SliderChanged()
+    {
+        overallScore = overall.value * 10f;
+        OSCHandler_Critic.Instance.SendMessageToClient("Developer", "/Dev/Metascore", overallScore);
+      //  Debug.Log("sending message to " + ListIP.otherIPAddress);
+    }
+
+    public void HeadlineChanged()
+    {
+        Debug.Log("changed");
+        headlineText = headline.text;
+        OSCHandler_Critic.Instance.SendMessageToClient("Player", "/Critic/Headline", headlineText);
+    }
 }

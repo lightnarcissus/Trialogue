@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlatformManager_Dev : MonoBehaviour {
+public class PlatformManager_Critic : MonoBehaviour {
 
 	public string platform;
 	public static int platformVersion=0;

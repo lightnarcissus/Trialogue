@@ -63,8 +63,8 @@ public class OSCHelper : EditorWindow
 			GUILayout.Label(_status, EditorStyles.boldLabel);
 			GUILayout.Label(String.Concat("SELECTED: ", _selected));
 			
-			_clients = OSCHandler_Developer.Instance.Clients;//Get the clients
-			_servers = OSCHandler_Developer.Instance.Servers;//Get the servers
+			_clients = OSCHandler_Critic.Instance.Clients;//Get the clients
+			_servers = OSCHandler_Critic.Instance.Servers;//Get the servers
 			
 			foreach(KeyValuePair<string, ClientLog> pair in _clients)
 			{
@@ -100,7 +100,7 @@ public class OSCHelper : EditorWindow
 	{
 		if(EditorApplication.isPlaying)
 		{
-			OSCHandler_Developer.Instance.UpdateLogs();
+			OSCHandler_Critic.Instance.UpdateLogs();
 			
 			if(_clients.ContainsKey(_selected) && _clients[_selected].client.Port == _portselected)
 			{

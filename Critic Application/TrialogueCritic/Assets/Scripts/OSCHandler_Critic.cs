@@ -52,24 +52,24 @@ public struct ClientLog
 /// Handles all the OSC servers and clients of the current Unity game/application.
 /// Tracks incoming and outgoing messages.
 /// </summary>
-public class OSCHandler_Developer : MonoBehaviour
+public class OSCHandler_Critic : MonoBehaviour
 {
 	#region Singleton Constructors
-	static OSCHandler_Developer()
+	static OSCHandler_Critic()
 	{
 	}
 
-	OSCHandler_Developer()
+	OSCHandler_Critic()
 	{
 	}
 	
-	public static OSCHandler_Developer Instance 
+	public static OSCHandler_Critic Instance 
 	{
 	    get 
 		{
 	        if (_instance == null) 
 			{
-				_instance = new GameObject ("OSCHandler_Developer").AddComponent<OSCHandler_Developer>();
+				_instance = new GameObject ("OSCHandler_Critic").AddComponent<OSCHandler_Critic>();
 	        }
 	       
 	        return _instance;
@@ -78,7 +78,7 @@ public class OSCHandler_Developer : MonoBehaviour
 	#endregion
 	
 	#region Member Variables
-	private static OSCHandler_Developer _instance = null;
+	private static OSCHandler_Critic _instance = null;
 	private Dictionary<string, ClientLog> _clients = new Dictionary<string, ClientLog>();
 	private Dictionary<string, ServerLog> _servers = new Dictionary<string, ServerLog>();
 	
@@ -100,8 +100,8 @@ public class OSCHandler_Developer : MonoBehaviour
 			ListIP.ipAddress = "172.16.11.89";
 			ListIP.otherIPAddress = "182.16.12.69";
 		}
-			CreateClient("Max", IPAddress.Parse(ListIP.ipAddress), 8000);
-		CreateClient ("Critic", IPAddress.Parse (ListIP.otherIPAddress), 8000);
+			CreateClient("Player", IPAddress.Parse(ListIP.ipAddress), 8000);
+		CreateClient ("Developer", IPAddress.Parse (ListIP.otherIPAddress), 9000);
         //Initialize OSC servers (listeners)
         //Example:
 
