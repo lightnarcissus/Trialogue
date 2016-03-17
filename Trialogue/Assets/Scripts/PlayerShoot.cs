@@ -74,12 +74,9 @@ public class PlayerShoot : MonoBehaviour {
             if(Mathf.Abs(shootTrigger)<0.1f)
             {
                 shootUp = true;
-
+               // StartCoroutine("DontShoot");
             }
-            else
-            {
-                shootUp = false;
-            }
+            
 			if(paintAllow)
 			{
 				paintBrush.SetActive (true);
@@ -98,12 +95,13 @@ public class PlayerShoot : MonoBehaviour {
 				//Debug.Log ("after mousepos "+obj.transform.position + " and " + obj.GetComponent<RectTransform>().position);
 			paintManager.GetComponent<PaintManager>().AddPaint(obj);
 			}
-            else if (Input.GetMouseButtonDown (0) ||(!shootUp && (shootTrigger==1f))) {
+            else if (Input.GetMouseButtonDown (0) ||(shootUp && (shootTrigger==1f))) {
 			//	cameraPlay.GetComponent<PP_Charcoal>().enabled=false;
 			   // Debug.Log ("shooting");
 				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
 				//ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
 				pistol.GetComponent<Animator> ().Play ("PistolShoot");
+                shootUp = false;
 				//Instantiate(pistolMuzzle,pistol.transform.position,Quaternion.identity);
 				pistol.GetComponent<AudioSource> ().PlayOneShot (weaponClips [0]);
 				tempMuzzle=Instantiate (pistolMuzzle,pistol.transform.localPosition,Quaternion.identity)as GameObject;
@@ -129,13 +127,13 @@ public class PlayerShoot : MonoBehaviour {
 						}
 						if(CubeManager.convertCube)
 						{
-							Debug.Log ("cube converted");
+							//Debug.Log ("cube converted");
 							hit.collider.gameObject.GetComponent<Aggressive>().friendly=true;
 							hit.collider.gameObject.GetComponent<PassiveCube>().friendly=true;
 						}
 						if(CubeManager.killCube)
 						{
-							Debug.Log ("cube destroyed");
+							//Debug.Log ("cube destroyed");
 							if(!CubeManager.bodyRemains)
 							{
 								hit.collider.gameObject.GetComponent<Renderer>().material.color=Color.red;
@@ -214,7 +212,14 @@ public class PlayerShoot : MonoBehaviour {
 		}
 	
 	}
-
+/*
+    IEnumerator DontShoot()
+    {
+        yield return new WaitForSeconds(1f);
+        shootUp = false;
+        yield return null;
+    }
+    */
 	public void FindCubePos(Vector3 pos)
 	{
 		Vector3 temp=cameraPlay.GetComponent<Camera> ().WorldToScreenPoint (pos);

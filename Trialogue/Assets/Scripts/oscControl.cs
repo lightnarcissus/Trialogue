@@ -203,6 +203,7 @@ public class oscControl : MonoBehaviour {
                         disableComplexGameplay = false;
                     }
                 }
+                /*
                 else if (item.Value.packets[lastPacketIndex].Address == "/critic/fader3") //graphics
                 {
                     if (tempVal > 8)
@@ -240,6 +241,7 @@ public class oscControl : MonoBehaviour {
                 {
                     //for future use
                 }
+                */
                 else if(item.Value.packets [lastPacketIndex].Address=="/Environment/GreenTrees") //green trees?
                 {
 					if (tempVal==0)
