@@ -51,8 +51,15 @@ public class PlayerShoot : MonoBehaviour {
 	public bool paintAllow=true; //change to false afterwards
 	public GameObject paintManager;
 	public GameObject paintSplash;
+	public GameObject platformManager;
+	private int platformID=0;
 	// Use this for initialization
 	void Start () {
+
+		if (platformManager.GetComponent<PlatformManager> ().platform.Contains ("Windows"))
+			platformID = 1;
+		else if (platformManager.GetComponent<PlatformManager> ().platform.Contains ("Mac"))
+			platformID = 2;
 		cameraPlay.GetComponent<Camera> ().enabled = false;
         cameraPlay.GetComponent<Camera> ().enabled = true;
 		flashTexture.enabled = false;
@@ -69,7 +76,10 @@ public class PlayerShoot : MonoBehaviour {
 
 			if (transform.position.y < 90f)
 					GameOver ();
-            shootTrigger = Input.GetAxis("Shoot");
+			if(platformID==1)
+            	shootTrigger = Input.GetAxis("Shoot");
+			else
+				shootTrigger =Input.GetAxis("ShootMac");
 			//Debug.Log(Mathf.Abs(shootTrigger));
             if(Mathf.Abs(shootTrigger)<0.1f)
             {
@@ -95,7 +105,7 @@ public class PlayerShoot : MonoBehaviour {
 				//Debug.Log ("after mousepos "+obj.transform.position + " and " + obj.GetComponent<RectTransform>().position);
 			paintManager.GetComponent<PaintManager>().AddPaint(obj);
 			}
-            else if (Input.GetMouseButtonDown (0) ||(shootUp && (shootTrigger==1f))) {
+            else if (Input.GetMouseButtonDown (0) ||(shootUp && (shootTrigger>=0.8f))) {
 			//	cameraPlay.GetComponent<PP_Charcoal>().enabled=false;
 			   // Debug.Log ("shooting");
 				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));

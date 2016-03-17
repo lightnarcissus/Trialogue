@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
-
+using System.Collections;
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [Serializable]
@@ -29,8 +29,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void LookRotation(Transform character, Transform camera)
         {
-            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
-            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+			float yRot = 0f;
+			float xRot=0f;
+			if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
+				yRot = CrossPlatformInputManager.GetAxis ("Mouse X") * XSensitivity;
+				xRot = CrossPlatformInputManager.GetAxis ("Mouse Y") * YSensitivity;
+			} else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer) {
+				yRot = CrossPlatformInputManager.GetAxis ("MouseXMac") * XSensitivity;
+				xRot = CrossPlatformInputManager.GetAxis ("MouseYMac") * YSensitivity;
+			}
 /*
             float xJoy= CrossPlatformInputManager.GetAxis("Joystick X") * XSensitivity;
             float yJoy= CrossPlatformInputManager.GetAxis("Joystick Y") * XSensitivity;

@@ -235,11 +235,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22459970, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22459970, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22485842, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMin.x
@@ -2607,6 +2607,7 @@ MonoBehaviour:
   paintAllow: 0
   paintManager: {fileID: 745894675}
   paintSplash: {fileID: 171060, guid: 3b3f8de3fab1a4d289e17bafa506f0ca, type: 2}
+  platformManager: {fileID: 1921404530}
 --- !u!114 &1661101154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2690,7 +2691,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
