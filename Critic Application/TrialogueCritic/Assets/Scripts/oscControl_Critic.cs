@@ -35,6 +35,10 @@ public class oscControl_Critic : MonoBehaviour {
 
     public InputField headline;
     public string headlineText = "";
+
+    private float tempVal= 0f;
+    private string tempString = "";
+    public GameObject prText;
 	// Script initialization
 	void Start() {	
 		OSCHandler_Critic.Instance.Init(); //init OSC
@@ -62,11 +66,15 @@ public class oscControl_Critic : MonoBehaviour {
 //				                                    item.Value.packets[lastPacketIndex].Address, // OSC address
 //				                                    item.Value.packets[lastPacketIndex].Data[0].ToString())); //First data value
 
-				float tempVal = float.Parse (item.Value.packets [lastPacketIndex].Data [0].ToString ());
+				tempVal = float.Parse (item.Value.packets [lastPacketIndex].Data [0].ToString ());
+                tempString = item.Value.packets[lastPacketIndex].Data[0].ToString();
 
-				if (item.Value.packets[lastPacketIndex].Address == "/Dev/Metascore") //gameplay
+                if (item.Value.packets[lastPacketIndex].Address == "/Critic/PressRelease") //gameplay
 				{
-					
+                    GameObject tempObj;
+                    tempObj=Instantiate(prText, Vector3.zero, Quaternion.identity) as GameObject;
+                    tempObj.GetComponent<TextMesh>().text = tempString;
+
 				}
 			}
 		}

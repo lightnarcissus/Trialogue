@@ -27,7 +27,7 @@ using UnityOSC;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using UnityStandardAssets.Characters.FirstPerson;
-
+using UnityEngine.UI;
 public class oscControl : MonoBehaviour {
 	
 	private Dictionary<string, ServerLog> servers;
@@ -99,6 +99,7 @@ public class oscControl : MonoBehaviour {
 	public bool deadBodyRemains=false;
 
     //critic
+    public Text headlineText;
     public float gameplay = 0f;
     private bool disableComplexGameplay = false;
 
@@ -186,17 +187,18 @@ public class oscControl : MonoBehaviour {
 //				Debug.Log ("one before that: "+item.Value.packets[beforeLastPacketIndex].Address);
 				//{
 				float tempVal = float.Parse (item.Value.packets [lastPacketIndex].Data [0].ToString ());
-				Debug.Log(item.Value.packets [lastPacketIndex].Address.ToString());
-				//critic section begins
+                string tempString = item.Value.packets[lastPacketIndex].Data[0].ToString();
+                Debug.Log(item.Value.packets [lastPacketIndex].Address.ToString());
+                //critic section begins
                 if (item.Value.packets[lastPacketIndex].Address == "/critic/fader1") //gameplay
                 {
                     if (tempVal > 8)
                     {
                         disableComplexGameplay = false;
-                      /*  lightIntensity = 1.5f;
-                        OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader2", lightIntensity);
-                        directionalLight.GetComponent<Light>().intensity = lightIntensity;
-                        //OSCHandler.Instance.UpdateLogs(); */
+                        /*  lightIntensity = 1.5f;
+                          OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader2", lightIntensity);
+                          directionalLight.GetComponent<Light>().intensity = lightIntensity;
+                          //OSCHandler.Instance.UpdateLogs(); */
                     }
                     else
                     {
@@ -242,91 +244,91 @@ public class oscControl : MonoBehaviour {
                     //for future use
                 }
                 */
-                else if(item.Value.packets [lastPacketIndex].Address=="/Environment/GreenTrees") //green trees?
+                else if (item.Value.packets[lastPacketIndex].Address == "/Environment/GreenTrees") //green trees?
                 {
-					if (tempVal==0)
-						greenTrees = false;
+                    if (tempVal == 0)
+                        greenTrees = false;
                     else
                         greenTrees = true;
 
                 }
-				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/BarrenLand") //green trees?
-				{
-					if (tempVal==0)
-					{
-						barrenLand=false;
-						SettleOnTerrain.terrainStatus=0;
-					}
-					else
-					{
-						barrenLand=true;
-						SettleOnTerrain.terrainStatus=1;
-					}
-					
-				}
-				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/BattleArena") //green trees?
-				{
-					//playerBody.GetComponent<AudioSource>().clip=
-					if (tempVal==0)
-					{
-						battleArena=false;
-						SettleOnTerrain.terrainStatus=0;
-					}
-					else
-					{
-						battleArena=true;
-						SettleOnTerrain.terrainStatus=2;
-					}
-					
-				}
-				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/Battlefield") //green trees?
-				{
-					Debug.Log(tempVal);
-					if (tempVal==0)
-					{
-						battlefield=false;
-						SettleOnTerrain.terrainStatus=0;
-					}
-					else
-					{
-						Debug.Log("battlefield activated");
-						battlefield=true;
-						SettleOnTerrain.terrainStatus=3;
-					}
-					
-				}
-				else if(item.Value.packets [lastPacketIndex].Address=="/Visuals/GroundWater") //ground is water?
-				{
-					//Debug.Log("innit");
-					if (tempVal==0)
-					{
-						groundWater=false;
-						terrain.GetComponent<Terrain>().materialType=Terrain.MaterialType.BuiltInStandard;
-					
-					}
-					else
-					{
-						//Debug.Log("YAY innit");
-						groundWater = true;
-						terrain.GetComponent<Terrain>().materialType=Terrain.MaterialType.Custom;
-						terrain.GetComponent<Terrain>().materialTemplate=waterMat;
-					}
-					
-				}
+                else if (item.Value.packets[lastPacketIndex].Address == "/Environment/BarrenLand") //green trees?
+                {
+                    if (tempVal == 0)
+                    {
+                        barrenLand = false;
+                        SettleOnTerrain.terrainStatus = 0;
+                    }
+                    else
+                    {
+                        barrenLand = true;
+                        SettleOnTerrain.terrainStatus = 1;
+                    }
 
-				else if(item.Value.packets [lastPacketIndex].Address=="/Environment/TreeSize") //tree size
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Environment/BattleArena") //green trees?
+                {
+                    //playerBody.GetComponent<AudioSource>().clip=
+                    if (tempVal == 0)
+                    {
+                        battleArena = false;
+                        SettleOnTerrain.terrainStatus = 0;
+                    }
+                    else
+                    {
+                        battleArena = true;
+                        SettleOnTerrain.terrainStatus = 2;
+                    }
+
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Environment/Battlefield") //green trees?
+                {
+                    Debug.Log(tempVal);
+                    if (tempVal == 0)
+                    {
+                        battlefield = false;
+                        SettleOnTerrain.terrainStatus = 0;
+                    }
+                    else
+                    {
+                        Debug.Log("battlefield activated");
+                        battlefield = true;
+                        SettleOnTerrain.terrainStatus = 3;
+                    }
+
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/GroundWater") //ground is water?
+                {
+                    //Debug.Log("innit");
+                    if (tempVal == 0)
+                    {
+                        groundWater = false;
+                        terrain.GetComponent<Terrain>().materialType = Terrain.MaterialType.BuiltInStandard;
+
+                    }
+                    else
+                    {
+                        //Debug.Log("YAY innit");
+                        groundWater = true;
+                        terrain.GetComponent<Terrain>().materialType = Terrain.MaterialType.Custom;
+                        terrain.GetComponent<Terrain>().materialTemplate = waterMat;
+                    }
+
+                }
+
+                else if (item.Value.packets[lastPacketIndex].Address == "/Environment/TreeSize") //tree size
                 {
                     treeSize = tempVal;
                 }
 
-//				else if (item.Value.packets[lastPacketIndex].Address == "/Environment/fader11") //trees spawn distance
-//                {
-//                    spawnDistance = tempVal;
-//                }
-//				else if (item.Value.packets[lastPacketIndex].Address == "/Environment/fader12") //trees spawn rate
-//                {
-//                    spawnRate = tempVal;
-//                }
+                //				else if (item.Value.packets[lastPacketIndex].Address == "/Environment/fader11") //trees spawn distance
+                //                {
+                //                    spawnDistance = tempVal;
+                //                }
+                //				else if (item.Value.packets[lastPacketIndex].Address == "/Environment/fader12") //trees spawn rate
+                //                {
+                //                    spawnRate = tempVal;
+                //                }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/GameSpeed") //game speed
                 {
                     gameSpeed = tempVal;
@@ -334,25 +336,25 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/JumpEnabled") //jump enabled?
                 {
-					if (tempVal==0)
-					{
+                    if (tempVal == 0)
+                    {
 
-                        jumpEnabled=false;
-						playerBody.GetComponent<FirstPersonController>().m_JumpSpeed=0f;
+                        jumpEnabled = false;
+                        playerBody.GetComponent<FirstPersonController>().m_JumpSpeed = 0f;
                     }
                     else
                     {
-						playerBody.GetComponent<FirstPersonController>().m_JumpSpeed=10f;
+                        playerBody.GetComponent<FirstPersonController>().m_JumpSpeed = 10f;
                         jumpEnabled = true;
                     }
-					Debug.Log("Jump is "+jumpEnabled);
-                        
+                    Debug.Log("Jump is " + jumpEnabled);
+
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/UpsideDown") //upside down?
                 {
-					if (tempVal==0)
-					{
-						upsideDown = false;
+                    if (tempVal == 0)
+                    {
+                        upsideDown = false;
                         playerCamera.transform.eulerAngles = new Vector3(0f, 0f, 0f);
                     }
                     else
@@ -362,28 +364,28 @@ public class oscControl : MonoBehaviour {
                     }
 
                 }
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/fader6") //gravity multiplier
-//                {
-//                    gravityMult = tempVal;
-//                    Physics.gravity *= tempVal;
-//
-//                }
-//				else if(item.Value.packets [lastPacketIndex].Address=="/Visuals/PaintItBlack") //paint it black?
-//				{
-//					//Debug.Log("innit");
-//					if (tempVal==0)
-//					{
-//						//groundWater=false;
-//						playerBody.GetComponent<PlayerShoot>().paintAllow=false;
-//						
-//					}
-//					else
-//					{
-//						//Debug.Log("YAY innit");
-//						playerBody.GetComponent<PlayerShoot>().paintAllow=true;
-//					
-//					}
-//				}
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Movement/fader6") //gravity multiplier
+                //                {
+                //                    gravityMult = tempVal;
+                //                    Physics.gravity *= tempVal;
+                //
+                //                }
+                //				else if(item.Value.packets [lastPacketIndex].Address=="/Visuals/PaintItBlack") //paint it black?
+                //				{
+                //					//Debug.Log("innit");
+                //					if (tempVal==0)
+                //					{
+                //						//groundWater=false;
+                //						playerBody.GetComponent<PlayerShoot>().paintAllow=false;
+                //						
+                //					}
+                //					else
+                //					{
+                //						//Debug.Log("YAY innit");
+                //						playerBody.GetComponent<PlayerShoot>().paintAllow=true;
+                //					
+                //					}
+                //				}
                 else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/HeadSeparation") //head separation distance
                 {
                     headSeparation = tempVal;
@@ -392,24 +394,24 @@ public class oscControl : MonoBehaviour {
 
                 }
 
-				else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/RegenHealth" ) //regenerating health?
-				{
-					if(tempVal==1)
-						regenHealth=true;
-					else
-						regenHealth=false;
-				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/HealthAmmo") //health == ammo?
-				{
-					if(tempVal==1)
-						healthAmmo=true;
-					else
-						healthAmmo=false;
-				}
-//				else if (item.Value.packets[lastPacketIndex].Address == "/Health/fader8") //regen rate
-//				{
-//					playerBody.GetComponent<PlayerShoot>().regenRate=tempVal;
-//				}
+                else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/RegenHealth") //regenerating health?
+                {
+                    if (tempVal == 1)
+                        regenHealth = true;
+                    else
+                        regenHealth = false;
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/HealthAmmo") //health == ammo?
+                {
+                    if (tempVal == 1)
+                        healthAmmo = true;
+                    else
+                        healthAmmo = false;
+                }
+                //				else if (item.Value.packets[lastPacketIndex].Address == "/Health/fader8") //regen rate
+                //				{
+                //					playerBody.GetComponent<PlayerShoot>().regenRate=tempVal;
+                //				}
                 else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/MultipleReticles") //allow multiple reticles
                 {
                     if (tempVal == 1)
@@ -417,13 +419,13 @@ public class oscControl : MonoBehaviour {
                     else
                         allowMultipleReticle = false;
                 }
-				else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/NoReticles") //no reticles
-				{
-					if (tempVal == 1)
-						noReticle = true;
-					else
-						noReticle = false;
-				}
+                else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/NoReticles") //no reticles
+                {
+                    if (tempVal == 1)
+                        noReticle = true;
+                    else
+                        noReticle = false;
+                }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/NoGuns") //no guns?
                 {
                     if (tempVal == 1)
@@ -440,36 +442,36 @@ public class oscControl : MonoBehaviour {
                         playerBody.GetComponent<PlayerShoot>().enabled = true;
                         playerBody.GetComponent<vp_SimpleCrosshair>().enabled = true;
                     }
-				//	Debug.Log(noGuns);
+                    //	Debug.Log(noGuns);
                 }
-				else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/PaintItBlack") //paint brush
-				{
-					if (tempVal == 1)
-					{
-						paintAllow = true;
-						playerBody.GetComponent<PlayerShoot>().paintAllow= true;
-						//playerBody.GetComponent<vp_SimpleCrosshair>().enabled = false;
-					}
-					else
-					{
-						paintAllow = false;
-						playerBody.GetComponent<PlayerShoot>().paintAllow= false;
-						//playerBody.GetComponent<vp_SimpleCrosshair>().enabled = true;
-					}
-					Debug.Log(paintAllow);
-				}
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5") //enemy collision out of sync x
-//                {
-//                    Aggressive.colX = tempVal;
-//                }
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary6") //enemy collision out of sync y
-//                {
-//                    Aggressive.colY = tempVal;
-//                }
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary7") //enemy collision out of sync z
-//                {
-//                    Aggressive.colZ = tempVal;
-//                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/PaintItBlack") //paint brush
+                {
+                    if (tempVal == 1)
+                    {
+                        paintAllow = true;
+                        playerBody.GetComponent<PlayerShoot>().paintAllow = true;
+                        //playerBody.GetComponent<vp_SimpleCrosshair>().enabled = false;
+                    }
+                    else
+                    {
+                        paintAllow = false;
+                        playerBody.GetComponent<PlayerShoot>().paintAllow = false;
+                        //playerBody.GetComponent<vp_SimpleCrosshair>().enabled = true;
+                    }
+                    Debug.Log(paintAllow);
+                }
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5") //enemy collision out of sync x
+                //                {
+                //                    Aggressive.colX = tempVal;
+                //                }
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary6") //enemy collision out of sync y
+                //                {
+                //                    Aggressive.colY = tempVal;
+                //                }
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary7") //enemy collision out of sync z
+                //                {
+                //                    Aggressive.colZ = tempVal;
+                //                }
 
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/RedDir") //red
                 {
@@ -489,7 +491,7 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/DirLightIntensity") //intensity
                 {
-					Debug.Log(tempVal);
+                    Debug.Log(tempVal);
                     lightIntensity = tempVal;
                     directionalLight.GetComponent<Light>().intensity = lightIntensity;
                 }
@@ -516,19 +518,23 @@ public class oscControl : MonoBehaviour {
                         twoDimCam = true;
                     }
                 }
-				else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/DontClear") //don't clear?
-				{
-					if (tempVal == 0)
-					{
-						playerCamera.GetComponent<Camera>().clearFlags=CameraClearFlags.Skybox;
-						doNotClear = false;
-					}
-					else
-					{
-						doNotClear = true;
-						playerCamera.GetComponent<Camera>().clearFlags=CameraClearFlags.Nothing;
-					}
-				}
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/DontClear") //don't clear?
+                {
+                    if (tempVal == 0)
+                    {
+                        playerCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
+                        doNotClear = false;
+                    }
+                    else
+                    {
+                        doNotClear = true;
+                        playerCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Nothing;
+                    }
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Critic/Headline") //critic messages
+                {
+                    headlineText.text = tempString;
+                }
                 /*   else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle2") //Depth Only?
                    {
                        if(tempVal==0)
@@ -543,20 +549,20 @@ public class oscControl : MonoBehaviour {
                        }
                    }
                  */
-             /*   else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle3" && !disableFancyGraphics) //Negative?
-                {
-                    if (tempVal == 0)
-                    {
-                        playerCamera.GetComponent<PP_Negative>().enabled = false;
-                        negative = false;
-                    }
-                    else
-                    {
-                        playerCamera.GetComponent<PP_Negative>().enabled = true;
-                        negative = true;
+                /*   else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle3" && !disableFancyGraphics) //Negative?
+                   {
+                       if (tempVal == 0)
+                       {
+                           playerCamera.GetComponent<PP_Negative>().enabled = false;
+                           negative = false;
+                       }
+                       else
+                       {
+                           playerCamera.GetComponent<PP_Negative>().enabled = true;
+                           negative = true;
 
-                    }
-                }*/
+                       }
+                   }*/
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/Scanlines") //Scanlines?
                 {
 
@@ -597,76 +603,76 @@ public class oscControl : MonoBehaviour {
                         pixelated = true;
                     }
                 }
-				else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/Nightvision") //night vision?
-				{
-					if (tempVal == 0)
-					{
-						playerCamera.GetComponent<PP_NightVisionV2>().enabled = false;
-						nightVision = false;
-					}
-					else
-					{
-						playerCamera.GetComponent<PP_NightVisionV2>().enabled = true;
-						nightVision = true;
-					}
-				}
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle7") //Scratches?
-//                {
-//                    if (tempVal == 0)
-//                    {
-//                        playerCamera.GetComponent<PP_Scratch>().enabled = false;
-//                        scratches = false;
-//                    }
-//                    else
-//                    {
-//                        playerCamera.GetComponent<PP_Scratch>().enabled = true;
-//                        scratches = true;
-//
-//                    }
-//                }
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle8") //Charcoal?
-//                {
-//                    if (tempVal == 0)
-//                    {
-//                        playerCamera.GetComponent<PP_Charcoal>().enabled = false;
-//                        charcoal = false;
-//                    }
-//                    else
-//                    {
-//                        playerCamera.GetComponent<PP_Charcoal>().enabled = true;
-//                        charcoal = true;
-//                    }
-//                }
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary5") //camera out of sync on x
-//                {
-//                    playerCamera.transform.localEulerAngles = new Vector3(tempVal, playerCamera.transform.localEulerAngles.y, playerCamera.transform.localEulerAngles.z);
-//                }
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary6") //camera out of sync on y
-//                {
-//                    playerCamera.transform.localEulerAngles = new Vector3(playerCamera.transform.localEulerAngles.x, tempVal, playerCamera.transform.localEulerAngles.z);
-//                }
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary9") //camera out of sync on z
-//                {
-//                    playerCamera.transform.localEulerAngles = new Vector3(playerCamera.transform.localEulerAngles.x, playerCamera.transform.localEulerAngles.y, tempVal);
-//                }
-//
-//                else if(item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary14") //enemy size X
-//                 {
-//                    CubeManager.globalSizeX = tempVal;
-//                 }
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary15") //enemy size Y
-//                {
-//                    CubeManager.globalSizeY = tempVal;
-//                }
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary16") //enemy size Z
-//                {
-//                    CubeManager.globalSizeZ = tempVal;
-//                }
-//                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/fader8") //enemy speed
-//                {
-//                    CubeManager.globalSpeed = tempVal;
-//                }
-                else if (item.Value.packets[lastPacketIndex].Address =="/Enemies/Passive") //allow passive
+                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/Nightvision") //night vision?
+                {
+                    if (tempVal == 0)
+                    {
+                        playerCamera.GetComponent<PP_NightVisionV2>().enabled = false;
+                        nightVision = false;
+                    }
+                    else
+                    {
+                        playerCamera.GetComponent<PP_NightVisionV2>().enabled = true;
+                        nightVision = true;
+                    }
+                }
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle7") //Scratches?
+                //                {
+                //                    if (tempVal == 0)
+                //                    {
+                //                        playerCamera.GetComponent<PP_Scratch>().enabled = false;
+                //                        scratches = false;
+                //                    }
+                //                    else
+                //                    {
+                //                        playerCamera.GetComponent<PP_Scratch>().enabled = true;
+                //                        scratches = true;
+                //
+                //                    }
+                //                }
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle8") //Charcoal?
+                //                {
+                //                    if (tempVal == 0)
+                //                    {
+                //                        playerCamera.GetComponent<PP_Charcoal>().enabled = false;
+                //                        charcoal = false;
+                //                    }
+                //                    else
+                //                    {
+                //                        playerCamera.GetComponent<PP_Charcoal>().enabled = true;
+                //                        charcoal = true;
+                //                    }
+                //                }
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary5") //camera out of sync on x
+                //                {
+                //                    playerCamera.transform.localEulerAngles = new Vector3(tempVal, playerCamera.transform.localEulerAngles.y, playerCamera.transform.localEulerAngles.z);
+                //                }
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary6") //camera out of sync on y
+                //                {
+                //                    playerCamera.transform.localEulerAngles = new Vector3(playerCamera.transform.localEulerAngles.x, tempVal, playerCamera.transform.localEulerAngles.z);
+                //                }
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Camera/rotary9") //camera out of sync on z
+                //                {
+                //                    playerCamera.transform.localEulerAngles = new Vector3(playerCamera.transform.localEulerAngles.x, playerCamera.transform.localEulerAngles.y, tempVal);
+                //                }
+                //
+                //                else if(item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary14") //enemy size X
+                //                 {
+                //                    CubeManager.globalSizeX = tempVal;
+                //                 }
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary15") //enemy size Y
+                //                {
+                //                    CubeManager.globalSizeY = tempVal;
+                //                }
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/rotary16") //enemy size Z
+                //                {
+                //                    CubeManager.globalSizeZ = tempVal;
+                //                }
+                //                else if (item.Value.packets[lastPacketIndex].Address == "/Enemy/fader8") //enemy speed
+                //                {
+                //                    CubeManager.globalSpeed = tempVal;
+                //                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/Passive") //allow passive
                 {
                     if (tempVal == 0)
                         CubeManager.passiveActive = false;
@@ -676,53 +682,53 @@ public class oscControl : MonoBehaviour {
                 else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/KillEnemy") //allow aggressive
                 {
                     if (tempVal == 0)
-						{
+                    {
                         CubeManager.killCube = false;
-						killEnemy=false;
-						}
+                        killEnemy = false;
+                    }
                     else
-					{
+                    {
                         CubeManager.killCube = true;
-						killEnemy=true;
-					}
+                        killEnemy = true;
+                    }
                 }
-				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/ConvertEnemy") //allow aggressive
-				{
-					if (tempVal == 0)
-					{
-						convertEnemy=false;
-						CubeManager.convertCube = false;
-					}
-					else
-					{
-						convertEnemy=true;
-						CubeManager.convertCube = true;
-					}
-				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/SpawnsMore") //allow aggressive
-				{
-					if (tempVal == 0)
-					{
-						spawnsMore=true;
-						CubeManager.spawnsMore = false;
-					}
-					else
-					{
-						CubeManager.spawnsMore =true;
-						spawnsMore=true;
-					}
-				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/Aggressive") //allow aggressive
-				{
-					if (tempVal == 0)
-						CubeManager.aggressiveActive = false;
-					else
-						CubeManager.aggressiveActive = true;
-				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/EnemySize") //allow aggressive
-				{
-					CubeManager.globalSize=tempVal;
-				}
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/ConvertEnemy") //allow aggressive
+                {
+                    if (tempVal == 0)
+                    {
+                        convertEnemy = false;
+                        CubeManager.convertCube = false;
+                    }
+                    else
+                    {
+                        convertEnemy = true;
+                        CubeManager.convertCube = true;
+                    }
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/SpawnsMore") //allow aggressive
+                {
+                    if (tempVal == 0)
+                    {
+                        spawnsMore = true;
+                        CubeManager.spawnsMore = false;
+                    }
+                    else
+                    {
+                        CubeManager.spawnsMore = true;
+                        spawnsMore = true;
+                    }
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/Aggressive") //allow aggressive
+                {
+                    if (tempVal == 0)
+                        CubeManager.aggressiveActive = false;
+                    else
+                        CubeManager.aggressiveActive = true;
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/EnemySize") //allow aggressive
+                {
+                    CubeManager.globalSize = tempVal;
+                }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/DisableEnemies") //disable all enemies
                 {
                     if (tempVal == 1)
@@ -731,38 +737,38 @@ public class oscControl : MonoBehaviour {
                         treeSpawner.GetComponent<TreeGenerator>().EnableEnemies();
 
                 }
-				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/DeadBodyRemains") //disable all enemies
-				{
-					if (tempVal == 1)
-					{
-						CubeManager.bodyRemains=true;
-						deadBodyRemains=true;
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/DeadBodyRemains") //disable all enemies
+                {
+                    if (tempVal == 1)
+                    {
+                        CubeManager.bodyRemains = true;
+                        deadBodyRemains = true;
 
-					}
-					else
-					{
-						CubeManager.bodyRemains=false;
-						deadBodyRemains=false;
-					}
-						
-					
-				}
-				else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/HumanEnemies") //disable all enemies
-				{
-					if (tempVal == 1)
-					{
-						CubeManager.humanEnemies=true;
-						humanEnemies=true;
-						
-					}
-					else
-					{
-						CubeManager.humanEnemies=false;
-						humanEnemies=false;
-					}
-					
-					
-				}
+                    }
+                    else
+                    {
+                        CubeManager.bodyRemains = false;
+                        deadBodyRemains = false;
+                    }
+
+
+                }
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/HumanEnemies") //disable all enemies
+                {
+                    if (tempVal == 1)
+                    {
+                        CubeManager.humanEnemies = true;
+                        humanEnemies = true;
+
+                    }
+                    else
+                    {
+                        CubeManager.humanEnemies = false;
+                        humanEnemies = false;
+                    }
+
+
+                }
                 //	}
                 //cube.transform.localScale = new Vector3 (tempVal, tempVal, tempVal);
             }
