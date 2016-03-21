@@ -100,6 +100,13 @@ public class oscControl_Developer : MonoBehaviour {
 		}
 	}
 
+	public void SendPR(GameObject obj)
+	{
+		string temp = obj.GetComponent<Text> ().text;
+		Debug.Log (temp);
+		OSCHandler_Developer.Instance.SendMessageToClient ("Critic", "/Critic/PressRelease", temp); 
+	}
+
 	public void MetascoreChanged(Slider metaSlider)
 	{
 		float value=metaSlider.value;
