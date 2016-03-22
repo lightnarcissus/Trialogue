@@ -245,7 +245,7 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "DontClear":
-			if (metascoreLine.GetComponent<Slider> ().value > 40f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 20f) {
 				if (visualSet [4].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
@@ -253,8 +253,17 @@ public class oscControl_Developer : MonoBehaviour {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/DontClear", boolVal); 
 			}
 			break;
+		case "InvertColors":
+			if (metascoreLine.GetComponent<Slider> ().value > 70f) {
+				if (visualSet [13].GetComponent<bl_ToggleSwitcher> ().isOn)
+					boolVal = 1f;
+				else
+					boolVal = 0f;
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/InvertColors", boolVal); 
+			}
+			break;
 		case "2DCam":
-			if (metascoreLine.GetComponent<Slider> ().value > 60f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 40f) {
 				if (visualSet [5].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else

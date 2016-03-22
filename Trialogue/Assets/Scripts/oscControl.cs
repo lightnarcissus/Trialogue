@@ -188,7 +188,7 @@ public class oscControl : MonoBehaviour {
 				//{
 				float tempVal = float.Parse (item.Value.packets [lastPacketIndex].Data [0].ToString ());
                 string tempString = item.Value.packets[lastPacketIndex].Data[0].ToString();
-                Debug.Log(item.Value.packets [lastPacketIndex].Address.ToString());
+            //    Debug.Log(item.Value.packets [lastPacketIndex].Address.ToString());
                 //critic section begins
                 if (item.Value.packets[lastPacketIndex].Address == "/critic/fader1") //gameplay
                 {

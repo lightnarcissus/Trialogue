@@ -26,6 +26,6 @@ public class ListIP : MonoBehaviour {
 		if (PlatformManager_Dev.platformVersion == 2)
 			Application.LoadLevel ("Main");
 		else
-			Application.LoadLevel ("MainDesktop");
+			Application.LoadLevel ("Main");
 	}
 }
