@@ -40,7 +40,7 @@ public class DevManager : MonoBehaviour {
 			optionSets[i].SetActive (false);
 		}
 		selectLights[currentlySelected].SetActive (true);
-		Debug.Log (currentlySelected);
+		//Debug.Log (currentlySelected);
 		
 		optionSets[currentlySelected].SetActive (true);
 	}
