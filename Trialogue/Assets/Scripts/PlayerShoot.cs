@@ -68,6 +68,8 @@ public class PlayerShoot : MonoBehaviour {
 		terrainObj.GetComponent<TerrainToolkit> ().tempTexture = tempTexture1;
 		//Debug.Log ("pixelwidth: "+cameraPlay.GetComponent<Camera>().pixelWidth.ToString ());
 		//Debug.Log ("pixelHeight: "+cameraPlay.GetComponent<Camera>().pixelHeight.ToString ());
+
+
 	}
 	
 	// Update is called once per frame
@@ -86,6 +88,7 @@ public class PlayerShoot : MonoBehaviour {
                 shootUp = true;
                // StartCoroutine("DontShoot");
             }
+			Debug.Log (shootUp + " " + shootTrigger);
             
 			if(paintAllow)
 			{
@@ -105,7 +108,7 @@ public class PlayerShoot : MonoBehaviour {
 				//Debug.Log ("after mousepos "+obj.transform.position + " and " + obj.GetComponent<RectTransform>().position);
 			paintManager.GetComponent<PaintManager>().AddPaint(obj);
 			}
-            else if (Input.GetMouseButtonDown (0) ||(shootUp && (shootTrigger>=0.8f))) {
+			else if (Input.GetMouseButtonDown (0) ||(shootUp && (Mathf.Abs(shootTrigger)>0.5f))) {
 			//	cameraPlay.GetComponent<PP_Charcoal>().enabled=false;
 			   // Debug.Log ("shooting");
 				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));

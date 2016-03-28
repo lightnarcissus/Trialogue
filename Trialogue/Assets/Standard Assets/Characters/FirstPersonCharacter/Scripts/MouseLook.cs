@@ -13,6 +13,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float MinimumX = -90F;
         public float MaximumX = 90F;
         public bool smooth;
+		public bool controllerAttached=false;
         public float smoothTime = 5f;
 
 
@@ -24,6 +25,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
+
+			string[] contList = Input.GetJoystickNames ();
+			Debug.Log (contList.Length);
+			for (int i = 0; i < contList.Length; i++) {
+				Debug.Log (contList [i]);
+				if (contList [i].Contains ("360")) {
+					Debug.Log ("INSIDE");
+					controllerAttached = true;
+				}
+			}
         }
 
 
@@ -34,7 +45,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
 				yRot = CrossPlatformInputManager.GetAxis ("Mouse X") * XSensitivity;
 				xRot = CrossPlatformInputManager.GetAxis ("Mouse Y") * YSensitivity;
-			} else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer) {
+			} else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer && controllerAttached) {
 				yRot = CrossPlatformInputManager.GetAxis ("MouseXMac") * XSensitivity;
 				xRot = CrossPlatformInputManager.GetAxis ("MouseYMac") * YSensitivity;
 			}

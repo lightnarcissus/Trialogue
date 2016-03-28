@@ -117,7 +117,6 @@ public class oscControl : MonoBehaviour {
     //head separation distance
     //camera out of sync
     //enemy collider out of sync
-
     //reticle Spread
     public static bool allowMultipleReticle = false;
 	public static bool noReticle=false;
@@ -134,6 +133,7 @@ public class oscControl : MonoBehaviour {
 		clients = new Dictionary<string,ClientLog> ();
         servers = OSCHandler.Instance.Servers;
         clients = OSCHandler.Instance.Clients;
+
 
 		//initiator message
 //		OSCHandler.Instance.SendMessageToClient("localhost", "blah",2f);
