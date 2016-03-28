@@ -476,17 +476,20 @@ public class oscControl : MonoBehaviour {
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/RedDir") //red
                 {
                     red = tempVal;
-                    directionalLight.GetComponent<Light>().color = new Color(red, green, blue, 1f);
+                    playerCamera.GetComponent<PP_Charcoal>().lineColor= new Color(red, green, blue, 1f);
+                    //directionalLight.GetComponent<Light>().color = new Color(red, green, blue, 1f);
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/GreenDir") //green
                 {
                     green = tempVal;
-                    directionalLight.GetComponent<Light>().color = new Color(red, green, blue, 1f);
+                    playerCamera.GetComponent<PP_Charcoal>().lineColor = new Color(red, green, blue, 1f);
+                    //directionalLight.GetComponent<Light>().color = new Color(red, green, blue, 1f);
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/BlueDir") //blue
                 {
                     blue = tempVal;
-                    directionalLight.GetComponent<Light>().color = new Color(red, green, blue, 1f);
+                    playerCamera.GetComponent<PP_Charcoal>().lineColor = new Color(red, green, blue, 1f);
+                  //  directionalLight.GetComponent<Light>().color = new Color(red, green, blue, 1f);
 
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/DirLightIntensity") //intensity
@@ -516,6 +519,17 @@ public class oscControl : MonoBehaviour {
                     {
                         playerCamera.GetComponent<Camera>().orthographic = true;
                         twoDimCam = true;
+                    }
+                }
+                else if(item.Value.packets[lastPacketIndex].Address == "/Visuals/InvertColors") //invert colors
+                {
+                    if (tempVal == 0)
+                    {
+                        playerCamera.GetComponent<PP_Charcoal>().switchSource = false;
+                    }
+                    else
+                    {
+                        playerCamera.GetComponent<PP_Charcoal>().switchSource = true;
                     }
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/DontClear") //don't clear?
