@@ -35,6 +35,8 @@ public class oscControl_Developer : MonoBehaviour {
 	public GameObject[] envSet;
 	public GameObject[] enemySet;
 	public GameObject[] youSet;
+	public GameObject[] PRSet;
+	public GameObject[] shootingSet;
 	public GameObject metascoreLine;
 	private float boolVal=0f;
 	// Script initialization
@@ -411,29 +413,6 @@ public class oscControl_Developer : MonoBehaviour {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Peaceful", boolVal); 
 			}
 			break;
-		case "KillEnemy":
-			if (metascoreLine.GetComponent<Slider> ().value > 50f) {
-				if (enemySet [3].GetComponent<bl_ToggleSwitcher> ().isOn)
-					boolVal = 1f;
-				else
-					boolVal = 0f;
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/KillEnemy", boolVal); 
-			}
-			break;
-		case "ConvertEnemy":
-			if (metascoreLine.GetComponent<Slider> ().value > 70f) {
-				if (enemySet [4].GetComponent<bl_ToggleSwitcher> ().isOn)
-					boolVal = 1f;
-				else
-					boolVal = 0f;
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/ConvertEnemy", boolVal); 
-			}
-			break;
-		case "ChangesSize":
-			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/ChangesSize", enemySet [5].GetComponent<Slider> ().value); 
-			}
-			break;
 		case "DeadBodyRemains":
 			if (metascoreLine.GetComponent<Slider> ().value > 20f) {
 				if (enemySet [6].GetComponent<bl_ToggleSwitcher> ().isOn)
@@ -441,15 +420,6 @@ public class oscControl_Developer : MonoBehaviour {
 				else
 					boolVal = 0f;
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/DeadBodyRemains", boolVal); 
-			}
-			break;
-		case "SpawnsMore":
-			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
-				if (enemySet [7].GetComponent<bl_ToggleSwitcher> ().isOn)
-					boolVal = 1f;
-				else
-					boolVal = 0f;
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/SpawnsMore", boolVal); 
 			}
 			break;
 		case "DisableEnemies":
@@ -498,6 +468,41 @@ public class oscControl_Developer : MonoBehaviour {
 				else
 					boolVal = 0f;
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/YourHand", boolVal); 
+			}
+			break;
+
+
+			//shooting set
+		case "SpawnsMore":
+			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
+				if (shootingSet[0].GetComponent<bl_ToggleSwitcher> ().isOn)
+					boolVal = 1f;
+				else
+					boolVal = 0f;
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Shooting/SpawnsMore", boolVal); 
+			}
+			break;
+		case "KillEnemy":
+			if (metascoreLine.GetComponent<Slider> ().value > 50f) {
+				if (shootingSet[1].GetComponent<bl_ToggleSwitcher> ().isOn)
+					boolVal = 1f;
+				else
+					boolVal = 0f;
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Shooting/KillEnemy", boolVal); 
+			}
+			break;
+		case "ConvertEnemy":
+			if (metascoreLine.GetComponent<Slider> ().value > 70f) {
+				if (shootingSet [2].GetComponent<bl_ToggleSwitcher> ().isOn)
+					boolVal = 1f;
+				else
+					boolVal = 0f;
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Shooting/ConvertEnemy", boolVal); 
+			}
+			break;
+		case "ChangesSize":
+			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Shooting/ChangesSize", shootingSet [3].GetComponent<Slider> ().value); 
 			}
 			break;
 		
