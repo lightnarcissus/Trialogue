@@ -10,7 +10,7 @@ public class ZombieRun : MonoBehaviour {
 	void Start () {
 		player = GameObject.Find ("Player");
 		InvokeRepeating ("UpdateTarget", 1f, 5f);
-		InvokeRepeating ("CheckDeath", 1f, 2f);
+		InvokeRepeating ("CheckDeath", 1f, 5f);
 		agent = GetComponent<NavMeshAgent>();
 		agent.destination = player.transform.position; 
 	

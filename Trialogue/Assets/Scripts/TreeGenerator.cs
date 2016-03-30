@@ -52,10 +52,11 @@ public class TreeGenerator : MonoBehaviour {
 		{
 			if(Random.value< (spawnRate * oscManager.GetComponent<oscControl>().enemySpawnRate))
 			{
-				if(CubeManager.humanEnemies)
-					randEnemy=2;
+                if (CubeManager.humanEnemies)
+                    randEnemy = Random.Range(2, 4);
 				else
 					randEnemy=Random.Range (0,2);
+
 				tempCube=Instantiate(enemies[randEnemy],player.transform.position+new Vector3(spawnDistance,0f,spawnDistance),Quaternion.identity) as GameObject;
 				cubes.Add (tempCube);
 			}
