@@ -52,7 +52,7 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject paintManager;
 	public GameObject paintSplash;
 	public GameObject platformManager;
-	private int platformID=0;
+	public int platformID=0;
 	// Use this for initialization
 	void Start () {
 
@@ -88,7 +88,7 @@ public class PlayerShoot : MonoBehaviour {
                 shootUp = true;
                // StartCoroutine("DontShoot");
             }
-			Debug.Log (shootUp + " " + shootTrigger);
+			//Debug.Log (shootUp + " " + shootTrigger);
             
 			if(paintAllow)
 			{
