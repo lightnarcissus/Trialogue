@@ -13,6 +13,7 @@ public class RoleSwitcher : MonoBehaviour {
     public GameObject mediaObj;
     public GameObject lobbyistObj;
     
+	public MissionSystem missionSystem;
 
     private bool activateAllow = true;
     public int previousActiveRole = 0;
@@ -33,30 +34,30 @@ public class RoleSwitcher : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if(activateAllow)
-        { 
-        if(Input.GetButton("PreviousRole"))
-        {
-            if (currentRole == 1)
-                currentRole = 5;
-            int tempInt = currentRole-1;
-            SwitchRole(tempInt);
-                activateAllow = false;
-                StartCoroutine("AllowAgain");
-                //  Debug.Log(tempInt);
-
-            }
-        else if(Input.GetButton("NextRole"))
-        {
-            if (currentRole == 4)
-                currentRole = 0;
-            int tempInt = currentRole + 1;
-            SwitchRole(tempInt);
-                activateAllow = false;
-                StartCoroutine("AllowAgain");
-                //Debug.Log(tempInt);
-            }
-        }
+//        if(activateAllow)
+//        { 
+//        if(Input.GetButton("PreviousRole"))
+//        {
+//            if (currentRole == 1)
+//                currentRole = 5;
+//            int tempInt = currentRole-1;
+//            SwitchRole(tempInt);
+//                activateAllow = false;
+//                StartCoroutine("AllowAgain");
+//                //  Debug.Log(tempInt);
+//
+//            }
+//        else if(Input.GetButton("NextRole"))
+//        {
+//            if (currentRole == 4)
+//                currentRole = 0;
+//            int tempInt = currentRole + 1;
+//            SwitchRole(tempInt);
+//                activateAllow = false;
+//                StartCoroutine("AllowAgain");
+//                //Debug.Log(tempInt);
+//            }
+//        }
 
       //  Debug.Log(currentRole);
 
@@ -72,12 +73,20 @@ public class RoleSwitcher : MonoBehaviour {
 
     public void SwitchRole(int activateRole)
     {
+		if (activateRole == 4) {
+			activateRole = 1;
+			currentRole = 3;
+		}
+		else
+		currentRole = activateRole - 1;
+		Debug.Log ("activating " + activateRole); 
         switch (activateRole)
         {
-            case 1:
-                player.GetComponent<CharacterController>().enabled = true;
-                player.GetComponent<PlayerShoot>().enabled = true;
-                DisableRole(currentRole);
+		case 1:
+			player.GetComponent<CharacterController> ().enabled = true;
+			player.GetComponent<PlayerShoot> ().enabled = true;
+			DisableRole (currentRole);
+				missionSystem.GenerateNewMission ();
                 soldierObj.SetActive(true);
                 currentRole = activateRole;
                 break;

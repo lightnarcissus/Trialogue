@@ -22,6 +22,11 @@ public class PlayerShoot : MonoBehaviour {
 
 	public Texture2D tempTexture1;
 
+
+	//score
+	public int killCount=0;
+	public int deathCount=0;
+
 	//cameras
 	public GameObject whiteCam;
 	public GameObject cameraPlay;
@@ -53,6 +58,7 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject paintSplash;
 	public GameObject platformManager;
 	public int platformID=0;
+	public GameObject missionManager;
 	// Use this for initialization
 	void Start () {
 
@@ -133,6 +139,11 @@ public class PlayerShoot : MonoBehaviour {
 //					Vector3 splashPos=cameraPlay.GetComponent<Camera>().ViewportToScreenPoint(new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
 //					obj.transform.position=splashPos;
 					if (hit.collider.gameObject.tag == "Cube") {
+						killCount++;
+						if (missionManager.GetComponent<MissionSystem> ().missionType == 1) {
+							missionManager.GetComponent<MissionSystem> ().numberEnemies--;
+							missionManager.GetComponent<MissionSystem> ().UpdateText();
+						}
 						TreeGenerator.cubes.Remove (hit.collider.gameObject);
 						if(CubeManager.spawnsMore)
 						{
@@ -160,9 +171,14 @@ public class PlayerShoot : MonoBehaviour {
 					}
 					if(hit.collider.gameObject.tag=="Human")
 					{
-
-						hit.collider.gameObject.GetComponent<NavMeshAgent>().enabled=false;
+						killCount++;
 						hit.collider.gameObject.GetComponent<Animator>().SetBool("Death",true);
+						hit.collider.gameObject.GetComponent<NavMeshAgent>().enabled=false;
+						if (missionManager.GetComponent<MissionSystem> ().missionType == 1) {
+							missionManager.GetComponent<MissionSystem> ().numberEnemies--;
+							missionManager.GetComponent<MissionSystem> ().UpdateText();
+						}
+
 						if(CubeManager.spawnsMore)
 						{
 							Instantiate (zombie,transform.position,Quaternion.identity);
@@ -249,6 +265,7 @@ public class PlayerShoot : MonoBehaviour {
     {
 
         gameOver = true;
+		deathCount++;
 		flashTexture.enabled = true;
 		StartCoroutine ("WhiteScreen");
 		Instantiate (deathField, transform.position, Quaternion.identity);

@@ -34,7 +34,6 @@ public class oscControl : MonoBehaviour {
 	private Dictionary<string, ClientLog> clients;
 	private float randVal=0f;
     public GameObject directionalLight;
-
 	public GameObject terrain;
 	public Material waterMat;
     //objects
@@ -97,6 +96,12 @@ public class oscControl : MonoBehaviour {
 	public bool convertEnemy=false;
 	public bool spawnsMore=false;
 	public bool deadBodyRemains=false;
+
+
+	//you page
+
+	public bool mediaCensorship = false;
+	public bool unlimitedPublicFunds=false;
 
     //critic
     public Text headlineText;
@@ -545,6 +550,31 @@ public class oscControl : MonoBehaviour {
                         playerCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Nothing;
                     }
                 }
+
+				//you page
+
+				else if (item.Value.packets[lastPacketIndex].Address == "/You/MediaCoverage") //media censorship?
+				{
+					if (tempVal == 0)
+					{
+						mediaCensorship = false;
+					}
+					else
+					{
+						mediaCensorship = true;
+					}
+				}
+				else if (item.Value.packets[lastPacketIndex].Address == "/You/PoliticalSpace") //media censorship?
+				{
+					if (tempVal == 0)
+					{
+						unlimitedPublicFunds = false;
+					}
+					else
+					{
+						unlimitedPublicFunds = true;
+					}
+				}
                 else if (item.Value.packets[lastPacketIndex].Address == "/Critic/Headline") //critic messages
                 {
                     headlineText.text = tempString;
