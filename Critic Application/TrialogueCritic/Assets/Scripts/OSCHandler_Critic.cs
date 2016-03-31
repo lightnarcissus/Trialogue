@@ -105,7 +105,7 @@ public class OSCHandler_Critic : MonoBehaviour
         //Initialize OSC servers (listeners)
         //Example:
 
-		CreateServer("iPhone", 9000);
+		CreateServer("iPhone", 8001);
 	}
 	
 	#region Properties
