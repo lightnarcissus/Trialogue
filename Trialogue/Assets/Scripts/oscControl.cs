@@ -195,21 +195,17 @@ public class oscControl : MonoBehaviour {
                 string tempString = item.Value.packets[lastPacketIndex].Data[0].ToString();
             //    Debug.Log(item.Value.packets [lastPacketIndex].Address.ToString());
                 //critic section begins
-                if (item.Value.packets[lastPacketIndex].Address == "/critic/fader1") //gameplay
-                {
-                    if (tempVal > 8)
-                    {
-                        disableComplexGameplay = false;
-                        /*  lightIntensity = 1.5f;
+				if (item.Value.packets [lastPacketIndex].Address == "/critic/fader1") { //gameplay
+					if (tempVal > 8) {
+						disableComplexGameplay = false;
+						/*  lightIntensity = 1.5f;
                           OSCHandler.Instance.SendMessageToClient("iPad Client", "/Visuals/fader2", lightIntensity);
                           directionalLight.GetComponent<Light>().intensity = lightIntensity;
                           //OSCHandler.Instance.UpdateLogs(); */
-                    }
-                    else
-                    {
-                        disableComplexGameplay = false;
-                    }
-                }
+					} else {
+						disableComplexGameplay = false;
+					}
+				}
                 /*
                 else if (item.Value.packets[lastPacketIndex].Address == "/critic/fader3") //graphics
                 {
@@ -249,28 +245,22 @@ public class oscControl : MonoBehaviour {
                     //for future use
                 }
                 */
-                else if (item.Value.packets[lastPacketIndex].Address == "/Environment/GreenTrees") //green trees?
-                {
-                    if (tempVal == 0)
-                        greenTrees = false;
-                    else
-                        greenTrees = true;
+                else if (item.Value.packets [lastPacketIndex].Address == "/Environment/GreenTrees") { //green trees?
+					if (tempVal == 0)
+						greenTrees = false;
+					else
+						greenTrees = true;
 
-                }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Environment/BarrenLand") //green trees?
-                {
-                    if (tempVal == 0)
-                    {
-                        barrenLand = false;
-                        SettleOnTerrain.terrainStatus = 0;
-                    }
-                    else
-                    {
-                        barrenLand = true;
-                        SettleOnTerrain.terrainStatus = 1;
-                    }
+				} else if (item.Value.packets [lastPacketIndex].Address == "/Environment/BarrenLand") { //green trees?
+					if (tempVal == 0) {
+						barrenLand = false;
+						SettleOnTerrain.terrainStatus = 0;
+					} else {
+						barrenLand = true;
+						SettleOnTerrain.terrainStatus = 1;
+					}
 
-                }
+				}
                 else if (item.Value.packets[lastPacketIndex].Address == "/Environment/BattleArena") //green trees?
                 {
                     //playerBody.GetComponent<AudioSource>().clip=
@@ -578,6 +568,7 @@ public class oscControl : MonoBehaviour {
                 else if (item.Value.packets[lastPacketIndex].Address == "/Critic/Headline") //critic messages
                 {
                     headlineText.text = tempString;
+					StartCoroutine ("FlashHeadline");
                 }
                 /*   else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle2") //Depth Only?
                    {

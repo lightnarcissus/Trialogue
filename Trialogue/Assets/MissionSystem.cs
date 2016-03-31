@@ -3,9 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 public class MissionSystem : MonoBehaviour {
 
-	public int missionType=2; //1 is neutral mission, 2 is securing
+	public int missionType=1; //1 is neutral mission, 2 is securing
 	public Text playerText;
-	public int numberEnemies;
+	public int numberEnemies=1;
 	public int score=0;
 	public oscControl oscControl;
 	public float missionTimer=0f;
@@ -16,8 +16,8 @@ public class MissionSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		numberEnemies = Random.Range (1, 2);
-		Debug.Log ("Mission type" + missionType);
+		numberEnemies = Random.Range (1, 15);
+		//Debug.Log ("Mission type" + missionType);
 		originalNumberEnemies = numberEnemies;
 		if(missionType==1)
 			playerText.text = "Neutralize " + numberEnemies + " Hostiles in the Area";
@@ -40,9 +40,9 @@ public class MissionSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.V))
-			economyManager.GetComponent<RoleSwitcher>().SwitchRole(++RoleSwitcher.currentRole);
-	
+//		if(Input.GetKeyDown(KeyCode.V))
+//			economyManager.GetComponent<RoleSwitcher>().SwitchRole(++RoleSwitcher.currentRole);
+//	
 		missionTimer += Time.deltaTime;
 	}
 

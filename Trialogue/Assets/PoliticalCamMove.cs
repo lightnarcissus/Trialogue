@@ -16,7 +16,7 @@ public class PoliticalCamMove : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		string[] contList = Input.GetJoystickNames ();
-		Debug.Log (contList.Length);
+		//Debug.Log (contList.Length);
 		for (int i = 0; i < contList.Length; i++) {
 			Debug.Log (contList [i]);
 			if (contList [i].Contains ("360")) {
@@ -46,11 +46,15 @@ public class PoliticalCamMove : MonoBehaviour {
 			xRot = CrossPlatformInputManager.GetAxis ("Vertical") * XSensitivity;
 			yRot = CrossPlatformInputManager.GetAxis ("Mouse Y") * YSensitivity;
 		} else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer && controllerAttached) {
-			yRot = CrossPlatformInputManager.GetAxis ("MouseYMac") * XSensitivity;
+			yRot = CrossPlatformInputManager.GetAxis ("Mouse Y") * XSensitivity;
 			zRot=CrossPlatformInputManager.GetAxis ("Vertical") * XSensitivity;
 			xRot = CrossPlatformInputManager.GetAxis ("Horizontal") * YSensitivity;
 		}
+		if(transform.localPosition.y < -5f)
+		transform.localPosition+= new Vector3(xRot,-5f,zRot);
+		else
 		transform.localPosition+= new Vector3(xRot,yRot,zRot);
+		
 		if(platformID==1)
 			shootTrigger = Input.GetAxis("Shoot");
 		else
