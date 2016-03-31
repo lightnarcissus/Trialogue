@@ -15,7 +15,7 @@ public class PassiveCube : MonoBehaviour {
 	void Start () {
 
 		player = GameObject.Find("Player");
-		treeGen = GameObject.Find ("TreeGenerator");
+		treeGen = GameObject.Find ("Spawner");
 		body = GetComponent<Rigidbody> ();
 		InvokeRepeating("CheckPlayerDistance", 0.5f, 1f);
 	

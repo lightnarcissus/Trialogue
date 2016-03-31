@@ -470,10 +470,38 @@ public class oscControl_Developer : MonoBehaviour {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/YourHand", boolVal); 
 			}
 			break;
-
-
-			//shooting set
-		case "SpawnsMore":
+            case "MediaCoverage":
+                if (metascoreLine.GetComponent<Slider>().value > 50f)
+                {
+                    if (youSet[3].GetComponent<bl_ToggleSwitcher>().isOn)
+                        boolVal = 1f;
+                    else
+                        boolVal = 0f;
+                    OSCHandler_Developer.Instance.SendMessageToClient("Max", "/You/MediaCoverage", boolVal);
+                }
+                break;
+            case "EnableLobbying":
+                if (metascoreLine.GetComponent<Slider>().value > 50f)
+                {
+                    if (youSet[4].GetComponent<bl_ToggleSwitcher>().isOn)
+                        boolVal = 1f;
+                    else
+                        boolVal = 0f;
+                    OSCHandler_Developer.Instance.SendMessageToClient("Max", "/You/EnableLobbying", boolVal);
+                }
+                break;
+            case "PoliticalSpace":
+                if (metascoreLine.GetComponent<Slider>().value > 50f)
+                {
+                    if (youSet[5].GetComponent<bl_ToggleSwitcher>().isOn)
+                        boolVal = 1f;
+                    else
+                        boolVal = 0f;
+                    OSCHandler_Developer.Instance.SendMessageToClient("Max", "/You/PoliticalSpace", boolVal);
+                }
+                break;
+            //shooting set
+            case "SpawnsMore":
 			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
 				if (shootingSet[0].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;

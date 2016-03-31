@@ -9,6 +9,7 @@ public class PoliticalCamMove : MonoBehaviour {
 	private float shootTrigger = 0f;
 	private bool shootUp = false;
 	private int platformID=0;
+    //public GameObject lineRend;
 	public GameObject politicalSphere;
 	// Use this for initialization
 	void Start () {
@@ -43,6 +44,7 @@ public class PoliticalCamMove : MonoBehaviour {
 			xRot = CrossPlatformInputManager.GetAxis ("Horizontal") * YSensitivity;
 		}
 		transform.localPosition+= new Vector3(xRot,yRot,zRot);
+      //  lineRend.GetComponent<LineRenderer>().SetPosition(transform.localPosition);
 		if(platformID==1)
 			shootTrigger = Input.GetAxis("Shoot");
 		else
@@ -50,7 +52,7 @@ public class PoliticalCamMove : MonoBehaviour {
 		//Debug.Log(Mathf.Abs(shootTrigger));
 		if(Mathf.Abs(shootTrigger)<0.1f)
 		{
-			shootUp = true;
+		//	shootUp = true;
 			// StartCoroutine("DontShoot");
 		}
 		if (Input.GetMouseButtonDown (0) ||(shootUp && (Mathf.Abs(shootTrigger)>0.5f))) {
@@ -62,7 +64,7 @@ public class PoliticalCamMove : MonoBehaviour {
 	public void SwitchPlayer()
 	{
 		Debug.Log ("hi");
-		playerShoot.SetActive (true);
+		playerShoot.transform.GetChild(0).gameObject.SetActive (true);
 		gameObject.SetActive (false);
 	}
 }

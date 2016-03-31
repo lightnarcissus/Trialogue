@@ -19,7 +19,7 @@ public class Aggressive : MonoBehaviour {
 	// Use this for initialization
 	void Start () { 
         player = GameObject.Find("Player");
-		treeGen = GameObject.Find ("TreeGenerator");
+		treeGen = GameObject.Find ("Spawner");
 		body = GetComponent<Rigidbody> ();
 
 	
@@ -34,6 +34,7 @@ public class Aggressive : MonoBehaviour {
 	void FixedUpdate()
 	{
 		if (!friendly)
+            if(RoleSwitcher.currentRole==1)
 			body.AddForce ((player.transform.position - transform.position).normalized * 0.01f * Vector3.Distance (player.transform.position, transform.position), ForceMode.VelocityChange);
 		else {
 			GetComponent<Renderer>().material.color=Color.green;
@@ -43,7 +44,7 @@ public class Aggressive : MonoBehaviour {
 			{
 				if(treeGen!=null)
 				{
-					treeGen = GameObject.Find ("TreeGenerator");
+					treeGen = GameObject.Find ("Spawner");
 				}
 				else
 					target=treeGen.GetComponent<TreeGenerator>().TargetEnemies(this.gameObject);
