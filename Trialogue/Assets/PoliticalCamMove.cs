@@ -9,8 +9,10 @@ public class PoliticalCamMove : MonoBehaviour {
 	private float shootTrigger = 0f;
 	private bool shootUp = false;
 	private int platformID=0;
-    //public GameObject lineRend;
+	public RoleSwitcher roleSwitcher;
 	public GameObject politicalSphere;
+
+	public EconomyManager economyManager;
 	// Use this for initialization
 	void Start () {
 		string[] contList = Input.GetJoystickNames ();
@@ -23,6 +25,11 @@ public class PoliticalCamMove : MonoBehaviour {
 			}
 		}
 
+	}
+
+	void OnEnable()
+	{
+		economyManager.UpdatePublicFunds ();
 	}
 
 	void Awake()
@@ -44,7 +51,6 @@ public class PoliticalCamMove : MonoBehaviour {
 			xRot = CrossPlatformInputManager.GetAxis ("Horizontal") * YSensitivity;
 		}
 		transform.localPosition+= new Vector3(xRot,yRot,zRot);
-      //  lineRend.GetComponent<LineRenderer>().SetPosition(transform.localPosition);
 		if(platformID==1)
 			shootTrigger = Input.GetAxis("Shoot");
 		else
@@ -52,19 +58,28 @@ public class PoliticalCamMove : MonoBehaviour {
 		//Debug.Log(Mathf.Abs(shootTrigger));
 		if(Mathf.Abs(shootTrigger)<0.1f)
 		{
-		//	shootUp = true;
+			shootUp = true;
 			// StartCoroutine("DontShoot");
 		}
 		if (Input.GetMouseButtonDown (0) ||(shootUp && (Mathf.Abs(shootTrigger)>0.5f))) {
-			Instantiate(politicalSphere,new Vector3(transform.localPosition.x,118.3f,transform.localPosition.z),Quaternion.identity);
+			Instantiate(politicalSphere,new Vector3(transform.position.x,118.3f,transform.position.z),Quaternion.identity);
 			shootUp = false;
-			SwitchPlayer ();
+			economyManager.DecreasePublicFunds ();
+			economyManager.UpdatePublicFunds ();
+			StartCoroutine ("SwitchRole");
 		}
+	}
+
+	IEnumerator SwitchRole()
+	{
+		yield return new WaitForSeconds (1f);
+		roleSwitcher.SwitchRole (++RoleSwitcher.currentRole);
+		yield return null;
 	}
 	public void SwitchPlayer()
 	{
 		Debug.Log ("hi");
-		playerShoot.transform.GetChild(0).gameObject.SetActive (true);
+		playerShoot.SetActive (true);
 		gameObject.SetActive (false);
 	}
 }

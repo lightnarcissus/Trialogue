@@ -39,6 +39,7 @@ public class oscControl_Developer : MonoBehaviour {
 	public GameObject[] shootingSet;
 	public GameObject metascoreLine;
 	private float boolVal=0f;
+	public static int envID=0;
 	// Script initialization
 	void Start() {	
 		OSCHandler_Developer.Instance.Init(); //init OSC
@@ -362,19 +363,28 @@ public class oscControl_Developer : MonoBehaviour {
 			break;
 		case "BarrenLand":
 			if (metascoreLine.GetComponent<Slider> ().value > 0f) {
-				if(envSet[3].GetComponent<bl_ToggleSwitcher>().isOn)
-					boolVal=1f;
-				else
-					boolVal=0f;
+				if (envSet [3].GetComponent<bl_ToggleSwitcher> ().isOn) {
+					boolVal = 1f;
+					envID = 1;
+				} else {
+					boolVal = 0f;
+					envID = 0;
+				}
 				OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/BarrenLand", boolVal); 
 			}
 			break;
 		case "BattleArena":
 			if (metascoreLine.GetComponent<Slider> ().value >= 40f) {
 				if(envSet[4].GetComponent<bl_ToggleSwitcher>().isOn)
+				{
 					boolVal=1f;
+					envID = 2;
+				}
 				else
+				{
 					boolVal=0f;
+					envID = 0;
+				}
 				OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/BattleArena", boolVal); 
 			}
 			break;
@@ -382,9 +392,15 @@ public class oscControl_Developer : MonoBehaviour {
 			Debug.Log ("hi");	
 			if (metascoreLine.GetComponent<Slider> ().value >= 60f) {
 				if(envSet[5].GetComponent<bl_ToggleSwitcher>().isOn)
+				{
 					boolVal=1f;
+					envID = 3;
+				}
 				else
+				{
 					boolVal=0f;
+					envID = 0;
+				}
 				OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/Battlefield", boolVal); 
 			}
 			break;
@@ -470,38 +486,10 @@ public class oscControl_Developer : MonoBehaviour {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/YourHand", boolVal); 
 			}
 			break;
-            case "MediaCoverage":
-                if (metascoreLine.GetComponent<Slider>().value > 50f)
-                {
-                    if (youSet[3].GetComponent<bl_ToggleSwitcher>().isOn)
-                        boolVal = 1f;
-                    else
-                        boolVal = 0f;
-                    OSCHandler_Developer.Instance.SendMessageToClient("Max", "/You/MediaCoverage", boolVal);
-                }
-                break;
-            case "EnableLobbying":
-                if (metascoreLine.GetComponent<Slider>().value > 50f)
-                {
-                    if (youSet[4].GetComponent<bl_ToggleSwitcher>().isOn)
-                        boolVal = 1f;
-                    else
-                        boolVal = 0f;
-                    OSCHandler_Developer.Instance.SendMessageToClient("Max", "/You/EnableLobbying", boolVal);
-                }
-                break;
-            case "PoliticalSpace":
-                if (metascoreLine.GetComponent<Slider>().value > 50f)
-                {
-                    if (youSet[5].GetComponent<bl_ToggleSwitcher>().isOn)
-                        boolVal = 1f;
-                    else
-                        boolVal = 0f;
-                    OSCHandler_Developer.Instance.SendMessageToClient("Max", "/You/PoliticalSpace", boolVal);
-                }
-                break;
-            //shooting set
-            case "SpawnsMore":
+
+
+			//shooting set
+		case "SpawnsMore":
 			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
 				if (shootingSet[0].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
