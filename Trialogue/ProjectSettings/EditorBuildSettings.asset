@@ -20,4 +20,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Spring 2016/SpringBreak.unity
   - enabled: 1
-    path: Assets/MarchEnd.unity
+    path: Assets/Scenes/MarchEnd.unity
