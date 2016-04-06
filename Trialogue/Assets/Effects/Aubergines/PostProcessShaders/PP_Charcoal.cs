@@ -14,9 +14,9 @@ public class PP_Charcoal : PostProcessBase {
 	void OnRenderImage (RenderTexture source, RenderTexture destination) {
 		base.material.SetVector("_LineColor", lineColor);
 		material.color = Color.black;
-	//	if(!switchSource)
+		if(!switchSource)
 		Graphics.Blit (source,destination, material);
-		//else
-		//Graphics.Blit (destination,source, material);
+		else
+		Graphics.Blit (destination,source, material);
 	}
 }

@@ -154,7 +154,7 @@ public class oscControl_Developer : MonoBehaviour {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/GameSpeed", gameplaySet [0].GetComponent<Slider> ().value); 
 			}
 			break;
-		case "PaintItBlack":
+		case "ArtWeapon":
 			if (metascoreLine.GetComponent<Slider> ().value > 40f) {
 				if (gameplaySet [1].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
@@ -190,48 +190,43 @@ public class oscControl_Developer : MonoBehaviour {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/RegenHealth", boolVal); 
 			}
 			break;
-		case "MultipleReticles":
-			if (metascoreLine.GetComponent<Slider> ().value > 70f) {
-				if (gameplaySet [5].GetComponent<bl_ToggleSwitcher> ().isOn)
-					boolVal = 1f;
-				else
-					boolVal = 0f;
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/MultipleReticles", boolVal);
-			}
-			break;
-		case "NoReticles":
-			if (metascoreLine.GetComponent<Slider> ().value > 90f) {
-				if (gameplaySet [6].GetComponent<bl_ToggleSwitcher> ().isOn)
-					boolVal = 1f;
-				else
-					boolVal = 0f;
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoReticles", boolVal); 
+		case "Reticles":
+			if (gameplaySet [5].GetComponent<bl_ToggleSwitcher> ().isOn) { //means multiple
+				if (metascoreLine.GetComponent<Slider> ().value > 70f) {
+					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/MultipleReticles",1f);
+					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoReticles", 0f);
+				}
+			} else {
+				if (metascoreLine.GetComponent<Slider> ().value > 70f) {
+					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/MultipleReticles",0f);
+					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoReticles", 1f); 
+				}
 			}
 			break;
 		case "JumpEnabled":
 			if (metascoreLine.GetComponent<Slider> ().value > 50f) {
-				if (gameplaySet [7].GetComponent<bl_ToggleSwitcher> ().isOn)
+				if (gameplaySet [6].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
 					boolVal = 0f;
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/JumpEnabled", boolVal); 
 			}
 			break;
-		case "HeadSeparation":
-			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/HeadSeparation", gameplaySet [8].GetComponent<Slider> ().value); 
-			}
-			break;
+//		case "HeadSeparation":
+//			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
+//				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/HeadSeparation", gameplaySet [8].GetComponent<Slider> ().value); 
+//			}
+//			break;
 			
 
 			//visuals set
 
 
-		case "DirLightIntensity":
-			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/DirLightIntensity", visualSet [0].GetComponent<Slider> ().value);
-			}
-			break;
+//		case "DirLightIntensity":
+//			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
+//				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/DirLightIntensity", visualSet [0].GetComponent<Slider> ().value);
+//			}
+//			break;
 		case "RedDir":
 			if (metascoreLine.GetComponent<Slider> ().value > 20f) {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/RedDir", visualSet [1].GetComponent<Slider> ().value); 
@@ -288,15 +283,15 @@ public class oscControl_Developer : MonoBehaviour {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/Pixelated", boolVal); 
 			}
 			break;
-		case "Postered":
-			if (metascoreLine.GetComponent<Slider> ().value > 10f) {
-				if (visualSet [8].GetComponent<bl_ToggleSwitcher> ().isOn)
-					boolVal = 1f;
-				else
-					boolVal = 0f;
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/Postered", boolVal); 
-			}
-			break;
+//		case "Postered":
+//			if (metascoreLine.GetComponent<Slider> ().value > 10f) {
+//				if (visualSet [8].GetComponent<bl_ToggleSwitcher> ().isOn)
+//					boolVal = 1f;
+//				else
+//					boolVal = 0f;
+//				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/Postered", boolVal); 
+//			}
+//			break;
 		case "Nightvision":
 			if (metascoreLine.GetComponent<Slider> ().value > 60f) {
 				if (visualSet [9].GetComponent<bl_ToggleSwitcher> ().isOn)
@@ -324,15 +319,15 @@ public class oscControl_Developer : MonoBehaviour {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/GroundWater", boolVal);  
 			}
 			break;
-		case "UpsideDown":
-			if (metascoreLine.GetComponent<Slider> ().value > 60f) {
-				if (visualSet [12].GetComponent<bl_ToggleSwitcher> ().isOn)
-					boolVal = 1f;
-				else
-					boolVal = 0f;
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/UpsideDown", boolVal); 
-			}
-			break;
+//		case "UpsideDown":
+//			if (metascoreLine.GetComponent<Slider> ().value > 60f) {
+//				if (visualSet [12].GetComponent<bl_ToggleSwitcher> ().isOn)
+//					boolVal = 1f;
+//				else
+//					boolVal = 0f;
+//				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/UpsideDown", boolVal); 
+//			}
+//			break;
 
 
 			//environment set
@@ -361,50 +356,54 @@ public class oscControl_Developer : MonoBehaviour {
 			OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/ConquerSpace", boolVal); 
 			}
 			break;
-		case "BarrenLand":
-			if (metascoreLine.GetComponent<Slider> ().value > 0f) {
-				if (envSet [3].GetComponent<bl_ToggleSwitcher> ().isOn) {
-					boolVal = 1f;
-					envID = 1;
-				} else {
-					boolVal = 0f;
-					envID = 0;
-				}
-				OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/BarrenLand", boolVal); 
-			}
-			break;
-		case "BattleArena":
+//		case "BarrenLand":
+//			if (metascoreLine.GetComponent<Slider> ().value > 0f) {
+//				if (envSet [3].GetComponent<bl_ToggleSwitcher> ().isOn) {
+//					boolVal = 1f;
+//					envID = 1;
+//				} else {
+//					boolVal = 0f;
+//					envID = 0;
+//				}
+//				OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/BarrenLand", boolVal); 
+//			}
+//			break;
+		case "EnvType":
 			if (metascoreLine.GetComponent<Slider> ().value >= 40f) {
 				if(envSet[4].GetComponent<bl_ToggleSwitcher>().isOn)
 				{
 					boolVal=1f;
 					envID = 2;
+					OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/Battlefield", 1f); 
+					OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/BattleArena", 0f);
 				}
 				else
 				{
 					boolVal=0f;
 					envID = 0;
+					OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/Battlefield", 0f); 
+					OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/BattleArena", 1f);
 				}
-				OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/BattleArena", boolVal); 
-			}
-			break;
-		case "Battlefield":
-			Debug.Log ("hi");	
-			if (metascoreLine.GetComponent<Slider> ().value >= 60f) {
-				if(envSet[5].GetComponent<bl_ToggleSwitcher>().isOn)
-				{
-					boolVal=1f;
-					envID = 3;
-				}
-				else
-				{
-					boolVal=0f;
-					envID = 0;
-				}
-				OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/Battlefield", boolVal); 
-			}
-			break;
 
+			}
+			break;
+//		case "Battlefield":
+//			Debug.Log ("hi");	
+//			if (metascoreLine.GetComponent<Slider> ().value >= 60f) {
+//				if(envSet[5].GetComponent<bl_ToggleSwitcher>().isOn)
+//				{
+//					boolVal=1f;
+//					envID = 3;
+//				}
+//				else
+//				{
+//					boolVal=0f;
+//					envID = 0;
+//				}
+//				OSCHandler_Developer.Instance.SendMessageToClient("Max", "/Environment/Battlefield", boolVal); 
+//			}
+//			break;
+//
 			//enemy set
 		case "EnemySize":
 			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
