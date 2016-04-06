@@ -38,6 +38,7 @@ public class oscControl_Critic : MonoBehaviour {
 
     private float tempVal= 0f;
     private string tempString = "";
+    private string prevString = "";
     public GameObject prText;
 	// Script initialization
 	void Start() {	
@@ -60,22 +61,28 @@ public class oscControl_Critic : MonoBehaviour {
 			if(item.Value.log.Count > 0) 
 			{
 				int lastPacketIndex = item.Value.packets.Count - 1;
-//				
-//				UnityEngine.Debug.Log(String.Format("SERVER: {0} ADDRESS: {1} VALUE 0: {2}", 
-//				                                    item.Key, // Server name
-//				                                    item.Value.packets[lastPacketIndex].Address, // OSC address
-//				                                    item.Value.packets[lastPacketIndex].Data[0].ToString())); //First data value
-
-				tempVal = float.Parse (item.Value.packets [lastPacketIndex].Data [0].ToString ());
-                tempString = item.Value.packets[lastPacketIndex].Data[0].ToString();
+                //				
+                //				UnityEngine.Debug.Log(String.Format("SERVER: {0} ADDRESS: {1} VALUE 0: {2}", 
+                //				                                    item.Key, // Server name
+                //				                                    item.Value.packets[lastPacketIndex].Address, // OSC address
+                //				                                    item.Value.packets[lastPacketIndex].Data[0].ToString())); //First data value
+                if (item.Value.packets[lastPacketIndex].Address == "/Critic/PressRelease")
+                    tempString = item.Value.packets[lastPacketIndex].Data[0].ToString();
+                else
+                    tempVal = float.Parse (item.Value.packets [lastPacketIndex].Data [0].ToString ());
+                 
 
                 if (item.Value.packets[lastPacketIndex].Address == "/Critic/PressRelease") //gameplay
 				{
+                    if(tempString!=prevString)
+                    { 
                     GameObject tempObj;
                     tempObj=Instantiate(prText, Vector3.zero, Quaternion.identity) as GameObject;
                     tempObj.GetComponent<TextMesh>().text = tempString;
-
-				}
+                    prevString = tempString;
+                    }
+                }
+                
 			}
 		}
 	}
