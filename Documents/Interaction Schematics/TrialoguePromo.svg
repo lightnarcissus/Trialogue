@@ -8,8 +8,8 @@
 	.st2{display:none;fill:#FFFFFF;}
 	.st3{font-family:'OratorStd';}
 	.st4{font-size:72px;}
-	.st5{fill:#FFFFFF;stroke:#F8F7F8;stroke-miterlimit:10;}
-	.st6{fill:#F7F2F3;}
+	.st5{display:none;fill:#FFFFFF;stroke:#F8F7F8;stroke-miterlimit:10;}
+	.st6{display:none;fill:#F7F2F3;}
 	.st7{font-size:36px;}
 </style>
 <rect class="st0" width="728.5" height="1031.8"/>
