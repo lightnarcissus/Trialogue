@@ -85,15 +85,25 @@ public class PlayerShoot : MonoBehaviour {
 			if (transform.position.y < 90f)
 					GameOver ();
 			if(platformID==1)
+            { 
             	shootTrigger = Input.GetAxis("Shoot");
-			else
-				shootTrigger =Input.GetAxis("ShootMac");
-			//Debug.Log(Mathf.Abs(shootTrigger));
-            if(shootTrigger<-0.5f)
-            {
-                shootUp = true;
-               // StartCoroutine("DontShoot");
+                if (Mathf.Abs(shootTrigger) < 0.2f)
+                {
+                    shootUp = true;
+                    // StartCoroutine("DontShoot");
+                }
             }
+            else
+            { 
+				shootTrigger =Input.GetAxis("ShootMac");
+                if (shootTrigger < -0.5f)
+                {
+                    shootUp = true;
+                    // StartCoroutine("DontShoot");
+                }
+            }
+            //Debug.Log(Mathf.Abs(shootTrigger));
+            
 			//Debug.Log (shootUp + " " + shootTrigger);
             
 			if(paintAllow)
