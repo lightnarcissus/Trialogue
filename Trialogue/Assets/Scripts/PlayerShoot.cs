@@ -81,7 +81,7 @@ public class PlayerShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!gameOver) {
-
+//			Debug.Log (Input.GetAxis ("ShootMac"));
 			if (transform.position.y < 90f)
 					GameOver ();
 			if(platformID==1)
@@ -89,7 +89,7 @@ public class PlayerShoot : MonoBehaviour {
 			else
 				shootTrigger =Input.GetAxis("ShootMac");
 			//Debug.Log(Mathf.Abs(shootTrigger));
-            if(Mathf.Abs(shootTrigger)<0.1f)
+            if(shootTrigger<-0.5f)
             {
                 shootUp = true;
                // StartCoroutine("DontShoot");
@@ -114,7 +114,7 @@ public class PlayerShoot : MonoBehaviour {
 				//Debug.Log ("after mousepos "+obj.transform.position + " and " + obj.GetComponent<RectTransform>().position);
 			paintManager.GetComponent<PaintManager>().AddPaint(obj);
 			}
-			else if (Input.GetMouseButtonDown (0) ||(shootUp && (Mathf.Abs(shootTrigger)>0.5f))) {
+			else if (Input.GetMouseButtonDown (0) ||(shootUp && (shootTrigger>0.5f))) {
 			//	cameraPlay.GetComponent<PP_Charcoal>().enabled=false;
 			   // Debug.Log ("shooting");
 				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));

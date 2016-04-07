@@ -51,7 +51,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 //				xRot = CrossPlatformInputManager.GetAxis ("Mouse Y") * YSensitivity;
 //			}
 				else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer && controllerAttached) {
-				Debug.Log ("nOPE");
+				//Debug.Log ("nOPE");
 				yRot = CrossPlatformInputManager.GetAxis ("MouseXMac") * XSensitivity;
 				xRot = CrossPlatformInputManager.GetAxis ("MouseYMac") * YSensitivity;
 			} 

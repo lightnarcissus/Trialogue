@@ -140,8 +140,8 @@ public class vp_FPInput : MonoBehaviour
 	protected virtual void InputRun()
 	{
 
-		//if (Input.GetButton("Run"))	// suggested input axis
-		if (Input.GetKey(KeyCode.LeftShift))
+		if (Input.GetButton("Run"))	// suggested input axis
+		//if (Input.GetKey(KeyCode.LeftShift))
 			Player.Run.TryStart();
 		else
 			Player.Run.TryStop();
