@@ -155,7 +155,7 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "ArtWeapon":
-			if (metascoreLine.GetComponent<Slider> ().value > 80f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 90f) {
 				if (gameplaySet [1].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
@@ -348,7 +348,7 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "ConquerSpace":
-			if (metascoreLine.GetComponent<Slider> ().value > 90f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 40f) {
 			if(envSet[2].GetComponent<bl_ToggleSwitcher>().isOn)
 				boolVal=1f;
 			else
@@ -410,18 +410,19 @@ public class oscControl_Developer : MonoBehaviour {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/EnemySize", enemySet [2].GetComponent<Slider> ().value);
 			}
 			break;
-		case "EnemyBehavior":
+		case "EnemyBehaviour":
 			if (metascoreLine.GetComponent<Slider> ().value > 40f) {
 				if (enemySet [1].GetComponent<bl_ToggleSwitcher> ().isOn) {
 					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Aggressive", 1f); 
 					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Peaceful", 0f); 
 				}
+				else
+				{
+					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Peaceful", 1f); 
+					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Aggressive", 0f);
+				}
 			}
-			else
-			{
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Peaceful", 1f); 
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Aggressive", 0f);
-			}
+
 			break;
 		case "DeadBodyRemains":
 			if (metascoreLine.GetComponent<Slider> ().value > 20f) {
