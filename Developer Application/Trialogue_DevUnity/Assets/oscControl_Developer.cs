@@ -150,12 +150,12 @@ public class oscControl_Developer : MonoBehaviour {
 		//10 pack
 
 		case "GameSpeed":
-			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 40f) {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/GameSpeed", gameplaySet [0].GetComponent<Slider> ().value); 
 			}
 			break;
 		case "ArtWeapon":
-			if (metascoreLine.GetComponent<Slider> ().value > 40f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 80f) {
 				if (gameplaySet [1].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
@@ -164,7 +164,7 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "NoGuns":
-			if (metascoreLine.GetComponent<Slider> ().value > 60f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 10f) {
 				if (gameplaySet [2].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
@@ -182,7 +182,7 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "RegenHealth":
-			if (metascoreLine.GetComponent<Slider> ().value > 10f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 20f) {
 				if (gameplaySet [4].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
@@ -192,7 +192,7 @@ public class oscControl_Developer : MonoBehaviour {
 			break;
 		case "Reticles":
 			if (gameplaySet [5].GetComponent<bl_ToggleSwitcher> ().isOn) { //means multiple
-				if (metascoreLine.GetComponent<Slider> ().value > 70f) {
+				if (metascoreLine.GetComponent<Slider> ().value > 80f) {
 					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/MultipleReticles",1f);
 					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoReticles", 0f);
 				}
@@ -407,30 +407,25 @@ public class oscControl_Developer : MonoBehaviour {
 			//enemy set
 		case "EnemySize":
 			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/EnemySize", enemySet [0].GetComponent<Slider> ().value);
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/EnemySize", enemySet [2].GetComponent<Slider> ().value);
 			}
 			break;
-		case "Aggressive":
+		case "EnemyBehavior":
 			if (metascoreLine.GetComponent<Slider> ().value > 40f) {
-				if (enemySet [1].GetComponent<bl_ToggleSwitcher> ().isOn)
-					boolVal = 1f;
-				else
-					boolVal = 0f;
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Aggressive", boolVal); 
+				if (enemySet [1].GetComponent<bl_ToggleSwitcher> ().isOn) {
+					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Aggressive", 1f); 
+					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Peaceful", 0f); 
+				}
 			}
-			break;
-		case "Peaceful":
-			if (metascoreLine.GetComponent<Slider> ().value > 60f) {
-				if (enemySet [2].GetComponent<bl_ToggleSwitcher> ().isOn)
-					boolVal = 1f;
-				else
-					boolVal = 0f;
-				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Peaceful", boolVal); 
+			else
+			{
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Peaceful", 1f); 
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Aggressive", 0f);
 			}
 			break;
 		case "DeadBodyRemains":
 			if (metascoreLine.GetComponent<Slider> ().value > 20f) {
-				if (enemySet [6].GetComponent<bl_ToggleSwitcher> ().isOn)
+				if (enemySet [4].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
 					boolVal = 0f;
@@ -439,16 +434,16 @@ public class oscControl_Developer : MonoBehaviour {
 			break;
 		case "DisableEnemies":
 			if (metascoreLine.GetComponent<Slider> ().value > 80f) {
-				if (enemySet [8].GetComponent<bl_ToggleSwitcher> ().isOn)
+				if (enemySet [0].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
 					boolVal = 0f;
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/DisableEnemies", boolVal); 
 			}
 			break;
-		case "HumanEnemies":
+		case "EnemyType":
 			if (metascoreLine.GetComponent<Slider> ().value > 50f) {
-				if (enemySet [9].GetComponent<bl_ToggleSwitcher> ().isOn)
+				if (enemySet [3].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
 					boolVal = 0f;
@@ -484,9 +479,34 @@ public class oscControl_Developer : MonoBehaviour {
 					boolVal = 0f;
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/YourHand", boolVal); 
 			}
+			break;	
+		case "MediaCoverage":
+			if (metascoreLine.GetComponent<Slider> ().value > 80f) {
+				if (youSet [3].GetComponent<bl_ToggleSwitcher> ().isOn)
+					boolVal = 1f;
+				else
+					boolVal = 0f;
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/MediaCoverage", boolVal); 
+			}
 			break;
-
-
+		case "EnableLobbying":
+			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
+				if (youSet [4].GetComponent<bl_ToggleSwitcher> ().isOn)
+					boolVal = 1f;
+				else
+					boolVal = 0f;
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/EnableLobbying", boolVal); 
+			}
+			break;
+		case "PoliticalSpace":
+			if (metascoreLine.GetComponent<Slider> ().value > 50f) {
+				if (youSet [5].GetComponent<bl_ToggleSwitcher> ().isOn)
+					boolVal = 1f;
+				else
+					boolVal = 0f;
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/PoliticalSpace", boolVal); 
+			}
+			break;
 			//shooting set
 		case "SpawnsMore":
 			if (metascoreLine.GetComponent<Slider> ().value > 30f) {

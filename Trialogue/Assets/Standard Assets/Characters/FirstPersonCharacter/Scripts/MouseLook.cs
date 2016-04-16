@@ -27,7 +27,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_CameraTargetRot = camera.localRotation;
 
 			string[] contList = Input.GetJoystickNames ();
-			Debug.Log (contList.Length);
+			//Debug.Log (contList.Length);
 			for (int i = 0; i < contList.Length; i++) {
 				Debug.Log (contList [i]);
 				if (contList [i].Contains ("360")) {
