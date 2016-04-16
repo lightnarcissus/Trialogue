@@ -81,7 +81,7 @@ public class MissionSystem : MonoBehaviour {
 		if (numberEnemies <= 0) {
 			//switch roles
 			score=(int) (originalNumberEnemies*missionTimer);
-			Debug.Log ("Score is" + score);
+			//Debug.Log ("Score is" + score);
 			economyManager.GetComponent<RoleSwitcher>().SwitchRole(++RoleSwitcher.currentRole);
 			economyManager.GetComponent<EconomyManager> ().UpdateHeadlines ();
 			if (missionTimer < bestTimer)

@@ -20,7 +20,7 @@ public class PoliticalCamMove : MonoBehaviour {
 		for (int i = 0; i < contList.Length; i++) {
 			Debug.Log (contList [i]);
 			if (contList [i].Contains ("360")) {
-				Debug.Log ("INSIDE");
+			//	Debug.Log ("INSIDE");
 				controllerAttached = true;
 			}
 		}
