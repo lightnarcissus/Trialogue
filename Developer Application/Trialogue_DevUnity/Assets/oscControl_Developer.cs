@@ -150,12 +150,12 @@ public class oscControl_Developer : MonoBehaviour {
 		//10 pack
 
 		case "GameSpeed":
-			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 40f) {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/GameSpeed", gameplaySet [0].GetComponent<Slider> ().value); 
 			}
 			break;
 		case "ArtWeapon":
-			if (metascoreLine.GetComponent<Slider> ().value > 40f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 80f) {
 				if (gameplaySet [1].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
@@ -164,7 +164,7 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "NoGuns":
-			if (metascoreLine.GetComponent<Slider> ().value > 60f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 10f) {
 				if (gameplaySet [2].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
@@ -182,7 +182,7 @@ public class oscControl_Developer : MonoBehaviour {
 			}
 			break;
 		case "RegenHealth":
-			if (metascoreLine.GetComponent<Slider> ().value > 10f) {
+			if (metascoreLine.GetComponent<Slider> ().value > 20f) {
 				if (gameplaySet [4].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
@@ -192,7 +192,7 @@ public class oscControl_Developer : MonoBehaviour {
 			break;
 		case "Reticles":
 			if (gameplaySet [5].GetComponent<bl_ToggleSwitcher> ().isOn) { //means multiple
-				if (metascoreLine.GetComponent<Slider> ().value > 70f) {
+				if (metascoreLine.GetComponent<Slider> ().value > 80f) {
 					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/MultipleReticles",1f);
 					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoReticles", 0f);
 				}
@@ -479,9 +479,34 @@ public class oscControl_Developer : MonoBehaviour {
 					boolVal = 0f;
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/YourHand", boolVal); 
 			}
+			break;	
+		case "MediaCoverage":
+			if (metascoreLine.GetComponent<Slider> ().value > 80f) {
+				if (youSet [3].GetComponent<bl_ToggleSwitcher> ().isOn)
+					boolVal = 1f;
+				else
+					boolVal = 0f;
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/MediaCoverage", boolVal); 
+			}
 			break;
-
-
+		case "EnableLobbying":
+			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
+				if (youSet [4].GetComponent<bl_ToggleSwitcher> ().isOn)
+					boolVal = 1f;
+				else
+					boolVal = 0f;
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/EnableLobbying", boolVal); 
+			}
+			break;
+		case "PoliticalSpace":
+			if (metascoreLine.GetComponent<Slider> ().value > 50f) {
+				if (youSet [5].GetComponent<bl_ToggleSwitcher> ().isOn)
+					boolVal = 1f;
+				else
+					boolVal = 0f;
+				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/PoliticalSpace", boolVal); 
+			}
+			break;
 			//shooting set
 		case "SpawnsMore":
 			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
