@@ -27,14 +27,14 @@ using UnityOSC;
 using UnityEngine.UI;
 
 public class DevManager : MonoBehaviour {
-	
+	/*
 	private Dictionary<string, ServerLog> servers;
 	public Slider gameplay;
 	public GameObject cube;
 	
 	// Script initialization
 	void Start() {	
-		OSCHandler.Instance.Init(); //init OSC
+	//	OSCHandler.Instance.Init(); //init OSC
 		servers = new Dictionary<string, ServerLog>();
 	}
 	
@@ -85,5 +85,5 @@ public class DevManager : MonoBehaviour {
 
 		}
 
-	}
+	}*/
 }

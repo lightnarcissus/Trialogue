@@ -10,9 +10,9 @@ public class PlatformManager : MonoBehaviour {
 	void Awake () {
 		platform = SystemInfo.operatingSystem;
 		if (platform.Contains ("Windows")) {
-			playerChar.GetComponent<Syphon> ().enabled = false;
-			playerChar.GetComponent<SyphonServerTexture> ().enabled = false;
-			clientTexture.GetComponent<SyphonClientTexture> ().enabled = false;
+			//playerChar.GetComponent<Syphon> ().enabled = false;
+			//playerChar.GetComponent<SyphonServerTexture> ().enabled = false;
+			//clientTexture.GetComponent<SyphonClientTexture> ().enabled = false;
 		} else if (platform.Contains ("Mac")) {
 			playerChar.GetComponent<Syphon> ().enabled = true;
 			playerChar.GetComponent<SyphonServerTexture> ().enabled = true;

@@ -5,21 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Fall 2015/BetterShooter.unity
-  - enabled: 0
-    path: Assets/Scenes/Fall 2015/NYCArcade_Dec.unity
-  - enabled: 0
-    path: Assets/Scenes/Fall 2015/BetterShooter.unity
-  - enabled: 0
-    path: Assets/Scenes/Fall 2015/ThesisPresentation_Dec.unity
-  - enabled: 0
-    path: Assets/Scenes/Spring 2016/ExplorationScene.unity
-  - enabled: 0
-    path: Assets/Scenes/Spring 2016/GamespaceScene.unity
-  - enabled: 0
-    path: Assets/Scenes/Spring 2016/SpringBreak.unity
   - enabled: 1
-    path: Assets/StartScreen.unity
+    path: Assets/Scenes/StartScreen.unity
   - enabled: 1
-    path: Assets/Scenes/MarchEnd.unity
+    path: Assets/Scenes/Exhibition Builds/AMAZE_Exhibition_Build.unity
+  - enabled: 0
+    path: Assets/Scenes/Spring 2016/MarchEnd.unity

@@ -9,11 +9,15 @@ public class ZombieRun : MonoBehaviour {
 	private Transform targetIK;
 	public AudioClip rifleShot;
 	public AvatarIKGoal ikType;
+    private int soldierType = 0;
 	public int behavior=1; // 1 is aggressive, 2 is defensive
 	private AudioSource audioSource;
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find ("Player");
+        soldierType = Random.Range(0, 2);
+        if (soldierType == 1)
+            gameObject.GetComponent<Animator>().SetBool("Slow", true);
+         player = GameObject.Find ("Player");
 		InvokeRepeating ("UpdateTarget", 1f, 5f);
 		InvokeRepeating ("CheckDeath", 1f, 5f);
 		agent = GetComponent<NavMeshAgent>();

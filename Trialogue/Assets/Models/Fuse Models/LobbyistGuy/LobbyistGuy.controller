@@ -13,7 +13,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -175,7 +175,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Idle
+  m_Name: Thinking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -188,7 +188,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fa926ef7d05792f49a8c47ac75aa8dc8, type: 3}
+  m_Motion: {fileID: 7400000, guid: 2f1f6c275ad9cb84db5ce974943a7e44, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

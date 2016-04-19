@@ -36,6 +36,7 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject dyingSound;
 	public GameObject explosionSound;
 	public GameObject explosion;
+    public GameObject humanExplosion;
 	public GameObject pistolMuzzle;
 	public Slider healthSlider;
 	public GameObject oscManager;
@@ -183,7 +184,9 @@ public class PlayerShoot : MonoBehaviour {
 					{
 						killCount++;
 						hit.collider.gameObject.GetComponent<Animator>().SetBool("Death",true);
-						hit.collider.gameObject.GetComponent<NavMeshAgent>().enabled=false;
+                        Instantiate(explosionSound, transform.position, Quaternion.identity);
+                        Instantiate(humanExplosion, hit.collider.gameObject.transform.position, Quaternion.identity);
+                        hit.collider.gameObject.GetComponent<NavMeshAgent>().enabled=false;
 						if (missionManager.GetComponent<MissionSystem> ().missionType == 1) {
 							missionManager.GetComponent<MissionSystem> ().numberEnemies--;
 							missionManager.GetComponent<MissionSystem> ().UpdateText();

@@ -73,13 +73,13 @@ public class RoleSwitcher : MonoBehaviour {
 
     public void SwitchRole(int activateRole)
     {
-		if (activateRole == 4) {
+		if (activateRole == 5) {
 			activateRole = 1;
-			currentRole = 3;
+			currentRole = 4;
 		}
 		else
 		currentRole = activateRole - 1;
-		//Debug.Log ("activating " + activateRole); 
+		Debug.Log ("activating " + activateRole); 
         switch (activateRole)
         {
 		case 1:

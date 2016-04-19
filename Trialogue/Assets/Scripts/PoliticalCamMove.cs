@@ -43,9 +43,10 @@ public class PoliticalCamMove : MonoBehaviour {
 		float yRot=0f;
 		float zRot = 0f;
 		if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
-			xRot = CrossPlatformInputManager.GetAxis ("Vertical") * XSensitivity;
-			yRot = CrossPlatformInputManager.GetAxis ("Mouse Y") * YSensitivity;
-		} else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer && controllerAttached) {
+            yRot = CrossPlatformInputManager.GetAxis("Mouse Y") * XSensitivity;
+            zRot = CrossPlatformInputManager.GetAxis("Vertical") * XSensitivity;
+            xRot = CrossPlatformInputManager.GetAxis("Horizontal") * YSensitivity;
+        } else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer && controllerAttached) {
 			yRot = CrossPlatformInputManager.GetAxis ("Mouse Y") * XSensitivity;
 			zRot=CrossPlatformInputManager.GetAxis ("Vertical") * XSensitivity;
 			xRot = CrossPlatformInputManager.GetAxis ("Horizontal") * YSensitivity;

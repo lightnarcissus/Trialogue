@@ -16,7 +16,7 @@ public class StartManager : MonoBehaviour {
 	void Update () {
 
 		if (canStart) {
-			if (Input.GetKeyDown (KeyCode.Return) || Input.GetButtonDown("StartMac")) {
+			if (Input.GetKeyDown (KeyCode.Return) || Input.GetButtonDown("StartMac") || Input.GetButton("StartWin")) {
 				StartPlayer ();
 			}
 		}

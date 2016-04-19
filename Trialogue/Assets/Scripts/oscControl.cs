@@ -524,11 +524,11 @@ public class oscControl : MonoBehaviour {
                 {
                     if (tempVal == 0)
                     {
-                        playerCamera.GetComponent<PP_Charcoal>().switchSource = false;
+                        playerCamera.GetComponent<PP_Negative>().enabled = false;
                     }
                     else
                     {
-                        playerCamera.GetComponent<PP_Charcoal>().switchSource = true;
+                        playerCamera.GetComponent<PP_Negative>().enabled = true;
                     }
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/DontClear") //don't clear?
