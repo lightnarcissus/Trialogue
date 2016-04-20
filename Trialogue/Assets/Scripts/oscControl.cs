@@ -139,7 +139,7 @@ public class oscControl : MonoBehaviour {
 		clients = new Dictionary<string,ClientLog> ();
         servers = OSCHandler.Instance.Servers;
         clients = OSCHandler.Instance.Clients;
-
+        ResetAll();
 
 		//initiator message
 //		OSCHandler.Instance.SendMessageToClient("localhost", "blah",2f);
@@ -844,6 +844,30 @@ public class oscControl : MonoBehaviour {
 
 		}
 	}
+
+    void ResetAll()
+    {
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Gameplay/GameSpeed", 1f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Gameplay/PaintItBlack", 0f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Gameplay/NoGuns", 1f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Gameplay/HealthAmmo", 0f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Gameplay/RegenHealth",0f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Gameplay/JumpEnabled", 1f);
+
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Graphics/CamFoV", 60f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Graphics/GroundWater", 0f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Graphics/Pixelated", 0f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Graphics/NightVision", 0f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Graphics/Scanlines", 0f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Graphics/DontClear", 0f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Graphics/2DCam", 0f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/Graphics/InvertColors", 0f);
+
+
+        OSCHandler.Instance.SendMessageToClient("Max,", "/You/EnableLobbying", 1f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/You/MediaCoverage", 0f);
+        OSCHandler.Instance.SendMessageToClient("Max,", "/You/PoliticalSpace", 0f);
+    }
 
 	IEnumerator FlashHeadline()
 	{
