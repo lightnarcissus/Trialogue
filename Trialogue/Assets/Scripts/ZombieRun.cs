@@ -28,34 +28,48 @@ public class ZombieRun : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        transform.localScale = new Vector3(CubeManager.globalSize, CubeManager.globalSize, CubeManager.globalSize);
+        if (CubeManager.aggressiveActive)
+        {
+            agent.enabled = true;
+            if (!dead)
+            {
+                if (agent.velocity.magnitude > 1f)
+                {
+                    gameObject.GetComponent<Animator>().SetBool("Running", true);
+                }
+                else {
+                    gameObject.GetComponent<Animator>().SetBool("Running", false);
+                }
+                if (agent.remainingDistance < 5f)
+                {
+                    gameObject.GetComponent<Animator>().SetBool("Shooting", true);
+                    if (!audioSource.isPlaying)
+                        audioSource.PlayOneShot(rifleShot);
+                    if (Random.value < 0.005f)
+                    {
+                        //Debug.Log ("player shot");
+                        player.GetComponent<PlayerShoot>().DamageEffect();
+                    }
+                }
+                else {
+                    gameObject.GetComponent<Animator>().SetBool("Shooting", false);
+                }
+            }
+        }
+        else
+            agent.enabled = false;
 		if (GetComponent<Animator> ().GetBool ("Death")) {
 			dead = true;
 			gameObject.GetComponent<Animator> ().SetBool ("Running", false);
 			gameObject.GetComponent<Animator> ().SetBool ("Shooting", false);
 		}
-		if (!dead) {
-			if (agent.velocity.magnitude > 1f) {
-				gameObject.GetComponent<Animator> ().SetBool ("Running", true);
-			} else {
-				gameObject.GetComponent<Animator> ().SetBool ("Running", false);
-			}
-			if (agent.remainingDistance < 5f) {
-				gameObject.GetComponent<Animator> ().SetBool ("Shooting", true);
-				if (!audioSource.isPlaying)
-					audioSource.PlayOneShot (rifleShot);
-				if (Random.value < 0.005f) {
-					//Debug.Log ("player shot");
-					player.GetComponent<PlayerShoot> ().DamageEffect ();
-				}
-			} else {
-				gameObject.GetComponent<Animator> ().SetBool ("Shooting", false);
-			}
-		}
+		
 	}
 
 	void UpdateTarget()
 	{
-		if (!dead)
+		if (!dead && CubeManager.aggressiveActive)
 		agent.destination = player.transform.position; 
 	}
 

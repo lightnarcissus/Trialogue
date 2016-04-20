@@ -23,6 +23,8 @@ public class PassiveCube : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        transform.localScale = new Vector3(CubeManager.globalSize, CubeManager.globalSize, CubeManager.globalSize);
 	
 	}
 

@@ -51,7 +51,7 @@ public class PoliticalCamMove : MonoBehaviour {
 			zRot=CrossPlatformInputManager.GetAxis ("Vertical") * XSensitivity;
 			xRot = CrossPlatformInputManager.GetAxis ("Horizontal") * YSensitivity;
 		}
-		if(transform.localPosition.y < -5f)
+		if(transform.localPosition.y > -5f)
 		transform.localPosition+= new Vector3(xRot,-5f,zRot);
 		else
 		transform.localPosition+= new Vector3(xRot,yRot,zRot);

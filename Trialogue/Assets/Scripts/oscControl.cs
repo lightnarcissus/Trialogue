@@ -41,6 +41,7 @@ public class oscControl : MonoBehaviour {
     public GameObject playerCamera;
     public GameObject treeSpawner;
 
+    public bool enableLobbying = false;
     //Environment page
     public bool greenTrees = false;
 	public bool groundWater=false;
@@ -427,7 +428,7 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Gameplay/NoGuns") //no guns?
                 {
-                    if (tempVal == 1)
+                    if (tempVal == 0)
                     {
                         noGuns = true;
                         playerCamera.transform.FindChild("Pistol").gameObject.SetActive(false);
@@ -457,7 +458,7 @@ public class oscControl : MonoBehaviour {
                         playerBody.GetComponent<PlayerShoot>().paintAllow = false;
                         //playerBody.GetComponent<vp_SimpleCrosshair>().enabled = true;
                     }
-                    Debug.Log(paintAllow);
+                  //  Debug.Log(paintAllow);
                 }
                 //                else if (item.Value.packets[lastPacketIndex].Address == "/Health/rotary5") //enemy collision out of sync x
                 //                {
@@ -569,6 +570,17 @@ public class oscControl : MonoBehaviour {
 						unlimitedPublicFunds = true;
 					}
 				}
+                else if (item.Value.packets[lastPacketIndex].Address == "/You/EnableLobbying") //media censorship?
+                {
+                    if (tempVal == 0)
+                    {
+                        enableLobbying = false;
+                    }
+                    else
+                    {
+                        enableLobbying = true;
+                    }
+                }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Critic/Headline") //critic messages
                 {
                     headlineText.text = tempString;
@@ -711,12 +723,12 @@ public class oscControl : MonoBehaviour {
                 //                {
                 //                    CubeManager.globalSpeed = tempVal;
                 //                }
-                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/Passive") //allow passive
+                else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/Peaceful") //allow passive
                 {
                     if (tempVal == 0)
-                        CubeManager.passiveActive = false;
+                        CubeManager.aggressiveActive = true;
                     else
-                        CubeManager.passiveActive = true;
+                        CubeManager.aggressiveActive = false;
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/KillEnemy") //allow aggressive
                 {
@@ -770,7 +782,7 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/DisableEnemies") //disable all enemies
                 {
-                    if (tempVal == 1)
+                    if (tempVal == 0)
                         treeSpawner.GetComponent<TreeGenerator>().DisableEnemies();
                     else
                         treeSpawner.GetComponent<TreeGenerator>().EnableEnemies();

@@ -98,6 +98,7 @@ public class TreeGenerator : MonoBehaviour {
     public void DisableEnemies()
     {
 		disableSpawn = true;
+        Debug.Log("disabling"); 
        // GameObject[] enemies = GameObject.FindGameObjectsWithTag("Cube");
         for(int i=0;i<cubes.Count;i++)
         {

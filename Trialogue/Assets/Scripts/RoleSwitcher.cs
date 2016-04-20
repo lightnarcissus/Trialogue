@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class RoleSwitcher : MonoBehaviour {
     public static int currentRole = 0; // 1 is soldier, 2 is politician, 3 is media, 4 is lobbyist
     public GameObject player;
@@ -12,6 +13,9 @@ public class RoleSwitcher : MonoBehaviour {
     public GameObject politicalObj;
     public GameObject mediaObj;
     public GameObject lobbyistObj;
+
+    public Text endGame;
+    public oscControl oscControl;
     
 	public MissionSystem missionSystem;
 
@@ -33,7 +37,16 @@ public class RoleSwitcher : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        if(Input.GetButtonDown("Quit"))
+        {
+            StartCoroutine("PlayerQuits");
+            
+        }
+     //   Debug.Log(oscControl.enableLobbying);
+        if(Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SwitchRole(4);
+        }
 //        if(activateAllow)
 //        { 
 //        if(Input.GetButton("PreviousRole"))
@@ -71,8 +84,29 @@ public class RoleSwitcher : MonoBehaviour {
         yield return null;
     }
 
+    IEnumerator PlayerQuits()
+    {
+        endGame.enabled = true;
+        endGame.text = "THE PLAYER HAS LEFT";
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("StartScreen");
+        yield return null;
+    }
+
     public void SwitchRole(int activateRole)
     {
+        if(oscControl.enableLobbying && activateRole==4)
+        {
+            Debug.Log("ok");
+            activateRole = 1;
+            currentRole = 3;
+        }
+        if(oscControl.enableLobbying)
+        {
+            lobbyist.SetActive(false);
+            lobbyistObj.SetActive(false);
+        }
+
 		if (activateRole == 5) {
 			activateRole = 1;
 			currentRole = 4;

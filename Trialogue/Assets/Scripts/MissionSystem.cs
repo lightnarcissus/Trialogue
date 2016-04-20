@@ -12,38 +12,71 @@ public class MissionSystem : MonoBehaviour {
 	public GameObject economyManager;
 	private int originalNumberEnemies=0;
 	private string typeEnemies="Hostiles";
-	public float bestTimer = 1f;
+	public float bestTimer = 100f;
 	// Use this for initialization
 	void Start () {
 
-		numberEnemies = Random.Range (1, 15);
+		
 		//Debug.Log ("Mission type" + missionType);
 		originalNumberEnemies = numberEnemies;
-		if(missionType==1)
-			playerText.text = "Neutralize " + numberEnemies + " Hostiles in the Area";
-		else if (missionType == 2) {
-			string tempArea = "";
-			numberEnemies = Random.Range (0, 15);
-			if (oscControl.barrenLand) {
-				tempArea = "Electric Poles";
-			} else if (oscControl.battleArena) {
-				tempArea = "Pillars";
-			} else if (oscControl.battlefield) {
-				tempArea = "Buildings";
-			} else {
-				tempArea = "Trees";
-			}
-			Debug.Log ("yeah");
-			playerText.text="Secure "+numberEnemies+ " " +tempArea;
-		}
+        if (missionType == 1)
+        {
+            numberEnemies = Random.Range(1, 15);
+            playerText.text = "Neutralize " + numberEnemies + " Hostiles in the Area";
+        }
+        else if (missionType == 2)
+        {
+            numberEnemies = Random.Range(1, 5);
+            string tempArea = "";
+            numberEnemies = Random.Range(0, 15);
+            if (oscControl.barrenLand)
+            {
+                tempArea = "Electric Poles";
+            }
+            else if (oscControl.battleArena)
+            {
+                tempArea = "Pillars";
+            }
+            else if (oscControl.battlefield)
+            {
+                tempArea = "Buildings";
+            }
+            else {
+                tempArea = "Trees";
+            }
+            Debug.Log("yeah");
+            playerText.text = "Secure " + numberEnemies + " " + tempArea;
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-//		if(Input.GetKeyDown(KeyCode.V))
-//			economyManager.GetComponent<RoleSwitcher>().SwitchRole(++RoleSwitcher.currentRole);
-//	
-		missionTimer += Time.deltaTime;
+        if (missionType == 2)
+        {
+            string tempArea = "";
+            //numberEnemies = Random.Range(0, 15);
+            if (oscControl.barrenLand)
+            {
+                tempArea = "Electric Poles";
+            }
+            else if (oscControl.battleArena)
+            {
+                tempArea = "Pillars";
+            }
+            else if (oscControl.battlefield)
+            {
+                tempArea = "Buildings";
+            }
+            else {
+                tempArea = "Electric Poles";
+            }
+           // Debug.Log("yeah");
+            playerText.text = "Secure " + numberEnemies + " " + tempArea;
+        }
+            //		if(Input.GetKeyDown(KeyCode.V))
+            //			economyManager.GetComponent<RoleSwitcher>().SwitchRole(++RoleSwitcher.currentRole);
+            //	
+            missionTimer += Time.deltaTime;
 	}
 
 	public void GenerateNewMission()
@@ -59,8 +92,9 @@ public class MissionSystem : MonoBehaviour {
 			playerText.text = "Neutralize " + numberEnemies + " Hostiles in the Area";
 			break;
 		case 2:
-			string tempArea = "";
-			numberEnemies = Random.Range (1, 15);
+               // numberEnemies = Random.Range(1, 15);
+                string tempArea = "";
+			numberEnemies = Random.Range (1, 5);
 			originalNumberEnemies = numberEnemies;
 			if (oscControl.barrenLand) {
 				tempArea = "Electric Poles";
@@ -69,8 +103,8 @@ public class MissionSystem : MonoBehaviour {
 			} else if (oscControl.battlefield) {
 				tempArea = "Buildings";
 			} else {
-				tempArea = "Trees";
-			}
+				tempArea = "Electric Poles";
+                }
 			playerText.text="Secure "+numberEnemies+ " " +tempArea;
 			break;
 		}
@@ -91,7 +125,7 @@ public class MissionSystem : MonoBehaviour {
 			playerText.text = "Neutralize " + numberEnemies + " Hostiles in the Area";
 		else if (missionType == 2) {
 			string tempArea = "";
-			numberEnemies = Random.Range (0, 15);
+			//numberEnemies = Random.Range (0, 15);
 			if (oscControl.barrenLand) {
 				tempArea = "Electric Poles";
 			} else if (oscControl.battleArena) {
@@ -99,7 +133,7 @@ public class MissionSystem : MonoBehaviour {
 			} else if (oscControl.battlefield) {
 				tempArea = "Buildings";
 			} else {
-				tempArea = "Trees";
+				tempArea = "Electric Poles";
 			}
 			playerText.text="Secure "+numberEnemies+ " " +tempArea;
 		}

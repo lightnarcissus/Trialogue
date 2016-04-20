@@ -30,22 +30,20 @@ public class SettleOnTerrain : MonoBehaviour {
 
 	void CheckStatus()
 	{
-//		if (terrainStatus == 0) {
-//			transform.GetChild (0).gameObject.SetActive (true);
-//			transform.GetChild (1).gameObject.SetActive (false);
-//			transform.GetChild (2).gameObject.SetActive (false);
-//		}
-//		else if (terrainStatus == 1) {
-//			transform.GetChild (0).gameObject.SetActive (false);
-//			transform.GetChild (1).gameObject.SetActive (false);
-//			transform.GetChild (2).gameObject.SetActive (false);
-//		} else if (terrainStatus == 2) {
-//			transform.GetChild(1).gameObject.SetActive (true);
-//			transform.GetChild(0).gameObject.SetActive (false);
-//			transform.GetChild(2).gameObject.SetActive (false);
-//		}
-//		else if (terrainStatus == 3) {
-		if(terrainStatus==3)
+		if (terrainStatus == 0) {
+			transform.GetChild (0).gameObject.SetActive (true);
+			transform.GetChild (1).gameObject.SetActive (false);
+			transform.GetChild (2).gameObject.SetActive (false);
+        }
+		else if (terrainStatus == 1) {
+			transform.GetChild (0).gameObject.SetActive (false);
+			transform.GetChild (1).gameObject.SetActive (false);
+			transform.GetChild (2).gameObject.SetActive (false);
+		} else if (terrainStatus == 2) {
+			transform.GetChild(1).gameObject.SetActive (true);
+			transform.GetChild(0).gameObject.SetActive (false);
+			transform.GetChild(2).gameObject.SetActive (false);
+		}		else if (terrainStatus == 3)
 		{
 		//	Debug.Log ("battlefield activated");
 			transform.FindChild("War").gameObject.SetActive (true);

@@ -16,9 +16,12 @@ public class PlayerShoot : MonoBehaviour {
 	private Vector3 p;
 	public GameObject playerSound;
 	public AudioClip bulletHit;
-
+    public GameObject poppyFlower;
 	public GameObject deathField;
 	public GameObject terrainObj;
+
+    public Text ammoText;
+    public Text healthText;
 
 	public Texture2D tempTexture1;
 
@@ -27,6 +30,9 @@ public class PlayerShoot : MonoBehaviour {
 	public int killCount=0;
 	public int deathCount=0;
 
+
+    public int ammoCount = 30;
+    public int totalAmmo = 30;
 	//cameras
 	public GameObject whiteCam;
 	public GameObject cameraPlay;
@@ -62,7 +68,7 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject missionManager;
 	// Use this for initialization
 	void Start () {
-
+        ammoCount = totalAmmo;
 		if (platformManager.GetComponent<PlatformManager> ().platform.Contains ("Windows"))
 			platformID = 1;
 		else if (platformManager.GetComponent<PlatformManager> ().platform.Contains ("Mac"))
@@ -82,6 +88,9 @@ public class PlayerShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!gameOver) {
+          //  Debug.Log(CubeManager.aggressiveActive);
+            healthText.text = healthSlider.value.ToString();
+            ammoText.text = ammoCount.ToString() + "/" + totalAmmo.ToString() ;
 //			Debug.Log (Input.GetAxis ("ShootMac"));
 			if (transform.position.y < 90f)
 					GameOver ();
@@ -111,7 +120,7 @@ public class PlayerShoot : MonoBehaviour {
 			{
 				paintBrush.SetActive (true);
 				pistol.SetActive (false);
-			GameObject obj=Instantiate (paintSplash,transform.position,Quaternion.identity)as GameObject;
+		/*	GameObject obj=Instantiate (paintSplash,transform.position,Quaternion.identity)as GameObject;
 			obj.transform.parent=paintManager.transform;
 				obj.transform.eulerAngles=Vector3.zero;
 			//	Debug.Log ("After parenting "+obj.transform.position);
@@ -121,16 +130,23 @@ public class PlayerShoot : MonoBehaviour {
 			Vector3 splashPos=Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				splashPos=new Vector3(splashPos.x-2000f,splashPos.y,0f);
 				obj.transform.position=splashPos;
-				obj.transform.localPosition=splashPos;
+				obj.transform.position=splashPos;
 				//Debug.Log ("after mousepos "+obj.transform.position + " and " + obj.GetComponent<RectTransform>().position);
 			paintManager.GetComponent<PaintManager>().AddPaint(obj);
+            */
 			}
 			else if (Input.GetMouseButtonDown (0) ||(shootUp && (shootTrigger>0.5f))) {
+
+               
 			//	cameraPlay.GetComponent<PP_Charcoal>().enabled=false;
 			   // Debug.Log ("shooting");
-				ray = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
-				//ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
-				pistol.GetComponent<Animator> ().Play ("PistolShoot");
+				
+                //ray=camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f,0f));
+                if (ammoCount > 0)
+                {
+                    ammoCount--;
+                    ray = cameraPlay.GetComponent<Camera>().ViewportPointToRay(new Vector3(GetComponent<vp_SimpleCrosshair>().offsetX, GetComponent<vp_SimpleCrosshair>().offsetY, 0f));
+                    pistol.GetComponent<Animator> ().Play ("PistolShoot");
                 shootUp = false;
 				//Instantiate(pistolMuzzle,pistol.transform.position,Quaternion.identity);
 				pistol.GetComponent<AudioSource> ().PlayOneShot (weaponClips [0]);
@@ -142,8 +158,9 @@ public class PlayerShoot : MonoBehaviour {
 				}
 				if (healthSlider.value >= 0 && oscManager.GetComponent<oscControl> ().healthAmmo)
 					healthSlider.value -= 2f;
-				//Debug.DrawRay (ray.origin,ray.direction,Color.red);
-				if (Physics.SphereCast (ray, 0.8f, out hit, 100f, mask.value)) {// Raycast(ray,out hit,mask.value))
+                }
+                //Debug.DrawRay (ray.origin,ray.direction,Color.red);
+                if (Physics.SphereCast (ray, 0.8f, out hit, 100f, mask.value)) {// Raycast(ray,out hit,mask.value))
 
 //					GameObject obj=Instantiate (paintSplash,transform.position,Quaternion.identity)as GameObject;
 //					obj.transform.parent=canvas.transform;
@@ -186,6 +203,7 @@ public class PlayerShoot : MonoBehaviour {
 						hit.collider.gameObject.GetComponent<Animator>().SetBool("Death",true);
                         Instantiate(explosionSound, transform.position, Quaternion.identity);
                         Instantiate(humanExplosion, hit.collider.gameObject.transform.position, Quaternion.identity);
+                        Instantiate(poppyFlower, hit.collider.gameObject.transform.position, Quaternion.identity);
                         hit.collider.gameObject.GetComponent<NavMeshAgent>().enabled=false;
 						if (missionManager.GetComponent<MissionSystem> ().missionType == 1) {
 							missionManager.GetComponent<MissionSystem> ().numberEnemies--;
@@ -281,7 +299,7 @@ public class PlayerShoot : MonoBehaviour {
 		deathCount++;
 		flashTexture.enabled = true;
 		StartCoroutine ("WhiteScreen");
-		Instantiate (deathField, transform.position, Quaternion.identity);
+		//Instantiate (deathField, transform.position, Quaternion.identity);
 		transform.position = new Vector3 (Random.Range (100f, 1600f), 390f, Random.Range (100f, 1600f));
 		//gameOverText.text = "Game Over \n Press Tab to Play Again";
     }

@@ -36,6 +36,8 @@ public class EconomyManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+     //   Debug.Log(politicianFunds);
 	
 	}
 
@@ -46,11 +48,17 @@ public class EconomyManager : MonoBehaviour {
 
 	public void UpdatePublicFunds()
 	{
-		if (oscControl.unlimitedPublicFunds) {
-			publicFunds.text = "Public Funds: \n INFINITY";
-		} else {
-			publicFunds.text = "Public Funds: \n" + politicianFunds.ToString ();
-		}
+        if (oscControl.unlimitedPublicFunds)
+        {
+            publicFunds.text = "Public Funds: \n INFINITY";
+           // politicianFunds = -1;
+        }
+        else
+        {
+            publicFunds.text = "Public Funds: \n" + politicianFunds.ToString();
+           // politicianFunds = 10000;
+        }
+		
 	}
 
 	public void UpdateHeadlines()
@@ -65,8 +73,11 @@ public class EconomyManager : MonoBehaviour {
 			ratioText.text = deathRatio.ToString ("F2");
 		} else
 			ratioText.text = "INFINITY";
-		
-		if (playerText.text.Contains ("Neutralize"))
+		if(oscControl.mediaCensorship)
+        {
+            headlineText.text = "Are Harmful Games Violent?";
+        }
+		else if (playerText.text.Contains ("Neutralize"))
 			headlineText.text = "Our Troops Defeat Enemy Forces";
 		else if(playerText.text.Contains("Secure"))
 			headlineText.text = "Local Town Secured By Our Troops";

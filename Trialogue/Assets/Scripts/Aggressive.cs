@@ -27,7 +27,8 @@ public class Aggressive : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (PlayerShoot.gameOver)
+        transform.localScale = new Vector3(CubeManager.globalSize, CubeManager.globalSize, CubeManager.globalSize);
+        if (PlayerShoot.gameOver)
 			Destroy (gameObject);
 	}
 
