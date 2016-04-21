@@ -40,6 +40,7 @@ public class oscControl : MonoBehaviour {
     public GameObject playerBody;
     public GameObject playerCamera;
     public GameObject treeSpawner;
+    public static bool quit = false;
 
     public bool enableLobbying = false;
     //Environment page
@@ -117,7 +118,7 @@ public class oscControl : MonoBehaviour {
 
     public float value = 0f;
     private bool disableDifficultThings = false;
-
+    public OSCHandler oscHandler;
     public float overall = 0f;
 
     //head separation distance
@@ -135,11 +136,13 @@ public class oscControl : MonoBehaviour {
 	void Start() {	
 		Cursor.visible = false;
 		OSCHandler.Instance.Init(); //init OSC
+         //OSCHandler.Instance.OnPlayerQuit();
+      //  oscHandler = OSCHandler.Instance();
 		servers = new Dictionary<string, ServerLog>();
 		clients = new Dictionary<string,ClientLog> ();
         servers = OSCHandler.Instance.Servers;
         clients = OSCHandler.Instance.Clients;
-        ResetAll();
+      //  ResetAll();
 
 		//initiator message
 //		OSCHandler.Instance.SendMessageToClient("localhost", "blah",2f);
@@ -171,6 +174,8 @@ public class oscControl : MonoBehaviour {
 	void Update() {
 		
 		OSCHandler.Instance.UpdateLogs();
+        if(quit)
+            OSCHandler.Instance.OnPlayerQuit();
 //		if (UnityEngine.Random.value < 0.3f) {
 //			randVal = UnityEngine.Random.Range (0f, 0.7f);
 //			//OSCHandler.Instance.SendMessageToClient ("iPad Client", "/Visuals/fader2", 8f);

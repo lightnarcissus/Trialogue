@@ -28,7 +28,7 @@ public class MissionSystem : MonoBehaviour {
         {
             numberEnemies = Random.Range(1, 5);
             string tempArea = "";
-            numberEnemies = Random.Range(0, 15);
+        //    numberEnemies = Random.Range(0, 5);
             if (oscControl.barrenLand)
             {
                 tempArea = "Electric Poles";

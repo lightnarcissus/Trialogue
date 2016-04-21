@@ -1858,7 +1858,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
 --- !u!1 &430164746
 GameObject:
   m_ObjectHideFlags: 0
@@ -2461,7 +2461,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3907d217cc2934058849709335d8b4b4, type: 3}
-    m_FontSize: 40
+    m_FontSize: 38
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -2572,6 +2572,7 @@ GameObject:
   - 114: {fileID: 573158969}
   - 114: {fileID: 573158968}
   - 114: {fileID: 573158978}
+  - 81: {fileID: 573158970}
   m_Layer: 0
   m_Name: PoliticalCam
   m_TagString: Untagged
@@ -2616,6 +2617,13 @@ MonoBehaviour:
   separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
   chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
     type: 3}
+--- !u!81 &573158970
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573158967}
+  m_Enabled: 1
 --- !u!114 &573158971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3283,7 +3291,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487682, guid: 36f232d6355ca40e3921c81892392dbf, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 115084, guid: 36f232d6355ca40e3921c81892392dbf, type: 2}
       propertyPath: m_Name
@@ -4992,7 +5000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1ceaf8d6fda457d92ce519bd0c8839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missionType: 2
+  missionType: 1
   playerText: {fileID: 1635533476}
   numberEnemies: 2
   score: 0
@@ -5636,6 +5644,7 @@ GameObject:
   - 114: {fileID: 1400989270}
   - 114: {fileID: 1400989269}
   - 114: {fileID: 1400989281}
+  - 81: {fileID: 1400989271}
   m_Layer: 0
   m_Name: MediaCam
   m_TagString: Untagged
@@ -5680,6 +5689,13 @@ MonoBehaviour:
   separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
   chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
     type: 3}
+--- !u!81 &1400989271
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1400989268}
+  m_Enabled: 1
 --- !u!114 &1400989272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7904,6 +7920,7 @@ GameObject:
   - 114: {fileID: 1970500820}
   - 114: {fileID: 1970500819}
   - 114: {fileID: 1970500821}
+  - 81: {fileID: 1970500831}
   m_Layer: 15
   m_Name: LobbyistCam
   m_TagString: Untagged
@@ -8125,6 +8142,13 @@ Transform:
   - {fileID: 1098859357}
   m_Father: {fileID: 2091506269}
   m_RootOrder: 2
+--- !u!81 &1970500831
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1970500818}
+  m_Enabled: 1
 --- !u!1 &1971434966
 GameObject:
   m_ObjectHideFlags: 0

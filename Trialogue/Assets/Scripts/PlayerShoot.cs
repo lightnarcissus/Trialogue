@@ -85,6 +85,10 @@ public class PlayerShoot : MonoBehaviour {
 
 	}
 	
+    void Awake()
+    {
+        ammoCount = totalAmmo;
+    }
 	// Update is called once per frame
 	void Update () {
 		if (!gameOver) {
@@ -297,7 +301,10 @@ public class PlayerShoot : MonoBehaviour {
 
         gameOver = true;
 		deathCount++;
-		flashTexture.enabled = true;
+        ammoCount = totalAmmo;
+        GetComponent<vp_SimpleCrosshair>().offsetX = 0.5f;
+        GetComponent<vp_SimpleCrosshair>().offsetY = 0.5f;
+        flashTexture.enabled = true;
 		StartCoroutine ("WhiteScreen");
 		//Instantiate (deathField, transform.position, Quaternion.identity);
 		transform.position = new Vector3 (Random.Range (100f, 1600f), 390f, Random.Range (100f, 1600f));

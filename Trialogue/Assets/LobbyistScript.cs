@@ -68,8 +68,8 @@ public class LobbyistScript : MonoBehaviour {
                 break;
 
         }
-
-        if(Input.GetAxis("Vertical") > 0.2f && waitUp)
+            
+        if(Input.GetAxis("Vertical") < -0.2f && waitUp)
         {
             Debug.Log("OK");
             waitUp = false;
@@ -78,7 +78,7 @@ public class LobbyistScript : MonoBehaviour {
                 activeState = 0;
            // roleSwitcher.SwitchRole(++RoleSwitcher.currentRole);
         }
-        else if(Input.GetAxis("Vertical") < -0.2f && waitUp)
+        else if(Input.GetAxis("Vertical") >0.2f && waitUp)
         {
             waitUp = false;
             activeState--;

@@ -13,7 +13,7 @@ public class RoleSwitcher : MonoBehaviour {
     public GameObject politicalObj;
     public GameObject mediaObj;
     public GameObject lobbyistObj;
-
+   
     public Text endGame;
     public oscControl oscControl;
     
@@ -37,11 +37,15 @@ public class RoleSwitcher : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if(Input.GetButtonDown("Quit"))
+      /*  if(Input.GetButtonDown("Quit"))
         {
+
+            oscControl.quit = true;
+            //OSCHandler.OnPlayerQuit();
             StartCoroutine("PlayerQuits");
             
         }
+        */
      //   Debug.Log(oscControl.enableLobbying);
         if(Input.GetKeyDown(KeyCode.Alpha4))
         {
@@ -119,7 +123,8 @@ public class RoleSwitcher : MonoBehaviour {
 		case 1:
 			player.GetComponent<CharacterController> ().enabled = true;
 			player.GetComponent<PlayerShoot> ().enabled = true;
-			DisableRole (currentRole);
+                player.transform.GetChild(0).gameObject.GetComponent<AudioListener>().enabled = true;
+                DisableRole (currentRole);
 				missionSystem.GenerateNewMission ();
                 soldierObj.SetActive(true);
                 currentRole = activateRole;
@@ -152,6 +157,7 @@ public class RoleSwitcher : MonoBehaviour {
         {
             case 1:
                 player.GetComponent<CharacterController>().enabled = false;
+                player.transform.GetChild(0).gameObject.GetComponent<AudioListener>().enabled = false;
                 player.GetComponent<PlayerShoot>().enabled = false;
                 soldierObj.SetActive(false);
                 break;

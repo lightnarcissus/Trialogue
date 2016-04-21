@@ -86,10 +86,15 @@ public class vp_SimpleCrosshair : MonoBehaviour
 			} 
 			}
 		else if (RoleSwitcher.currentRole == 2) {
-			} 
+            m_ImageCrosshair = null;
+        } 
 		else if (RoleSwitcher.currentRole == 3) {
 			m_ImageCrosshair = focusTex;
 			}
+        else if(RoleSwitcher.currentRole==4)
+        {
+            m_ImageCrosshair = null;
+        }
 				if (m_ImageCrosshair != null) {
 					GUI.color = new Color (1, 1, 1, 0.8f);
 
