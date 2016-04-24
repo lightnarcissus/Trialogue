@@ -315,7 +315,7 @@ public class PlayerShoot : MonoBehaviour {
     {
 		terrainObj.GetComponent<TerrainToolkit> ().defaultTexture = tempTexture1;
         gameOverText.text = "";
-        healthSlider.value = 100;
+        healthSlider.value = healthSlider.maxValue;
     }
 
 	void OnDrawGizmosSelected() {
