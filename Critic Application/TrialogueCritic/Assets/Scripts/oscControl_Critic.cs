@@ -32,7 +32,7 @@ public class oscControl_Critic : MonoBehaviour {
 	private float boolVal=0f;
     public Slider overall;
     private float overallScore = 0f;
-
+    public List<string> prStrings;
     public InputField headline;
     public string headlineText = "";
 
@@ -77,8 +77,14 @@ public class oscControl_Critic : MonoBehaviour {
                     if(tempString!=prevString)
                     { 
                     GameObject tempObj;
-                    tempObj=Instantiate(prText, Vector3.zero, Quaternion.identity) as GameObject;
-                    tempObj.GetComponent<TextMesh>().text = tempString;
+                        string[] tempArray;
+                        tempArray=tempString.Split(" "[ 0]); 
+                        for(int i=0;i<tempArray.Length;i++)
+                        {
+                            tempObj = Instantiate(prText, Vector3.zero, Quaternion.identity) as GameObject;
+                            tempObj.GetComponent<TextMesh>().text = tempArray[i];
+                        }
+                          
                     prevString = tempString;
                     }
                 }
