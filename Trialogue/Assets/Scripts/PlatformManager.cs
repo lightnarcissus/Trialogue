@@ -14,9 +14,9 @@ public class PlatformManager : MonoBehaviour {
 			//playerChar.GetComponent<SyphonServerTexture> ().enabled = false;
 			//clientTexture.GetComponent<SyphonClientTexture> ().enabled = false;
 		} else if (platform.Contains ("Mac")) {
-			playerChar.GetComponent<Syphon> ().enabled = true;
-			playerChar.GetComponent<SyphonServerTexture> ().enabled = true;
-			clientTexture.GetComponent<SyphonClientTexture> ().enabled = true;
+//			playerChar.GetComponent<Syphon> ().enabled = true;
+		//	playerChar.GetComponent<SyphonServerTexture> ().enabled = true;
+		//	clientTexture.GetComponent<SyphonClientTexture> ().enabled = true;
 		}
 
 	

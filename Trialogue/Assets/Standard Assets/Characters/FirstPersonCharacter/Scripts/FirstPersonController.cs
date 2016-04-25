@@ -64,12 +64,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+			//Debug.Log ("jump " +pistol.GetComponent<Animator> ().GetBool ("Jump"));
+			//Debug.Log ("run " + pistol.GetComponent<Animator> ().GetBool ("Running"));
             RotateView();
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
-            {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
+			if (!m_Jump) {
+				m_Jump = CrossPlatformInputManager.GetButtonDown ("Jump");
+			}
+
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
@@ -89,6 +91,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void PlayLandingSound()
         {
+			pistol.GetComponent<Animator> ().SetBool ("Jump", false);
             m_AudioSource.clip = m_LandSound;
             m_AudioSource.Play();
             m_NextStep = m_StepCycle + .5f;
@@ -122,6 +125,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
+				//	pistol.GetComponent<Animator> ().SetBool ("Jump", false);
                 }
             }
             else
@@ -137,6 +141,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void PlayJumpSound()
         {
+			pistol.GetComponent<Animator> ().SetBool ("Jump", true);
             m_AudioSource.clip = m_JumpSound;
             m_AudioSource.Play();
         }
@@ -233,9 +238,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 StopAllCoroutines();
                 StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
             }
-
-			if (!m_IsWalking) {
-                //Debug.Log("running");
+		//	Debug.Log ("jumping " + m_Jump);
+			if (!m_IsWalking && !pistol.GetComponent<Animator> ().GetBool ("Jump")) {
+               // Debug.Log("running");
 				pistol.GetComponent<Animator> ().SetBool ("Running", true);
 
 			} else {
