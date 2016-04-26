@@ -9,18 +9,21 @@ public class LobbyistScript : MonoBehaviour {
     public float healthValue = 1000;
     public float ammoValue = 1000;
     public float cogValue = 2000;
+	public float wageValue = 2500;
     public Text ammoCount;
     public Text healthCount;
     public Text cogCount;
+	public Text wageCount;
 
     public RawImage healthBG;
     public RawImage ammoBG;
     public RawImage cogBG;
+	public RawImage wageBG;
 
     public Text publicFunds;
 
     public EconomyManager economyManager;
-
+	public Color startColor;
     private RawImage currentBG;
     private bool waitUp = true;
     public PlayerShoot playerShoot;
@@ -66,6 +69,11 @@ public class LobbyistScript : MonoBehaviour {
                 currentBG = cogBG;
                 currentBG.color = Color.green;
                 break;
+		case 3:
+			currentBG.color = Color.black;
+			currentBG = wageBG;
+			currentBG.color = Color.green;
+			break;
 
         }
             
@@ -74,7 +82,7 @@ public class LobbyistScript : MonoBehaviour {
             Debug.Log("OK");
             waitUp = false;
             activeState++;
-            if (activeState == 3)
+            if (activeState == 4)
                 activeState = 0;
            // roleSwitcher.SwitchRole(++RoleSwitcher.currentRole);
         }
@@ -83,7 +91,7 @@ public class LobbyistScript : MonoBehaviour {
             waitUp = false;
             activeState--;
             if (activeState == -1)
-                activeState = 2;
+                activeState = 3;
         }
 	
         if(Mathf.Abs(Input.GetAxis("Vertical"))<0.2f)
@@ -121,6 +129,15 @@ public class LobbyistScript : MonoBehaviour {
                     cogValue += 2000;
                 }
            }
+			if (activeState == 3)
+			{
+				if (economyManager.politicianFunds > ammoValue || oscControl.unlimitedPublicFunds)
+				{
+					economyManager.maxMoney += 50;
+					economyManager.politicianFunds -= (int)wageValue;
+					wageValue += 2000;
+				}
+			}
                 StartCoroutine("SwitchRole");
         }
 	}
@@ -128,6 +145,10 @@ public class LobbyistScript : MonoBehaviour {
     IEnumerator SwitchRole()
     {
         yield return new WaitForSeconds(1f);
+		healthBG.color = startColor;
+		ammoBG.color = startColor;
+		wageBG.color = startColor;
+		cogBG.color = startColor;
         roleSwitcher.SwitchRole(++RoleSwitcher.currentRole);
         yield return null;
     }

@@ -21,6 +21,8 @@ public class EconomyManager : MonoBehaviour {
 	public PlayerShoot playerShoot;
     private RoleSwitcher roleSwitcher;
 
+	public int maxMoney = 100;
+
 
 
 	// Use this for initialization

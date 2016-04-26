@@ -81,7 +81,7 @@ public class MissionSystem : MonoBehaviour {
 
 	public void GenerateNewMission()
 	{
-		Debug.Log ("generating new mission");
+	//	Debug.Log ("generating new mission");
 		missionTimer = 0f;
 		int randMission = Random.Range (1, 3);
 		missionType = randMission;

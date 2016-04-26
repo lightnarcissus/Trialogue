@@ -93,6 +93,8 @@ public class oscControl : MonoBehaviour {
 	public bool noGuns=false;
 	public bool paintAllow = false;
 
+	private bool headlineFlashing=false;
+
 	//Enemy page
 	public bool killEnemy = false;
 	public bool convertEnemy=false;
@@ -601,6 +603,7 @@ public class oscControl : MonoBehaviour {
                 else if (item.Value.packets[lastPacketIndex].Address == "/Critic/Headline") //critic messages
                 {
                     headlineText.text = tempString;
+					if(!headlineFlashing)
 					StartCoroutine ("FlashHeadline");
                 }
                 /*   else if (item.Value.packets[lastPacketIndex].Address == "/Visuals/toggle2") //Depth Only?
@@ -889,7 +892,9 @@ public class oscControl : MonoBehaviour {
 	IEnumerator FlashHeadline()
 	{
 		headlineText.enabled = true;
+		headlineFlashing = true;
 		yield return new WaitForSeconds (10f);
+		headlineFlashing = false;
 		headlineText.enabled = false;
 		yield return null;
 	}

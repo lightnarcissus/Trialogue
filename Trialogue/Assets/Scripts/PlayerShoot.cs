@@ -30,6 +30,10 @@ public class PlayerShoot : MonoBehaviour {
 	public int killCount=0;
 	public int deathCount=0;
 
+	//money
+	public int soldierMoney=100;
+	public Text subtractMoney;
+	public Text moneyValue;
 
     public int ammoCount = 30;
     public int totalAmmo = 30;
@@ -65,6 +69,7 @@ public class PlayerShoot : MonoBehaviour {
 	public GameObject paintSplash;
 	public GameObject platformManager;
 	public int platformID=0;
+	public GameObject economyManager;
 	public GameObject missionManager;
 	// Use this for initialization
 	void Start () {
@@ -78,6 +83,7 @@ public class PlayerShoot : MonoBehaviour {
 		flashTexture.enabled = false;
 		UnityEngine.Cursor.visible = false;
 		Debug.Log ("Width: " + Screen.width / 2 + " and Height: " + Screen.height / 2);
+		subtractMoney.enabled = false;
 		terrainObj.GetComponent<TerrainToolkit> ().tempTexture = tempTexture1;
 		//Debug.Log ("pixelwidth: "+cameraPlay.GetComponent<Camera>().pixelWidth.ToString ());
 		//Debug.Log ("pixelHeight: "+cameraPlay.GetComponent<Camera>().pixelHeight.ToString ());
@@ -88,6 +94,8 @@ public class PlayerShoot : MonoBehaviour {
     void Awake()
     {
         ammoCount = totalAmmo;
+		//soldierMoney = 100;
+		moneyValue.text = soldierMoney.ToString ();
     }
 	// Update is called once per frame
 	void Update () {
@@ -170,6 +178,17 @@ public class PlayerShoot : MonoBehaviour {
 //					obj.transform.parent=canvas.transform;
 //					Vector3 splashPos=cameraPlay.GetComponent<Camera>().ViewportToScreenPoint(new Vector3 (GetComponent<vp_SimpleCrosshair> ().offsetX, GetComponent<vp_SimpleCrosshair> ().offsetY, 0f));
 //					obj.transform.position=splashPos;
+					if (hit.collider.gameObject.tag == "Health") {
+						Destroy (hit.collider.gameObject);
+						if (healthSlider.value < healthSlider.maxValue - 20f && soldierMoney >= 20) {
+							StartCoroutine ("SubtractMoney");
+							healthSlider.value += 20f;
+						} else if(soldierMoney >= 20 && healthSlider.value!=healthSlider.maxValue)
+						{
+							StartCoroutine ("SubtractMoney");
+							healthSlider.value = healthSlider.maxValue;
+						}
+					}
 					if (hit.collider.gameObject.tag == "Cube") {
 						killCount++;
 						if (missionManager.GetComponent<MissionSystem> ().missionType == 1) {
@@ -276,6 +295,16 @@ public class PlayerShoot : MonoBehaviour {
 		}
 	
 	}
+
+	IEnumerator SubtractMoney()
+	{
+		subtractMoney.enabled = true;
+		soldierMoney -= 20;
+		moneyValue.text = soldierMoney.ToString();
+		yield return new WaitForSeconds (2f);
+		subtractMoney.enabled = false;
+		yield return null;
+	}
 /*
     IEnumerator DontShoot()
     {
@@ -302,6 +331,8 @@ public class PlayerShoot : MonoBehaviour {
         gameOver = true;
 		deathCount++;
         ammoCount = totalAmmo;
+		soldierMoney = economyManager.GetComponent<EconomyManager> ().maxMoney;
+		moneyValue.text = soldierMoney.ToString ();
         GetComponent<vp_SimpleCrosshair>().offsetX = 0.5f;
         GetComponent<vp_SimpleCrosshair>().offsetY = 0.5f;
         flashTexture.enabled = true;

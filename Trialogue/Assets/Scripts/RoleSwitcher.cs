@@ -117,7 +117,7 @@ public class RoleSwitcher : MonoBehaviour {
 		}
 		else
 		currentRole = activateRole - 1;
-		Debug.Log ("activating " + activateRole); 
+		//Debug.Log ("activating " + activateRole); 
         switch (activateRole)
         {
 		case 1:
