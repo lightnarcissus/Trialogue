@@ -549,11 +549,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22459970, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22459970, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22485842, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMin.x
@@ -4375,7 +4375,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: cab58bd4976681a49aa47c238cde4a5a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.2200012
+      value: -2.57
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: cab58bd4976681a49aa47c238cde4a5a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4717,6 +4717,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 665c8bdfba0baa644bbaf220d82f276d, type: 2}
+    - target: {fileID: 9500000, guid: cab58bd4976681a49aa47c238cde4a5a, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cab58bd4976681a49aa47c238cde4a5a, type: 3}
   m_IsPrefabParent: 0
@@ -8029,7 +8033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1970500819
 MonoBehaviour:
   m_ObjectHideFlags: 0
