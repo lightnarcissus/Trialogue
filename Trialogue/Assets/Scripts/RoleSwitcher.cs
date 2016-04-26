@@ -37,7 +37,7 @@ public class RoleSwitcher : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-      /*  if(Input.GetButtonDown("Quit"))
+      	if(Input.GetButtonDown("Quit"))
         {
 
             oscControl.quit = true;
@@ -45,7 +45,7 @@ public class RoleSwitcher : MonoBehaviour {
             StartCoroutine("PlayerQuits");
             
         }
-        */
+
      //   Debug.Log(oscControl.enableLobbying);
         if(Input.GetKeyDown(KeyCode.Alpha4))
         {

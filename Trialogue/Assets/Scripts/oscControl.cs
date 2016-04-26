@@ -127,6 +127,8 @@ public class oscControl : MonoBehaviour {
     //reticle Spread
     public static bool allowMultipleReticle = false;
 	public static bool noReticle=false;
+
+	private bool devEntered=false;
     /// <summary>
  
     /// </summary>
@@ -172,10 +174,14 @@ public class oscControl : MonoBehaviour {
     // Hence, this update depends on your application architecture
     // How many frames per second or Update() calls per frame?
 	void Update() {
-		
+		if(!devEntered)
+			OSCHandler.Instance.SendMessageToClient ("Max", "/Player/Entered", 1f);
 		OSCHandler.Instance.UpdateLogs();
-        if(quit)
-            OSCHandler.Instance.OnPlayerQuit();
+		if (quit) {
+			OSCHandler.Instance.SendMessageToClient ("Max", "/Player/Reset", 1f);
+			quit = false;
+			OSCHandler.Instance.OnPlayerQuit ();
+		}
 //		if (UnityEngine.Random.value < 0.3f) {
 //			randVal = UnityEngine.Random.Range (0f, 0.7f);
 //			//OSCHandler.Instance.SendMessageToClient ("iPad Client", "/Visuals/fader2", 8f);
@@ -255,6 +261,12 @@ public class oscControl : MonoBehaviour {
                     //for future use
                 }
                 */
+				else if (item.Value.packets [lastPacketIndex].Address == "/Developer/Entered") {
+					if (tempVal == 1)
+						devEntered = true;
+					else
+						devEntered = false;
+				}
                 else if (item.Value.packets [lastPacketIndex].Address == "/Environment/GreenTrees") { //green trees?
 					if (tempVal == 0)
 						greenTrees = false;

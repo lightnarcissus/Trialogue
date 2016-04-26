@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityOSC;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class oscControl_Developer : MonoBehaviour {
 	
 	private Dictionary<string, ServerLog> servers;
@@ -38,6 +38,10 @@ public class oscControl_Developer : MonoBehaviour {
 	public GameObject[] PRSet;
 	public GameObject[] shootingSet;
 	public GameObject metascoreLine;
+
+	public GameObject waitScreenManager;
+
+	public float timer=0f;
 	private float boolVal=0f;
 	public static int envID=0;
 	// Script initialization
@@ -74,8 +78,27 @@ public class oscControl_Developer : MonoBehaviour {
 					metascoreLine.GetComponent<Slider>().value=tempVal;
 					MetascoreChanged(metascoreLine.GetComponent<Slider>());
 				}
+				if (item.Value.packets [lastPacketIndex].Address == "/Player/Reset") { //player reset
+
+					if (tempVal == 1) {
+						EndScreenManager.timerTotal = timer;
+						EndScreenManager.metaScoreTotal = (int)metascoreLine.GetComponent<Slider> ().value;
+						OSCHandler_Developer.Instance.OnPlayerQuit ();
+						SceneManager.LoadScene ("EndScreen");
+						//waitScreenManager.GetComponent<WaitScreenManager> ().PlayerEntered ();
+					}
+				}
+				if (item.Value.packets [lastPacketIndex].Address == "/Player/Entered") { //player reset
+
+					if (tempVal == 1) {
+						waitScreenManager.GetComponent<WaitScreenManager> ().PlayerEntered ();
+					}
+				}
+
 			}
 		}
+		timer += Time.deltaTime;
+
 	}
 
 	void TurnOffElements(int temp,GameObject[] valueSet)
