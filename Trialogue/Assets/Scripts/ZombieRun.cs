@@ -15,11 +15,11 @@ public class ZombieRun : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         soldierType = Random.Range(0, 2);
-        if (soldierType == 1)
-            gameObject.GetComponent<Animator>().SetBool("Slow", true);
+      //  if (soldierType == 1)
+            gameObject.GetComponent<Animator>().SetBool("Slow", false);
          player = GameObject.Find ("Player");
 		InvokeRepeating ("UpdateTarget", 1f, 5f);
-		InvokeRepeating ("CheckDeath", 1f, 5f);
+		InvokeRepeating ("CheckDeath", 1f, 2f);
 		agent = GetComponent<NavMeshAgent>();
 		agent.destination = player.transform.position; 
 		targetIK = player.transform;
@@ -63,6 +63,7 @@ public class ZombieRun : MonoBehaviour {
 			dead = true;
 			gameObject.GetComponent<Animator> ().SetBool ("Running", false);
 			gameObject.GetComponent<Animator> ().SetBool ("Shooting", false);
+			//gameObject.GetComponent<Animator> ().SetBool ("Death", false);
 		}
 		
 	}
