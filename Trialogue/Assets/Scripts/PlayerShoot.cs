@@ -71,6 +71,7 @@ public class PlayerShoot : MonoBehaviour {
 	public int platformID=0;
 	public GameObject economyManager;
 	public GameObject missionManager;
+	private Ray autoRay;
 	// Use this for initialization
 	void Start () {
         ammoCount = totalAmmo;
@@ -87,7 +88,7 @@ public class PlayerShoot : MonoBehaviour {
 		terrainObj.GetComponent<TerrainToolkit> ().tempTexture = tempTexture1;
 		//Debug.Log ("pixelwidth: "+cameraPlay.GetComponent<Camera>().pixelWidth.ToString ());
 		//Debug.Log ("pixelHeight: "+cameraPlay.GetComponent<Camera>().pixelHeight.ToString ());
-
+		InvokeRepeating("AutoAimCheck",0.3f,0.15f);
 
 	}
 	
@@ -294,6 +295,25 @@ public class PlayerShoot : MonoBehaviour {
 			}
 		}
 	
+	}
+
+	void AutoAimCheck()
+	{
+		for(int i=0;i<10;i++)
+		{
+			for(int j=0;j<10;j++)
+			{
+				autoRay=cameraPlay.GetComponent<Camera>().ViewportPointToRay(new Vector3(i/10f,j/10f, 0f));	
+		if (Physics.SphereCast (autoRay, 0.8f, out hit, 100f, mask.value)) {
+			if (hit.collider.gameObject.tag == "Cube") {
+				Debug.Log ("Found an enemy");
+						GetComponent<vp_SimpleCrosshair> ().offsetX = i / 10f;
+						GetComponent<vp_SimpleCrosshair> ().offsetY = j / 10f;
+
+			}
+		}
+			}
+		}
 	}
 
 	IEnumerator SubtractMoney()

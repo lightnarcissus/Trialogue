@@ -115,6 +115,7 @@ public class vp_SimpleCrosshair : MonoBehaviour
 	
 	}
 
+
 	public void IncreaseCopies()
 	{
 		copies++;

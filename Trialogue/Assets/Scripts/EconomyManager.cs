@@ -23,6 +23,8 @@ public class EconomyManager : MonoBehaviour {
 
 	public int maxMoney = 100;
 
+	public static bool autoAim=false;
+
 
 
 	// Use this for initialization
