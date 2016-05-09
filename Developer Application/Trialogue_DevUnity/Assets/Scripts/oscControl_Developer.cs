@@ -40,15 +40,19 @@ public class oscControl_Developer : MonoBehaviour {
 	public GameObject metascoreLine;
 
 	public GameObject waitScreenManager;
-
 	public float timer=0f;
 	private float boolVal=0f;
 	public static int envID=0;
+
+	private int activeBG=0;
+	public List<GameObject> vidBG;
+
 	// Script initialization
 	void Start() {	
 		OSCHandler_Developer.Instance.Init(); //init OSC
 		servers = new Dictionary<string, ServerLog>();
 		MetascoreChanged (metascoreLine.GetComponent<Slider>());
+	//	InvokeRepeating("CheckReset",1f,1f);
 	}
 
 	// NOTE: The received messages at each server are updated here
@@ -101,6 +105,114 @@ public class oscControl_Developer : MonoBehaviour {
 
 	}
 
+		void CheckReset()
+	{
+		float metaVal = metascoreLine.GetComponent<Slider> ().value;
+
+		if (metaVal < 10f) {
+			ResetDefaults (10);
+			ResetDefaults (20);
+			ResetDefaults (30);
+			ResetDefaults (40);
+			ResetDefaults (50);
+			ResetDefaults (60);
+			ResetDefaults (70);
+			ResetDefaults (80);
+			ResetDefaults (90);
+			ResetDefaults (100);
+		}
+		else if (metaVal < 20f) {
+			ResetDefaults (20);
+			ResetDefaults (30);
+			ResetDefaults (40);
+			ResetDefaults (50);
+			ResetDefaults (60);
+			ResetDefaults (70);
+			ResetDefaults (80);
+			ResetDefaults (90);
+			ResetDefaults (100);
+		}
+		else if (metaVal< 30f) {
+			ResetDefaults (30);
+			ResetDefaults (40);
+			ResetDefaults (50);
+			ResetDefaults (60);
+			ResetDefaults (70);
+			ResetDefaults (80);
+			ResetDefaults (90);
+			ResetDefaults (100);
+		}
+		else if (metaVal < 40f) {
+			ResetDefaults (40);
+			ResetDefaults (50);
+			ResetDefaults (60);
+			ResetDefaults (70);
+			ResetDefaults (80);
+			ResetDefaults (90);
+			ResetDefaults (100);
+		}
+		else if (metaVal < 50f) {
+			ResetDefaults (50);
+			ResetDefaults (60);
+			ResetDefaults (70);
+			ResetDefaults (80);
+			ResetDefaults (90);
+			ResetDefaults (100);
+		}
+		else if (metaVal < 60f) {
+			ResetDefaults (60);
+			ResetDefaults (70);
+			ResetDefaults (80);
+			ResetDefaults (90);
+			ResetDefaults (100);
+		}
+		else if (metaVal < 70f) {
+			ResetDefaults (70);
+			ResetDefaults (80);
+			ResetDefaults (90);
+			ResetDefaults (100);
+		}
+		else if (metaVal < 80f) {
+			ResetDefaults (80);
+			ResetDefaults (90);
+			ResetDefaults (100);
+		}
+		else if (metaVal < 90f) {
+			ResetDefaults (90);
+			ResetDefaults (100);
+		}
+		if (metaVal < 100f) {
+			ResetDefaults (100);
+		}
+
+	}
+
+		public void PlayPromoVideo(int videoID)
+	{
+		switch (videoID) {
+
+		case 0:
+			vidBG [activeBG].GetComponent<RawImage> ().color = Color.white;
+			vidBG [0].GetComponent<RawImage> ().color = Color.green;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/PromoVid", 0f); 
+			activeBG = 0;
+			break;
+		case 1:
+			vidBG [activeBG].GetComponent<RawImage> ().color = Color.white;
+			vidBG [1].GetComponent<RawImage> ().color = Color.green;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/PromoVid", 1f); 
+			activeBG = 1;
+			break;
+		case 2:
+			vidBG [activeBG].GetComponent<RawImage> ().color = Color.white;
+			vidBG [2].GetComponent<RawImage> ().color = Color.green;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/PromoVid", 2f); 
+			activeBG = 2;
+			break;
+
+		}
+	}
+
 	void TurnOffElements(int temp,GameObject[] valueSet)
 	{
 		Debug.Log (temp);
@@ -138,7 +250,7 @@ public class oscControl_Developer : MonoBehaviour {
 		float value=metaSlider.value;
 		int tempStr =(int) value / 10;
 		Debug.Log (tempStr);
-
+		CheckReset ();
 		TurnOffElements (tempStr,gameplaySet);
 		TurnOffElements (tempStr,visualSet);
 		TurnOffElements (tempStr,envSet);
@@ -146,6 +258,105 @@ public class oscControl_Developer : MonoBehaviour {
 		TurnOffElements (tempStr,youSet);
 
 	}
+
+	void ResetDefaults(int i)
+	{
+		switch (i) {
+		case 10:
+			gameplaySet [2].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoGuns", 0f);
+			break;
+		case 20:
+			gameplaySet [4].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/RegenHealth", 0f);
+			visualSet [1].GetComponent<Slider> ().value = 0f;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/RedDir", visualSet [1].GetComponent<Slider> ().value);
+			visualSet [4].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/DontClear", 0f); 
+			youSet [0].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/NoDeath", 0f);
+			enemySet [4].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/DeadBodyRemains", 0f); 
+			envSet [1].GetComponent<Slider> ().value = 1f;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Environment/TreeSize", envSet [1].GetComponent<Slider> ().value); 
+			break;
+		case 30:
+			shootingSet [3].GetComponent<Slider> ().value = 1f;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Shooting/ChangesSize", shootingSet [3].GetComponent<Slider> ().value); 
+			shootingSet [0].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Shooting/SpawnsMore", 0f);
+			youSet [4].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Shooting/SpawnsMore", 0f);
+			enemySet [2].GetComponent<Slider> ().value = 1f;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/EnemySize", enemySet [2].GetComponent<Slider> ().value);
+			envSet [0].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Environment/GreenTrees", 0f);
+			visualSet [6].GetComponent<Slider> ().value = 60f;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/CamFoV", visualSet [6].GetComponent<Slider> ().value); 
+			break;
+		case 40:
+			gameplaySet [0].GetComponent<Slider> ().value = 1f;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/GameSpeed", gameplaySet [0].GetComponent<Slider> ().value); 
+			gameplaySet [3].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/HealthAmmo", 0f);
+			visualSet [2].GetComponent<Slider> ().value = 0f;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/BlueDir", visualSet [2].GetComponent<Slider> ().value);
+			visualSet [5].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/2DCam", 0f);
+			visualSet [7].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/Pixelated", 0f);
+			visualSet [11].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/GroundWater", 0f);
+			envSet [2].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Environment/ConquerSpace", 0f);
+			enemySet [1].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Peaceful", 1f); 
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Aggressive", 0f);
+			break;
+		case 50:
+			gameplaySet [6].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/JumpEnabled", 0f); 
+			shootingSet [1].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Shooting/KillEnemy", 0f);
+			youSet [5].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/PoliticalSpace", 0f);
+			enemySet [3].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/HumanEnemies", 0f);
+
+			break;
+		case 60:
+			visualSet [9].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/Nightvision", 0f);
+			break;
+		case 70:
+			shootingSet [2].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Shooting/ConvertEnemy", 0f);
+			visualSet [3].GetComponent<Slider> ().value = 0f;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/GreenDir", visualSet [3].GetComponent<Slider> ().value);
+			visualSet [13].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/InvertColors",0f);
+			break;
+		case 80:
+			gameplaySet [5].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/MultipleReticles", 0f);
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoReticles", 1f);
+			visualSet [10].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/Scanlines", 0f);
+			enemySet [0].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/DisableEnemies", 0f);
+			youSet [3].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/MediaCoverage",0f);
+			break;
+		case 90:
+			gameplaySet [1].GetComponent<bl_ToggleSwitcher> ().isOn = false;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/PaintItBlack", 0f);
+			break;
+		case 100:
+			break;
+		}
+
+	}
+
 	public void ChangeValue(String name)
 	{
 		//Debug.Log ("hi");
@@ -219,11 +430,6 @@ public class oscControl_Developer : MonoBehaviour {
 					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/MultipleReticles",1f);
 					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoReticles", 0f);
 				}
-			} else {
-				if (metascoreLine.GetComponent<Slider> ().value > 70f) {
-					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/MultipleReticles",0f);
-					OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoReticles", 1f); 
-				}
 			}
 			break;
 		case "JumpEnabled":
@@ -235,21 +441,6 @@ public class oscControl_Developer : MonoBehaviour {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/JumpEnabled", boolVal); 
 			}
 			break;
-//		case "HeadSeparation":
-//			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
-//				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/HeadSeparation", gameplaySet [8].GetComponent<Slider> ().value); 
-//			}
-//			break;
-			
-
-			//visuals set
-
-
-//		case "DirLightIntensity":
-//			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
-//				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/DirLightIntensity", visualSet [0].GetComponent<Slider> ().value);
-//			}
-//			break;
 		case "RedDir":
 			if (metascoreLine.GetComponent<Slider> ().value > 20f) {
 				OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/RedDir", visualSet [1].GetComponent<Slider> ().value); 
@@ -533,7 +724,7 @@ public class oscControl_Developer : MonoBehaviour {
 			break;
 			//shooting set
 		case "SpawnsMore":
-			if (metascoreLine.GetComponent<Slider> ().value > 30f) {
+			if (metascoreLine.GetComponent<Slider>().value > 30f) {
 				if (shootingSet[0].GetComponent<bl_ToggleSwitcher> ().isOn)
 					boolVal = 1f;
 				else
