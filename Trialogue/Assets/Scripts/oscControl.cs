@@ -168,8 +168,6 @@ public class oscControl : MonoBehaviour {
 //		OSCHandler.Instance.SendMessageToClient("iPad Client", "/Movement/rotary1", 1f); //game speed
 //		OSCHandler.Instance.SendMessageToClient("iPad Client", "/Movement/fader6", gravityMult); //gravity multiplier
 
-		OSCHandler.Instance.UpdateLogs();
-
 	}
 
 	// NOTE: The received messages at each server are updated here

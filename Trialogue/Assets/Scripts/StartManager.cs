@@ -26,7 +26,7 @@ public class StartManager : MonoBehaviour {
 
 	public void StartPlayer()
 	{
-		SceneManager.LoadSceneAsync (1);
+		SceneManager.LoadSceneAsync (2);
 	}
 
 	IEnumerator StartScreen()

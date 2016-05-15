@@ -242,7 +242,9 @@ public class oscControl_Developer : MonoBehaviour {
 	{
 		string temp = obj.GetComponent<Text> ().text;
 		Debug.Log (temp);
-		OSCHandler_Developer.Instance.SendMessageToClient ("Critic", "/Critic/PressRelease", temp); 
+		if(temp!="")
+			OSCHandler_Developer.Instance.SendMessageToClient ("Critic", "/Critic/PressRelease", temp); 
+		PRSet [1].gameObject.GetComponent<RandomizePR> ().ClearLine();
 	}
 
 	public void MetascoreChanged(Slider metaSlider)

@@ -30,4 +30,8 @@ public class RandomizePR : MonoBehaviour {
 	{
 		prLine.text += " " + obj.transform.GetChild(0).gameObject.GetComponent<Text> ().text;
 	}
+	public void ClearLine()
+	{
+		prLine.text = "";
+	}
 }
