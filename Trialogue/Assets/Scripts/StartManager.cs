@@ -12,6 +12,7 @@ public class StartManager : MonoBehaviour {
 	private bool canStart = false;
 	public static bool start=false;
 	public static bool quit=false;
+	public PlayerShoot playerShoot;
 	// Use this for initialization
 	void Awake () {
 		startScreen.SetActive (true);
@@ -48,6 +49,7 @@ public class StartManager : MonoBehaviour {
 		gameCanvas.SetActive (true);
 		player.SetActive (true);
 		startCanvas.SetActive (false);
+		playerShoot.GameOver ();
 		missionSystem.GetComponent<MissionSystem> ().GenerateNewMission ();
 	//	SceneManager.LoadSceneAsync (2);
 	}

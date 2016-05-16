@@ -277,6 +277,7 @@ MonoBehaviour:
   startScreen: {fileID: 778037666}
   gameCanvas: {fileID: 173155263}
   missionSystem: {fileID: 1189350633}
+  playerShoot: {fileID: 1661101153}
 --- !u!4 &10547837
 Transform:
   m_ObjectHideFlags: 0
@@ -1169,11 +1170,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22459970, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22459970, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22485842, guid: 5996648d9711b8147ac605072268f288, type: 2}
       propertyPath: m_AnchorMin.x
@@ -2861,6 +2862,10 @@ Prefab:
     - target: {fileID: 400000, guid: f5b7ec654c4ca4146aa18602937168a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.30499995
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: f5b7ec654c4ca4146aa18602937168a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5b7ec654c4ca4146aa18602937168a1, type: 3}
