@@ -215,7 +215,7 @@ public class oscControl_Developer : MonoBehaviour {
 
 	void TurnOffElements(int temp,GameObject[] valueSet)
 	{
-		Debug.Log (temp);
+//		Debug.Log (temp);
 
 		for (int i = 0; i < valueSet.Length; i++) {
 			
@@ -251,8 +251,8 @@ public class oscControl_Developer : MonoBehaviour {
 	{
 		float value=metaSlider.value;
 		int tempStr =(int) value / 10;
-		Debug.Log (tempStr);
-		CheckReset ();
+//		Debug.Log (tempStr);
+		//CheckReset ();
 		TurnOffElements (tempStr,gameplaySet);
 		TurnOffElements (tempStr,visualSet);
 		TurnOffElements (tempStr,envSet);
