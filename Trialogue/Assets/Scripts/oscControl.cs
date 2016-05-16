@@ -180,7 +180,7 @@ public class oscControl : MonoBehaviour {
 	void Update() {
 		if (!devEntered && StartManager.start) {
 			OSCHandler.Instance.SendMessageToClient ("Max", "/Player/Entered", 1f);
-			playerBody.GetComponent<PlayerShoot> ().GameOver ();
+
 		}
 		OSCHandler.Instance.UpdateLogs();
 		if (quit) {
