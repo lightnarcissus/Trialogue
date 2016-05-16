@@ -41,6 +41,8 @@ public class SendTextToAnalyse : MonoBehaviour {
 	public Color negativeColor;
 	public Color onColor;
 
+	public Text headlineText;
+
 	void OnEnable() 
 	{
 		
@@ -106,11 +108,12 @@ public class SendTextToAnalyse : MonoBehaviour {
 
 	private void PrintAnalysis()
 	{
-		PositivePercent.text = SentimentAnalysisResponse.x + " % : Positive"; 
-		NegativePercent.text = SentimentAnalysisResponse.y + " % : Negative";
-		NeutralPercent.text = SentimentAnalysisResponse.z + " % : Neutral";
+		PositivePercent.text = SentimentAnalysisResponse.x + " \n % : Positive"; 
+		NegativePercent.text = SentimentAnalysisResponse.y + " \n % : Negative";
+		NeutralPercent.text = SentimentAnalysisResponse.z + " \n % : Neutral";
 
 		randSlider = Random.Range (0, 5);
+		StartCoroutine ("ClearText");
 		if ( SentimentAnalysisResponse.x >  SentimentAnalysisResponse.y &&  SentimentAnalysisResponse.x >  SentimentAnalysisResponse.z)
 		{
 			switch (randSlider) {
@@ -252,6 +255,13 @@ public class SendTextToAnalyse : MonoBehaviour {
 			ChangeSentimentalColor.color = NeutralResponse;
 
 		}
+	}
+
+	IEnumerator ClearText()
+	{
+		yield return new WaitForSeconds (1.5f);
+		textToSend.text = "";
+		yield return null;
 	}
 
 	void DecreaseInterest(Slider slider)
