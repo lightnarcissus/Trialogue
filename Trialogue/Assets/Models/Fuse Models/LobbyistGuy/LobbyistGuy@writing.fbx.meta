@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 206e4c6da8e25c14187e6b0931a1ca6c
-timeCreated: 1461060558
+timeCreated: 1463352701
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -158,7 +158,7 @@ ModelImporter:
       form the one found in the source avatar:\n\t'mixamorig:LeftUpLeg' : position
       error = 72.624268 mm\n\t'mixamorig:LeftLeg' : position error = 243.461075 mm\n\t'mixamorig:LeftFoot'
       : position error = 232.760651 mm\n\t'mixamorig:LeftToeBase' : position error
-      = 88.496819 mm\n\nClip 'mixamo.com' has import animation warnings that might
+      = 88.496681 mm\n\nClip 'mixamo.com' has import animation warnings that might
       lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
       retargeting quality.\n\t'mixamorig:Spine2' is inbetween humanoid transforms
       and has rotation animation that will be discarded.\n"

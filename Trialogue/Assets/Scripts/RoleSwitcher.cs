@@ -93,7 +93,8 @@ public class RoleSwitcher : MonoBehaviour {
         endGame.enabled = true;
         endGame.text = "THE PLAYER HAS LEFT";
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("StartScreen");
+		StartManager.quit = true;
+        //SceneManager.LoadScene("StartScreen");
         yield return null;
     }
 

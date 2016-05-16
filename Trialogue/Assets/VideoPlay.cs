@@ -9,7 +9,7 @@ public class VideoPlay : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PlayVideo (0); 
+		//PlayVideo (0); 
 	}
 	
 	// Update is called once per frame

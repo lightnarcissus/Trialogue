@@ -265,8 +265,8 @@ public class oscControl_Developer : MonoBehaviour {
 	{
 		switch (i) {
 		case 10:
-			gameplaySet [2].GetComponent<bl_ToggleSwitcher> ().isOn = false;
-			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoGuns", 0f);
+			gameplaySet [2].GetComponent<bl_ToggleSwitcher> ().isOn = true;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoGuns", 1f);
 			break;
 		case 20:
 			gameplaySet [4].GetComponent<bl_ToggleSwitcher> ().isOn = false;
@@ -311,9 +311,9 @@ public class oscControl_Developer : MonoBehaviour {
 			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/GroundWater", 0f);
 			envSet [2].GetComponent<bl_ToggleSwitcher> ().isOn = false;
 			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Environment/ConquerSpace", 0f);
-			enemySet [1].GetComponent<bl_ToggleSwitcher> ().isOn = false;
-			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Peaceful", 1f); 
-			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Aggressive", 0f);
+			enemySet [1].GetComponent<bl_ToggleSwitcher> ().isOn = true;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Peaceful", 0f); 
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/Aggressive", 1f);
 			break;
 		case 50:
 			gameplaySet [6].GetComponent<bl_ToggleSwitcher> ().isOn = false;
@@ -344,8 +344,8 @@ public class oscControl_Developer : MonoBehaviour {
 			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Gameplay/NoReticles", 1f);
 			visualSet [10].GetComponent<bl_ToggleSwitcher> ().isOn = false;
 			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Visuals/Scanlines", 0f);
-			enemySet [0].GetComponent<bl_ToggleSwitcher> ().isOn = false;
-			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/DisableEnemies", 0f);
+			enemySet [0].GetComponent<bl_ToggleSwitcher> ().isOn = true;
+			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Enemies/DisableEnemies", 1f);
 			youSet [3].GetComponent<bl_ToggleSwitcher> ().isOn = false;
 			OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/You/MediaCoverage",0f);
 			break;

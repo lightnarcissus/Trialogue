@@ -22,6 +22,8 @@ public class LobbyistScript : MonoBehaviour {
 
     public Text publicFunds;
 
+	public CanvasManager canvasManager;
+
     public EconomyManager economyManager;
 	public Color startColor;
     private RawImage currentBG;
@@ -106,6 +108,8 @@ public class LobbyistScript : MonoBehaviour {
                 if (economyManager.politicianFunds > healthValue || oscControl.unlimitedPublicFunds)
                 {
                     playerShoot.healthSlider.maxValue += 10;
+					StartCoroutine ("HealthUpgrade");
+					canvasManager.ActivateHealth ();
                     economyManager.politicianFunds -= (int)healthValue;
                     healthValue += 1000;
                     
@@ -117,6 +121,8 @@ public class LobbyistScript : MonoBehaviour {
                 if (economyManager.politicianFunds > ammoValue || oscControl.unlimitedPublicFunds)
                 {
                     playerShoot.totalAmmo += 10;
+					StartCoroutine ("AmmoUpgrade");
+					canvasManager.ActivateAmmo ();
                     economyManager.politicianFunds -= (int)ammoValue;
                     ammoValue += 1000;
                 }
@@ -126,6 +132,8 @@ public class LobbyistScript : MonoBehaviour {
                 if (economyManager.politicianFunds > ammoValue || oscControl.unlimitedPublicFunds)
                 {
                     economyManager.politicianFunds -= (int)cogValue;
+					canvasManager.ActivateAim ();
+					EconomyManager.autoAim = true;
                     cogValue += 2000;
                 }
            }
@@ -134,6 +142,8 @@ public class LobbyistScript : MonoBehaviour {
 				if (economyManager.politicianFunds > ammoValue || oscControl.unlimitedPublicFunds)
 				{
 					economyManager.maxMoney += 50;
+					StartCoroutine ("WageUpgrade");
+					canvasManager.ActivateWage ();
 					economyManager.politicianFunds -= (int)wageValue;
 					wageValue += 2000;
 				}
@@ -142,6 +152,25 @@ public class LobbyistScript : MonoBehaviour {
         }
 	}
 
+	IEnumerator HealthUpgrade()
+	{
+		Debug.Log ("health");
+		yield return null;
+	}
+	IEnumerator AmmoUpgrade()
+	{
+		Debug.Log ("ammo");
+		yield return null;
+	}
+	IEnumerator AutoAimUpgrade()
+	{
+		yield return null;
+	}
+	IEnumerator WageUpgrade()
+	{
+		Debug.Log ("wage");
+		yield return null;
+	}
     IEnumerator SwitchRole()
     {
         yield return new WaitForSeconds(1f);

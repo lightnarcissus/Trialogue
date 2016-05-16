@@ -4,9 +4,19 @@ using UnityEngine.SceneManagement;
 public class StartManager : MonoBehaviour {
 
 	public GameObject startText;
+	public GameObject player;
+	public GameObject startCanvas;
+	public GameObject startScreen;
+	public GameObject gameCanvas;
 	private bool canStart = false;
+	public static bool start=false;
+	public static bool quit=false;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+		startScreen.SetActive (true);
+		startCanvas.SetActive (true);
+		gameCanvas.SetActive (false);
+		player.SetActive (false);
 		startText.SetActive (false);
 		StartCoroutine ("StartScreen");
 
@@ -15,9 +25,16 @@ public class StartManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if (quit) {
+			StartCoroutine ("Restart");
+			start = false;
+			quit = false;
+		}
+
 		if (canStart) {
 			if (Input.GetKeyDown (KeyCode.Return) || Input.GetButtonDown("StartMac") || Input.GetButtonDown("StartWin")) {
 				StartPlayer ();
+				start = true;
                 canStart = false;
 			}
 		}
@@ -26,9 +43,22 @@ public class StartManager : MonoBehaviour {
 
 	public void StartPlayer()
 	{
-		SceneManager.LoadSceneAsync (2);
+		startScreen.SetActive (false);
+		gameCanvas.SetActive (true);
+		player.SetActive (true);
+		startCanvas.SetActive (false);
+	//	SceneManager.LoadSceneAsync (2);
 	}
-
+	IEnumerator Restart()
+	{
+		startScreen.SetActive (true);
+		startCanvas.SetActive (true);
+		gameCanvas.SetActive (false);
+		player.SetActive (false);
+		startText.SetActive (false);
+		StartCoroutine ("StartScreen");
+		yield return null;
+	}
 	IEnumerator StartScreen()
 	{
 		yield return new WaitForSeconds (9f);

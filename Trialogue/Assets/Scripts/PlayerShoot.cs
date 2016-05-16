@@ -306,7 +306,7 @@ public class PlayerShoot : MonoBehaviour {
 				autoRay=cameraPlay.GetComponent<Camera>().ViewportPointToRay(new Vector3(i/10f,j/10f, 0f));	
 		if (Physics.SphereCast (autoRay, 0.8f, out hit, 100f, mask.value)) {
 			if (hit.collider.gameObject.tag == "Cube") {
-				Debug.Log ("Found an enemy");
+				//Debug.Log ("Found an enemy");
 						GetComponent<vp_SimpleCrosshair> ().offsetX = i / 10f;
 						GetComponent<vp_SimpleCrosshair> ().offsetY = j / 10f;
 

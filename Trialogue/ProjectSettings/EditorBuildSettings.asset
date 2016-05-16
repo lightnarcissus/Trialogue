@@ -6,8 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Spring 2016/Title.unity
+    path: Assets/Scenes/Title.unity
   - enabled: 1
-    path: Assets/Scenes/Spring 2016/StartScreen.unity
-  - enabled: 1
-    path: Assets/Scenes/Thesis Presentation/MayPresentation.unity
+    path: Assets/Scenes/BHQFU/BHQFU_PeoplePowered.unity

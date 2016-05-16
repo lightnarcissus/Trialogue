@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1f043cb3119cec6468614c748df1317c
-timeCreated: 1463352701
+guid: d24c6a21021ce401799b6b504942205a
+timeCreated: 1463352703
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -141,7 +141,7 @@ ModelImporter:
     400130: mixamorig:Spine
     400132: mixamorig:Spine1
     400134: mixamorig:Spine2
-    7400000: talking
+    7400000: macarena_dance
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -172,10 +172,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: talking
+      name: macarena_dance
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 118
+      lastFrame: 247
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

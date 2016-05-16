@@ -129,8 +129,8 @@ public class oscControl : MonoBehaviour {
     //reticle Spread
     public static bool allowMultipleReticle = false;
 	public static bool noReticle=false;
-
 	private bool devEntered=false;
+	public GameObject ephemeral;
     /// <summary>
  
     /// </summary>
@@ -174,13 +174,14 @@ public class oscControl : MonoBehaviour {
     // Hence, this update depends on your application architecture
     // How many frames per second or Update() calls per frame?
 	void Update() {
-		if(!devEntered)
+		if(!devEntered && StartManager.start)
 			OSCHandler.Instance.SendMessageToClient ("Max", "/Player/Entered", 1f);
 		OSCHandler.Instance.UpdateLogs();
 		if (quit) {
 			OSCHandler.Instance.SendMessageToClient ("Max", "/Player/Reset", 1f);
+			ephemeral.GetComponent<DestroyEphemeral> ().DestroySpawn ();
 			quit = false;
-			OSCHandler.Instance.OnPlayerQuit ();
+		//	OSCHandler.Instance.OnPlayerQuit ();
 		}
 //		if (UnityEngine.Random.value < 0.3f) {
 //			randVal = UnityEngine.Random.Range (0f, 0.7f);

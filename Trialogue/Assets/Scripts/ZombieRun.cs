@@ -87,6 +87,7 @@ public class ZombieRun : MonoBehaviour {
 
 	void OnAnimatorIK()
 	{
+		//Debug.Log (targetIK.position);
 		gameObject.GetComponent<Animator>().SetLookAtPosition( targetIK.position );
 		gameObject.GetComponent<Animator>().SetLookAtWeight( 1f, 1f, 1f);
 	}
