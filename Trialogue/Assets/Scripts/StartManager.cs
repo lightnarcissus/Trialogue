@@ -8,6 +8,7 @@ public class StartManager : MonoBehaviour {
 	public GameObject startCanvas;
 	public GameObject startScreen;
 	public GameObject gameCanvas;
+	public GameObject missionSystem;
 	private bool canStart = false;
 	public static bool start=false;
 	public static bool quit=false;
@@ -47,6 +48,7 @@ public class StartManager : MonoBehaviour {
 		gameCanvas.SetActive (true);
 		player.SetActive (true);
 		startCanvas.SetActive (false);
+		missionSystem.GetComponent<MissionSystem> ().GenerateNewMission ();
 	//	SceneManager.LoadSceneAsync (2);
 	}
 	IEnumerator Restart()

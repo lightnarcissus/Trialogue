@@ -24,11 +24,32 @@ public class SendTextToAnalyse : MonoBehaviour {
 	private bool threadStarted = false;
 	private Vector3 SentimentAnalysisResponse;
 
+	private int randSlider=0;
+	public Slider graphics;
+	public Slider gameplay;
+	public Slider audio;
+	public Slider value;
 	public Slider overall;
+
+	public Image gameplayFill;
+	public Image graphicsFill;
+	public Image audioFill;
+	public Image valueFill;
+	public Image overallFill;
+
+	public Color offColor;
+	public Color negativeColor;
+	public Color onColor;
 
 	void OnEnable() 
 	{
+		
 		Application.runInBackground = true;
+		overallFill.color = offColor;
+		graphicsFill.color = offColor;
+		gameplayFill.color = offColor;
+		audioFill.color = offColor;
+		valueFill.color = offColor;
 		// Initialize the local database
 		predictionObject.Initialize();
 		// Listedn to the Events
@@ -88,18 +109,139 @@ public class SendTextToAnalyse : MonoBehaviour {
 		PositivePercent.text = SentimentAnalysisResponse.x + " % : Positive"; 
 		NegativePercent.text = SentimentAnalysisResponse.y + " % : Negative";
 		NeutralPercent.text = SentimentAnalysisResponse.z + " % : Neutral";
-		
+
+		randSlider = Random.Range (0, 5);
 		if ( SentimentAnalysisResponse.x >  SentimentAnalysisResponse.y &&  SentimentAnalysisResponse.x >  SentimentAnalysisResponse.z)
 		{
+			switch (randSlider) {
+			case 0:
+				overallFill.color = onColor;
+				graphicsFill.color = offColor;
+				gameplayFill.color = offColor;
+				audioFill.color = offColor;
+				valueFill.color = offColor;
+				if (overall.value <= overall.value + (0.2f * (float)textToSend.text.Length))
+					overall.value += 0.2f * (float)textToSend.text.Length;
+				else
+					overall.value = 10;
+				break;
+			case 1:
+				overallFill.color = offColor;
+				graphicsFill.color = offColor;
+				gameplayFill.color = onColor;
+				audioFill.color = offColor;
+				valueFill.color = offColor;
+				if (gameplay.value <= gameplay.value + (0.2f * (float)textToSend.text.Length))
+					gameplay.value += 0.2f * (float)textToSend.text.Length;
+				else
+					gameplay.value = 10;
+				break;
+
+			case 2:
+				overallFill.color = offColor;
+				graphicsFill.color = onColor;
+				gameplayFill.color = offColor;
+				audioFill.color = offColor;
+				valueFill.color = offColor;
+				if (graphics.value <= graphics.value + (0.2f * (float)textToSend.text.Length))
+					graphics.value += 0.2f * (float)textToSend.text.Length;
+				else
+					graphics.value = 10;
+				break;
+			case 3:
+				overallFill.color = offColor;
+				graphicsFill.color = offColor;
+				gameplayFill.color = offColor;
+				audioFill.color = onColor;
+				valueFill.color = offColor;
+				if (audio.value <= audio.value + (0.2f * (float)textToSend.text.Length))
+					audio.value += 0.2f * (float)textToSend.text.Length;
+				else
+					audio.value = 10;
+				break;
+			case 4:
+				overallFill.color = offColor;
+				graphicsFill.color = offColor;
+				gameplayFill.color = offColor;
+				audioFill.color = offColor;
+				valueFill.color = onColor;
+				if (value.value <= value.value + (0.2f * (float)textToSend.text.Length))
+					value.value += 0.2f * (float)textToSend.text.Length;
+				else
+					value.value = 10;
+				break;
+				
+			}
 			ChangeSentimentalColor.color = PositiveResponse;
-			if (overall.value <= overall.value + (0.2f * (float)textToSend.text.Length))
-				overall.value += 0.2f * (float)textToSend.text.Length;
-			else
-				overall.value = 10;
+//			if (overall.value <= overall.value + (0.2f * (float)textToSend.text.Length))
+//				overall.value += 0.2f * (float)textToSend.text.Length;
+//			else
+//				overall.value = 10;
 		}
 		else if (SentimentAnalysisResponse.y >  SentimentAnalysisResponse.x &&  SentimentAnalysisResponse.y >  SentimentAnalysisResponse.z)
 		{
 			ChangeSentimentalColor.color = NegativeResponse;
+			switch (randSlider) {
+			case 0:
+				overallFill.color = negativeColor;
+				graphicsFill.color = offColor;
+				gameplayFill.color = offColor;
+				audioFill.color = offColor;
+				valueFill.color = offColor;
+				if (overall.value >= overall.value - (0.2f * (float)textToSend.text.Length))
+					overall.value -= 0.2f * (float)textToSend.text.Length;
+				else
+					overall.value = 0;
+				break;
+
+			case 1:
+				overallFill.color = offColor;
+				graphicsFill.color = offColor;
+				gameplayFill.color = negativeColor;
+				audioFill.color = offColor;
+				valueFill.color = offColor;
+				if (gameplay.value >= gameplay.value - (0.2f * (float)textToSend.text.Length))
+					gameplay.value -= 0.2f * (float)textToSend.text.Length;
+				else
+					gameplay.value = 0;
+				break;
+
+			case 2:
+				overallFill.color = offColor;
+				graphicsFill.color = negativeColor;
+				gameplayFill.color = offColor;
+				audioFill.color = offColor;
+				valueFill.color = offColor;
+				if (graphics.value >= graphics.value - (0.2f * (float)textToSend.text.Length))
+					graphics.value -= 0.2f * (float)textToSend.text.Length;
+				else
+					graphics.value = 0;
+				
+				break;
+			case 3:
+				overallFill.color = offColor;
+				graphicsFill.color = offColor;
+				gameplayFill.color = offColor;
+				audioFill.color = negativeColor;
+				valueFill.color = offColor;
+				if (audio.value >= audio.value - (0.2f * (float)textToSend.text.Length))
+					audio.value -= 0.2f * (float)textToSend.text.Length;
+				else
+					audio.value = 0;
+				break;
+			case 4:
+				overallFill.color = offColor;
+				graphicsFill.color = offColor;
+				gameplayFill.color = offColor;
+				audioFill.color = offColor;
+				valueFill.color =negativeColor;
+				if (value.value >= value.value - (0.2f * (float)textToSend.text.Length))
+					value.value -= 0.2f * (float)textToSend.text.Length;
+				else
+					value.value = 0;
+				break;
+
+			}
 			if (overall.value >= overall.value - (0.2f * (float)textToSend.text.Length))
 				overall.value -= 0.2f * (float)textToSend.text.Length;
 			else
@@ -112,12 +254,12 @@ public class SendTextToAnalyse : MonoBehaviour {
 		}
 	}
 
-	void DecreaseInterest()
+	void DecreaseInterest(Slider slider)
 	{
-		if (overall.value >= 1)
-			overall.value -= 1;
+		if (slider.value >= 1)
+			slider.value -= 1;
 		else
-			overall.value = 0;
+			slider.value = 0;
 	}
 
 	// Sentiment Analysis Thread

@@ -297,21 +297,31 @@ public class PlayerShoot : MonoBehaviour {
 	
 	}
 
+	public void Reset()
+	{
+		healthSlider.value = 100;
+		healthSlider.maxValue = 100;
+		ammoCount = 30;
+		totalAmmo = 30;
+		EconomyManager.autoAim = false;
+
+	}
+
 	void AutoAimCheck()
 	{
-		for(int i=0;i<10;i++)
-		{
-			for(int j=0;j<10;j++)
-			{
-				autoRay=cameraPlay.GetComponent<Camera>().ViewportPointToRay(new Vector3(i/10f,j/10f, 0f));	
-		if (Physics.SphereCast (autoRay, 0.8f, out hit, 100f, mask.value)) {
-			if (hit.collider.gameObject.tag == "Cube") {
-				//Debug.Log ("Found an enemy");
-						GetComponent<vp_SimpleCrosshair> ().offsetX = i / 10f;
-						GetComponent<vp_SimpleCrosshair> ().offsetY = j / 10f;
+		if (EconomyManager.autoAim) {
+			for (int i = 0; i < 10; i++) {
+				for (int j = 0; j < 10; j++) {
+					autoRay = cameraPlay.GetComponent<Camera> ().ViewportPointToRay (new Vector3 (i / 10f, j / 10f, 0f));	
+					if (Physics.SphereCast (autoRay, 0.8f, out hit, 100f, mask.value)) {
+						if (hit.collider.gameObject.tag == "Cube") {
+							//Debug.Log ("Found an enemy");
+							GetComponent<vp_SimpleCrosshair> ().offsetX = i / 10f;
+							GetComponent<vp_SimpleCrosshair> ().offsetY = j / 10f;
 
-			}
-		}
+						}
+					}
+				}
 			}
 		}
 	}

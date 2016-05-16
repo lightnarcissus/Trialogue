@@ -20,6 +20,7 @@ public class RoleSwitcher : MonoBehaviour {
 	public MissionSystem missionSystem;
 
     private bool activateAllow = true;
+	public static bool quitting=false;
     public int previousActiveRole = 0;
     // Use this for initialization
     void Start() {
@@ -91,9 +92,13 @@ public class RoleSwitcher : MonoBehaviour {
     IEnumerator PlayerQuits()
     {
         endGame.enabled = true;
+		quitting = true;
         endGame.text = "THE PLAYER HAS LEFT";
         yield return new WaitForSeconds(3f);
+		endGame.enabled=false;
 		StartManager.quit = true;
+		quitting = false;
+
         //SceneManager.LoadScene("StartScreen");
         yield return null;
     }

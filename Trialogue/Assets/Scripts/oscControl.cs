@@ -95,6 +95,8 @@ public class oscControl : MonoBehaviour {
 
 	private bool headlineFlashing=false;
 
+	public EconomyManager economyManager;
+
 	//Enemy page
 	public bool killEnemy = false;
 	public bool convertEnemy=false;
@@ -131,6 +133,8 @@ public class oscControl : MonoBehaviour {
 	public static bool noReticle=false;
 	private bool devEntered=false;
 	public GameObject ephemeral;
+	public GameObject enemyGroup;
+	public GameObject telepoleManager;
     /// <summary>
  
     /// </summary>
@@ -174,12 +178,18 @@ public class oscControl : MonoBehaviour {
     // Hence, this update depends on your application architecture
     // How many frames per second or Update() calls per frame?
 	void Update() {
-		if(!devEntered && StartManager.start)
+		if (!devEntered && StartManager.start) {
 			OSCHandler.Instance.SendMessageToClient ("Max", "/Player/Entered", 1f);
+			playerBody.GetComponent<PlayerShoot> ().GameOver ();
+		}
 		OSCHandler.Instance.UpdateLogs();
 		if (quit) {
 			OSCHandler.Instance.SendMessageToClient ("Max", "/Player/Reset", 1f);
 			ephemeral.GetComponent<DestroyEphemeral> ().DestroySpawn ();
+			enemyGroup.GetComponent<DestroyEphemeral> ().DestroySpawn ();
+		//	telepoleManager.GetComponent<DestroyEphemeral> ().DestroySpawn ();
+			economyManager.Reset ();
+			playerBody.GetComponent<PlayerShoot> ().Reset ();
 			quit = false;
 		//	OSCHandler.Instance.OnPlayerQuit ();
 		}
@@ -801,10 +811,10 @@ public class oscControl : MonoBehaviour {
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/DisableEnemies") //disable all enemies
                 {
-                    if (tempVal == 0)
-                        treeSpawner.GetComponent<TreeGenerator>().DisableEnemies();
+					if (tempVal == 0)
+						enemyGroup.GetComponent<EnemyGroupManager> ().DisableEnemies ();
                     else
-                        treeSpawner.GetComponent<TreeGenerator>().EnableEnemies();
+						enemyGroup.GetComponent<EnemyGroupManager> ().EnableEnemies();
 
                 }
                 else if (item.Value.packets[lastPacketIndex].Address == "/Enemies/DeadBodyRemains") //disable all enemies

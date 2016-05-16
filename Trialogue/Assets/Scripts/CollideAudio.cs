@@ -26,7 +26,8 @@ public class CollideAudio : MonoBehaviour {
 					if (col.gameObject.GetComponent<PlayerShoot> ().missionManager.GetComponent<MissionSystem> ().missionType == 2) {
                         // gameObject.GetComponent<Renderer>().material.shader.name = "Projector/Light";
                    //     Debug.Log("HHHIII");
-                        Instantiate(barbWire, transform.position, Quaternion.identity);
+						GameObject ok=Instantiate(barbWire, transform.position, Quaternion.identity)as GameObject;
+						ok.transform.parent = col.gameObject.GetComponent<PlayerShoot> ().missionManager.GetComponent<MissionSystem> ().ephemeral.transform;
 						col.gameObject.GetComponent<PlayerShoot> ().missionManager.GetComponent<MissionSystem> ().numberEnemies--;
 						col.gameObject.GetComponent<PlayerShoot> ().missionManager.GetComponent<MissionSystem> ().UpdateText ();
 						securable = false;

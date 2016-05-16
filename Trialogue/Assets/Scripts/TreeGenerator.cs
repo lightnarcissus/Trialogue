@@ -22,6 +22,9 @@ public class TreeGenerator : MonoBehaviour {
     private float tempDist = 0f;
     private float randZDist = 0f;
 
+	public GameObject ephemeral;
+	public GameObject enemyGroup;
+	private GameObject tree;
 	private bool disableSpawn=false;
 	private int randEnemy=0;
 	// Use this for initialization
@@ -44,8 +47,10 @@ public class TreeGenerator : MonoBehaviour {
                 tempDist = oscManager.GetComponent<oscControl>().spawnDistance;
                 randDist = Random.Range(-8f, 8f);
                 randZDist = Random.Range(-8f, 8f);
-                if (trees[randTree] != null)
-                    Instantiate(trees[randTree], player.transform.position + new Vector3(randDist * tempDist, -1.58f, randDist * tempDist), Quaternion.identity);
+				if (trees [randTree] != null) {
+					tree = Instantiate (trees [randTree], player.transform.position + new Vector3 (randDist * tempDist, -1.58f, randDist * tempDist), Quaternion.identity) as GameObject;
+					tree.transform.parent = ephemeral.transform;
+				}
             }
         }
 		if(oscManager.GetComponent<oscControl>().enemySpawn && !disableSpawn)
@@ -58,6 +63,7 @@ public class TreeGenerator : MonoBehaviour {
 					randEnemy=Random.Range (0,2);
 
 				tempCube=Instantiate(enemies[randEnemy],player.transform.position+new Vector3(spawnDistance,0f,spawnDistance),Quaternion.identity) as GameObject;
+					tempCube.transform.parent = enemyGroup.transform;
 				cubes.Add (tempCube);
 			}
 		}

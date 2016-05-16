@@ -13,6 +13,8 @@ public class MissionSystem : MonoBehaviour {
 	private int originalNumberEnemies=0;
 	private string typeEnemies="Hostiles";
 	public float bestTimer = 100f;
+
+	public GameObject ephemeral;
 	// Use this for initialization
 	void Start () {
 

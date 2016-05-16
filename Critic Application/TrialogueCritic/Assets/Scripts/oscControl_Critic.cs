@@ -35,7 +35,7 @@ public class oscControl_Critic : MonoBehaviour {
     public List<string> prStrings;
     public InputField headline;
     public string headlineText = "";
-
+	public GameObject prGroup;
     private float tempVal= 0f;
     private string tempString = "";
     private string prevString = "";
@@ -71,7 +71,9 @@ public class oscControl_Critic : MonoBehaviour {
                 else
                     tempVal = float.Parse (item.Value.packets [lastPacketIndex].Data [0].ToString ());
                  
-
+				if (item.Value.packets [lastPacketIndex].Address == "/Critic/Reset") { //gameplay
+					prGroup.GetComponent<PRManager>().Clear();
+				}
                 if (item.Value.packets[lastPacketIndex].Address == "/Critic/PressRelease") //gameplay
 				{
                     if(tempString!=prevString)
@@ -83,6 +85,7 @@ public class oscControl_Critic : MonoBehaviour {
                         {
                             tempObj = Instantiate(prText, Vector3.zero, Quaternion.identity) as GameObject;
                             tempObj.GetComponent<TextMesh>().text = tempArray[i];
+							tempObj.transform.parent = prGroup.transform;
                         }
                           
                     prevString = tempString;

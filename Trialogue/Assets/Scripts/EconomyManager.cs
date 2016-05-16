@@ -45,6 +45,13 @@ public class EconomyManager : MonoBehaviour {
 	
 	}
 
+	public void Reset()
+	{
+		politicianFunds = 10000;
+		mediaRating = 2.4f;
+		maxMoney = 100;
+	}
+
 	public void DecreasePublicFunds()
 	{
 		politicianFunds -= 1000;
