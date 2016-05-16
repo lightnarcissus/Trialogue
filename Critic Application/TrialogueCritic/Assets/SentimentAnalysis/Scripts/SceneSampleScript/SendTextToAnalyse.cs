@@ -60,7 +60,7 @@ public class SendTextToAnalyse : MonoBehaviour {
 		// Error response
 		SentimentAnalysis.OnErrorOccurs += Errors;
 
-		InvokeRepeating ("DecreaseInterest", 1f, 5f);
+	//	InvokeRepeating ("DecreaseInterest", 1f, 5f);
 	}
 
 	void OnDestroy()
