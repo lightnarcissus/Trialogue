@@ -111,7 +111,7 @@ public class SendTextToAnalyse : MonoBehaviour {
 		PositivePercent.text = SentimentAnalysisResponse.x + " \n % : Positive"; 
 		NegativePercent.text = SentimentAnalysisResponse.y + " \n % : Negative";
 		NeutralPercent.text = SentimentAnalysisResponse.z + " \n % : Neutral";
-
+		oscControl.GetComponent<oscControl_Critic> ().SliderChanged ();
 		randSlider = Random.Range (0, 5);
 		StartCoroutine ("ClearText");
 		if ( SentimentAnalysisResponse.x >  SentimentAnalysisResponse.y &&  SentimentAnalysisResponse.x >  SentimentAnalysisResponse.z)

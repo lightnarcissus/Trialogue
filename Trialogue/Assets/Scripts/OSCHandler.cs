@@ -135,20 +135,20 @@ public class OSCHandler : MonoBehaviour
 	/// Close all the OSC clients and servers
 	/// </summary>
     /// 
-    public void OnPlayerQuit()
-    {
-        foreach (KeyValuePair<string, ClientLog> pair in _clients)
-        {
-            pair.Value.client.Close();
-        }
-
-        foreach (KeyValuePair<string, ServerLog> pair in _servers)
-        {
-            pair.Value.server.Close();
-        }
-
-        _instance = null;
-    }
+//    public void OnPlayerQuit()
+//    {
+//        foreach (KeyValuePair<string, ClientLog> pair in _clients)
+//        {
+//            pair.Value.client.Close();
+//        }
+//
+//        foreach (KeyValuePair<string, ServerLog> pair in _servers)
+//        {
+//            pair.Value.server.Close();
+//        }
+//
+//        _instance = null;
+//    }
 	void OnApplicationQuit() 
 	{
 		foreach(KeyValuePair<string,ClientLog> pair in _clients)

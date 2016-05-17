@@ -88,7 +88,7 @@ public class oscControl_Developer : MonoBehaviour {
 						EndScreenManager.timerTotal = timer;
 						OSCHandler_Developer.Instance.SendMessageToClient("Critic","/Critic/Reset",1f);
 						EndScreenManager.metaScoreTotal = (int)metascoreLine.GetComponent<Slider> ().value;
-						OSCHandler_Developer.Instance.OnPlayerQuit ();
+						//OSCHandler_Developer.Instance.OnPlayerQuit ();
 						SceneManager.LoadScene ("EndScreen");
 						//waitScreenManager.GetComponent<WaitScreenManager> ().PlayerEntered ();
 					}

@@ -15,7 +15,8 @@ public class WaitScreenManager : MonoBehaviour {
 	public Text presentText2;
 	public Text presentText3;
 
-	private bool playerEntered=false;
+	private bool playerEntered = false;
+	public GameObject normalCanvas;
 	// Use this for initialization
 	void Start () {
 
@@ -72,6 +73,7 @@ public class WaitScreenManager : MonoBehaviour {
 		presentText3.enabled = true;
 		yield return new WaitForSeconds (1f);
 		waitCanvas.SetActive (false);
+		normalCanvas.SetActive (true);
 		OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Developer/Entered", 1f);
 		yield return null;
 	}
