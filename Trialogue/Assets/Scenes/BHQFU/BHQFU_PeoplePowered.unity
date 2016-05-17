@@ -3895,7 +3895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &573158968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4058,6 +4058,7 @@ MonoBehaviour:
   playerShoot: {fileID: 1661101151}
   roleSwitcher: {fileID: 1663848644}
   politicalSphere: {fileID: 115084, guid: 36f232d6355ca40e3921c81892392dbf, type: 2}
+  projectors: {fileID: 193008, guid: d5b711959d3994157ac583929a0f64c2, type: 2}
   ephemeral: {fileID: 106177389}
   economyManager: {fileID: 1663848646}
 --- !u!20 &573158979

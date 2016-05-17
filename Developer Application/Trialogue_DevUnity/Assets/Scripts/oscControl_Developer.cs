@@ -40,6 +40,7 @@ public class oscControl_Developer : MonoBehaviour {
 	public GameObject metascoreLine;
 
 	public GameObject waitScreenManager;
+	public GameObject endScreenManager;
 	public float timer=0f;
 	private float boolVal=0f;
 	public static int envID=0;
@@ -85,11 +86,14 @@ public class oscControl_Developer : MonoBehaviour {
 				if (item.Value.packets [lastPacketIndex].Address == "/Player/Reset") { //player reset
 
 					if (tempVal == 1) {
-						EndScreenManager.timerTotal = timer;
+						
 						OSCHandler_Developer.Instance.SendMessageToClient("Critic","/Critic/Reset",1f);
-						EndScreenManager.metaScoreTotal = (int)metascoreLine.GetComponent<Slider> ().value;
-						//OSCHandler_Developer.Instance.OnPlayerQuit ();
-						SceneManager.LoadScene ("EndScreen");
+						if (!EndScreenManager.quitting) {
+							EndScreenManager.timerTotal = timer;
+							EndScreenManager.metaScoreTotal = (int)metascoreLine.GetComponent<Slider> ().value;
+							endScreenManager.GetComponent<EndScreenManager> ().ActivateEndScreen ();
+						}
+					//	SceneManager.LoadScene ("EndScreen");
 						//waitScreenManager.GetComponent<WaitScreenManager> ().PlayerEntered ();
 					}
 				}

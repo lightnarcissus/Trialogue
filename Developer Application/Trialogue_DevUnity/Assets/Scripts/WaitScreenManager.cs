@@ -50,9 +50,11 @@ public class WaitScreenManager : MonoBehaviour {
 
 	public void PlayerEntered()
 	{
+		Debug.Log ("player entering");
 		if (!playerEntered) {
 			StartCoroutine ("PlayerEnters");
 			playerEntered = true;
+			EndScreenManager.quitting = false;
 		}
 	}
 
@@ -63,6 +65,7 @@ public class WaitScreenManager : MonoBehaviour {
 
 	IEnumerator PlayerEnters()
 	{
+		Debug.Log ("ENTERING GAME");
 		absentText1.enabled = false;
 		presentText1.enabled = true;
 		yield return new WaitForSeconds (1f);
@@ -74,6 +77,13 @@ public class WaitScreenManager : MonoBehaviour {
 		yield return new WaitForSeconds (1f);
 		waitCanvas.SetActive (false);
 		normalCanvas.SetActive (true);
+		//playerEntered = false;
+		absentText1.enabled = true;
+		presentText1.enabled = false;
+		absentText2.enabled = true;
+		presentText2.enabled = false;
+		absentText3.enabled = true;
+		presentText3.enabled = false;
 		OSCHandler_Developer.Instance.SendMessageToClient ("Max", "/Developer/Entered", 1f);
 		yield return null;
 	}
