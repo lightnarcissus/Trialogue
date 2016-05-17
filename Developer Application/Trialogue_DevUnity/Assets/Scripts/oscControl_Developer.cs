@@ -92,7 +92,9 @@ public class oscControl_Developer : MonoBehaviour {
 							EndScreenManager.timerTotal = timer;
 							EndScreenManager.metaScoreTotal = (int)metascoreLine.GetComponent<Slider> ().value;
 							endScreenManager.GetComponent<EndScreenManager> ().ActivateEndScreen ();
+							timer = 0f;
 						}
+
 					//	SceneManager.LoadScene ("EndScreen");
 						//waitScreenManager.GetComponent<WaitScreenManager> ().PlayerEntered ();
 					}

@@ -39,6 +39,10 @@ public class oscControl_Critic : MonoBehaviour {
     private float tempVal= 0f;
     private string tempString = "";
     private string prevString = "";
+	public Slider gameplay;
+	public Slider graphics;
+	public Slider audio;
+	public Slider value;
     public GameObject prText;
 	// Script initialization
 	void Start() {	
@@ -97,7 +101,9 @@ public class oscControl_Critic : MonoBehaviour {
 	}
 	public void SliderChanged()
     {
-        overallScore = overall.value * 10f;
+		overallScore = ((overall.value * 0.4f) +(gameplay.value * 0.2f) + (graphics.value * 0.2f) + (audio.value * 0.1f) + (value.value*0.1f)) * 10f;
+		overall.value = overallScore / 10f;
+		Debug.Log (overallScore);
         OSCHandler_Critic.Instance.SendMessageToClient("Developer", "/Dev/Metascore", overallScore);
       //  Debug.Log("sending message to " + ListIP.otherIPAddress);
     }
