@@ -11,6 +11,7 @@ public class PoliticalCamMove : MonoBehaviour {
 	private int platformID=0;
 	public RoleSwitcher roleSwitcher;
 	public GameObject politicalSphere;
+	public GameObject projectors;
 	public GameObject ephemeral;
 
 	public EconomyManager economyManager;
@@ -70,6 +71,8 @@ public class PoliticalCamMove : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0) ||(shootUp && (Mathf.Abs(shootTrigger)>0.5f))) {
 			GameObject sphere=Instantiate(politicalSphere,new Vector3(transform.position.x,118.3f,transform.position.z),Quaternion.identity) as GameObject;
 			sphere.transform.parent = ephemeral.transform;
+			GameObject proj = Instantiate (projectors, new Vector3 (transform.position.x, 191f, transform.position.z), Quaternion.identity) as GameObject;
+			proj.transform.parent = ephemeral.transform;
 			shootUp = false;
 			economyManager.DecreasePublicFunds ();
 			economyManager.UpdatePublicFunds ();
