@@ -278,6 +278,7 @@ MonoBehaviour:
   gameCanvas: {fileID: 173155263}
   missionSystem: {fileID: 1189350633}
   playerShoot: {fileID: 1661101153}
+  oscControl: {fileID: 641720430}
 --- !u!4 &10547837
 Transform:
   m_ObjectHideFlags: 0

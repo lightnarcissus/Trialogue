@@ -131,7 +131,7 @@ public class oscControl : MonoBehaviour {
     //reticle Spread
     public static bool allowMultipleReticle = false;
 	public static bool noReticle=false;
-	private bool devEntered=false;
+	public bool devEntered=false;
 	public GameObject ephemeral;
 	public GameObject enemyGroup;
 	public GameObject telepoleManager;
@@ -178,9 +178,12 @@ public class oscControl : MonoBehaviour {
     // Hence, this update depends on your application architecture
     // How many frames per second or Update() calls per frame?
 	void Update() {
-		if (!devEntered && StartManager.start) {
+	//	Debug.Log ("DevEntered" + devEntered);
+	//	Debug.Log("Start" + StartManager.start);
+		if (StartManager.start) {
+			Debug.Log ("STARTING NOW");
 			OSCHandler.Instance.SendMessageToClient ("Max", "/Player/Entered", 1f);
-
+			StartManager.start = false;
 		}
 		OSCHandler.Instance.UpdateLogs();
 		if (quit) {
@@ -272,12 +275,13 @@ public class oscControl : MonoBehaviour {
                     //for future use
                 }
                 */
-				else if (item.Value.packets [lastPacketIndex].Address == "/Developer/Entered") {
-					if (tempVal == 1)
-						devEntered = true;
-					else
-						devEntered = false;
-				}
+//				else if (item.Value.packets [lastPacketIndex].Address == "/Developer/Entered") {
+//					if (tempVal == 1)
+//					if(!StartManager.start)
+//						devEntered = true;
+//					else
+//						devEntered = false;
+//				}
                 else if (item.Value.packets [lastPacketIndex].Address == "/Environment/GreenTrees") { //green trees?
 					if (tempVal == 0)
 						greenTrees = false;

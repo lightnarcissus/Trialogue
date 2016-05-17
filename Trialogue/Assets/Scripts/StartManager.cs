@@ -13,6 +13,7 @@ public class StartManager : MonoBehaviour {
 	public static bool start=false;
 	public static bool quit=false;
 	public PlayerShoot playerShoot;
+	public oscControl oscControl;
 	// Use this for initialization
 	void Awake () {
 		startScreen.SetActive (true);
@@ -35,6 +36,7 @@ public class StartManager : MonoBehaviour {
 
 		if (canStart) {
 			if (Input.GetKeyDown (KeyCode.Return) || Input.GetButtonDown("StartMac") || Input.GetButtonDown("StartWin")) {
+				quit = false;
 				StartPlayer ();
 				start = true;
                 canStart = false;
@@ -55,6 +57,7 @@ public class StartManager : MonoBehaviour {
 	}
 	IEnumerator Restart()
 	{
+		oscControl.devEntered = false;
 		startScreen.SetActive (true);
 		startCanvas.SetActive (true);
 		gameCanvas.SetActive (false);
