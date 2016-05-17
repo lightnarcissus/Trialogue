@@ -100,6 +100,12 @@ public class oscControl_Developer : MonoBehaviour {
 				if (item.Value.packets [lastPacketIndex].Address == "/Player/Entered") { //player reset
 
 					if (tempVal == 1) {
+						Debug.Log ("RECEIVING MESSAGE");
+						if (EndScreenManager.quitting) {
+							endScreenManager.GetComponent<EndScreenManager> ().RestartGame ();
+							//waitScreenManager.GetComponent<WaitScreenManager> ().WaitingAgain ();
+							EndScreenManager.quitting = false;
+						}
 						waitScreenManager.GetComponent<WaitScreenManager> ().PlayerEntered ();
 					}
 				}

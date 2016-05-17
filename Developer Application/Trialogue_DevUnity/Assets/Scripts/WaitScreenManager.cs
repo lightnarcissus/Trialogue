@@ -16,6 +16,7 @@ public class WaitScreenManager : MonoBehaviour {
 	public Text presentText3;
 
 	private bool playerEntered = false;
+	public GameObject endCanvas;
 	public GameObject normalCanvas;
 	// Use this for initialization
 	void Start () {
@@ -53,6 +54,8 @@ public class WaitScreenManager : MonoBehaviour {
 		Debug.Log ("player entering");
 		if (!playerEntered) {
 			StartCoroutine ("PlayerEnters");
+			EndScreenManager.timerTotal = 0f;
+			EndScreenManager.metaScoreTotal = 0;
 			playerEntered = true;
 			EndScreenManager.quitting = false;
 		}
@@ -75,6 +78,7 @@ public class WaitScreenManager : MonoBehaviour {
 		absentText3.enabled = false;
 		presentText3.enabled = true;
 		yield return new WaitForSeconds (1f);
+		endCanvas.SetActive (false);
 		waitCanvas.SetActive (false);
 		normalCanvas.SetActive (true);
 		//playerEntered = false;
