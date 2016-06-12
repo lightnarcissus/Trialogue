@@ -307,7 +307,7 @@ namespace UnitySentiment
                     }
                     // release the thread
                     Monitor.Exit(analysisSyncObj);
-                    Debug.Log("Sentiment Process Finished!");
+                    //Debug.Log("Sentiment Process Finished!");
                 }
             }
             else

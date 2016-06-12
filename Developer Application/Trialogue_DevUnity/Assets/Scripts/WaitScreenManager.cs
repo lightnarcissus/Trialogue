@@ -21,8 +21,11 @@ public class WaitScreenManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		waitCanvas.SetActive (true);
-		WaitingAgain ();
+        //	waitCanvas.SetActive (true);
+        //WaitingAgain ();
+
+        //DONT FORGET TO RESET ALL OF THIS
+        PlayerEntered();
 	
 	}
 

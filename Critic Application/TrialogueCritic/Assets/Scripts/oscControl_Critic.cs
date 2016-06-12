@@ -103,14 +103,14 @@ public class oscControl_Critic : MonoBehaviour {
     {
 		overallScore = ((overall.value * 0.4f) +(gameplay.value * 0.2f) + (graphics.value * 0.2f) + (audio.value * 0.1f) + (value.value*0.1f)) * 10f;
 		overall.value = overallScore / 10f;
-		Debug.Log (overallScore);
+		//Debug.Log (overallScore);
         OSCHandler_Critic.Instance.SendMessageToClient("Developer", "/Dev/Metascore", overallScore);
       //  Debug.Log("sending message to " + ListIP.otherIPAddress);
     }
 
     public void HeadlineChanged()
     {
-        Debug.Log("changed");
+       // Debug.Log("changed");
         headlineText = headline.text;
         OSCHandler_Critic.Instance.SendMessageToClient("Player", "/Critic/Headline", headlineText);
     }

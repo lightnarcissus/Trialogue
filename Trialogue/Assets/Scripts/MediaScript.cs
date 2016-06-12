@@ -62,7 +62,9 @@ public class MediaScript : MonoBehaviour {
 		commercialText.enabled = true;
 		commercialText.text = "STARTING NEW ROUND";
 		yield return new WaitForSeconds (1f);
-		roleSwitcher.SwitchRole (++RoleSwitcher.currentRole);
+        
+
+        roleSwitcher.SwitchRole (++RoleSwitcher.currentRole);
 
 		yield return null;
 	}

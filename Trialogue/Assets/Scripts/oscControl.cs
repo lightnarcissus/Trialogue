@@ -190,6 +190,7 @@ public class oscControl : MonoBehaviour {
 			OSCHandler.Instance.SendMessageToClient ("Max", "/Player/Reset", 1f);
 			ephemeral.GetComponent<DestroyEphemeral> ().DestroySpawn ();
 			enemyGroup.GetComponent<DestroyEphemeral> ().DestroySpawn ();
+         //   ResetDefaults();
 		//	telepoleManager.GetComponent<DestroyEphemeral> ().DestroySpawn ();
 			economyManager.Reset ();
 			playerBody.GetComponent<PlayerShoot> ().Reset ();
@@ -900,6 +901,24 @@ public class oscControl : MonoBehaviour {
         OSCHandler.Instance.SendMessageToClient("Max,", "/You/EnableLobbying", 1f);
         OSCHandler.Instance.SendMessageToClient("Max,", "/You/MediaCoverage", 0f);
         OSCHandler.Instance.SendMessageToClient("Max,", "/You/PoliticalSpace", 0f);
+    }
+
+    void ResetDefaults()
+    {
+        
+        playerCamera.GetComponent<PP_Charcoal>().lineColor = new Color(0f,0f,0f, 1f);
+        playerCamera.GetComponent<PP_Pixelated>().enabled = false;
+        playerCamera.GetComponent<PP_Scanlines>().enabled = false;
+        playerCamera.GetComponent<Camera>().orthographic = false;
+        Time.timeScale = 1f;
+        playerCamera.GetComponent<PP_NightVisionV2>().enabled = false;
+        playerCamera.GetComponent<Camera>().fieldOfView = 60f;
+        CubeManager.globalSize = 1f;
+        playerCamera.GetComponent<Camera>().clearFlags= CameraClearFlags.Skybox;
+
+
+
+
     }
 
 	IEnumerator FlashHeadline()

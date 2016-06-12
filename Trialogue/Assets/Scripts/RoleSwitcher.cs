@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
 public class RoleSwitcher : MonoBehaviour {
     public static int currentRole = 0; // 1 is soldier, 2 is politician, 3 is media, 4 is lobbyist
@@ -96,7 +97,8 @@ public class RoleSwitcher : MonoBehaviour {
         endGame.text = "THE PLAYER HAS LEFT";
         yield return new WaitForSeconds(3f);
 		endGame.enabled=false;
-		StartManager.quit = true;
+        SwitchRole(1);
+        StartManager.quit = true;
 		quitting = false;
 
         //SceneManager.LoadScene("StartScreen");
@@ -129,6 +131,7 @@ public class RoleSwitcher : MonoBehaviour {
 		case 1:
 			player.GetComponent<CharacterController> ().enabled = true;
 			player.GetComponent<PlayerShoot> ().enabled = true;
+                player.GetComponent<FirstPersonController>().enabled = true;
                 player.transform.GetChild(0).gameObject.GetComponent<AudioListener>().enabled = true;
                 DisableRole (currentRole);
 				missionSystem.GenerateNewMission ();
@@ -163,6 +166,7 @@ public class RoleSwitcher : MonoBehaviour {
         {
             case 1:
                 player.GetComponent<CharacterController>().enabled = false;
+                player.GetComponent<FirstPersonController>().enabled = false;
                 player.transform.GetChild(0).gameObject.GetComponent<AudioListener>().enabled = false;
                 player.GetComponent<PlayerShoot>().enabled = false;
                 soldierObj.SetActive(false);

@@ -223,7 +223,7 @@ public class OSCHandler : MonoBehaviour
 
     void OnPacketReceived(OSCServer server, OSCPacket packet)
     {
-		Debug.Log ("packet received");
+		//Debug.Log ("packet received");
 		//Debug.Log (packet.Data[0].ToString());
     }
 	
